@@ -14,7 +14,9 @@ import java.util.Properties;
  */
 public class ConfigurationUtil {
 
-    private static final String DEFAULT_CONFIG_PATH = "./enviroment.properties";
+    //private static final String DEFAULT_CONFIG_PATH = "./enviroment.properties";
+    private static final String DEFAULT_CONFIG_PATH = "./src/main/resources/enviroment.properties";
+    private static final String CUSTOM_CONFIG_PATH=System.getProperty("configPath");
     private static final Properties configuration = new Properties();
     /**
      * Hides default constructor
@@ -34,7 +36,14 @@ public class ConfigurationUtil {
      * @throws IOException In case of the configuration file read failure
      */
     private static void loadConfiguration() throws IOException{
-        File nf = new File(DEFAULT_CONFIG_PATH);
+        //File nf = new File(DEFAULT_CONFIG_PATH);
+        File nf;
+        if (CUSTOM_CONFIG_PATH!=null){
+            nf = new File(CUSTOM_CONFIG_PATH);
+        }
+        else {
+            nf=new File(DEFAULT_CONFIG_PATH);
+        }
         InputStream in = new FileInputStream(nf);// DEFAULT_CONFIG_PATH.getClass().getResourceAsStream(DEFAULT_CONFIG_PATH);
         try {
             configuration.load(in);
@@ -53,5 +62,7 @@ public class ConfigurationUtil {
     public static String getConfigurationEntry(String key) throws IOException{
         return getConfiguration().getProperty(key);
     }
+
+
     
 }

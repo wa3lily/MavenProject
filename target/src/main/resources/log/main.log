@@ -1,0 +1,70 @@
+2020-09-20 23:38:24 INFO  Main:16 - Info_test
+2020-09-20 23:38:24 DEBUG Main:17 - Debag_test
+2020-09-20 23:38:24 ERROR Main:18 - Error_test
+2020-09-20 23:38:24 INFO  Main:19 - 33
+2020-09-21 09:56:14 INFO  Main:16 - Info_test
+2020-09-21 09:56:14 DEBUG Main:17 - Debag_test
+2020-09-21 09:56:14 ERROR Main:18 - Error_test
+2020-09-21 09:56:14 INFO  Main:19 - 33
+2020-10-19 09:19:24 INFO  Main:16 - Info_test
+2020-10-19 09:19:24 DEBUG Main:17 - Debag_test
+2020-10-19 09:19:24 ERROR Main:18 - Error_test
+2020-10-19 09:19:24 INFO  Main:19 - 33
+2020-10-19 09:19:24 INFO  Main:20 - SourceName
+2020-10-19 09:19:24 INFO  Main:21 - There is constants 33 and source
+2020-10-19 09:21:21 INFO  Main:16 - Info_test
+2020-10-19 09:21:21 DEBUG Main:17 - Debag_test
+2020-10-19 09:21:21 ERROR Main:18 - Error_test
+2020-10-19 09:21:21 INFO  Main:19 - 33
+2020-10-19 09:21:21 INFO  Main:20 - SourceName
+2020-10-19 09:21:21 INFO  Main:21 - There are constants 33 and source
+2020-10-19 09:25:01 INFO  Main:16 - Info_test
+2020-10-19 09:25:01 DEBUG Main:17 - Debag_test
+2020-10-19 09:25:01 ERROR Main:18 - Error_test
+2020-10-19 09:25:01 INFO  Main:19 - 33
+2020-10-19 09:25:01 INFO  Main:20 - SourceName
+2020-10-19 09:25:01 INFO  Main:21 - There are constants 33 and source
+2020-10-19 09:39:34 INFO  Main:16 - Info_test
+2020-10-19 09:39:34 DEBUG Main:17 - Debag_test
+2020-10-19 09:39:34 ERROR Main:18 - Error_test
+2020-10-19 09:39:34 INFO  Main:19 - 33
+2020-10-19 09:39:34 INFO  Main:20 - SourceName
+2020-10-19 09:39:34 INFO  Main:21 - There are constants 33 and source
+2020-10-19 09:40:08 ERROR Main:18 - Error_test
+2020-10-19 09:41:28 INFO  Main:16 - Info_test
+2020-10-19 09:41:28 DEBUG Main:17 - Debag_test
+2020-10-19 09:41:28 ERROR Main:18 - Error_test
+2020-10-19 09:41:28 INFO  Main:19 - 33
+2020-10-19 09:41:28 INFO  Main:20 - SourceName
+2020-10-19 09:41:28 INFO  Main:21 - There are constants 33 and source
+2020-10-19 09:42:05 INFO  Main:16 - Info_test
+2020-10-19 09:42:05 ERROR Main:18 - Error_test
+2020-10-19 09:42:05 INFO  Main:19 - 33
+2020-10-19 09:42:05 INFO  Main:20 - SourceName
+2020-10-19 09:42:05 INFO  Main:21 - There are constants 33 and source
+2020-10-19 09:42:48 INFO  Main:16 - Info_test
+2020-10-19 09:42:48 ERROR Main:18 - Error_test
+2020-10-19 09:42:48 INFO  Main:19 - 33
+2020-10-19 09:42:48 INFO  Main:20 - SourceName
+2020-10-19 09:42:48 INFO  Main:21 - There are constants 33 and source
+2020-10-19 09:43:53 INFO  Main:16 - Info_test
+2020-10-19 09:43:53 ERROR Main:18 - Error_test
+2020-10-19 09:43:53 INFO  Main:19 - 33
+2020-10-19 09:43:53 INFO  Main:20 - SourceName1
+2020-10-19 09:43:53 INFO  Main:21 - There are constants 33 and source
+2020-10-19 09:51:35 INFO  Main:16 - Info_test
+2020-10-19 09:51:35 DEBUG Main:17 - Debag_test
+2020-10-19 09:51:35 ERROR Main:18 - Error_test
+2020-10-19 09:51:35 INFO  Main:19 - 33
+2020-10-19 09:51:35 INFO  Main:20 - SourceName
+2020-10-19 09:51:35 INFO  Main:21 - There are constants 33 and source
+2020-10-19 09:51:49 INFO  Main:16 - Info_test
+2020-10-19 09:51:49 ERROR Main:18 - Error_test
+2020-10-19 09:51:49 INFO  Main:19 - 33
+2020-10-19 09:51:49 INFO  Main:20 - SourceName
+2020-10-19 09:51:49 INFO  Main:21 - There are constants 33 and source
+2020-10-19 09:52:04 INFO  Main:16 - Info_test
+2020-10-19 09:52:04 ERROR Main:18 - Error_test
+2020-10-19 09:52:04 INFO  Main:19 - 33
+2020-10-19 09:52:04 INFO  Main:20 - SourceName1
+2020-10-19 09:52:04 INFO  Main:21 - There are constants 33 and source
