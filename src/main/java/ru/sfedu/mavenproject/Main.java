@@ -1,5 +1,7 @@
 package ru.sfedu.mavenproject;
 
+import com.opencsv.exceptions.CsvDataTypeMismatchException;
+import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.sfedu.mavenproject.api.DataProviderCSV;
@@ -16,7 +18,7 @@ public class Main {
 
     private static Logger log = LogManager.getLogger(Main.class);
 
-    static public void main(String[] args) throws IOException {
+    static public void main(String[] args) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
         log.info("Info_test");
         log.debug("Debag_test");
         log.error("Error_test");

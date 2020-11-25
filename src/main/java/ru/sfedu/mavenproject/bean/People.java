@@ -2,6 +2,8 @@ package ru.sfedu.mavenproject.bean;
 
 import com.opencsv.bean.CsvBindByName;
 
+import java.util.Objects;
+
 /**
  * Class People
  */
@@ -21,7 +23,7 @@ public class People {
   private String lastName;
   @CsvBindByName
   private String phone;
-  
+
   //
   // Constructors
   //
@@ -116,8 +118,38 @@ public class People {
     return phone;
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    People people = (People) o;
+    return id == people.id &&
+            Objects.equals(firstName, people.firstName) &&
+            Objects.equals(secondName, people.secondName) &&
+            Objects.equals(lastName, people.lastName) &&
+            Objects.equals(phone, people.phone);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, firstName, secondName, lastName, phone);
+  }
+
+  @Override
+  public String toString() {
+    return "People{" +
+            "id=" + id +
+            ", firstName='" + firstName + '\'' +
+            ", secondName='" + secondName + '\'' +
+            ", lastName='" + lastName + '\'' +
+            ", phone='" + phone + '\'' +
+            '}';
+  }
+
   //
   // Other methods
   //
+
+
 
 }

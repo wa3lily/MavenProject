@@ -252,3 +252,36 @@
 2020-11-23 01:03:07 INFO  Main:23 - 33
 2020-11-23 01:03:07 INFO  Main:24 - SourceName
 2020-11-23 01:03:07 INFO  Main:25 - There are constants 33 and source
+2020-11-23 01:05:06 INFO  Main:20 - Info_test
+2020-11-23 01:05:07 DEBUG Main:21 - Debag_test
+2020-11-23 01:05:07 ERROR Main:22 - Error_test
+2020-11-23 01:05:07 INFO  Main:23 - 33
+2020-11-23 01:05:07 INFO  Main:24 - SourceName
+2020-11-23 01:05:07 INFO  Main:25 - There are constants 33 and source
+2020-11-23 01:22:09 INFO  Main:20 - Info_test
+2020-11-23 01:22:09 DEBUG Main:21 - Debag_test
+2020-11-23 01:22:09 ERROR Main:22 - Error_test
+2020-11-23 01:22:09 INFO  Main:23 - 33
+2020-11-23 01:22:09 INFO  Main:24 - SourceName
+2020-11-23 01:22:09 INFO  Main:25 - There are constants 33 and source
+2020-11-23 01:29:22 INFO  Main:20 - Info_test
+2020-11-23 01:29:22 DEBUG Main:21 - Debag_test
+2020-11-23 01:29:22 ERROR Main:22 - Error_test
+2020-11-23 01:29:22 INFO  Main:23 - 33
+2020-11-23 01:29:22 INFO  Main:24 - SourceName
+2020-11-23 01:29:22 INFO  Main:25 - There are constants 33 and source
+2020-11-24 19:24:33 INFO  DataProviderCSVTest:20 - insertPeopleSuccess
+2020-11-24 19:25:21 INFO  DataProviderCSVTest:20 - insertPeopleSuccess
+2020-11-24 19:28:51 INFO  DataProviderCSVTest:20 - insertPeopleSuccess
+2020-11-24 20:03:33 INFO  DataProviderCSVTest:20 - insertPeopleSuccess
+2020-11-24 20:10:31 INFO  DataProviderCSVTest:20 - insertPeopleSuccess
+2020-11-24 20:11:53 INFO  DataProviderCSVTest:20 - insertPeopleSuccess
+2020-11-24 20:11:53 ERROR DataProviderCSV:63 - java.util.NoSuchElementException: No value present
+2020-11-24 20:12:28 INFO  DataProviderCSVTest:20 - insertPeopleSuccess
+2020-11-24 20:12:28 ERROR DataProviderCSV:63 - java.util.NoSuchElementException: No value present
+2020-11-24 20:12:46 INFO  DataProviderCSVTest:20 - insertPeopleSuccess
+2020-11-24 20:12:46 ERROR DataProviderCSV:63 - java.util.NoSuchElementException: No value present
+2020-11-24 20:14:20 INFO  DataProviderCSVTest:20 - insertPeopleSuccess
+2020-11-24 20:17:27 INFO  DataProviderCSVTest:35 - insertPeopleFalse
+2020-11-24 20:17:28 ERROR DataProviderCSV:63 - java.util.NoSuchElementException: No value present
+2020-11-24 20:35:26 INFO  DataProviderCSVTest:20 - insertPeopleSuccess
