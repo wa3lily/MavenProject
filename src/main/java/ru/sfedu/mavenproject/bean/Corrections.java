@@ -1,6 +1,6 @@
 package ru.sfedu.mavenproject.bean;
 
-import ru.sfedu.mavenproject.CorrectionsStatus;
+import ru.sfedu.mavenproject.enums.CorrectionsStatus;
 
 /**
  * Class Corrections

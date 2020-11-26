@@ -1,7 +1,7 @@
 package ru.sfedu.mavenproject.bean;
 
-import ru.sfedu.mavenproject.BookStatus;
-import ru.sfedu.mavenproject.CoverType;
+import ru.sfedu.mavenproject.enums.BookStatus;
+import ru.sfedu.mavenproject.enums.CoverType;
 import ru.sfedu.mavenproject.PriceParameters;
 
 /**

@@ -1,4 +1,4 @@
-package ru.sfedu.mavenproject;
+package ru.sfedu.mavenproject.enums;
 
 public enum BookStatus {
     UNTOUCHED,

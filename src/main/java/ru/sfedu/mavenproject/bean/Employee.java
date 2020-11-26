@@ -1,6 +1,6 @@
 package ru.sfedu.mavenproject.bean;
 
-import ru.sfedu.mavenproject.EmployeeType;
+import ru.sfedu.mavenproject.enums.EmployeeType;
 
 /**
  * Class Employee

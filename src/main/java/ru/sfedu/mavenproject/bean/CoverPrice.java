@@ -1,6 +1,6 @@
 package ru.sfedu.mavenproject.bean;
 
-import ru.sfedu.mavenproject.CoverType;
+import ru.sfedu.mavenproject.enums.CoverType;
 
 /**
  * Class CoverPrice

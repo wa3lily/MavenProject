@@ -287,3 +287,61 @@
 2020-11-24 20:35:26 INFO  DataProviderCSVTest:20 - insertPeopleSuccess
 2020-11-24 20:36:04 INFO  DataProviderCSVTest:35 - insertPeopleFalse
 2020-11-24 20:36:05 ERROR DataProviderCSV:55 - java.util.NoSuchElementException: No value present
+2020-11-25 17:14:25 INFO  DataProviderCSVTest:20 - insertPeopleSuccess
+2020-11-26 00:05:54 INFO  DataProviderDBTest:21 - insertPeopleSuccess
+2020-11-26 00:05:54 DEBUG DataProviderDB:72 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES(Иван,Иванович,Иванов,81234567890)
+2020-11-26 00:10:28 INFO  DataProviderDBTest:21 - insertPeopleSuccess
+2020-11-26 00:10:28 DEBUG DataProviderDB:75 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES('Иван','Иванович','Иванов','81234567890')
+2020-11-26 02:19:33 INFO  DataProviderDBTest:21 - insertPeopleSuccess
+2020-11-26 02:19:33 DEBUG DataProviderDB:75 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES('Иван','Иванович','Иванов','81234567890')
+2020-11-26 02:23:16 INFO  DataProviderDBTest:21 - insertPeopleSuccess
+2020-11-26 02:23:16 DEBUG DataProviderDB:75 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES('Иван','Иванович','Иванов','81234567890')
+2020-11-26 02:23:16 DEBUG DataProviderDB:82 - SELECT * FROM people WHERE id = 1
+2020-11-26 02:25:17 INFO  DataProviderDBTest:21 - insertPeopleSuccess
+2020-11-26 02:25:17 DEBUG DataProviderDB:85 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES('Иван','Иванович','Иванов','81234567890')
+2020-11-26 02:25:18 DEBUG DataProviderDB:92 - SELECT * FROM people WHERE id = 1
+2020-11-26 02:27:01 INFO  DataProviderDBTest:21 - insertPeopleSuccess
+2020-11-26 02:27:01 DEBUG DataProviderDB:89 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES('Иван','Иванович','Иванов','81234567890')
+2020-11-26 02:27:02 DEBUG DataProviderDB:96 - SELECT * FROM people WHERE id = 1
+2020-11-26 02:35:25 INFO  DataProviderDBTest:21 - insertPeopleSuccess
+2020-11-26 02:35:25 DEBUG DataProviderDB:89 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES('Иван','Иванович','Иванов','81234567890')
+2020-11-26 02:35:26 DEBUG DataProviderDB:96 - SELECT * FROM people WHERE id = 1
+2020-11-26 02:47:52 INFO  DataProviderDBTest:21 - insertPeopleSuccess
+2020-11-26 02:47:52 DEBUG DataProviderDB:89 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES('Иван','Иванович','Иванов','81234567890')
+2020-11-26 02:47:53 DEBUG DataProviderDB:96 - SELECT * FROM people WHERE id = 1
+2020-11-26 02:55:07 INFO  DataProviderDBTest:21 - insertPeopleSuccess
+2020-11-26 02:55:07 DEBUG DataProviderDB:89 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES('Иван','Иванович','Иванов','81234567890')
+2020-11-26 02:55:08 DEBUG DataProviderDB:96 - SELECT * FROM people WHERE id = 1
+2020-11-26 02:56:06 INFO  DataProviderDBTest:21 - insertPeopleSuccess
+2020-11-26 02:56:06 DEBUG DataProviderDB:89 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES('Иван','Иванович','Иванов','81234567890')
+2020-11-26 02:56:06 DEBUG DataProviderDB:96 - SELECT * FROM people WHERE id = 1
+2020-11-26 02:59:45 INFO  DataProviderDBTest:21 - insertPeopleSuccess
+2020-11-26 02:59:45 DEBUG DataProviderDB:92 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES('Иван','Иванович','Иванов','81234567890')
+2020-11-26 02:59:45 DEBUG DataProviderDB:99 - SELECT * FROM people WHERE id = 1
+2020-11-26 03:00:41 INFO  DataProviderDBTest:21 - insertPeopleSuccess
+2020-11-26 03:00:41 DEBUG DataProviderDB:102 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES('Иван','Иванович','Иванов','81234567890')
+2020-11-26 03:00:42 DEBUG DataProviderDB:109 - SELECT * FROM people WHERE id = 1
+2020-11-26 03:03:10 INFO  DataProviderDBTest:21 - insertPeopleSuccess
+2020-11-26 03:03:10 DEBUG DataProviderDB:102 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES('Иван','Иванович','Иванов','81234567890')
+2020-11-26 03:03:10 DEBUG DataProviderDB:109 - SELECT * FROM people WHERE id = 1
+2020-11-26 03:03:49 INFO  DataProviderDBTest:21 - insertPeopleSuccess
+2020-11-26 03:03:49 DEBUG DataProviderDB:90 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES('Иван','Иванович','Иванов','81234567890')
+2020-11-26 03:03:50 DEBUG DataProviderDB:97 - SELECT * FROM people WHERE id = 1
+2020-11-26 03:04:40 INFO  DataProviderDBTest:21 - insertPeopleSuccess
+2020-11-26 03:04:40 DEBUG DataProviderDB:76 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES('Иван','Иванович','Иванов','81234567890')
+2020-11-26 03:04:41 DEBUG DataProviderDB:83 - SELECT * FROM people WHERE id = 1
+2020-11-26 03:08:37 INFO  DataProviderDBTest:30 - insertPeopleFalse
+2020-11-26 03:08:37 DEBUG DataProviderDB:76 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES('Иван','Иванович','Иванов','81234567890')
+2020-11-26 03:08:38 DEBUG DataProviderDB:83 - SELECT * FROM people WHERE id = 100
+2020-11-26 03:11:35 INFO  DataProviderDBTest:30 - insertPeopleFalse
+2020-11-26 03:11:35 DEBUG DataProviderDB:81 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES('Иван','Иванович','Иванов','81234567890')
+2020-11-26 03:11:36 DEBUG DataProviderDB:88 - SELECT * FROM people WHERE id = 100
+2020-11-26 03:11:36 ERROR DataProviderDB:65 - It is PSQLException
+2020-11-26 03:11:36 ERROR DataProviderDB:66 - org.postgresql.util.PSQLException: ResultSet not positioned properly, perhaps you need to call next.
+2020-11-26 03:14:12 INFO  DataProviderDBTest:21 - insertPeopleSuccess
+2020-11-26 03:14:12 DEBUG DataProviderDB:78 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES('Иван','Иванович','Иванов','81234567890')
+2020-11-26 03:14:13 DEBUG DataProviderDB:85 - SELECT * FROM people WHERE id = 1
+2020-11-26 03:14:23 INFO  DataProviderDBTest:30 - insertPeopleFalse
+2020-11-26 03:14:23 DEBUG DataProviderDB:78 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES('Иван','Иванович','Иванов','81234567890')
+2020-11-26 03:14:24 DEBUG DataProviderDB:85 - SELECT * FROM people WHERE id = 100
+2020-11-26 03:14:24 ERROR DataProviderDB:63 - org.postgresql.util.PSQLException: ResultSet not positioned properly, perhaps you need to call next.
