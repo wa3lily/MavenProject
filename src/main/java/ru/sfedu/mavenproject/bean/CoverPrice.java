@@ -1,84 +1,70 @@
 package ru.sfedu.mavenproject.bean;
 
+import com.opencsv.bean.CsvBindByName;
 import ru.sfedu.mavenproject.enums.CoverType;
+
+import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * Class CoverPrice
  */
-public class CoverPrice {
+public class CoverPrice implements Serializable {
 
-  //
-  // Fields
-  //
-
+  @CsvBindByName
   private long id;
+  @CsvBindByName
   private CoverType coverType;
+  @CsvBindByName
   private double price;
-  
-  //
-  // Constructors
-  //
+
   public CoverPrice () { };
-  
-  //
-  // Methods
-  //
 
-
-  //
-  // Accessor methods
-  //
-
-  /**
-   * Set the value of id
-   * @param newVar the new value of id
-   */
   public void setId (long newVar) {
     id = newVar;
   }
 
-  /**
-   * Get the value of id
-   * @return the value of id
-   */
   public long getId () {
     return id;
   }
 
-  /**
-   * Set the value of coverType
-   * @param newVar the new value of coverType
-   */
   public void setCoverType (CoverType newVar) {
     coverType = newVar;
   }
 
-  /**
-   * Get the value of coverType
-   * @return the value of coverType
-   */
   public CoverType getCoverType () {
     return coverType;
   }
 
-  /**
-   * Set the value of price
-   * @param newVar the new value of price
-   */
   public void setPrice (double newVar) {
     price = newVar;
   }
 
-  /**
-   * Get the value of price
-   * @return the value of price
-   */
   public double getPrice () {
     return price;
   }
 
-  //
-  // Other methods
-  //
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    CoverPrice that = (CoverPrice) o;
+    return id == that.id &&
+            Double.compare(that.price, price) == 0 &&
+            coverType == that.coverType;
+  }
 
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, coverType, price);
+  }
+
+  @Override
+  public String toString() {
+    return "CoverPrice{" +
+            "id=" + id +
+            ", coverType=" + coverType +
+            ", price=" + price +
+            '}';
+  }
 }

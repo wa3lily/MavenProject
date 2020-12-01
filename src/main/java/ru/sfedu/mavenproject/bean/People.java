@@ -2,12 +2,13 @@ package ru.sfedu.mavenproject.bean;
 
 import com.opencsv.bean.CsvBindByName;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * Class People
  */
-public class People {
+public class People implements Serializable {
 
   @CsvBindByName
   private long id;
@@ -89,5 +90,4 @@ public class People {
             ", phone='" + phone + '\'' +
             '}';
   }
-
 }

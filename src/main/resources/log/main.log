@@ -345,3 +345,40 @@
 2020-11-26 03:14:23 DEBUG DataProviderDB:78 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES('Иван','Иванович','Иванов','81234567890')
 2020-11-26 03:14:24 DEBUG DataProviderDB:85 - SELECT * FROM people WHERE id = 100
 2020-11-26 03:14:24 ERROR DataProviderDB:63 - org.postgresql.util.PSQLException: ResultSet not positioned properly, perhaps you need to call next.
+2020-11-26 23:25:49 INFO  DataProviderCSVTest:20 - insertPeopleSuccess
+2020-11-29 21:14:48 INFO  DataProviderCSVTest:52 - insertPeopleSuccess
+2020-11-29 23:37:51 INFO  DataProviderCSVTest:52 - insertPeopleSuccess
+2020-11-29 23:54:39 INFO  DataProviderCSVTest:22 - insertPeopleSuccess
+2020-11-30 00:22:51 INFO  DataProviderCSVTest:52 - insertPeopleSuccess
+2020-11-30 00:28:24 INFO  DataProviderCSVTest:52 - insertPeopleSuccess
+2020-11-30 10:20:02 INFO  DataProviderCSVTest:52 - insertPeopleSuccess
+2020-11-30 10:28:38 INFO  DataProviderCSVTest:52 - insertPeopleSuccess
+2020-11-30 19:00:44 INFO  DataProviderCSVTest:52 - insertPeopleSuccess
+2020-12-01 00:39:34 INFO  DataProviderCSVTest:22 - insertPeopleSuccess
+2020-12-01 00:40:38 INFO  DataProviderCSVTest:22 - insertPeopleSuccess
+2020-12-01 00:41:51 INFO  DataProviderCSVTest:22 - insertPeopleSuccess
+2020-12-01 16:31:24 INFO  DataProviderCSVTest:53 - insertAuthorSuccess
+2020-12-01 16:31:25 ERROR DataProviderCSV:99 - java.util.NoSuchElementException: No value present
+2020-12-01 16:33:18 INFO  DataProviderCSVTest:53 - insertAuthorSuccess
+2020-12-01 16:34:06 INFO  DataProviderCSVTest:53 - insertAuthorSuccess
+2020-12-01 19:24:22 INFO  DataProviderCSVTest:53 - insertAuthorSuccess
+2020-12-01 19:24:22 ERROR DataProviderCSV:107 - java.util.NoSuchElementException: No value present
+2020-12-01 19:50:46 INFO  DataProviderCSVTest:53 - insertAuthorSuccess
+2020-12-01 19:56:51 INFO  DataProviderCSVTest:65 - insertAuthorFalse
+2020-12-01 19:57:23 INFO  DataProviderCSVTest:64 - insertAuthorFalse
+2020-12-01 19:57:23 ERROR DataProviderCSV:107 - java.util.NoSuchElementException: No value present
+2020-12-01 19:58:28 INFO  DataProviderCSVTest:64 - insertAuthorFalse
+2020-12-01 19:58:29 ERROR DataProviderCSV:107 - java.util.NoSuchElementException: No value present
+2020-12-01 20:00:30 INFO  DataProviderCSVTest:64 - insertAuthorFalse
+2020-12-01 20:00:30 ERROR DataProviderCSV:107 - java.util.NoSuchElementException: No value present
+2020-12-01 20:02:25 INFO  DataProviderCSVTest:75 - insertPeopleSuccess
+2020-12-01 21:53:28 INFO  DataProviderCSVTest:75 - insertPeopleSuccess
+2020-12-01 22:01:15 INFO  DataProviderCSVTest:75 - insertPeopleSuccess
+2020-12-01 22:05:03 INFO  DataProviderCSVTest:75 - insertPeopleSuccess
+2020-12-01 22:37:05 INFO  DataProviderCSVTest:53 - insertAuthorSuccess
+2020-12-01 22:39:30 INFO  DataProviderCSVTest:22 - insertPeopleSuccess
+2020-12-01 22:41:00 INFO  DataProviderCSVTest:39 - insertPeopleFalse
+2020-12-01 22:41:00 ERROR DataProviderCSV:107 - java.util.NoSuchElementException: No value present
+2020-12-01 22:41:26 INFO  DataProviderCSVTest:56 - insertAuthorSuccess
+2020-12-01 22:42:18 INFO  DataProviderCSVTest:68 - insertAuthorFalse
+2020-12-01 22:42:19 ERROR DataProviderCSV:107 - java.util.NoSuchElementException: No value present

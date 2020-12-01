@@ -1,116 +1,95 @@
 package ru.sfedu.mavenproject.bean;
 
+import com.opencsv.bean.CsvBindByName;
+
+import java.io.Serializable;
+import java.util.Arrays;
+import java.util.Objects;
+
 /**
  * Class Book
  */
-public class Book {
+public class Book implements Serializable {
 
-  //
-  // Fields
-  //
-
+  @CsvBindByName
   private long id;
+  @CsvBindByName
   private Author author;
+  @CsvBindByName
   private String title;
-  private byte[] fileOriginal;
+  @CsvBindByName
+  private String pathFileOriginal;
+  @CsvBindByName
   private int numberOfPages;
-  
-  //
-  // Constructors
-  //
+
   public Book () { };
-  
-  //
-  // Methods
-  //
 
-
-  //
-  // Accessor methods
-  //
-
-  /**
-   * Set the value of id
-   * @param newVar the new value of id
-   */
   public void setId (long newVar) {
     id = newVar;
   }
 
-  /**
-   * Get the value of id
-   * @return the value of id
-   */
   public long getId () {
     return id;
   }
 
-  /**
-   * Set the value of author
-   * @param newVar the new value of author
-   */
   public void setAuthor (Author newVar) {
     author = newVar;
   }
 
-  /**
-   * Get the value of author
-   * @return the value of author
-   */
   public Author getAuthor () {
     return author;
   }
 
-  /**
-   * Set the value of title
-   * @param newVar the new value of title
-   */
   public void setTitle (String newVar) {
     title = newVar;
   }
 
-  /**
-   * Get the value of title
-   * @return the value of title
-   */
   public String getTitle () {
     return title;
   }
 
-  /**
-   * Set the value of fileOriginal
-   * @param newVar the new value of fileOriginal
-   */
-  public void setFileOriginal (byte[] newVar) {
-    fileOriginal = newVar;
+  public void setPathFileOriginal (String newVar) {
+    pathFileOriginal = newVar;
   }
 
-  /**
-   * Get the value of fileOriginal
-   * @return the value of fileOriginal
-   */
-  public byte[] getFileOriginal () {
-    return fileOriginal;
+  public String getPathFileOriginal () {
+    return pathFileOriginal;
   }
 
-  /**
-   * Set the value of numberOfPages
-   * @param newVar the new value of numberOfPages
-   */
   public void setNumberOfPages (int newVar) {
     numberOfPages = newVar;
   }
 
-  /**
-   * Get the value of numberOfPages
-   * @return the value of numberOfPages
-   */
   public int getNumberOfPages () {
     return numberOfPages;
   }
 
-  //
-  // Other methods
-  //
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Book book = (Book) o;
+    return id == book.id &&
+            numberOfPages == book.numberOfPages &&
+            Objects.equals(author, book.author) &&
+            Objects.equals(title, book.title) &&
+            Objects.equals(pathFileOriginal, book.pathFileOriginal);
+  }
 
+  @Override
+  public int hashCode() {
+    int result = Objects.hash(id, author, title, pathFileOriginal, numberOfPages);
+    return result;
+  }
+
+  @Override
+  public String toString() {
+    return "Book{" +
+            "id=" + id +
+            ", author=" + author.getId() +
+            ", title='" + title + "/'" +
+            ", fileOriginal=" + pathFileOriginal + "/'" +
+            ", numberOfPages=" + numberOfPages +
+            '}';
+  }
 }

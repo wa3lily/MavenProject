@@ -1,84 +1,71 @@
 package ru.sfedu.mavenproject.bean;
 
+import com.opencsv.bean.CsvBindByName;
 import ru.sfedu.mavenproject.enums.EmployeeType;
+
+import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * Class Employee
  */
-public class Employee extends People {
+public class Employee extends People implements Serializable {
 
-  //
-  // Fields
-  //
-
+  @CsvBindByName
   private long inn;
+  @CsvBindByName
   private long workRecordBook;
+  @CsvBindByName
   private EmployeeType emplpyeeType;
-  
-  //
-  // Constructors
-  //
+
   public Employee () { };
-  
-  //
-  // Methods
-  //
 
-
-  //
-  // Accessor methods
-  //
-
-  /**
-   * Set the value of inn
-   * @param newVar the new value of inn
-   */
   public void setInn (long newVar) {
     inn = newVar;
   }
 
-  /**
-   * Get the value of inn
-   * @return the value of inn
-   */
   public long getInn () {
     return inn;
   }
 
-  /**
-   * Set the value of workRecordBook
-   * @param newVar the new value of workRecordBook
-   */
   public void setWorkRecordBook (long newVar) {
     workRecordBook = newVar;
   }
 
-  /**
-   * Get the value of workRecordBook
-   * @return the value of workRecordBook
-   */
   public long getWorkRecordBook () {
     return workRecordBook;
   }
 
-  /**
-   * Set the value of emplpyeeType
-   * @param newVar the new value of emplpyeeType
-   */
   public void setEmplpyeeType (EmployeeType newVar) {
     emplpyeeType = newVar;
   }
 
-  /**
-   * Get the value of emplpyeeType
-   * @return the value of emplpyeeType
-   */
   public EmployeeType getEmplpyeeType () {
     return emplpyeeType;
   }
 
-  //
-  // Other methods
-  //
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    if (!super.equals(o)) return false;
+    Employee employee = (Employee) o;
+    return inn == employee.inn &&
+            workRecordBook == employee.workRecordBook &&
+            emplpyeeType == employee.emplpyeeType;
+  }
 
+  @Override
+  public int hashCode() {
+    return Objects.hash(super.hashCode(), inn, workRecordBook, emplpyeeType);
+  }
+
+  @Override
+  public String toString() {
+    return "Employee{" +
+            "inn=" + inn +
+            ", workRecordBook=" + workRecordBook +
+            ", emplpyeeType=" + emplpyeeType +
+            '}';
+  }
 }
