@@ -10,9 +10,7 @@ import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import ru.sfedu.mavenproject.bean.Author;
-import ru.sfedu.mavenproject.bean.Book;
-import ru.sfedu.mavenproject.bean.People;
+import ru.sfedu.mavenproject.bean.*;
 import ru.sfedu.mavenproject.utils.ConfigurationUtil;
 
 import java.io.*;
@@ -57,7 +55,7 @@ public class DataProviderCSV {
                 + ConfigurationUtil.getConfigurationEntry(FILE_EXTENSION);
     }
 
-    public void insertPeople(List<People> listPeople) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+    /*public void insertPeople(List<People> listPeople) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
         try {
             CSVWriter csvWriter = new CSVWriter(commonWriter(People.class));
             StatefulBeanToCsv<People> beanToCsv = new StatefulBeanToCsvBuilder<People>(csvWriter)
@@ -70,33 +68,46 @@ public class DataProviderCSV {
         }
     }
 
-    public void insertAuthor(List<Author> listAuthor) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-        try {
-            CSVWriter csvWriter = new CSVWriter(commonWriter(Author.class));
-            StatefulBeanToCsv<Author> beanToCsv = new StatefulBeanToCsvBuilder<Author>(csvWriter)
-                    .withApplyQuotesToAll(false)
-                    .build();
-            beanToCsv.write(listAuthor);
-            csvWriter.close();
-        }catch (IndexOutOfBoundsException e){
-            log.error(e);
-        }
-    }
+     */
 
-    public People getPeopleById(long id) throws  IOException{
-        List<People> listPeople = select(People.class);
+    public <T extends People> Object getPeopleByID(Class cl, long id) throws IOException {
+        List<T> list = this.select(cl);
         try {
-            People people = listPeople.stream()
+            Object obj = list.stream()
                     .filter(e1 -> e1.getId() == id)
                     .findFirst().get();
-            return people;
+            return obj;
         }catch (NoSuchElementException e){
             log.error(e);
             return null;
         }
     }
 
-    public <T extends People,Book,Corrections,Meeting> Object getByID(Class cl, long id) throws IOException {
+    public <T extends Book> Object getBookByID(Class cl, long id) throws IOException {
+        List<T> list = this.select(cl);
+        try {
+            Object obj = list.stream()
+                    .filter(e1 -> e1.getId() == id)
+                    .findFirst().get();
+            return obj;
+        }catch (NoSuchElementException e){
+            log.error(e);
+            return null;
+        }
+    }
+    public <T extends Meeting> Object getMeetingByID(Class cl, long id) throws IOException {
+        List<T> list = this.select(cl);
+        try {
+            Object obj = list.stream()
+                    .filter(e1 -> e1.getId() == id)
+                    .findFirst().get();
+            return obj;
+        }catch (NoSuchElementException e){
+            log.error(e);
+            return null;
+        }
+    }
+    public <T extends Corrections> Object getCorrectionsByID(Class cl, long id) throws IOException {
         List<T> list = this.select(cl);
         try {
             Object obj = list.stream()

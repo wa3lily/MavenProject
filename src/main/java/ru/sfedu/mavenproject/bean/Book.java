@@ -1,9 +1,11 @@
 package ru.sfedu.mavenproject.bean;
 
 import com.opencsv.bean.CsvBindByName;
+import com.opencsv.bean.CsvCustomBindByName;
+import ru.sfedu.mavenproject.utils.GetIdConverter;
+
 
 import java.io.Serializable;
-import java.util.Arrays;
 import java.util.Objects;
 
 /**
@@ -13,12 +15,10 @@ public class Book implements Serializable {
 
   @CsvBindByName
   private long id;
-  @CsvBindByName
+  @CsvCustomBindByName(converter = GetIdConverter.class)
   private Author author;
   @CsvBindByName
   private String title;
-  @CsvBindByName
-  private String pathFileOriginal;
   @CsvBindByName
   private int numberOfPages;
 
@@ -48,14 +48,6 @@ public class Book implements Serializable {
     return title;
   }
 
-  public void setPathFileOriginal (String newVar) {
-    pathFileOriginal = newVar;
-  }
-
-  public String getPathFileOriginal () {
-    return pathFileOriginal;
-  }
-
   public void setNumberOfPages (int newVar) {
     numberOfPages = newVar;
   }
@@ -71,14 +63,14 @@ public class Book implements Serializable {
     Book book = (Book) o;
     return id == book.id &&
             numberOfPages == book.numberOfPages &&
-            Objects.equals(author, book.author) &&
-            Objects.equals(title, book.title) &&
-            Objects.equals(pathFileOriginal, book.pathFileOriginal);
+            //Objects.equals(author, book.author) &&
+            author.getId() == book.author.getId() &&
+            Objects.equals(title, book.title);
   }
 
   @Override
   public int hashCode() {
-    int result = Objects.hash(id, author, title, pathFileOriginal, numberOfPages);
+    int result = Objects.hash(id, author, title, numberOfPages);
     return result;
   }
 
@@ -87,8 +79,7 @@ public class Book implements Serializable {
     return "Book{" +
             "id=" + id +
             ", author=" + author.getId() +
-            ", title='" + title + "/'" +
-            ", fileOriginal=" + pathFileOriginal + "/'" +
+            ", title='" + title + '\'' +
             ", numberOfPages=" + numberOfPages +
             '}';
   }

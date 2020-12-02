@@ -382,3 +382,130 @@
 2020-12-01 22:41:26 INFO  DataProviderCSVTest:56 - insertAuthorSuccess
 2020-12-01 22:42:18 INFO  DataProviderCSVTest:68 - insertAuthorFalse
 2020-12-01 22:42:19 ERROR DataProviderCSV:107 - java.util.NoSuchElementException: No value present
+2020-12-02 00:14:57 INFO  DataProviderCSVTest:73 - insertMeetingSuccess
+2020-12-02 00:18:53 INFO  DataProviderCSVTest:73 - insertMeetingSuccess
+2020-12-02 00:52:38 INFO  DataProviderCSVTest:21 - insertPeopleSuccess
+2020-12-02 00:52:55 INFO  DataProviderCSVTest:36 - insertPeopleFalse
+2020-12-02 00:52:55 ERROR DataProviderCSV:81 - java.util.NoSuchElementException: No value present
+2020-12-02 00:53:04 INFO  DataProviderCSVTest:21 - insertPeopleSuccess
+2020-12-02 00:53:04 INFO  DataProviderCSVTest:73 - insertMeetingSuccess
+2020-12-02 00:53:04 INFO  DataProviderCSVTest:121 - insertBookSuccess
+2020-12-02 00:53:04 INFO  DataProviderCSVTest:84 - insertMeetingFalse
+2020-12-02 00:53:04 ERROR DataProviderCSV:106 - java.util.NoSuchElementException: No value present
+2020-12-02 00:53:04 INFO  DataProviderCSVTest:62 - insertAuthorFalse
+2020-12-02 00:53:04 ERROR DataProviderCSV:81 - java.util.NoSuchElementException: No value present
+2020-12-02 00:53:04 INFO  DataProviderCSVTest:51 - insertAuthorSuccess
+2020-12-02 00:53:05 INFO  DataProviderCSVTest:36 - insertPeopleFalse
+2020-12-02 00:53:05 ERROR DataProviderCSV:81 - java.util.NoSuchElementException: No value present
+2020-12-02 21:05:35 INFO  DataProviderCSVTest:121 - insertBookSuccess
+2020-12-02 21:06:10 INFO  DataProviderCSVTest:121 - insertBookSuccess
+2020-12-02 21:10:09 INFO  DataProviderCSVTest:121 - insertBookSuccess
+2020-12-02 21:10:10 ERROR DataProviderCSV:94 - java.util.NoSuchElementException: No value present
+2020-12-02 21:11:12 INFO  DataProviderCSVTest:121 - insertBookSuccess
+2020-12-02 21:28:07 INFO  DataProviderCSVTest:121 - insertBookSuccess
+2020-12-02 21:28:32 INFO  DataProviderCSVTest:121 - insertBookSuccess
+2020-12-02 21:28:33 ERROR DataProviderCSV:94 - java.util.NoSuchElementException: No value present
+2020-12-02 21:28:56 INFO  DataProviderCSVTest:121 - insertBookSuccess
+2020-12-02 21:28:57 ERROR DataProviderCSV:94 - java.util.NoSuchElementException: No value present
+2020-12-02 21:29:13 INFO  DataProviderCSVTest:121 - insertBookSuccess
+2020-12-02 21:40:55 INFO  DataProviderCSVTest:121 - insertBookSuccess
+2020-12-02 21:57:20 INFO  DataProviderCSVTest:121 - insertBookSuccess
+2020-12-02 22:07:50 INFO  DataProviderCSVTest:121 - insertBookSuccess
+2020-12-02 22:07:51 ERROR DataProviderCSV:94 - java.util.NoSuchElementException: No value present
+2020-12-03 00:18:51 INFO  DataProviderCSVTest:121 - insertBookSuccess
+2020-12-03 00:20:27 INFO  DataProviderCSVTest:121 - insertBookSuccess
+2020-12-03 00:20:27 ERROR DataProviderCSV:94 - java.util.NoSuchElementException: No value present
+2020-12-03 00:27:42 INFO  DataProviderCSVTest:121 - insertBookSuccess
+2020-12-03 00:31:35 INFO  DataProviderCSVTest:121 - insertBookSuccess
+2020-12-03 00:35:29 INFO  DataProviderCSVTest:121 - insertBookSuccess
+2020-12-03 00:39:33 INFO  DataProviderCSVTest:121 - insertBookSuccess
+2020-12-03 00:39:33 INFO  GetIdConverter:23 - 1
+2020-12-03 00:40:09 INFO  DataProviderCSVTest:121 - insertBookSuccess
+2020-12-03 00:40:10 INFO  GetIdConverter:23 - 1
+2020-12-03 00:40:10 INFO  GetIdConverter:15 - 1
+2020-12-03 00:42:15 INFO  DataProviderCSVTest:121 - insertBookSuccess
+2020-12-03 00:42:15 DEBUG DataProviderCSVTest:127 - try insert
+2020-12-03 00:42:15 INFO  GetIdConverter:23 - convertToWrite1
+2020-12-03 00:42:15 DEBUG DataProviderCSVTest:129 - try getBookByID
+2020-12-03 00:42:15 INFO  GetIdConverter:15 - convert:1
+2020-12-03 00:42:58 INFO  DataProviderCSVTest:121 - insertBookSuccess
+2020-12-03 00:42:58 DEBUG DataProviderCSVTest:127 - try insert
+2020-12-03 00:42:59 INFO  GetIdConverter:23 - convertToWrite10
+2020-12-03 00:42:59 DEBUG DataProviderCSVTest:129 - try getBookByID
+2020-12-03 00:42:59 INFO  GetIdConverter:15 - convert:10
+2020-12-03 00:44:41 INFO  DataProviderCSVTest:121 - insertBookSuccess
+2020-12-03 00:44:41 DEBUG DataProviderCSVTest:127 - try insert
+2020-12-03 00:44:41 INFO  GetIdConverter:23 - convertToWrite10
+2020-12-03 00:44:41 DEBUG DataProviderCSVTest:129 - try getBookByID
+2020-12-03 00:44:41 INFO  GetIdConverter:15 - convert:10
+2020-12-03 00:45:33 INFO  DataProviderCSVTest:121 - insertBookSuccess
+2020-12-03 00:45:33 DEBUG DataProviderCSVTest:127 - try insert
+2020-12-03 00:45:34 INFO  GetIdConverter:23 - convertToWrite10
+2020-12-03 00:45:34 DEBUG DataProviderCSVTest:129 - try getBookByID
+2020-12-03 00:45:34 INFO  GetIdConverter:15 - convert:10
+2020-12-03 00:46:21 INFO  DataProviderCSVTest:121 - insertBookSuccess
+2020-12-03 00:46:21 DEBUG DataProviderCSVTest:127 - try insert
+2020-12-03 00:46:21 INFO  GetIdConverter:23 - convertToWrite:10
+2020-12-03 00:46:21 DEBUG DataProviderCSVTest:129 - try getBookByID
+2020-12-03 00:46:21 INFO  GetIdConverter:15 - convert:10
+2020-12-03 00:57:12 INFO  DataProviderCSVTest:121 - insertBookSuccess
+2020-12-03 00:57:12 DEBUG DataProviderCSVTest:127 - try insert
+2020-12-03 00:57:12 INFO  GetIdConverter:23 - convertToWrite:10
+2020-12-03 00:57:12 DEBUG DataProviderCSVTest:129 - try getBookByID
+2020-12-03 00:57:12 INFO  GetIdConverter:15 - convert:10
+2020-12-03 01:07:59 INFO  DataProviderCSVTest:121 - insertBookSuccess
+2020-12-03 01:07:59 DEBUG DataProviderCSVTest:127 - try insert
+2020-12-03 01:08:00 INFO  GetIdConverter:25 - convertToWrite:10
+2020-12-03 01:08:00 DEBUG DataProviderCSVTest:129 - try getBookByID
+2020-12-03 01:08:00 INFO  GetIdConverter:15 - convert:10
+2020-12-03 01:08:00 DEBUG DataProviderCSVTest:130 - Book{id=1, author=10, title='Цифровая бухгалтерия', numberOfPages=4}
+2020-12-03 01:08:00 INFO  GetIdConverter:15 - convert:10
+2020-12-03 01:18:51 INFO  DataProviderCSVTest:121 - insertBookSuccess
+2020-12-03 01:18:51 DEBUG DataProviderCSVTest:127 - try insert
+2020-12-03 01:18:51 INFO  GetIdConverter:25 - convertToWrite:10
+2020-12-03 01:18:51 DEBUG DataProviderCSVTest:129 - try getBookByID
+2020-12-03 01:18:51 INFO  GetIdConverter:15 - convert:10
+2020-12-03 01:18:51 DEBUG DataProviderCSVTest:130 - Book{id=1, author=10, title='Цифровая бухгалтерия', numberOfPages=4}
+2020-12-03 01:18:51 INFO  GetIdConverter:15 - convert:10
+2020-12-03 01:44:15 INFO  DataProviderCSVTest:121 - insertBookSuccess
+2020-12-03 01:48:50 INFO  DataProviderCSVTest:121 - insertBookSuccess
+2020-12-03 01:49:00 INFO  DataProviderCSVTest:134 - insertBookFail
+2020-12-03 01:49:01 ERROR DataProviderCSV:94 - java.util.NoSuchElementException: No value present
+2020-12-03 01:49:30 INFO  DataProviderCSVTest:36 - insertPeopleFail
+2020-12-03 01:49:31 ERROR DataProviderCSV:81 - java.util.NoSuchElementException: No value present
+2020-12-03 01:52:32 INFO  DataProviderCSVTest:62 - insertAuthorFail
+2020-12-03 01:52:32 ERROR DataProviderCSV:81 - java.util.NoSuchElementException: No value present
+2020-12-03 02:17:04 INFO  DataProviderCSVTest:22 - insertPeopleSuccess
+2020-12-03 02:17:04 INFO  DataProviderCSVTest:104 - insertMeetingSuccess
+2020-12-03 02:17:04 INFO  DataProviderCSVTest:152 - insertBookSuccess
+2020-12-03 02:17:04 INFO  DataProviderCSVTest:115 - insertMeetingFail
+2020-12-03 02:17:04 ERROR DataProviderCSV:106 - java.util.NoSuchElementException: No value present
+2020-12-03 02:17:04 INFO  DataProviderCSVTest:89 - insertEmployeeFail
+2020-12-03 02:17:04 INFO  DataProviderCSVTest:37 - insertPeopleFail
+2020-12-03 02:17:04 ERROR DataProviderCSV:81 - java.util.NoSuchElementException: No value present
+2020-12-03 02:17:04 INFO  DataProviderCSVTest:74 - insertEmployeeSuccess
+2020-12-03 02:17:04 INFO  DataProviderCSVTest:52 - insertAuthorSuccess
+2020-12-03 02:17:04 INFO  DataProviderCSVTest:63 - insertAuthorFail
+2020-12-03 02:17:04 INFO  DataProviderCSVTest:165 - insertBookFail
+2020-12-03 02:25:14 INFO  DataProviderCSVTest:74 - insertEmployeeSuccess
+2020-12-03 02:25:48 INFO  DataProviderCSVTest:74 - insertEmployeeSuccess
+2020-12-03 02:35:51 INFO  DataProviderCSVTest:74 - insertEmployeeSuccess
+2020-12-03 02:37:05 INFO  DataProviderCSVTest:74 - insertEmployeeSuccess
+2020-12-03 02:37:20 INFO  DataProviderCSVTest:74 - insertEmployeeSuccess
+2020-12-03 02:37:55 INFO  DataProviderCSVTest:89 - insertEmployeeFail
+2020-12-03 02:37:56 ERROR DataProviderCSV:81 - java.util.NoSuchElementException: No value present
+2020-12-03 02:38:50 INFO  DataProviderCSVTest:22 - insertPeopleSuccess
+2020-12-03 02:38:51 INFO  DataProviderCSVTest:104 - insertMeetingSuccess
+2020-12-03 02:38:51 INFO  DataProviderCSVTest:152 - insertBookSuccess
+2020-12-03 02:38:51 INFO  DataProviderCSVTest:115 - insertMeetingFail
+2020-12-03 02:38:51 ERROR DataProviderCSV:106 - java.util.NoSuchElementException: No value present
+2020-12-03 02:38:51 INFO  DataProviderCSVTest:89 - insertEmployeeFail
+2020-12-03 02:38:51 ERROR DataProviderCSV:81 - java.util.NoSuchElementException: No value present
+2020-12-03 02:38:51 INFO  DataProviderCSVTest:37 - insertPeopleFail
+2020-12-03 02:38:51 ERROR DataProviderCSV:81 - java.util.NoSuchElementException: No value present
+2020-12-03 02:38:51 INFO  DataProviderCSVTest:74 - insertEmployeeSuccess
+2020-12-03 02:38:51 INFO  DataProviderCSVTest:52 - insertAuthorSuccess
+2020-12-03 02:38:51 INFO  DataProviderCSVTest:63 - insertAuthorFail
+2020-12-03 02:38:51 ERROR DataProviderCSV:81 - java.util.NoSuchElementException: No value present
+2020-12-03 02:38:51 INFO  DataProviderCSVTest:165 - insertBookFail
+2020-12-03 02:38:51 ERROR DataProviderCSV:94 - java.util.NoSuchElementException: No value present

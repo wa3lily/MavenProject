@@ -1,14 +1,12 @@
 package ru.sfedu.mavenproject.bean;
 
 import com.opencsv.bean.CsvBindByName;
-
-import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * Class Author
  */
-public class Author extends People implements Serializable {
+public class Author extends People {
 
   @CsvBindByName
   private String email;

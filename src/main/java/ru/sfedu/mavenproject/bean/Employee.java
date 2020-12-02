@@ -9,30 +9,30 @@ import java.util.Objects;
 /**
  * Class Employee
  */
-public class Employee extends People implements Serializable {
+public class Employee extends People {
 
   @CsvBindByName
-  private long inn;
+  private String inn;
   @CsvBindByName
-  private long workRecordBook;
+  private String workRecordBook;
   @CsvBindByName
   private EmployeeType emplpyeeType;
 
   public Employee () { };
 
-  public void setInn (long newVar) {
+  public void setInn (String newVar) {
     inn = newVar;
   }
 
-  public long getInn () {
+  public String getInn () {
     return inn;
   }
 
-  public void setWorkRecordBook (long newVar) {
+  public void setWorkRecordBook (String newVar) {
     workRecordBook = newVar;
   }
 
-  public long getWorkRecordBook () {
+  public String getWorkRecordBook () {
     return workRecordBook;
   }
 
@@ -50,8 +50,8 @@ public class Employee extends People implements Serializable {
     if (o == null || getClass() != o.getClass()) return false;
     if (!super.equals(o)) return false;
     Employee employee = (Employee) o;
-    return inn == employee.inn &&
-            workRecordBook == employee.workRecordBook &&
+    return Objects.equals(inn, employee.inn) &&
+            Objects.equals(workRecordBook, employee.workRecordBook) &&
             emplpyeeType == employee.emplpyeeType;
   }
 
@@ -63,8 +63,13 @@ public class Employee extends People implements Serializable {
   @Override
   public String toString() {
     return "Employee{" +
-            "inn=" + inn +
-            ", workRecordBook=" + workRecordBook +
+            "id=" + super.getId() +
+            ", firstName='" + super.getFirstName() + '\'' +
+            ", secondName='" + super.getSecondName() + '\'' +
+            ", lastName='" + super.getLastName() + '\'' +
+            ", phone='" + super.getPhone() + '\'' +
+            "inn='" + inn + '\'' +
+            ", workRecordBook='" + workRecordBook + '\'' +
             ", emplpyeeType=" + emplpyeeType +
             '}';
   }

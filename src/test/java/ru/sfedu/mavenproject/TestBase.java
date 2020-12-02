@@ -1,9 +1,8 @@
 package ru.sfedu.mavenproject;
 
 import com.opencsv.bean.CsvBindByName;
-import ru.sfedu.mavenproject.bean.Author;
-import ru.sfedu.mavenproject.bean.Book;
-import ru.sfedu.mavenproject.bean.People;
+import ru.sfedu.mavenproject.bean.*;
+import ru.sfedu.mavenproject.enums.EmployeeType;
 
 public class TestBase {
 
@@ -18,6 +17,7 @@ public class TestBase {
     }
 
     public Author createAuthor (long id, String firstName, String secondName, String lastName, String phone, String email, String degree, String organization){
+        //Author author = (Author) createPeople (id, firstName, secondName, lastName, phone);
         Author author = new Author();
         author.setId(id);
         author.setFirstName(firstName);
@@ -30,14 +30,36 @@ public class TestBase {
         return author;
     }
 
-    public Book createBook (long id, Author author, String title, String pathFileOriginal, int numberOfPages){
+    public Employee createEmployee (long id, String firstName, String secondName, String lastName, String phone, String inn, String workRecordBook, EmployeeType emplpyeeType){
+        //Employee employee = (Employee) createPeople (id, firstName, secondName, lastName, phone);
+        Employee employee = new Employee();
+        employee.setId(id);
+        employee.setFirstName(firstName);
+        employee.setSecondName(secondName);
+        employee.setLastName(lastName);
+        employee.setPhone(phone);
+        employee.setInn(inn);
+        employee.setWorkRecordBook(workRecordBook);
+        employee.setEmplpyeeType(emplpyeeType);
+        return employee;
+    }
+
+    public Book createBook (long id, Author author, String title, int numberOfPages){
         Book book = new Book();
         book.setId(id);
         book.setAuthor(author);
         book.setTitle(title);
-        book.setPathFileOriginal(pathFileOriginal);
         book.setNumberOfPages(numberOfPages);
         return book;
+    }
+
+    public Meeting createMeeting (long id, String meetDate, boolean authorAgreement, boolean editorAgreement){
+        Meeting meeting = new Meeting();
+        meeting.setId(id);
+        meeting.setMeetDate(meetDate);
+        meeting.setAuthorAgreement(authorAgreement);
+        meeting.setEditorAgreement(editorAgreement);
+        return meeting;
     }
 
 
