@@ -1,7 +1,9 @@
 package ru.sfedu.mavenproject;
 
-import com.opencsv.bean.CsvBindByName;
 import ru.sfedu.mavenproject.bean.*;
+import ru.sfedu.mavenproject.enums.BookStatus;
+import ru.sfedu.mavenproject.enums.CorrectionsStatus;
+import ru.sfedu.mavenproject.enums.CoverType;
 import ru.sfedu.mavenproject.enums.EmployeeType;
 
 public class TestBase {
@@ -53,6 +55,26 @@ public class TestBase {
         return book;
     }
 
+    public Order createOrder (long id, Author author, String title, int numberOfPages, String orderDate,
+                              CoverType coverType, Employee bookMaker, Employee bookEditor, PriceParameters bookPriceParameters,
+                              int finalNumberOfPages, int numberOfCopies, double price, BookStatus bookStatus){
+        Order order = new Order();
+        order.setId(id);
+        order.setAuthor(author);
+        order.setTitle(title);
+        order.setNumberOfPages(numberOfPages);
+        order.setOrderDate(orderDate);
+        order.setCoverType(coverType);
+        order.setBookMaker(bookMaker);
+        order.setBookEditor(bookEditor);
+        order.setBookPriceParameters(bookPriceParameters);
+        order.setFinalNumberOfPages(finalNumberOfPages);
+        order.setNumberOfCopies(numberOfCopies);
+        order.setPrice(price);
+        order.setBookStatus(bookStatus);
+        return order;
+    }
+
     public Meeting createMeeting (long id, String meetDate, boolean authorAgreement, boolean editorAgreement){
         Meeting meeting = new Meeting();
         meeting.setId(id);
@@ -60,6 +82,38 @@ public class TestBase {
         meeting.setAuthorAgreement(authorAgreement);
         meeting.setEditorAgreement(editorAgreement);
         return meeting;
+    }
+
+    public Corrections createCorrections (long id, int page, String textBefore, String textAfter, String comment, Order order, Meeting meet, CorrectionsStatus status){
+        Corrections correction = new Corrections();
+        correction.setId(id);
+        correction.setPage(page);
+        correction.setTextBefore(textBefore);
+        correction.setTextAfter(textAfter);
+        correction.setComment(comment);
+        correction.setOrder(order);
+        correction.setMeet(meet);
+        correction.setStatus(status);
+        return correction;
+    }
+
+    public PriceParameters createPriceParameters(long id, double pagePrice, CoverPrice coverPrice, double workPrice, String validFromDate, String validToDate){
+        PriceParameters priceParameters = new PriceParameters();
+        priceParameters.setId(id);
+        priceParameters.setPagePrice(pagePrice);
+        priceParameters.setCoverPrice(coverPrice);
+        priceParameters.setWorkPrice(workPrice);
+        priceParameters.setValidFromDate(validFromDate);
+        priceParameters.setValidToDate(validToDate);
+        return priceParameters;
+    }
+
+    public CoverPrice createCoverPrice(long id, CoverType coverType, double price){
+        CoverPrice coverPrice = new CoverPrice();
+        coverPrice.setId(id);
+        coverPrice.setCoverType(coverType);
+        coverPrice.setPrice(price);
+        return coverPrice;
     }
 
 

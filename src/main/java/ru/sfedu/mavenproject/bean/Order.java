@@ -1,30 +1,28 @@
 package ru.sfedu.mavenproject.bean;
 
 import com.opencsv.bean.CsvBindByName;
+import com.opencsv.bean.CsvCustomBindByName;
+import ru.sfedu.mavenproject.converters.ConverterEmployee;
+import ru.sfedu.mavenproject.converters.ConverterPriceParameters;
 import ru.sfedu.mavenproject.enums.BookStatus;
 import ru.sfedu.mavenproject.enums.CoverType;
-import ru.sfedu.mavenproject.PriceParameters;
 
-import java.io.Serializable;
-import java.util.Arrays;
 import java.util.Objects;
 
 /**
  * Class Order
  */
-public class Order extends Book implements Serializable {
+public class Order extends Book {
 
-  @CsvBindByName
-  private long id;
   @CsvBindByName
   private String orderDate;
   @CsvBindByName
   private CoverType coverType;
-  @CsvBindByName
+  @CsvCustomBindByName(converter = ConverterEmployee.class)
   private Employee bookMaker;
-  @CsvBindByName
+  @CsvCustomBindByName(converter = ConverterEmployee.class)
   private Employee bookEditor;
-  @CsvBindByName
+  @CsvCustomBindByName(converter = ConverterPriceParameters.class)
   private PriceParameters bookPriceParameters;
   @CsvBindByName
   private int finalNumberOfPages;
@@ -33,21 +31,9 @@ public class Order extends Book implements Serializable {
   @CsvBindByName
   private double price;
   @CsvBindByName
-  private byte[] fileEdited;
-  @CsvBindByName
-  private byte[] fileForPrinting;
-  @CsvBindByName
   private BookStatus bookStatus;
   
   public Order () { };
-
-  public void setId (long newVar) {
-    id = newVar;
-  }
-
-  public long getId () {
-    return id;
-  }
 
   public void setOrderDate (String newVar) {
     orderDate = newVar;
@@ -113,22 +99,6 @@ public class Order extends Book implements Serializable {
     return price;
   }
 
-  public void setFileEdited (byte[] newVar) {
-    fileEdited = newVar;
-  }
-
-  public byte[] getFileEdited () {
-    return fileEdited;
-  }
-
-  public void setFileForPrinting (byte[] newVar) {
-    fileForPrinting = newVar;
-  }
-
-  public byte[] getFileForPrinting () {
-    return fileForPrinting;
-  }
-
   public void setBookStatus (BookStatus newVar) {
     bookStatus = newVar;
   }
@@ -143,42 +113,38 @@ public class Order extends Book implements Serializable {
     if (o == null || getClass() != o.getClass()) return false;
     if (!super.equals(o)) return false;
     Order order = (Order) o;
-    return id == order.id &&
-            finalNumberOfPages == order.finalNumberOfPages &&
+    return finalNumberOfPages == order.finalNumberOfPages &&
             numberOfCopies == order.numberOfCopies &&
             Double.compare(order.price, price) == 0 &&
             Objects.equals(orderDate, order.orderDate) &&
             coverType == order.coverType &&
-            Objects.equals(bookMaker, order.bookMaker) &&
-            Objects.equals(bookEditor, order.bookEditor) &&
-            Objects.equals(bookPriceParameters, order.bookPriceParameters) &&
-            Arrays.equals(fileEdited, order.fileEdited) &&
-            Arrays.equals(fileForPrinting, order.fileForPrinting) &&
+            bookMaker.getId() == order.bookMaker.getId() &&
+            bookEditor.getId() == order.bookEditor.getId() &&
+            bookPriceParameters.getId() == order.bookPriceParameters.getId() &&
             bookStatus == order.bookStatus;
   }
 
   @Override
   public int hashCode() {
-    int result = Objects.hash(super.hashCode(), id, orderDate, coverType, bookMaker, bookEditor, bookPriceParameters, finalNumberOfPages, numberOfCopies, price, bookStatus);
-    result = 31 * result + Arrays.hashCode(fileEdited);
-    result = 31 * result + Arrays.hashCode(fileForPrinting);
+    int result = Objects.hash(super.hashCode(), orderDate, coverType, bookMaker, bookEditor, bookPriceParameters, finalNumberOfPages, numberOfCopies, price, bookStatus);
     return result;
   }
 
   @Override
   public String toString() {
     return "Order{" +
-            "id=" + id +
+            "id=" + super.getId() +
+            ", author=" + super.getAuthor() +
+            ", title='" + super.getTitle() + '\'' +
+            ", numberOfPages=" + super.getNumberOfPages() +
             ", orderDate='" + orderDate + '\'' +
             ", coverType=" + coverType +
-            ", bookMaker=" + bookMaker +
-            ", bookEditor=" + bookEditor +
-            ", bookPriceParameters=" + bookPriceParameters +
+            ", bookMaker=" + bookMaker.getId() +
+            ", bookEditor=" + bookEditor.getId() +
+            ", bookPriceParameters=" + bookPriceParameters.getId() +
             ", finalNumberOfPages=" + finalNumberOfPages +
             ", numberOfCopies=" + numberOfCopies +
             ", price=" + price +
-            ", fileEdited=" + Arrays.toString(fileEdited) +
-            ", fileForPrinting=" + Arrays.toString(fileForPrinting) +
             ", bookStatus=" + bookStatus +
             '}';
   }

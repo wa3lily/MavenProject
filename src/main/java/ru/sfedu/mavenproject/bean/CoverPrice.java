@@ -1,6 +1,7 @@
 package ru.sfedu.mavenproject.bean;
 
 import com.opencsv.bean.CsvBindByName;
+import ru.sfedu.mavenproject.ClassId;
 import ru.sfedu.mavenproject.enums.CoverType;
 
 import java.io.Serializable;
@@ -9,24 +10,14 @@ import java.util.Objects;
 /**
  * Class CoverPrice
  */
-public class CoverPrice implements Serializable {
+public class CoverPrice extends ClassId {
 
-  @CsvBindByName
-  private long id;
   @CsvBindByName
   private CoverType coverType;
   @CsvBindByName
   private double price;
 
   public CoverPrice () { };
-
-  public void setId (long newVar) {
-    id = newVar;
-  }
-
-  public long getId () {
-    return id;
-  }
 
   public void setCoverType (CoverType newVar) {
     coverType = newVar;
@@ -48,21 +39,21 @@ public class CoverPrice implements Serializable {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+    if (!super.equals(o)) return false;
     CoverPrice that = (CoverPrice) o;
-    return id == that.id &&
-            Double.compare(that.price, price) == 0 &&
+    return Double.compare(that.price, price) == 0 &&
             coverType == that.coverType;
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, coverType, price);
+    return Objects.hash(super.hashCode(), coverType, price);
   }
 
   @Override
   public String toString() {
     return "CoverPrice{" +
-            "id=" + id +
+            "id=" + super.getId() +
             ", coverType=" + coverType +
             ", price=" + price +
             '}';

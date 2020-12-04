@@ -1,21 +1,30 @@
-package ru.sfedu.mavenproject;
+package ru.sfedu.mavenproject.bean;
 
-import ru.sfedu.mavenproject.bean.CoverPrice;
+import com.opencsv.bean.CsvBindByName;
+import com.opencsv.bean.CsvCustomBindByName;
+import ru.sfedu.mavenproject.ClassId;
+import ru.sfedu.mavenproject.converters.ConverterCoverPrice;
+
+import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * Class PriceParameters
  */
-public class PriceParameters {
+public class PriceParameters extends ClassId {
 
   //
   // Fields
   //
-
-  private long id;
+  @CsvBindByName
   private double pagePrice;
+  @CsvCustomBindByName(converter = ConverterCoverPrice.class)
   private CoverPrice coverPrice;
+  @CsvBindByName
   private double workPrice;
+  @CsvBindByName
   private String validFromDate;
+  @CsvBindByName
   private String validToDate;
   
   //
@@ -31,22 +40,6 @@ public class PriceParameters {
   //
   // Accessor methods
   //
-
-  /**
-   * Set the value of id
-   * @param newVar the new value of id
-   */
-  public void setId (long newVar) {
-    id = newVar;
-  }
-
-  /**
-   * Get the value of id
-   * @return the value of id
-   */
-  public long getId () {
-    return id;
-  }
 
   /**
    * Set the value of pagePrice
@@ -126,6 +119,41 @@ public class PriceParameters {
    */
   public String getValidToDate () {
     return validToDate;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    if (!super.equals(o)) return false;
+    PriceParameters that = (PriceParameters) o;
+    return Double.compare(that.pagePrice, pagePrice) == 0 &&
+            Double.compare(that.workPrice, workPrice) == 0 &&
+            ((coverPrice == null && that.coverPrice == null) || coverPrice.getId() == that.coverPrice.getId()) &&
+            Objects.equals(validFromDate, that.validFromDate) &&
+            Objects.equals(validToDate, that.validToDate);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(super.hashCode(), pagePrice, coverPrice, workPrice, validFromDate, validToDate);
+  }
+
+  @Override
+  public String toString() {
+    String result = "PriceParameters{" +
+            "id=" + super.getId() +
+            ", pagePrice=" + pagePrice;
+    try{
+      result += ", coverPrice=" + coverPrice.getId();
+    }catch (NullPointerException e){
+      result += ", coverPrice=null";
+    }
+    result += ", workPrice=" + workPrice +
+            ", validFromDate='" + validFromDate + '\'' +
+            ", validToDate='" + validToDate + '\'' +
+            '}';
+    return result;
   }
 
   //

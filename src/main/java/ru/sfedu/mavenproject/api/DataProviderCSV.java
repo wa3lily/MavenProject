@@ -10,12 +10,11 @@ import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import ru.sfedu.mavenproject.ClassId;
 import ru.sfedu.mavenproject.bean.*;
 import ru.sfedu.mavenproject.utils.ConfigurationUtil;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -55,20 +54,18 @@ public class DataProviderCSV {
                 + ConfigurationUtil.getConfigurationEntry(FILE_EXTENSION);
     }
 
-    /*public void insertPeople(List<People> listPeople) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+    public <T extends ClassId> Object getByID(Class cl, long id) throws IOException {
+        List<T> list = this.select(cl);
         try {
-            CSVWriter csvWriter = new CSVWriter(commonWriter(People.class));
-            StatefulBeanToCsv<People> beanToCsv = new StatefulBeanToCsvBuilder<People>(csvWriter)
-                    .withApplyQuotesToAll(false)
-                    .build();
-            beanToCsv.write(listPeople);
-            csvWriter.close();
-        }catch (IndexOutOfBoundsException e){
+            Object obj = list.stream()
+                    .filter(e1 -> e1.getId() == id)
+                    .findFirst().get();
+            return obj;
+        }catch (NoSuchElementException e){
             log.error(e);
+            return null;
         }
     }
-
-     */
 
     public <T extends People> Object getPeopleByID(Class cl, long id) throws IOException {
         List<T> list = this.select(cl);
@@ -95,6 +92,7 @@ public class DataProviderCSV {
             return null;
         }
     }
+
     public <T extends Meeting> Object getMeetingByID(Class cl, long id) throws IOException {
         List<T> list = this.select(cl);
         try {
@@ -107,7 +105,34 @@ public class DataProviderCSV {
             return null;
         }
     }
+
     public <T extends Corrections> Object getCorrectionsByID(Class cl, long id) throws IOException {
+        List<T> list = this.select(cl);
+        try {
+            Object obj = list.stream()
+                    .filter(e1 -> e1.getId() == id)
+                    .findFirst().get();
+            return obj;
+        }catch (NoSuchElementException e){
+            log.error(e);
+            return null;
+        }
+    }
+
+    public <T extends CoverPrice> Object getCoverPriceByID(Class cl, long id) throws IOException {
+        List<T> list = this.select(cl);
+        try {
+            Object obj = list.stream()
+                    .filter(e1 -> e1.getId() == id)
+                    .findFirst().get();
+            return obj;
+        }catch (NoSuchElementException e){
+            log.error(e);
+            return null;
+        }
+    }
+
+    public <T extends PriceParameters> Object getPriceParametersByID(Class cl, long id) throws IOException {
         List<T> list = this.select(cl);
         try {
             Object obj = list.stream()
@@ -138,7 +163,5 @@ public class DataProviderCSV {
             log.error(e);
         }
     }
-
-
 
 }
