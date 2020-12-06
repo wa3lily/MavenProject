@@ -3,14 +3,15 @@ package ru.sfedu.mavenproject.api;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.checkerframework.checker.units.qual.A;
-import org.junit.jupiter.api.Test;
 import ru.sfedu.mavenproject.ClassId;
 import ru.sfedu.mavenproject.TestBase;
 import ru.sfedu.mavenproject.bean.*;
+import org.junit.jupiter.api.Test;
 import ru.sfedu.mavenproject.enums.BookStatus;
 import ru.sfedu.mavenproject.enums.CorrectionsStatus;
 import ru.sfedu.mavenproject.enums.CoverType;
 import ru.sfedu.mavenproject.enums.EmployeeType;
+
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -379,6 +380,7 @@ class DataProviderCSVTest extends TestBase {
     }
 
     @Test
+    @org.junit.jupiter.api.Order(1)
     public void testReadFail() throws Exception{
         log.info("testReadFail");
         List<Long> listId = new ArrayList<>();
@@ -388,9 +390,8 @@ class DataProviderCSVTest extends TestBase {
     }
 
     //update
-    /*
     @Test
-    public void testUpdateSuccess() throws Exception{
+    public void testUpdateEmployeeSuccess() throws Exception{
         log.info("testUpdateSuccess");
         List<Employee> listEmployee = new ArrayList<>();
         DataProviderCSV instance = new DataProviderCSV();
@@ -408,6 +409,111 @@ class DataProviderCSVTest extends TestBase {
         assertEquals(listEmployee, instance.read(Employee.class));
     }
 
-     */
+    @Test
+    public void testUpdateEmployeeFail() throws Exception{
+        log.info("testUpdateFail");
+        List<Employee> listEmployee = new ArrayList<>();
+        DataProviderCSV instance = new DataProviderCSV();
+        Employee employee1 = createEmployee(1,"Иван","Иванович","Иванов","81234567890", "123456789012","1234567", EmployeeType.CHIEF);
+        Employee employee2 = createEmployee(2,"Петр","Петрович","Петров","82345678901","234567890123", "2345678", EmployeeType.MAKER);
+        Employee employee3 = createEmployee(3,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
+        listEmployee.add(employee1);
+        listEmployee.add(employee2);
+        instance.deleteFile(Employee.class);
+        instance.insert(Employee.class, listEmployee);
+        instance.update(Employee.class, employee3);
+        assertEquals(listEmployee, instance.read(Employee.class));
+    }
+
+    @Test
+    public void testUpdateBookSuccess() throws Exception{
+        log.info("testUpdateBookSuccess");
+        List<Book> listBook = new ArrayList<>();
+        List<Author> listAuthor = new ArrayList<>();
+        DataProviderCSV instance = new DataProviderCSV();
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        Book book = createBook(1,author,"Цифровая бухгалтерия",4);
+        listBook.add(book);
+        listAuthor.add(author);
+        instance.deleteFile(Author.class);
+        instance.deleteFile(Book.class);
+        instance.insert(Author.class, listAuthor);
+        instance.insert(Book.class, listBook);
+        Author author2 = createAuthor(12,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        Book book2 = createBook(1,author2,"Цифровая бухгалтерия",4);
+        listAuthor.clear();
+        listAuthor.add(author2);
+        instance.insert(Author.class, listAuthor);
+        instance.update(Book.class, book2);
+        assertEquals(book2, instance.getByID(Book.class,1));
+    }
+
+    @Test
+    public void testUpdateBookFail() throws Exception{
+        log.info("testUpdateBookFail");
+        List<Book> listBook = new ArrayList<>();
+        List<Author> listAuthor = new ArrayList<>();
+        DataProviderCSV instance = new DataProviderCSV();
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        Book book = createBook(1,author,"Цифровая бухгалтерия",4);
+        listBook.add(book);
+        listAuthor.add(author);
+        instance.deleteFile(Author.class);
+        instance.deleteFile(Book.class);
+        instance.insert(Author.class, listAuthor);
+        instance.insert(Book.class, listBook);
+        Author author2 = createAuthor(12,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        Book book2 = createBook(1,author2,"Цифровая бухгалтерия",4);
+        instance.update(Book.class, book2);
+        log.debug(instance.getByID(Book.class,1));
+        assertEquals(book, instance.getByID(Book.class,1));
+    }
+
+    //delete
+    @Test
+    public void testDeleteBookSuccess() throws Exception{
+        log.info("testDeleteBookSuccess");
+        List<Book> listBook = new ArrayList<>();
+        List<Author> listAuthor = new ArrayList<>();
+        DataProviderCSV instance = new DataProviderCSV();
+
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        Book book = createBook(1,author,"Цифровая бухгалтерия",4);
+
+        listBook.add(book);
+        listAuthor.add(author);
+
+        instance.deleteFile(Author.class);
+        instance.deleteFile(Book.class);
+
+        instance.insert(Author.class, listAuthor);
+        instance.insert(Book.class, listBook);
+
+        instance.deleteObj(Book.class, book);
+        instance.deleteObj(Author.class, author);
+
+        assertNull(instance.getByID(Book.class,1));
+        assertNull(instance.getByID(Author.class,10));
+    }
+
+    @Test
+    public void testDeleteBookFail() throws Exception{
+        log.info("testDeleteBookFail");
+        List<Book> listBook = new ArrayList<>();
+        List<Author> listAuthor = new ArrayList<>();
+        DataProviderCSV instance = new DataProviderCSV();
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        Book book = createBook(1,author,"Цифровая бухгалтерия",4);
+        listBook.add(book);
+        listAuthor.add(author);
+        instance.deleteFile(Author.class);
+        instance.deleteFile(Book.class);
+        instance.insert(Author.class, listAuthor);
+        instance.insert(Book.class, listBook);
+        instance.deleteObj(Author.class, author);
+        instance.deleteObj(Book.class, book);
+        assertEquals(author, instance.getByID(Author.class,10));
+        assertNull(instance.getByID(Book.class,1));
+    }
 
 }

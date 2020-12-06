@@ -178,7 +178,18 @@ public class DataProviderCSV {
         return returnList;
     }
 
-    public boolean deleteFile(Class cl) {
+    public <T extends ClassId> boolean deleteFile(Class cl) {
+        try{
+            CSVWriter csvWriter = new CSVWriter(commonWriter(cl));
+            csvWriter.close();
+            return true;
+        }catch (IOException e){
+            log.error(e);
+            return false;
+        }
+    }
+
+    public boolean dropFile(Class cl) {
         try{
             File file= new File(getPath(cl));
             log.debug("file delete "+file.delete());
@@ -197,6 +208,83 @@ public class DataProviderCSV {
         }
         return result;
     }
+
+    public <T extends ClassId> boolean update(Class cl, T obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+        List<T> list = read(cl);
+        T prevObj;
+        int index = list.indexOf(getByID(cl, obj.getId()));
+        if (index>(-1)){
+            prevObj = list.get(index);
+            list.set(index, obj);
+            deleteFile(cl);
+            List<T> listNotInsert = insert(cl, list);
+            if (listNotInsert.indexOf(obj)==-1){
+                log.debug("update success");
+                return true;
+            }else{
+                list.set(index, prevObj);
+                deleteFile(cl);
+                insert(cl, list);
+            }
+        }
+        log.debug("update fail");
+        return false;
+    }
+
+    public <T extends ClassId> boolean deleteObj(Class cl, T obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+        List<T> list = read(cl);
+        int index = list.indexOf(obj);
+        boolean result = true;
+        switch (cl.getSimpleName().toLowerCase()) {
+            case "corrections":
+            case "people":
+            case "book":
+                result = (index > (-1));
+                break;
+            //Order
+            case "employee":
+                List<Order> listOrder = read(Order.class);
+                result = !listOrder.stream().anyMatch(el -> (el.getBookEditor().getId() != obj.getId() || el.getBookMaker().getId() == obj.getId()));
+                break;
+            case "priceparameters":
+                List<Order> listOrder2 = read(Order.class);
+                result = !listOrder2.stream().anyMatch(el -> el.getBookPriceParameters().getId() == obj.getId());
+                break;
+            //Corrections
+            case "order":
+                List<Corrections> listCorrections = read(Corrections.class);
+                result = !listCorrections.stream().anyMatch(el -> el.getOrder().getId() == obj.getId());
+                break;
+            case "meeting":
+                List<Corrections> listCorrections2 = read(Book.class);
+                result = !listCorrections2.stream().anyMatch(el -> el.getMeet().getId() == obj.getId());
+                break;
+            //Book
+            case "author":
+                List<Book> listBook = read(Book.class);
+                result = !listBook.stream().anyMatch(el -> el.getAuthor().getId() == obj.getId());
+                break;
+            //PriceParameters
+            case "coverprice":
+                List<PriceParameters> listPriceParameters = read(PriceParameters.class);
+                result = !listPriceParameters.stream().anyMatch(el -> el.getCoverPrice().getId() == obj.getId());
+                break;
+            default:
+                result = false;
+                log.debug("default case");
+        }
+        if (result) {
+            list.removeIf(el -> el.equals(obj));
+            deleteFile(cl);
+            insert(cl, list);
+            log.debug("delete success");
+        }else{
+            log.debug("delete fail");
+        }
+        return result;
+    }
+
+
 
 
 
