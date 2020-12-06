@@ -1,6 +1,7 @@
 package ru.sfedu.mavenproject.bean;
 
 import com.opencsv.bean.CsvBindByName;
+import org.simpleframework.xml.Element;
 import ru.sfedu.mavenproject.ClassId;
 
 import java.io.Serializable;
@@ -11,12 +12,16 @@ import java.util.Objects;
  */
 public class People extends ClassId {
 
+  @Element
   @CsvBindByName
   private String firstName;
+  @Element
   @CsvBindByName
   private String secondName;
+  @Element
   @CsvBindByName
   private String lastName;
+  @Element
   @CsvBindByName
   private String phone;
 

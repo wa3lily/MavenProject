@@ -4,8 +4,8 @@ public class Constants {
     static public final int TEST_CONST=33;
     static public final String ENV_CONST="source";
     static public final String FORMAT_CONST="There are constants %d and %s";
-    static public final String PATH = "csv_path";
-    static public final String FILE_EXTENSION = "csv";
+    static public final String PATH_CSV = "csv_path";
+    static public final String FILE_EXTENSION_CSV = "csv";
     static public final String DB_DRIVER="db_driver";
     static public final String DB_USER="db_user";
     static public final String DB_PASS="db_pass";
@@ -19,4 +19,6 @@ public class Constants {
     static public final String PEOPLE_PHONE="phone";
     static public final String PEOPLE_FIELDS=PEOPLE_FIRST_NAME+","+PEOPLE_SECOND_NAME+","+PEOPLE_LAST_NAME+","+PEOPLE_PHONE;
     static public final String PEOPLE_INSERT_FORMAT="'%s','%s','%s','%s'";
+    static public final String PATH_XML = "xml_path";
+    static public final String FILE_EXTENSION_XML = "xml";
 }

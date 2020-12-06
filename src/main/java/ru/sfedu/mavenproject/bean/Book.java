@@ -2,6 +2,8 @@ package ru.sfedu.mavenproject.bean;
 
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvCustomBindByName;
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Element;
 import ru.sfedu.mavenproject.ClassId;
 import ru.sfedu.mavenproject.converters.ConverterAuthor;
 import java.util.Objects;
@@ -11,10 +13,13 @@ import java.util.Objects;
  */
 public class Book extends ClassId {
 
+  @Element
   @CsvCustomBindByName(converter = ConverterAuthor.class)
   private Author author;
+  @Element
   @CsvBindByName
   private String title;
+  @Element
   @CsvBindByName
   private int numberOfPages;
 

@@ -1,12 +1,16 @@
 package ru.sfedu.mavenproject;
 
 import com.opencsv.bean.CsvBindByName;
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Root;
 
 import java.io.Serializable;
 import java.util.Objects;
 
+@Root
 public class ClassId implements Serializable {
 
+    @Attribute
     @CsvBindByName
     long id;
 

@@ -1,6 +1,7 @@
 package ru.sfedu.mavenproject.bean;
 
 import com.opencsv.bean.CsvBindByName;
+import org.simpleframework.xml.Element;
 import ru.sfedu.mavenproject.ClassId;
 
 import java.io.Serializable;
@@ -11,10 +12,13 @@ import java.util.Objects;
  */
 public class Meeting extends ClassId {
 
+  @Element
   @CsvBindByName
   private String meetDate;
+  @Element
   @CsvBindByName
   private boolean authorAgreement;
+  @Element
   @CsvBindByName
   private boolean editorAgreement;
 

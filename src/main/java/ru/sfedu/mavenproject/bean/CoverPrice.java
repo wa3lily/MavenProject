@@ -1,6 +1,7 @@
 package ru.sfedu.mavenproject.bean;
 
 import com.opencsv.bean.CsvBindByName;
+import org.simpleframework.xml.Element;
 import ru.sfedu.mavenproject.ClassId;
 import ru.sfedu.mavenproject.enums.CoverType;
 
@@ -12,8 +13,10 @@ import java.util.Objects;
  */
 public class CoverPrice extends ClassId {
 
+  @Element
   @CsvBindByName
   private CoverType coverType;
+  @Element
   @CsvBindByName
   private double price;
 

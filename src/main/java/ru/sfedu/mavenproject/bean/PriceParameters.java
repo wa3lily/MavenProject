@@ -2,6 +2,7 @@ package ru.sfedu.mavenproject.bean;
 
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvCustomBindByName;
+import org.simpleframework.xml.Element;
 import ru.sfedu.mavenproject.ClassId;
 import ru.sfedu.mavenproject.converters.ConverterCoverPrice;
 
@@ -16,14 +17,19 @@ public class PriceParameters extends ClassId {
   //
   // Fields
   //
+  @Element
   @CsvBindByName
   private double pagePrice;
+  @Element
   @CsvCustomBindByName(converter = ConverterCoverPrice.class)
   private CoverPrice coverPrice;
+  @Element
   @CsvBindByName
   private double workPrice;
+  @Element
   @CsvBindByName
   private String validFromDate;
+  @Element
   @CsvBindByName
   private String validToDate;
   

@@ -2,6 +2,7 @@ package ru.sfedu.mavenproject.bean;
 
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvCustomBindByName;
+import org.simpleframework.xml.Element;
 import ru.sfedu.mavenproject.ClassId;
 import ru.sfedu.mavenproject.converters.ConverterMeeting;
 import ru.sfedu.mavenproject.converters.ConverterOrder;
@@ -15,18 +16,25 @@ import java.util.Objects;
  */
 public class Corrections extends ClassId {
 
+  @Element
   @CsvBindByName
   private int page;
+  @Element
   @CsvBindByName
   private String textBefore;
+  @Element
   @CsvBindByName
   private String textAfter;
+  @Element
   @CsvBindByName
   private String comment;
+  @Element
   @CsvCustomBindByName(converter = ConverterOrder.class)
   private Order order;
+  @Element
   @CsvCustomBindByName(converter = ConverterMeeting.class)
   private Meeting meet;
+  @Element
   @CsvBindByName
   private CorrectionsStatus status;
 

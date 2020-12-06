@@ -2,6 +2,7 @@ package ru.sfedu.mavenproject.bean;
 
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvCustomBindByName;
+import org.simpleframework.xml.Element;
 import ru.sfedu.mavenproject.converters.ConverterEmployee;
 import ru.sfedu.mavenproject.converters.ConverterPriceParameters;
 import ru.sfedu.mavenproject.enums.BookStatus;
@@ -14,22 +15,31 @@ import java.util.Objects;
  */
 public class Order extends Book {
 
+  @Element
   @CsvBindByName
   private String orderDate;
+  @Element
   @CsvBindByName
   private CoverType coverType;
+  @Element
   @CsvCustomBindByName(converter = ConverterEmployee.class)
   private Employee bookMaker;
+  @Element
   @CsvCustomBindByName(converter = ConverterEmployee.class)
   private Employee bookEditor;
+  @Element
   @CsvCustomBindByName(converter = ConverterPriceParameters.class)
   private PriceParameters bookPriceParameters;
+  @Element
   @CsvBindByName
   private int finalNumberOfPages;
+  @Element
   @CsvBindByName
   private int numberOfCopies;
+  @Element
   @CsvBindByName
   private double price;
+  @Element
   @CsvBindByName
   private BookStatus bookStatus;
   

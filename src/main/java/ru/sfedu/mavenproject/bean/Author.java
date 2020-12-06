@@ -1,6 +1,8 @@
 package ru.sfedu.mavenproject.bean;
 
 import com.opencsv.bean.CsvBindByName;
+import org.simpleframework.xml.Element;
+
 import java.util.Objects;
 
 /**
@@ -8,10 +10,13 @@ import java.util.Objects;
  */
 public class Author extends People {
 
+  @Element
   @CsvBindByName
   private String email;
+  @Element
   @CsvBindByName
   private String degree;
+  @Element
   @CsvBindByName
   private String organization;
 

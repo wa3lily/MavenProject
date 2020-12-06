@@ -17,8 +17,8 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
-import static ru.sfedu.mavenproject.Constants.PATH;
-import static ru.sfedu.mavenproject.Constants.FILE_EXTENSION;
+import static ru.sfedu.mavenproject.Constants.PATH_CSV;
+import static ru.sfedu.mavenproject.Constants.FILE_EXTENSION_CSV;
 
 public class DataProviderCSV {
 
@@ -50,9 +50,9 @@ public class DataProviderCSV {
     }
 
     public String getPath(Class cl) throws IOException {
-        return ConfigurationUtil.getConfigurationEntry(PATH)
+        return ConfigurationUtil.getConfigurationEntry(PATH_CSV)
                 + cl.getSimpleName().toLowerCase()
-                + ConfigurationUtil.getConfigurationEntry(FILE_EXTENSION);
+                + ConfigurationUtil.getConfigurationEntry(FILE_EXTENSION_CSV);
     }
 
     public <T extends ClassId> Object getByID(Class cl, long id) throws IOException {
