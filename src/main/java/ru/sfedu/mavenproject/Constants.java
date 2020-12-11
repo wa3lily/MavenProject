@@ -21,4 +21,13 @@ public class Constants {
     static public final String PEOPLE_INSERT_FORMAT="'%s','%s','%s','%s'";
     static public final String PATH_XML = "xml_path";
     static public final String FILE_EXTENSION_XML = "xml";
+    static public final String PEOPLE = "people";
+    static public final String AUTHOR = "author";
+    static public final String EMPLOYEE = "employee";
+    static public final String MEETING = "meeting";
+    static public final String COVERPRICE = "coverprice";
+    static public final String BOOK = "book";
+    static public final String PRICEPARAMETERS = "priceparameters";
+    static public final String CORRECTIONS = "corrections";
+    static public final String ORDER = "order";
 }

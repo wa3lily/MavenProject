@@ -1,6 +1,7 @@
 package ru.sfedu.mavenproject.bean;
 
 import com.opencsv.bean.CsvBindByName;
+import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 
 import java.util.Objects;

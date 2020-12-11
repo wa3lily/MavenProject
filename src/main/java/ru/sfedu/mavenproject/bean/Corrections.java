@@ -2,8 +2,8 @@ package ru.sfedu.mavenproject.bean;
 
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvCustomBindByName;
+import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
-import ru.sfedu.mavenproject.ClassId;
 import ru.sfedu.mavenproject.converters.ConverterMeeting;
 import ru.sfedu.mavenproject.converters.ConverterOrder;
 import ru.sfedu.mavenproject.enums.CorrectionsStatus;
@@ -14,8 +14,11 @@ import java.util.Objects;
 /**
  * Class Corrections
  */
-public class Corrections extends ClassId {
+public class Corrections implements Serializable {
 
+  @Attribute
+  @CsvBindByName
+  long id;
   @Element
   @CsvBindByName
   private int page;
@@ -39,6 +42,14 @@ public class Corrections extends ClassId {
   private CorrectionsStatus status;
 
   public Corrections () { };
+
+  public long getId() {
+    return id;
+  }
+
+  public void setId(long id) {
+    this.id = id;
+  }
 
   public void setPage (int newVar) {
     page = newVar;
@@ -100,9 +111,9 @@ public class Corrections extends ClassId {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-    if (!super.equals(o)) return false;
     Corrections that = (Corrections) o;
-    return page == that.page &&
+    return id == that.id &&
+            page == that.page &&
             Objects.equals(textBefore, that.textBefore) &&
             Objects.equals(textAfter, that.textAfter) &&
             Objects.equals(comment, that.comment) &&
@@ -113,14 +124,14 @@ public class Corrections extends ClassId {
 
   @Override
   public int hashCode() {
-    int result = Objects.hash(super.hashCode(), page, textBefore, textAfter, comment, order, meet, status);
+    int result = Objects.hash(id, page, textBefore, textAfter, comment, order, meet, status);
     return result;
   }
 
   @Override
   public String toString() {
     String result = "Corrections{" +
-            "id=" + super.getId() +
+            "id=" + id +
             ", page=" + page +
             ", textBefore='" + textBefore + '\'' +
             ", textAfter='" + textAfter + '\'' +

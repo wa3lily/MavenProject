@@ -37,7 +37,7 @@ public class Main {
         listPeople.add(people);
 
         DataProviderCSV providerCSV = new DataProviderCSV();
-        providerCSV.insert(People.class,listPeople);
+        //providerCSV.insert(People.class,listPeople);
 
     }
 }

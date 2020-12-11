@@ -4,15 +4,19 @@ import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvCustomBindByName;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
-import ru.sfedu.mavenproject.ClassId;
 import ru.sfedu.mavenproject.converters.ConverterAuthor;
+
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * Class Book
  */
-public class Book extends ClassId {
+public class Book implements Serializable {
 
+  @Attribute
+  @CsvBindByName
+  long id;
   @Element
   @CsvCustomBindByName(converter = ConverterAuthor.class)
   private Author author;
@@ -24,6 +28,14 @@ public class Book extends ClassId {
   private int numberOfPages;
 
   public Book () { };
+
+  public long getId() {
+    return id;
+  }
+
+  public void setId(long id) {
+    this.id = id;
+  }
 
   public void setAuthor (Author newVar) {
     author = newVar;
@@ -53,24 +65,23 @@ public class Book extends ClassId {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-    if (!super.equals(o)) return false;
     Book book = (Book) o;
-    return numberOfPages == book.numberOfPages &&
-            //Objects.equals(author, book.author) &&
+    return id == book.id &&
+            numberOfPages == book.numberOfPages &&
             author.getId() == book.author.getId() &&
             Objects.equals(title, book.title);
   }
 
   @Override
   public int hashCode() {
-    int result = Objects.hash(super.hashCode(), author, title, numberOfPages);
+    int result = Objects.hash(id, author, title, numberOfPages);
     return result;
   }
 
   @Override
   public String toString() {
     return "Book{" +
-            "id=" + super.getId() +
+            "id=" + id +
             ", author=" + author.getId() +
             ", title='" + title + '\'' +
             ", numberOfPages=" + numberOfPages +

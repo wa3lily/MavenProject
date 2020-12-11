@@ -1,8 +1,8 @@
 package ru.sfedu.mavenproject.bean;
 
 import com.opencsv.bean.CsvBindByName;
+import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
-import ru.sfedu.mavenproject.ClassId;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -10,8 +10,11 @@ import java.util.Objects;
 /**
  * Class Meeting
  */
-public class Meeting extends ClassId {
+public class Meeting implements Serializable {
 
+  @Attribute
+  @CsvBindByName
+  long id;
   @Element
   @CsvBindByName
   private String meetDate;
@@ -23,6 +26,14 @@ public class Meeting extends ClassId {
   private boolean editorAgreement;
 
   public Meeting () { };
+
+  public long getId() {
+    return id;
+  }
+
+  public void setId(long id) {
+    this.id = id;
+  }
 
   public void setMeetDate (String newVar) {
     meetDate = newVar;
@@ -52,22 +63,22 @@ public class Meeting extends ClassId {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-    if (!super.equals(o)) return false;
     Meeting meeting = (Meeting) o;
-    return authorAgreement == meeting.authorAgreement &&
+    return id == meeting.id &&
+            authorAgreement == meeting.authorAgreement &&
             editorAgreement == meeting.editorAgreement &&
             Objects.equals(meetDate, meeting.meetDate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode(), meetDate, authorAgreement, editorAgreement);
+    return Objects.hash(id, meetDate, authorAgreement, editorAgreement);
   }
 
   @Override
   public String toString() {
     return "Meeting{" +
-            "id=" + super.getId() +
+            "id=" + id +
             ", meetDate='" + meetDate + '\'' +
             ", authorAgreement=" + authorAgreement +
             ", editorAgreement=" + editorAgreement +

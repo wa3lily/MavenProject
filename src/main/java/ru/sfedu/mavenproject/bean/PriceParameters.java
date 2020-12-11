@@ -2,8 +2,8 @@ package ru.sfedu.mavenproject.bean;
 
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvCustomBindByName;
+import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
-import ru.sfedu.mavenproject.ClassId;
 import ru.sfedu.mavenproject.converters.ConverterCoverPrice;
 
 import java.io.Serializable;
@@ -12,11 +12,14 @@ import java.util.Objects;
 /**
  * Class PriceParameters
  */
-public class PriceParameters extends ClassId {
+public class PriceParameters implements Serializable {
 
   //
   // Fields
   //
+  @Attribute
+  @CsvBindByName
+  long id;
   @Element
   @CsvBindByName
   private double pagePrice;
@@ -46,6 +49,15 @@ public class PriceParameters extends ClassId {
   //
   // Accessor methods
   //
+
+
+  public long getId() {
+    return id;
+  }
+
+  public void setId(long id) {
+    this.id = id;
+  }
 
   /**
    * Set the value of pagePrice
@@ -131,9 +143,9 @@ public class PriceParameters extends ClassId {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-    if (!super.equals(o)) return false;
     PriceParameters that = (PriceParameters) o;
-    return Double.compare(that.pagePrice, pagePrice) == 0 &&
+    return id == that.id &&
+            Double.compare(that.pagePrice, pagePrice) == 0 &&
             Double.compare(that.workPrice, workPrice) == 0 &&
             ((coverPrice == null && that.coverPrice == null) || coverPrice.getId() == that.coverPrice.getId()) &&
             Objects.equals(validFromDate, that.validFromDate) &&
@@ -142,13 +154,13 @@ public class PriceParameters extends ClassId {
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode(), pagePrice, coverPrice, workPrice, validFromDate, validToDate);
+    return Objects.hash(id, pagePrice, coverPrice, workPrice, validFromDate, validToDate);
   }
 
   @Override
   public String toString() {
     String result = "PriceParameters{" +
-            "id=" + super.getId() +
+            "id=" + id +
             ", pagePrice=" + pagePrice;
     try{
       result += ", coverPrice=" + coverPrice.getId();

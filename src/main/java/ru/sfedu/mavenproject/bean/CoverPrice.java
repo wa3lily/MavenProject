@@ -1,8 +1,8 @@
 package ru.sfedu.mavenproject.bean;
 
 import com.opencsv.bean.CsvBindByName;
+import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
-import ru.sfedu.mavenproject.ClassId;
 import ru.sfedu.mavenproject.enums.CoverType;
 
 import java.io.Serializable;
@@ -11,8 +11,11 @@ import java.util.Objects;
 /**
  * Class CoverPrice
  */
-public class CoverPrice extends ClassId {
+public class CoverPrice implements Serializable {
 
+  @Attribute
+  @CsvBindByName
+  long id;
   @Element
   @CsvBindByName
   private CoverType coverType;
@@ -21,6 +24,14 @@ public class CoverPrice extends ClassId {
   private double price;
 
   public CoverPrice () { };
+
+  public long getId() {
+    return id;
+  }
+
+  public void setId(long id) {
+    this.id = id;
+  }
 
   public void setCoverType (CoverType newVar) {
     coverType = newVar;
@@ -42,21 +53,21 @@ public class CoverPrice extends ClassId {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-    if (!super.equals(o)) return false;
     CoverPrice that = (CoverPrice) o;
-    return Double.compare(that.price, price) == 0 &&
+    return id == that.id &&
+            Double.compare(that.price, price) == 0 &&
             coverType == that.coverType;
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode(), coverType, price);
+    return Objects.hash(id, coverType, price);
   }
 
   @Override
   public String toString() {
     return "CoverPrice{" +
-            "id=" + super.getId() +
+            "id=" + id +
             ", coverType=" + coverType +
             ", price=" + price +
             '}';

@@ -2,8 +2,6 @@ package ru.sfedu.mavenproject.api;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.checkerframework.checker.units.qual.A;
-import ru.sfedu.mavenproject.ClassId;
 import ru.sfedu.mavenproject.TestBase;
 import ru.sfedu.mavenproject.bean.*;
 import org.junit.jupiter.api.Test;
@@ -12,11 +10,7 @@ import ru.sfedu.mavenproject.enums.CorrectionsStatus;
 import ru.sfedu.mavenproject.enums.CoverType;
 import ru.sfedu.mavenproject.enums.EmployeeType;
 
-
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -38,8 +32,8 @@ class DataProviderCSVTest extends TestBase {
         listPeople.add(people2);
         listPeople.add(people3);
         instance.deleteFile(People.class);
-        instance.insert(People.class, listPeople);
-        assertEquals(people2, instance.getByID(People.class, 2));
+        instance.insertPeople(People.class, listPeople);
+        assertEquals(people2, instance.getPeopleByID(People.class, 2));
     }
 
     @Test
@@ -54,8 +48,8 @@ class DataProviderCSVTest extends TestBase {
         listPeople.add(people2);
         listPeople.add(people3);
         instance.deleteFile(People.class);
-        instance.insert(People.class, listPeople);
-        assertNull(instance.getByID(People.class, 4));
+        instance.insertPeople(People.class, listPeople);
+        assertNull(instance.getPeopleByID(People.class, 4));
     }
 
     @Test
@@ -66,8 +60,8 @@ class DataProviderCSVTest extends TestBase {
         Author author = createAuthor(1,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
         listAuthor.add(author);
         instance.deleteFile(Author.class);
-        instance.insert(Author.class, listAuthor);
-        assertEquals(author, instance.getByID(Author.class, 1));
+        instance.insertPeople(Author.class, listAuthor);
+        assertEquals(author, instance.getPeopleByID(Author.class, 1));
     }
 
     @Test
@@ -78,8 +72,8 @@ class DataProviderCSVTest extends TestBase {
         Author author = createAuthor(1,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
         listAuthor.add(author);
         instance.deleteFile(Author.class);
-        instance.insert(Author.class, listAuthor);
-        assertNull(instance.getByID(Author.class, 2));
+        instance.insertPeople(Author.class, listAuthor);
+        assertNull(instance.getPeopleByID(Author.class, 2));
     }
 
     @Test
@@ -94,8 +88,8 @@ class DataProviderCSVTest extends TestBase {
         listEmployee.add(employee2);
         listEmployee.add(employee3);
         instance.deleteFile(Employee.class);
-        instance.insert(Employee.class, listEmployee);
-        assertEquals(employee2, instance.getByID(Employee.class, 2));
+        instance.insertPeople(Employee.class, listEmployee);
+        assertEquals(employee2, instance.getPeopleByID(Employee.class, 2));
     }
 
     @Test
@@ -110,8 +104,8 @@ class DataProviderCSVTest extends TestBase {
         listEmployee.add(employee2);
         listEmployee.add(employee3);
         instance.deleteFile(Employee.class);
-        instance.insert(Employee.class, listEmployee);
-        assertNull(instance.getByID(Employee.class, 4));
+        instance.insertPeople(Employee.class, listEmployee);
+        assertNull(instance.getPeopleByID(Employee.class, 4));
     }
 
     @Test
@@ -122,8 +116,8 @@ class DataProviderCSVTest extends TestBase {
         Meeting meeting = createMeeting(1,"15.12.2020 11:55",true, false);
         listMeeting.add(meeting);
         instance.deleteFile(Meeting.class);
-        instance.insert(Meeting.class, listMeeting);
-        assertEquals(meeting, instance.getByID(Meeting.class, 1));
+        instance.insertMeeting(listMeeting);
+        assertEquals(meeting, instance.getMeetingByID(1));
     }
 
     @Test
@@ -134,8 +128,8 @@ class DataProviderCSVTest extends TestBase {
         Meeting meeting = createMeeting(1,"15.12.2020 11:55",true, false);
         listMeeting.add(meeting);
         instance.deleteFile(Meeting.class);
-        instance.insert(Meeting.class, listMeeting);
-        assertNull(instance.getByID(Meeting.class, 2));
+        instance.insertMeeting(listMeeting);
+        assertNull(instance.getMeetingByID(2));
     }
 
     @Test
@@ -146,8 +140,8 @@ class DataProviderCSVTest extends TestBase {
         CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
         listCoverPrice.add(coverPrice);
         instance.deleteFile(CoverPrice.class);
-        instance.insert(CoverPrice.class, listCoverPrice);
-        assertEquals(coverPrice, instance.getByID(CoverPrice.class, 1));
+        instance.insertCoverPrice(listCoverPrice);
+        assertEquals(coverPrice, instance.getCoverPriceByID(1));
     }
 
     @Test
@@ -158,8 +152,8 @@ class DataProviderCSVTest extends TestBase {
         CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
         listCoverPrice.add(coverPrice);
         instance.deleteFile(CoverPrice.class);
-        instance.insert(CoverPrice.class, listCoverPrice);
-        assertNull(instance.getByID(CoverPrice.class, 2));
+        instance.insertCoverPrice(listCoverPrice);
+        assertNull(instance.getCoverPriceByID(2));
     }
 
     @Test
@@ -174,9 +168,9 @@ class DataProviderCSVTest extends TestBase {
         listCoverPrice.add(coverPrice);
         instance.deleteFile(PriceParameters.class);
         instance.deleteFile(CoverPrice.class);
-        instance.insert(CoverPrice.class, listCoverPrice);
-        instance.insert(PriceParameters.class, listPriceParameters);
-        assertEquals(priceParameters, instance.getByID(PriceParameters.class, 1));
+        instance.insertCoverPrice(listCoverPrice);
+        instance.insertPriceParameters(listPriceParameters);
+        assertEquals(priceParameters, instance.getPriceParametersByID(1));
     }
 
     @Test
@@ -187,11 +181,10 @@ class DataProviderCSVTest extends TestBase {
         CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
         PriceParameters priceParameters = createPriceParameters(1, 13.4, coverPrice, 16.3, "01.01.2019", "01.01.2021");
         listPriceParameters.add(priceParameters);
-        log.debug(instance.deleteFile(CoverPrice.class));
-        log.debug(instance.deleteFile(PriceParameters.class));
-        instance.insert(PriceParameters.class, listPriceParameters);
-        log.debug(instance.getByID(PriceParameters.class, 1));
-        assertNull(instance.getByID(PriceParameters.class, 1));
+        instance.deleteFile(CoverPrice.class);
+        instance.deleteFile(PriceParameters.class);
+        instance.insertPriceParameters(listPriceParameters);
+        assertNull(instance.getPriceParametersByID(1));
     }
 
     @Test
@@ -217,11 +210,11 @@ class DataProviderCSVTest extends TestBase {
         instance.deleteFile(Employee.class);
         instance.deleteFile(CoverPrice.class);
         instance.deleteFile(PriceParameters.class);
-        instance.insert(Employee.class, listEmployee);
-        instance.insert(CoverPrice.class, listCoverPrice);
-        instance.insert(PriceParameters.class, listPriceParameters);
-        instance.insert(Order.class, listOrder);
-        assertEquals(order, instance.getByID(Order.class, 1));
+        instance.insertPeople(Employee.class, listEmployee);
+        instance.insertCoverPrice(listCoverPrice);
+        instance.insertPriceParameters(listPriceParameters);
+        instance.insertOrder(listOrder);
+        assertEquals(order, instance.getBookByID(Order.class, 1));
     }
 
     @Test
@@ -240,8 +233,8 @@ class DataProviderCSVTest extends TestBase {
         instance.deleteFile(CoverPrice.class);
         instance.deleteFile(PriceParameters.class);
         instance.deleteFile(Order.class);
-        instance.insert(Order.class, listOrder);
-        assertNull(instance.getByID(Order.class, 1));
+        instance.insertOrder(listOrder);
+        assertNull(instance.getBookByID(Order.class, 1));
     }
 
     @Test
@@ -274,13 +267,13 @@ class DataProviderCSVTest extends TestBase {
         instance.deleteFile(PriceParameters.class);
         instance.deleteFile(Order.class);
         instance.deleteFile(Corrections.class);
-        instance.insert(Employee.class, listEmployee);
-        instance.insert(Author.class, listAuthor);
-        instance.insert(CoverPrice.class, listCoverPrice);
-        instance.insert(PriceParameters.class, listPriceParameters);
-        instance.insert(Order.class, listOrder);
-        instance.insert(Corrections.class, listCorrections);
-        assertEquals(corrections, instance.getByID(Corrections.class, 1));
+        instance.insertPeople(Employee.class, listEmployee);
+        instance.insertPeople(Author.class, listAuthor);
+        instance.insertCoverPrice(listCoverPrice);
+        instance.insertPriceParameters(listPriceParameters);
+        instance.insertOrder(listOrder);
+        instance.insertCorrections(listCorrections);
+        assertEquals(corrections, instance.getCorrectionsByID(1));
     }
 
     @Test
@@ -302,8 +295,8 @@ class DataProviderCSVTest extends TestBase {
         instance.deleteFile(PriceParameters.class);
         instance.deleteFile(Order.class);
         instance.deleteFile(Corrections.class);
-        instance.insert(Corrections.class, listCorrections);
-        assertNull(instance.getByID(Corrections.class, 1));
+        instance.insertCorrections(listCorrections);
+        assertNull(instance.getCorrectionsByID(1));
     }
 
     @Test
@@ -318,9 +311,9 @@ class DataProviderCSVTest extends TestBase {
         listAuthor.add(author);
         instance.deleteFile(Author.class);
         instance.deleteFile(Book.class);
-        instance.insert(Author.class, listAuthor);
-        instance.insert(Book.class, listBook);
-        assertEquals(book, instance.getByID(Book.class,1));
+        instance.insertPeople(Author.class, listAuthor);
+        instance.insertBook(listBook);
+        assertEquals(book, instance.getBookByID(Book.class,1));
     }
 
     @Test
@@ -333,13 +326,35 @@ class DataProviderCSVTest extends TestBase {
         listBook.add(book);
         instance.deleteFile(Author.class);
         instance.deleteFile(Book.class);
-        instance.insert(Book.class, listBook);
-        assertNull(instance.getByID(Book.class,1));
+        instance.insertBook(listBook);
+        assertNull(instance.getBookByID(Book.class,1));
     }
 
     @Test
-    public void testInsertSame() throws Exception{
-        log.info("testInsertSame");
+    public void testInsertFewSuccess() throws Exception{
+        log.info("testInsertFewSuccess");
+        List<Employee> listEmployee = new ArrayList<>();
+        List<Employee> expectListEmployee = new ArrayList<>();
+        DataProviderCSV instance = new DataProviderCSV();
+        instance.deleteFile(Employee.class);
+        Employee employee1 = createEmployee(1,"Иван","Иванович","Иванов","81234567890", "123456789012","1234567", EmployeeType.CHIEF);
+        Employee employee2 = createEmployee(2,"Петр","Петрович","Петров","82345678901","234567890123", "2345678", EmployeeType.MAKER);
+        Employee employee3 = createEmployee(3,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
+        listEmployee.add(employee1);
+        listEmployee.add(employee2);
+        instance.insertPeople(Employee.class, listEmployee);
+        listEmployee.clear();
+        listEmployee.add(employee3);
+        assertEquals(expectListEmployee, instance.insertPeople(Employee.class, listEmployee));
+        expectListEmployee.add(employee1);
+        expectListEmployee.add(employee2);
+        expectListEmployee.add(employee3);
+        assertEquals(expectListEmployee, instance.read(Employee.class));
+    }
+
+    @Test
+    public void testInsertFewFail() throws Exception{
+        log.info("testInsertFewFail");
         List<Employee> listEmployee = new ArrayList<>();
         List<Employee> expectListEmployee = new ArrayList<>();
         DataProviderCSV instance = new DataProviderCSV();
@@ -349,12 +364,12 @@ class DataProviderCSVTest extends TestBase {
         Employee employee3 = createEmployee(2,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
         listEmployee.add(employee1);
         listEmployee.add(employee2);
-        instance.insert(Employee.class, listEmployee);
+        instance.insertPeople(Employee.class, listEmployee);
         listEmployee.clear();
         listEmployee.add(employee1);
         listEmployee.add(employee3);
         expectListEmployee.add(employee3);
-        assertEquals(expectListEmployee, instance.insert(Employee.class, listEmployee));
+        assertEquals(expectListEmployee, instance.insertPeople(Employee.class, listEmployee));
         expectListEmployee.clear();
         expectListEmployee.add(employee1);
         expectListEmployee.add(employee2);
@@ -365,7 +380,6 @@ class DataProviderCSVTest extends TestBase {
     @Test
     public void testReadSuccess() throws Exception{
         log.info("testReadSuccess");
-        List<Long> listId = new ArrayList<>(Arrays.asList((long)1,(long)2,(long)3));
         List<Employee> listEmployee = new ArrayList<>();
         DataProviderCSV instance = new DataProviderCSV();
         Employee employee1 = createEmployee(1,"Иван","Иванович","Иванов","81234567890", "123456789012","1234567", EmployeeType.CHIEF);
@@ -375,18 +389,16 @@ class DataProviderCSVTest extends TestBase {
         listEmployee.add(employee2);
         listEmployee.add(employee3);
         instance.deleteFile(Employee.class);
-        instance.insert(Employee.class, listEmployee);
-        assertEquals(listId, instance.readId(Employee.class));
+        instance.insertPeople(Employee.class, listEmployee);
+        assertEquals(listEmployee, instance.read(Employee.class));
     }
 
     @Test
-    @org.junit.jupiter.api.Order(1)
     public void testReadFail() throws Exception{
         log.info("testReadFail");
-        List<Long> listId = new ArrayList<>();
         DataProviderCSV instance = new DataProviderCSV();
         instance.deleteFile(Employee.class);
-        assertEquals(listId, instance.read(Employee.class));
+        assertNotNull(instance.read(Employee.class));
     }
 
     //update
@@ -401,8 +413,8 @@ class DataProviderCSVTest extends TestBase {
         listEmployee.add(employee1);
         listEmployee.add(employee2);
         instance.deleteFile(Employee.class);
-        instance.insert(Employee.class, listEmployee);
-        instance.update(Employee.class, employee3);
+        instance.insertPeople(Employee.class, listEmployee);
+        instance.updatePeople(Employee.class, employee3);
         listEmployee.clear();
         listEmployee.add(employee1);
         listEmployee.add(employee3);
@@ -420,9 +432,37 @@ class DataProviderCSVTest extends TestBase {
         listEmployee.add(employee1);
         listEmployee.add(employee2);
         instance.deleteFile(Employee.class);
-        instance.insert(Employee.class, listEmployee);
-        instance.update(Employee.class, employee3);
+        instance.insertPeople(Employee.class, listEmployee);
+        instance.updatePeople(Employee.class, employee3);
         assertEquals(listEmployee, instance.read(Employee.class));
+    }
+
+    @Test
+    public void testUpdateMeetingSuccess() throws Exception{
+        log.info("UpdateMeetingSuccess");
+        List<Meeting> listMeeting = new ArrayList<>();
+        DataProviderCSV instance = new DataProviderCSV();
+        Meeting meeting = createMeeting(1,"15.12.2020 11:55",true, false);
+        listMeeting.add(meeting);
+        instance.deleteFile(Meeting.class);
+        instance.insertMeeting(listMeeting);
+        Meeting meeting2 = createMeeting(1,"15.12.2020 11:55",false, false);
+        instance.updateMeeting(meeting2);
+        assertEquals(meeting2, instance.getMeetingByID(1));
+    }
+
+    @Test
+    public void testUpdateMeetingFail() throws Exception{
+        log.info("UpdateMeetingSuccess");
+        List<Meeting> listMeeting = new ArrayList<>();
+        DataProviderCSV instance = new DataProviderCSV();
+        Meeting meeting = createMeeting(1,"15.12.2020 11:55",true, false);
+        listMeeting.add(meeting);
+        instance.deleteFile(Meeting.class);
+        instance.insertMeeting(listMeeting);
+        Meeting meeting2 = createMeeting(2,"15.12.2020 11:55",false, false);
+        instance.updateMeeting(meeting2);
+        assertEquals(listMeeting, instance.read(Meeting.class));
     }
 
     @Test
@@ -437,15 +477,15 @@ class DataProviderCSVTest extends TestBase {
         listAuthor.add(author);
         instance.deleteFile(Author.class);
         instance.deleteFile(Book.class);
-        instance.insert(Author.class, listAuthor);
-        instance.insert(Book.class, listBook);
+        instance.insertPeople(Author.class, listAuthor);
+        instance.insertBook(listBook);
         Author author2 = createAuthor(12,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
         Book book2 = createBook(1,author2,"Цифровая бухгалтерия",4);
         listAuthor.clear();
         listAuthor.add(author2);
-        instance.insert(Author.class, listAuthor);
-        instance.update(Book.class, book2);
-        assertEquals(book2, instance.getByID(Book.class,1));
+        instance.insertPeople(Author.class, listAuthor);
+        instance.updateBook(book2);
+        assertEquals(book2, instance.getBookByID(Book.class,1));
     }
 
     @Test
@@ -460,13 +500,12 @@ class DataProviderCSVTest extends TestBase {
         listAuthor.add(author);
         instance.deleteFile(Author.class);
         instance.deleteFile(Book.class);
-        instance.insert(Author.class, listAuthor);
-        instance.insert(Book.class, listBook);
+        instance.insertPeople(Author.class, listAuthor);
+        instance.insertBook(listBook);
         Author author2 = createAuthor(12,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
         Book book2 = createBook(1,author2,"Цифровая бухгалтерия",4);
-        instance.update(Book.class, book2);
-        log.debug(instance.getByID(Book.class,1));
-        assertEquals(book, instance.getByID(Book.class,1));
+        instance.updateBook(book2);
+        assertEquals(book, instance.getBookByID(Book.class,1));
     }
 
     //delete
@@ -476,24 +515,18 @@ class DataProviderCSVTest extends TestBase {
         List<Book> listBook = new ArrayList<>();
         List<Author> listAuthor = new ArrayList<>();
         DataProviderCSV instance = new DataProviderCSV();
-
         Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
         Book book = createBook(1,author,"Цифровая бухгалтерия",4);
-
         listBook.add(book);
         listAuthor.add(author);
-
         instance.deleteFile(Author.class);
         instance.deleteFile(Book.class);
-
-        instance.insert(Author.class, listAuthor);
-        instance.insert(Book.class, listBook);
-
+        instance.insertPeople(Author.class, listAuthor);
+        instance.insertBook(listBook);
         instance.deleteObj(Book.class, book);
         instance.deleteObj(Author.class, author);
-
-        assertNull(instance.getByID(Book.class,1));
-        assertNull(instance.getByID(Author.class,10));
+        assertNull(instance.getBookByID(Book.class,1));
+        assertNull(instance.getPeopleByID(Author.class,10));
     }
 
     @Test
@@ -508,12 +541,12 @@ class DataProviderCSVTest extends TestBase {
         listAuthor.add(author);
         instance.deleteFile(Author.class);
         instance.deleteFile(Book.class);
-        instance.insert(Author.class, listAuthor);
-        instance.insert(Book.class, listBook);
+        instance.insertPeople(Author.class, listAuthor);
+        instance.insertBook(listBook);
         instance.deleteObj(Author.class, author);
         instance.deleteObj(Book.class, book);
-        assertEquals(author, instance.getByID(Author.class,10));
-        assertNull(instance.getByID(Book.class,1));
+        assertEquals(author, instance.getPeopleByID(Author.class,10));
+        assertNull(instance.getBookByID(Book.class,1));
     }
 
 }
