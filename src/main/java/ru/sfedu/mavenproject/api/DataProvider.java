@@ -10,7 +10,7 @@ public interface DataProvider {
 
      <T extends Book> Object getBookByID(Class cl, long id);
 
-//public Alter_book (){}
+     boolean alterBook (long authorId, long id, String title, int numberOfPages);
 
 //public Set_title (){}
 

@@ -19,7 +19,6 @@ public class TestBase {
     }
 
     public Author createAuthor (long id, String firstName, String secondName, String lastName, String phone, String email, String degree, String organization){
-        //Author author = (Author) createPeople (id, firstName, secondName, lastName, phone);
         Author author = new Author();
         author.setId(id);
         author.setFirstName(firstName);
@@ -33,7 +32,6 @@ public class TestBase {
     }
 
     public Employee createEmployee (long id, String firstName, String secondName, String lastName, String phone, String inn, String workRecordBook, EmployeeType emplpyeeType){
-        //Employee employee = (Employee) createPeople (id, firstName, secondName, lastName, phone);
         Employee employee = new Employee();
         employee.setId(id);
         employee.setFirstName(firstName);
@@ -63,6 +61,26 @@ public class TestBase {
         order.setAuthor(author);
         order.setTitle(title);
         order.setNumberOfPages(numberOfPages);
+        order.setOrderDate(orderDate);
+        order.setCoverType(coverType);
+        order.setBookMaker(bookMaker);
+        order.setBookEditor(bookEditor);
+        order.setBookPriceParameters(bookPriceParameters);
+        order.setFinalNumberOfPages(finalNumberOfPages);
+        order.setNumberOfCopies(numberOfCopies);
+        order.setPrice(price);
+        order.setBookStatus(bookStatus);
+        return order;
+    }
+
+    public Order createOrderFromBook (Book book, String orderDate,
+                              CoverType coverType, Employee bookMaker, Employee bookEditor, PriceParameters bookPriceParameters,
+                              int finalNumberOfPages, int numberOfCopies, double price, BookStatus bookStatus){
+        Order order = new Order();
+        order.setId(book.getId());
+        order.setAuthor(book.getAuthor());
+        order.setTitle(book.getTitle());
+        order.setNumberOfPages(book.getNumberOfPages());
         order.setOrderDate(orderDate);
         order.setCoverType(coverType);
         order.setBookMaker(bookMaker);

@@ -163,7 +163,7 @@ class DataProviderCSVTest extends TestBase {
         List<CoverPrice> listCoverPrice = new ArrayList<>();
         DataProviderCSV instance = new DataProviderCSV();
         CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
-        PriceParameters priceParameters = createPriceParameters(1, 13.4, coverPrice, 16.3, "01.01.2019", "01.01.2021");
+        PriceParameters priceParameters = createPriceParameters(1, 13.4, coverPrice, 16.3, "2019-01-01", "2021-01-01");
         listPriceParameters.add(priceParameters);
         listCoverPrice.add(coverPrice);
         instance.deleteFile(PriceParameters.class);
@@ -179,7 +179,7 @@ class DataProviderCSVTest extends TestBase {
         List<PriceParameters> listPriceParameters = new ArrayList<>();
         DataProviderCSV instance = new DataProviderCSV();
         CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
-        PriceParameters priceParameters = createPriceParameters(1, 13.4, coverPrice, 16.3, "01.01.2019", "01.01.2021");
+        PriceParameters priceParameters = createPriceParameters(1, 13.4, coverPrice, 16.3, "2019-01-01", "2021-01-01");
         listPriceParameters.add(priceParameters);
         instance.deleteFile(CoverPrice.class);
         instance.deleteFile(PriceParameters.class);
@@ -199,8 +199,8 @@ class DataProviderCSVTest extends TestBase {
         Employee employee3 = createEmployee(3,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
         Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
         CoverPrice coverPrice = createCoverPrice(1, CoverType.RIGID_COVER, 123.5);
-        PriceParameters priceParameters = createPriceParameters(1, 2.4, coverPrice, 1.3, "01.01.2019", "01.01.2021");
-        Order order = createOrder(1,author,"Цифровая бухгалтерия",4,"03.09.2020", CoverType.RIGID_COVER, employee2, employee3, priceParameters, 229, 100, 9700.75 , BookStatus.EDITING);
+        PriceParameters priceParameters = createPriceParameters(1, 2.4, coverPrice, 1.3, "2019-01-01", "2021-01-01");
+        Order order = createOrder(1,author,"Цифровая бухгалтерия",4,"2020-09-03", CoverType.RIGID_COVER, employee2, employee3, priceParameters, 229, 100, 9700.75 , BookStatus.EDITING);
         listOrder.add(order);
         listEmployee.add(employee2);
         listEmployee.add(employee3);
@@ -226,8 +226,8 @@ class DataProviderCSVTest extends TestBase {
         Employee employee3 = createEmployee(3,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
         Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
         CoverPrice coverPrice = createCoverPrice(1, CoverType.RIGID_COVER, 123.5);
-        PriceParameters priceParameters = createPriceParameters(1, 2.4, coverPrice, 1.3, "01.01.2019", "01.01.2021");
-        Order order = createOrder(1,author,"Цифровая бухгалтерия",4,"03.09.2020", CoverType.RIGID_COVER, employee2, employee3, priceParameters, 229, 100, 9700.75 , BookStatus.EDITING);
+        PriceParameters priceParameters = createPriceParameters(1, 2.4, coverPrice, 1.3, "2019-01-01", "2021-01-01");
+        Order order = createOrder(1,author,"Цифровая бухгалтерия",4,"2020-09-03", CoverType.RIGID_COVER, employee2, employee3, priceParameters, 229, 100, 9700.75 , BookStatus.EDITING);
         listOrder.add(order);
         instance.deleteFile(Employee.class);
         instance.deleteFile(CoverPrice.class);
@@ -251,8 +251,8 @@ class DataProviderCSVTest extends TestBase {
         Employee employee3 = createEmployee(3,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
         Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
         CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
-        PriceParameters priceParameters = createPriceParameters(1, 2.4, coverPrice, 1.3, "01.01.2019", "01.01.2021");
-        Order order = createOrder(1,author,"Цифровая бухгалтерия",4,"03.09.2020", CoverType.RIGID_COVER, employee2, employee3, priceParameters, 229, 100, 9700.75 , BookStatus.EDITING  );
+        PriceParameters priceParameters = createPriceParameters(1, 2.4, coverPrice, 1.3, "2019-01-01", "2021-01-01");
+        Order order = createOrder(1,author,"Цифровая бухгалтерия",4,"2020-09-03", CoverType.RIGID_COVER, employee2, employee3, priceParameters, 229, 100, 9700.75 , BookStatus.EDITING  );
         Corrections corrections = createCorrections(1,35, "Цифровой контроль - это компьютерные системы",
                 "Цифровой контроль представляет собой компьютерные системы", "Повторяется конструкция", order, null, CorrectionsStatus.WAIT_AUTHOR_AGR );
         listEmployee.add(employee2);
@@ -285,8 +285,8 @@ class DataProviderCSVTest extends TestBase {
         Employee employee3 = createEmployee(3,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
         Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
         CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
-        PriceParameters priceParameters = createPriceParameters(1, 2.4, coverPrice, 1.3, "01.01.2019", "01.01.2021");
-        Order order = createOrder(1,author,"Цифровая бухгалтерия",4,"03.09.2020", CoverType.RIGID_COVER, employee2, employee3, priceParameters, 229, 100, 9700.75 , BookStatus.EDITING  );
+        PriceParameters priceParameters = createPriceParameters(1, 2.4, coverPrice, 1.3, "2019-01-01", "2021-01-01");
+        Order order = createOrder(1,author,"Цифровая бухгалтерия",4,"2020-09-03", CoverType.RIGID_COVER, employee2, employee3, priceParameters, 229, 100, 9700.75 , BookStatus.EDITING  );
         Corrections corrections = createCorrections(1,35, "Цифровой контроль - это компьютерные системы",
                 "Цифровой контроль представляет собой компьютерные системы", "Повторяется конструкция", order, null, CorrectionsStatus.WAIT_AUTHOR_AGR );
         listCorrections.add(corrections);
@@ -407,7 +407,7 @@ class DataProviderCSVTest extends TestBase {
         log.info("testUpdateSuccess");
         List<Employee> listEmployee = new ArrayList<>();
         DataProviderCSV instance = new DataProviderCSV();
-        Employee employee1 = createEmployee(1,"Иван","Иванович","Иванов","81234567890", "123456789012","1234567", EmployeeType.CHIEF);
+        Employee employee1 = createEmployee (1,"Иван","Иванович","Иванов","81234567890", "123456789012","1234567", EmployeeType.CHIEF);
         Employee employee2 = createEmployee(2,"Петр","Петрович","Петров","82345678901","234567890123", "2345678", EmployeeType.MAKER);
         Employee employee3 = createEmployee(2,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
         listEmployee.add(employee1);
@@ -442,11 +442,11 @@ class DataProviderCSVTest extends TestBase {
         log.info("UpdateMeetingSuccess");
         List<Meeting> listMeeting = new ArrayList<>();
         DataProviderCSV instance = new DataProviderCSV();
-        Meeting meeting = createMeeting(1,"15.12.2020 11:55",true, false);
+        Meeting meeting = createMeeting(1,"2020-12-15 11:55",true, false);
         listMeeting.add(meeting);
         instance.deleteFile(Meeting.class);
         instance.insertMeeting(listMeeting);
-        Meeting meeting2 = createMeeting(1,"15.12.2020 11:55",false, false);
+        Meeting meeting2 = createMeeting(1,"2020-12-15 11:55",false, false);
         instance.updateMeeting(meeting2);
         assertEquals(meeting2, instance.getMeetingByID(1));
     }
@@ -456,11 +456,11 @@ class DataProviderCSVTest extends TestBase {
         log.info("UpdateMeetingSuccess");
         List<Meeting> listMeeting = new ArrayList<>();
         DataProviderCSV instance = new DataProviderCSV();
-        Meeting meeting = createMeeting(1,"15.12.2020 11:55",true, false);
+        Meeting meeting = createMeeting(1,"2020-12-15 11:55",true, false);
         listMeeting.add(meeting);
         instance.deleteFile(Meeting.class);
         instance.insertMeeting(listMeeting);
-        Meeting meeting2 = createMeeting(2,"15.12.2020 11:55",false, false);
+        Meeting meeting2 = createMeeting(2,"2020-12-15 11:55",false, false);
         instance.updateMeeting(meeting2);
         assertEquals(listMeeting, instance.read(Meeting.class));
     }
@@ -548,5 +548,241 @@ class DataProviderCSVTest extends TestBase {
         assertEquals(author, instance.getPeopleByID(Author.class,10));
         assertNull(instance.getBookByID(Book.class,1));
     }
+
+    @Test
+    public void testGetMaxIdSuccess() throws Exception {
+        log.info("testGetMaxIdSuccess");
+        List<People> listPeople = new ArrayList<>();
+        DataProviderCSV instance = new DataProviderCSV();
+        People people1 = createPeople(1, "Иван", "Иванович", "Иванов", "81234567890");
+        People people2 = createPeople(2, "Петр", "Петрович", "Петров", "82345678901");
+        People people3 = createPeople(3, "Виктор", "Иванович", "Ткач", "83456789012");
+        listPeople.add(people1);
+        listPeople.add(people2);
+        listPeople.add(people3);
+        instance.deleteFile(People.class);
+        instance.insertPeople(People.class, listPeople);
+        assertEquals(3, instance.getMaxId(People.class));
+    }
+
+    @Test
+    public void testGetMaxIdFail() throws Exception {
+        log.info("testGetMaxIdFail");
+        DataProviderCSV instance = new DataProviderCSV();
+        instance.deleteFile(People.class);
+        assertEquals(-1, instance.getMaxId(People.class));
+    }
+
+    @Test
+    public void alterBookInsertSuccess() throws Exception {
+        log.info("alterBookInsertSuccess");
+        List<Author> listAuthor = new ArrayList<>();
+        DataProviderCSV instance = new DataProviderCSV();
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        Book book = createBook(1,author,"Цифровая бухгалтерия",4);
+        listAuthor.add(author);
+        instance.deleteFile(Author.class);
+        instance.deleteFile(Book.class);
+        instance.insertPeople(Author.class, listAuthor);
+        instance.alterBook(10, 1,"Цифровая бухгалтерия",4 );
+        assertEquals(book, instance.getBookByID(Book.class,1));
+    }
+
+    @Test
+    public void alterBookInsertFail() throws Exception {
+        log.info("alterBookInsertFail");
+        DataProviderCSV instance = new DataProviderCSV();
+        instance.deleteFile(Author.class);
+        instance.deleteFile(Book.class);
+        instance.alterBook(10, 1,"Цифровая бухгалтерия",4 );
+        assertNull(instance.getBookByID(Book.class,1));
+    }
+
+    @Test
+    public void makeOrderSuccess() throws Exception {
+        log.info("alterBookInsertSuccess");
+        DataProviderCSV instance = new DataProviderCSV();
+        List<Author> listAuthor = new ArrayList<>();
+        List<Book> listBook = new ArrayList<>();
+        instance.deleteFile(Book.class);
+        instance.deleteFile(Author.class);
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        Book book = createBook(1,author,"Цифровая бухгалтерия",229);
+        listAuthor.add(author);
+        listBook.add(book);
+        instance.insertPeople(Author.class, listAuthor);
+        instance.insertBook(listBook);
+        assertNotNull(instance.makeOrder(1, "2020-09-03", "RIGID_COVER", 100).orElse(null));
+    }
+
+    @Test
+    public void makeOrderFail() throws Exception {
+        log.info("makeOrderFail");
+        DataProviderCSV instance = new DataProviderCSV();
+        instance.deleteFile(Book.class);
+        assertNull(instance.makeOrder(1, "2020-09-03", "RIGID_COVER", 100).orElse(null));
+    }
+
+    @Test
+    public void selectPriceParametersSuccess() throws Exception {
+        log.info("selectPriceParametersSuccess");
+        List<PriceParameters> listPriceParameters = new ArrayList<>();
+        List<CoverPrice> listCoverPrice = new ArrayList<>();
+        DataProviderCSV instance = new DataProviderCSV();
+        CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
+        PriceParameters priceParameters = createPriceParameters(1, 3.4, coverPrice, 6.3, "2019-01-01", "2021-12-31");
+        PriceParameters priceParameters2 = createPriceParameters(2, 5.1, coverPrice, 7.2, "2016-01-01", "2018-12-31");
+        listPriceParameters.add(priceParameters);
+        listPriceParameters.add(priceParameters2);
+        listCoverPrice.add(coverPrice);
+        instance.deleteFile(PriceParameters.class);
+        instance.deleteFile(CoverPrice.class);
+        instance.insertCoverPrice(listCoverPrice);
+        instance.insertPriceParameters(listPriceParameters);
+        assertEquals(priceParameters, instance.selectPriceParameters("2019-01-01").orElse(null));
+    }
+
+    @Test
+    public void selectPriceParametersFail() throws Exception {
+        log.info("selectPriceParametersFail");
+        List<PriceParameters> listPriceParameters = new ArrayList<>();
+        List<CoverPrice> listCoverPrice = new ArrayList<>();
+        DataProviderCSV instance = new DataProviderCSV();
+        CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
+        PriceParameters priceParameters = createPriceParameters(1, 3.4, coverPrice, 6.3, "2019-01-01", "2021-12-31");
+        PriceParameters priceParameters2 = createPriceParameters(2, 5.1, coverPrice, 7.2, "2016-01-01", "2018-12-31");
+        listPriceParameters.add(priceParameters);
+        listPriceParameters.add(priceParameters2);
+        listCoverPrice.add(coverPrice);
+        instance.deleteFile(PriceParameters.class);
+        instance.deleteFile(CoverPrice.class);
+        instance.insertCoverPrice(listCoverPrice);
+        instance.insertPriceParameters(listPriceParameters);
+        assertNull(instance.selectPriceParameters("2007-01-01").orElse(null));
+    }
+
+    @Test
+    public void takeAwayOrderSuccess() throws Exception{
+        log.info("insertOrderSuccess");
+        List<Order> listOrder = new ArrayList<>();
+        List<Employee> listEmployee = new ArrayList<>();
+        List<CoverPrice> listCoverPrice = new ArrayList<>();
+        List<PriceParameters> listPriceParameters = new ArrayList<>();
+        DataProviderCSV instance = new DataProviderCSV();
+        Employee employee2 = createEmployee(2,"Петр","Петрович","Петров","82345678901","234567890123", "2345678", EmployeeType.MAKER);
+        Employee employee3 = createEmployee(3,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        CoverPrice coverPrice = createCoverPrice(1, CoverType.RIGID_COVER, 123.5);
+        PriceParameters priceParameters = createPriceParameters(1, 2.4, coverPrice, 1.3, "2019-01-01", "2021-01-01");
+        Order order = createOrder(1,author,"Цифровая бухгалтерия",4,"2020-09-03", CoverType.RIGID_COVER, employee2, employee3, priceParameters, 229, 100, 9700.75 , BookStatus.EDITING);
+        listOrder.add(order);
+        listEmployee.add(employee2);
+        listEmployee.add(employee3);
+        listCoverPrice.add(coverPrice);
+        listPriceParameters.add(priceParameters);
+        instance.deleteFile(Order.class);
+        instance.deleteFile(Employee.class);
+        instance.deleteFile(CoverPrice.class);
+        instance.deleteFile(PriceParameters.class);
+        instance.deleteFile(Corrections.class);
+        instance.insertPeople(Employee.class, listEmployee);
+        instance.insertCoverPrice(listCoverPrice);
+        instance.insertPriceParameters(listPriceParameters);
+        instance.insertOrder(listOrder);
+        instance.takeAwayOrder(1);
+        assertNull(instance.getBookByID(Order.class, 1));
+    }
+
+    @Test
+    public void takeAwayOrderFail() throws Exception{
+        log.info("takeAwayOrderFail");
+        List<Corrections> listCorrections = new ArrayList<>();
+        List<Employee> listEmployee = new ArrayList<>();
+        List<Author> listAuthor = new ArrayList<>();
+        List<CoverPrice> listCoverPrice = new ArrayList<>();
+        List<PriceParameters> listPriceParameters = new ArrayList<>();
+        List<Order> listOrder = new ArrayList<>();
+        DataProviderCSV instance = new DataProviderCSV();
+        Employee employee2 = createEmployee(2,"Петр","Петрович","Петров","82345678901","234567890123", "2345678", EmployeeType.MAKER);
+        Employee employee3 = createEmployee(3,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
+        PriceParameters priceParameters = createPriceParameters(1, 2.4, coverPrice, 1.3, "2019-01-01", "2021-01-01");
+        Order order = createOrder(1,author,"Цифровая бухгалтерия",4,"2020-09-03", CoverType.RIGID_COVER, employee2, employee3, priceParameters, 229, 100, 9700.75 , BookStatus.EDITING  );
+        Corrections corrections = createCorrections(1,35, "Цифровой контроль - это компьютерные системы",
+                "Цифровой контроль представляет собой компьютерные системы", "Повторяется конструкция", order, null, CorrectionsStatus.WAIT_AUTHOR_AGR );
+        listEmployee.add(employee2);
+        listEmployee.add(employee3);
+        listAuthor.add(author);
+        listCoverPrice.add(coverPrice);
+        listPriceParameters.add(priceParameters);
+        listOrder.add(order);
+        listCorrections.add(corrections);
+        instance.deleteFile(Employee.class);
+        instance.deleteFile(Author.class);
+        instance.deleteFile(PriceParameters.class);
+        instance.deleteFile(Order.class);
+        instance.deleteFile(Corrections.class);
+        instance.insertPeople(Employee.class, listEmployee);
+        instance.insertPeople(Author.class, listAuthor);
+        instance.insertCoverPrice(listCoverPrice);
+        instance.insertPriceParameters(listPriceParameters);
+        instance.insertOrder(listOrder);
+        instance.insertCorrections(listCorrections);
+        instance.takeAwayOrder(1);
+        assertNotNull(instance.getBookByID(Order.class, 1));
+    }
+
+    @Test
+    public void getListOfCorrectionsSuccess() throws Exception {
+        log.info("getListOfCorrectionsSuccess");
+        List<Corrections> listCorrections = new ArrayList<>();
+        List<Employee> listEmployee = new ArrayList<>();
+        List<Author> listAuthor = new ArrayList<>();
+        List<CoverPrice> listCoverPrice = new ArrayList<>();
+        List<PriceParameters> listPriceParameters = new ArrayList<>();
+        List<Order> listOrder = new ArrayList<>();
+        DataProviderCSV instance = new DataProviderCSV();
+        Employee employee2 = createEmployee(2,"Петр","Петрович","Петров","82345678901","234567890123", "2345678", EmployeeType.MAKER);
+        Employee employee3 = createEmployee(3,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
+        PriceParameters priceParameters = createPriceParameters(1, 2.4, coverPrice, 1.3, "2019-01-01", "2021-01-01");
+        Order order = createOrder(1,author,"Цифровая бухгалтерия",4,"2020-09-03", CoverType.RIGID_COVER, employee2, employee3, priceParameters, 229, 100, 9700.75 , BookStatus.EDITING  );
+        Corrections corrections = createCorrections(1,35, "Цифровой контроль - это компьютерные системы",
+                "Цифровой контроль представляет собой компьютерные системы", "Повторяется конструкция", order, null, CorrectionsStatus.WAIT_AUTHOR_AGR );
+        Corrections corrections2 = createCorrections(2,65, "Цифровой контроль - это компьютерные системы",
+                "Цифровой контроль представляет собой компьютерные системы", "Повторяется конструкция", order, null, CorrectionsStatus.WAIT_AUTHOR_AGR );
+        listEmployee.add(employee2);
+        listEmployee.add(employee3);
+        listAuthor.add(author);
+        listCoverPrice.add(coverPrice);
+        listPriceParameters.add(priceParameters);
+        listOrder.add(order);
+        listCorrections.add(corrections);
+        listCorrections.add(corrections2);
+        instance.deleteFile(Employee.class);
+        instance.deleteFile(Author.class);
+        instance.deleteFile(PriceParameters.class);
+        instance.deleteFile(Order.class);
+        instance.deleteFile(Corrections.class);
+        instance.insertPeople(Employee.class, listEmployee);
+        instance.insertPeople(Author.class, listAuthor);
+        instance.insertCoverPrice(listCoverPrice);
+        instance.insertPriceParameters(listPriceParameters);
+        instance.insertOrder(listOrder);
+        instance.insertCorrections(listCorrections);
+        //assertEquals(listCorrections, instance.getListOfCorrections());
+    }
+
+    @Test
+    public void getListOfCorrectionsFail() throws Exception {
+        log.info("getListOfCorrectionsFail");
+        DataProviderCSV instance = new DataProviderCSV();
+        instance.deleteFile(Corrections.class);
+        //assertTrue(instance.getListOfCorrections().isEmpty());
+    }
+
+
 
 }

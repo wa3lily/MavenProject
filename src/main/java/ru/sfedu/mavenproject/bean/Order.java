@@ -38,7 +38,7 @@ public class Order extends Book {
   private int numberOfCopies;
   @Element
   @CsvBindByName
-  private double price;
+  private double price = -1;
   @Element
   @CsvBindByName
   private BookStatus bookStatus;
