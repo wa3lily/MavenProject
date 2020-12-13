@@ -2859,3 +2859,28 @@
 2020-12-13 00:11:56 DEBUG DataProviderCSV:340 - there is such Order and Meeting
 2020-12-13 00:11:56 DEBUG DataProviderCSV:347 - will add to csv Corrections{id=2, page=65, textBefore='Цифровой контроль - это компьютерные системы', textAfter='Цифровой контроль представляет собой компьютерные системы', comment='Повторяется конструкция', order=1, meet=null, status=WAIT_AUTHOR_AGR}
 2020-12-13 00:17:59 INFO  DataProviderCSVTest:780 - getListOfCorrectionsFail
+2020-12-13 12:46:03 INFO  DataProviderCSVTest:161 - insertPriceParametersSuccess
+2020-12-13 12:46:54 INFO  DataProviderCSVTest:161 - insertPriceParametersSuccess
+2020-12-13 12:46:54 DEBUG DataProviderCSV:234 - will add to csv CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}
+2020-12-13 12:46:55 DEBUG DataProviderCSV:269 - there is not such CoverPrice
+2020-12-13 12:46:55 ERROR DataProviderCSV:128 - java.util.NoSuchElementException: No value present
+2020-12-13 12:56:58 INFO  DataProviderCSVTest:161 - insertPriceParametersSuccess
+2020-12-13 12:56:59 DEBUG DataProviderCSV:234 - will add to csv CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}
+2020-12-13 12:56:59 DEBUG DataProviderCSV:234 - will add to csv CoverPrice{id=2, coverType=PAPERBACK, price=143.8}
+2020-12-13 12:56:59 DEBUG DataProviderCSV:269 - there is not such CoverPrice
+2020-12-13 12:56:59 ERROR DataProviderCSV:128 - java.util.NoSuchElementException: No value present
+2020-12-13 13:09:35 INFO  DataProviderCSVTest:161 - insertPriceParametersSuccess
+2020-12-13 13:09:36 DEBUG DataProviderCSV:234 - will add to csv CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}
+2020-12-13 13:09:36 DEBUG DataProviderCSV:234 - will add to csv CoverPrice{id=2, coverType=PAPERBACK, price=143.8}
+2020-12-13 13:09:36 DEBUG DataProviderCSV:265 - there is such CoverPrice
+2020-12-13 13:09:36 DEBUG DataProviderCSV:272 - will add to csv PriceParameters{id=1, pagePrice=13.4, coverPrice=[CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}, CoverPrice{id=2, coverType=PAPERBACK, price=143.8}], workPrice=16.3, validFromDate='2019-01-01', validToDate='2021-01-01'}
+2020-12-13 13:18:14 INFO  DataProviderCSVTest:161 - insertPriceParametersSuccess
+2020-12-13 13:18:14 DEBUG DataProviderCSV:234 - will add to csv CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}
+2020-12-13 13:18:14 DEBUG DataProviderCSV:234 - will add to csv CoverPrice{id=2, coverType=PAPERBACK, price=143.8}
+2020-12-13 13:18:14 DEBUG DataProviderCSV:265 - there is such CoverPrice
+2020-12-13 13:18:14 DEBUG DataProviderCSV:272 - will add to csv PriceParameters{id=1, pagePrice=13.4, coverPrice=[CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}, CoverPrice{id=2, coverType=PAPERBACK, price=143.8}], workPrice=16.3, validFromDate='2019-01-01', validToDate='2021-01-01'}
+2020-12-13 13:18:38 INFO  DataProviderCSVTest:161 - insertPriceParametersSuccess
+2020-12-13 13:18:39 DEBUG DataProviderCSV:234 - will add to csv CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}
+2020-12-13 13:18:39 DEBUG DataProviderCSV:234 - will add to csv CoverPrice{id=2, coverType=PAPERBACK, price=143.8}
+2020-12-13 13:18:39 DEBUG DataProviderCSV:265 - there is such CoverPrice
+2020-12-13 13:18:39 DEBUG DataProviderCSV:272 - will add to csv PriceParameters{id=1, pagePrice=13.4, coverPrice=[CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}, CoverPrice{id=2, coverType=PAPERBACK, price=143.8}], workPrice=16.3, validFromDate='2019-01-01', validToDate='2021-01-01'}

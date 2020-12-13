@@ -253,25 +253,28 @@ public class DataProviderCSV implements DataProvider {
         List<PriceParameters> returnList = new ArrayList<>();
         List<PriceParameters> recordList = read(PriceParameters.class);
         list.stream().forEach(el -> {
-            try {
-                //проверка, есть ли элемент указанный в поле CoverPrice в соответствующем csv файле
-                if (el.getCoverPrice() == null || getCoverPriceByID(el.getCoverPrice().getId()) != null){
-                    log.debug("there is such CoverPrice");
-                    if (recordList.stream().anyMatch(e2 -> e2.equals(el))){
-                        log.debug("already exist in csv "+el);
-                    }else if (recordList.stream().anyMatch(e2 -> e2.getId() == el.getId())) {
-                        log.debug("id already exist in csv " + el);
-                        returnList.add(el);
-                    }else{
-                        log.debug("will add to csv "+el);
-                        recordList.add(el);
-                    }
-                }else{
-                    log.debug("there is not such CoverPrice");
-                    returnList.add(el);
+            //проверка, есть ли элемент указанный в поле CoverPrice в соответствующем csv файле
+            if (el.getCoverPrice().isEmpty() || el.getCoverPrice().stream().allMatch(e2 -> {
+                try {
+                    return getCoverPriceByID(e2.getId()) != null;
+                } catch (IOException e) {
+                    log.error(e);
+                    return false;
                 }
-            } catch (IOException e) {
-                log.error(e);
+            })){
+                log.debug("there is such CoverPrice");
+                if (recordList.stream().anyMatch(e2 -> e2.equals(el))){
+                    log.debug("already exist in csv "+el);
+                }else if (recordList.stream().anyMatch(e2 -> e2.getId() == el.getId())) {
+                    log.debug("id already exist in csv " + el);
+                    returnList.add(el);
+                }else{
+                    log.debug("will add to csv "+el);
+                    recordList.add(el);
+                }
+            }else{
+                log.debug("there is not such CoverPrice");
+                returnList.add(el);
             }
         });
         try {
@@ -800,7 +803,7 @@ public class DataProviderCSV implements DataProvider {
             return false;
         }
         List<PriceParameters> listPriceParameters = read(PriceParameters.class);
-        if (!listPriceParameters.stream().anyMatch(el -> el.getCoverPrice().getId() == obj.getId())) {
+        if (!listPriceParameters.stream().anyMatch(el -> el.getCoverPrice().stream().anyMatch(id->id.getId()==obj.getId()))){
             list.removeIf(el -> el.equals(obj));
             deleteFile(cl);
             insertCoverPrice(list);
@@ -1074,7 +1077,9 @@ public class DataProviderCSV implements DataProvider {
 
 
 
-//public Agreement_correction (){}
+//public Agreement_correction (long id){
+//        List<>
+//}
 
 //public Agreement_edits (){}
 

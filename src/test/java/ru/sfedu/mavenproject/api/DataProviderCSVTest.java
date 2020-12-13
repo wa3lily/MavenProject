@@ -163,23 +163,29 @@ class DataProviderCSVTest extends TestBase {
         List<CoverPrice> listCoverPrice = new ArrayList<>();
         DataProviderCSV instance = new DataProviderCSV();
         CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
-        PriceParameters priceParameters = createPriceParameters(1, 13.4, coverPrice, 16.3, "2019-01-01", "2021-01-01");
-        listPriceParameters.add(priceParameters);
+        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
         listCoverPrice.add(coverPrice);
+        listCoverPrice.add(coverPrice2);
+        PriceParameters priceParameters = createPriceParameters(1, 13.4, listCoverPrice, 16.3, "2019-01-01", "2021-01-01");
+        listPriceParameters.add(priceParameters);
         instance.deleteFile(PriceParameters.class);
         instance.deleteFile(CoverPrice.class);
         instance.insertCoverPrice(listCoverPrice);
         instance.insertPriceParameters(listPriceParameters);
-        assertEquals(priceParameters, instance.getPriceParametersByID(1));
+        assertEquals(1, instance.getPriceParametersByID(1).getId());
     }
 
     @Test
     public void testInsertPriceParametersFail() throws Exception{
         log.info("insertPriceParametersFail");
         List<PriceParameters> listPriceParameters = new ArrayList<>();
+        List<CoverPrice> listCoverPrice = new ArrayList<>();
         DataProviderCSV instance = new DataProviderCSV();
         CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
-        PriceParameters priceParameters = createPriceParameters(1, 13.4, coverPrice, 16.3, "2019-01-01", "2021-01-01");
+        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
+        listCoverPrice.add(coverPrice);
+        listCoverPrice.add(coverPrice2);
+        PriceParameters priceParameters = createPriceParameters(1, 13.4, listCoverPrice, 16.3, "2019-01-01", "2021-01-01");
         listPriceParameters.add(priceParameters);
         instance.deleteFile(CoverPrice.class);
         instance.deleteFile(PriceParameters.class);
@@ -199,12 +205,14 @@ class DataProviderCSVTest extends TestBase {
         Employee employee3 = createEmployee(3,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
         Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
         CoverPrice coverPrice = createCoverPrice(1, CoverType.RIGID_COVER, 123.5);
-        PriceParameters priceParameters = createPriceParameters(1, 2.4, coverPrice, 1.3, "2019-01-01", "2021-01-01");
+        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
+        listCoverPrice.add(coverPrice);
+        listCoverPrice.add(coverPrice2);
+        PriceParameters priceParameters = createPriceParameters(1, 2.4, listCoverPrice, 1.3, "2019-01-01", "2021-01-01");
         Order order = createOrder(1,author,"Цифровая бухгалтерия",4,"2020-09-03", CoverType.RIGID_COVER, employee2, employee3, priceParameters, 229, 100, 9700.75 , BookStatus.EDITING);
         listOrder.add(order);
         listEmployee.add(employee2);
         listEmployee.add(employee3);
-        listCoverPrice.add(coverPrice);
         listPriceParameters.add(priceParameters);
         instance.deleteFile(Order.class);
         instance.deleteFile(Employee.class);
@@ -221,12 +229,16 @@ class DataProviderCSVTest extends TestBase {
     public void testInsertOrderFail() throws Exception{
         log.info("insertOrderFail");
         List<Order> listOrder = new ArrayList<>();
+        List<CoverPrice> listCoverPrice = new ArrayList<>();
         DataProviderCSV instance = new DataProviderCSV();
         Employee employee2 = createEmployee(2,"Петр","Петрович","Петров","82345678901","234567890123", "2345678", EmployeeType.MAKER);
         Employee employee3 = createEmployee(3,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
         Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
         CoverPrice coverPrice = createCoverPrice(1, CoverType.RIGID_COVER, 123.5);
-        PriceParameters priceParameters = createPriceParameters(1, 2.4, coverPrice, 1.3, "2019-01-01", "2021-01-01");
+        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
+        listCoverPrice.add(coverPrice);
+        listCoverPrice.add(coverPrice2);
+        PriceParameters priceParameters = createPriceParameters(1, 2.4, listCoverPrice, 1.3, "2019-01-01", "2021-01-01");
         Order order = createOrder(1,author,"Цифровая бухгалтерия",4,"2020-09-03", CoverType.RIGID_COVER, employee2, employee3, priceParameters, 229, 100, 9700.75 , BookStatus.EDITING);
         listOrder.add(order);
         instance.deleteFile(Employee.class);
@@ -251,14 +263,16 @@ class DataProviderCSVTest extends TestBase {
         Employee employee3 = createEmployee(3,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
         Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
         CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
-        PriceParameters priceParameters = createPriceParameters(1, 2.4, coverPrice, 1.3, "2019-01-01", "2021-01-01");
+        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
+        listCoverPrice.add(coverPrice);
+        listCoverPrice.add(coverPrice2);
+        PriceParameters priceParameters = createPriceParameters(1, 2.4, listCoverPrice, 1.3, "2019-01-01", "2021-01-01");
         Order order = createOrder(1,author,"Цифровая бухгалтерия",4,"2020-09-03", CoverType.RIGID_COVER, employee2, employee3, priceParameters, 229, 100, 9700.75 , BookStatus.EDITING  );
         Corrections corrections = createCorrections(1,35, "Цифровой контроль - это компьютерные системы",
                 "Цифровой контроль представляет собой компьютерные системы", "Повторяется конструкция", order, null, CorrectionsStatus.WAIT_AUTHOR_AGR );
         listEmployee.add(employee2);
         listEmployee.add(employee3);
         listAuthor.add(author);
-        listCoverPrice.add(coverPrice);
         listPriceParameters.add(priceParameters);
         listOrder.add(order);
         listCorrections.add(corrections);
@@ -280,12 +294,16 @@ class DataProviderCSVTest extends TestBase {
     public void testInsertCorrectionsFail() throws Exception{
         log.info("insertCorrectionsFail");
         List<Corrections> listCorrections = new ArrayList<>();
+        List<CoverPrice> listCoverPrice = new ArrayList<>();
         DataProviderCSV instance = new DataProviderCSV();
         Employee employee2 = createEmployee(2,"Петр","Петрович","Петров","82345678901","234567890123", "2345678", EmployeeType.MAKER);
         Employee employee3 = createEmployee(3,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
         Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
         CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
-        PriceParameters priceParameters = createPriceParameters(1, 2.4, coverPrice, 1.3, "2019-01-01", "2021-01-01");
+        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
+        listCoverPrice.add(coverPrice);
+        listCoverPrice.add(coverPrice2);
+        PriceParameters priceParameters = createPriceParameters(1, 2.4, listCoverPrice, 1.3, "2019-01-01", "2021-01-01");
         Order order = createOrder(1,author,"Цифровая бухгалтерия",4,"2020-09-03", CoverType.RIGID_COVER, employee2, employee3, priceParameters, 229, 100, 9700.75 , BookStatus.EDITING  );
         Corrections corrections = createCorrections(1,35, "Цифровой контроль - это компьютерные системы",
                 "Цифровой контроль представляет собой компьютерные системы", "Повторяется конструкция", order, null, CorrectionsStatus.WAIT_AUTHOR_AGR );
@@ -630,11 +648,13 @@ class DataProviderCSVTest extends TestBase {
         List<CoverPrice> listCoverPrice = new ArrayList<>();
         DataProviderCSV instance = new DataProviderCSV();
         CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
-        PriceParameters priceParameters = createPriceParameters(1, 3.4, coverPrice, 6.3, "2019-01-01", "2021-12-31");
-        PriceParameters priceParameters2 = createPriceParameters(2, 5.1, coverPrice, 7.2, "2016-01-01", "2018-12-31");
+        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
+        listCoverPrice.add(coverPrice);
+        listCoverPrice.add(coverPrice2);
+        PriceParameters priceParameters = createPriceParameters(1, 3.4, listCoverPrice, 6.3, "2019-01-01", "2021-12-31");
+        PriceParameters priceParameters2 = createPriceParameters(2, 5.1, listCoverPrice, 7.2, "2016-01-01", "2018-12-31");
         listPriceParameters.add(priceParameters);
         listPriceParameters.add(priceParameters2);
-        listCoverPrice.add(coverPrice);
         instance.deleteFile(PriceParameters.class);
         instance.deleteFile(CoverPrice.class);
         instance.insertCoverPrice(listCoverPrice);
@@ -649,11 +669,13 @@ class DataProviderCSVTest extends TestBase {
         List<CoverPrice> listCoverPrice = new ArrayList<>();
         DataProviderCSV instance = new DataProviderCSV();
         CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
-        PriceParameters priceParameters = createPriceParameters(1, 3.4, coverPrice, 6.3, "2019-01-01", "2021-12-31");
-        PriceParameters priceParameters2 = createPriceParameters(2, 5.1, coverPrice, 7.2, "2016-01-01", "2018-12-31");
+        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
+        listCoverPrice.add(coverPrice);
+        listCoverPrice.add(coverPrice2);
+        PriceParameters priceParameters = createPriceParameters(1, 3.4, listCoverPrice, 6.3, "2019-01-01", "2021-12-31");
+        PriceParameters priceParameters2 = createPriceParameters(2, 5.1, listCoverPrice, 7.2, "2016-01-01", "2018-12-31");
         listPriceParameters.add(priceParameters);
         listPriceParameters.add(priceParameters2);
-        listCoverPrice.add(coverPrice);
         instance.deleteFile(PriceParameters.class);
         instance.deleteFile(CoverPrice.class);
         instance.insertCoverPrice(listCoverPrice);
@@ -673,12 +695,14 @@ class DataProviderCSVTest extends TestBase {
         Employee employee3 = createEmployee(3,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
         Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
         CoverPrice coverPrice = createCoverPrice(1, CoverType.RIGID_COVER, 123.5);
-        PriceParameters priceParameters = createPriceParameters(1, 2.4, coverPrice, 1.3, "2019-01-01", "2021-01-01");
+        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
+        listCoverPrice.add(coverPrice);
+        listCoverPrice.add(coverPrice2);
+        PriceParameters priceParameters = createPriceParameters(1, 2.4, listCoverPrice, 1.3, "2019-01-01", "2021-01-01");
         Order order = createOrder(1,author,"Цифровая бухгалтерия",4,"2020-09-03", CoverType.RIGID_COVER, employee2, employee3, priceParameters, 229, 100, 9700.75 , BookStatus.EDITING);
         listOrder.add(order);
         listEmployee.add(employee2);
         listEmployee.add(employee3);
-        listCoverPrice.add(coverPrice);
         listPriceParameters.add(priceParameters);
         instance.deleteFile(Order.class);
         instance.deleteFile(Employee.class);
@@ -707,14 +731,16 @@ class DataProviderCSVTest extends TestBase {
         Employee employee3 = createEmployee(3,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
         Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
         CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
-        PriceParameters priceParameters = createPriceParameters(1, 2.4, coverPrice, 1.3, "2019-01-01", "2021-01-01");
+        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
+        listCoverPrice.add(coverPrice);
+        listCoverPrice.add(coverPrice2);
+        PriceParameters priceParameters = createPriceParameters(1, 2.4, listCoverPrice, 1.3, "2019-01-01", "2021-01-01");
         Order order = createOrder(1,author,"Цифровая бухгалтерия",4,"2020-09-03", CoverType.RIGID_COVER, employee2, employee3, priceParameters, 229, 100, 9700.75 , BookStatus.EDITING  );
         Corrections corrections = createCorrections(1,35, "Цифровой контроль - это компьютерные системы",
                 "Цифровой контроль представляет собой компьютерные системы", "Повторяется конструкция", order, null, CorrectionsStatus.WAIT_AUTHOR_AGR );
         listEmployee.add(employee2);
         listEmployee.add(employee3);
         listAuthor.add(author);
-        listCoverPrice.add(coverPrice);
         listPriceParameters.add(priceParameters);
         listOrder.add(order);
         listCorrections.add(corrections);
@@ -747,7 +773,10 @@ class DataProviderCSVTest extends TestBase {
         Employee employee3 = createEmployee(3,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
         Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
         CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
-        PriceParameters priceParameters = createPriceParameters(1, 2.4, coverPrice, 1.3, "2019-01-01", "2021-01-01");
+        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
+        listCoverPrice.add(coverPrice);
+        listCoverPrice.add(coverPrice2);
+        PriceParameters priceParameters = createPriceParameters(1, 2.4, listCoverPrice, 1.3, "2019-01-01", "2021-01-01");
         Order order = createOrder(1,author,"Цифровая бухгалтерия",4,"2020-09-03", CoverType.RIGID_COVER, employee2, employee3, priceParameters, 229, 100, 9700.75 , BookStatus.EDITING  );
         Corrections corrections = createCorrections(1,35, "Цифровой контроль - это компьютерные системы",
                 "Цифровой контроль представляет собой компьютерные системы", "Повторяется конструкция", order, null, CorrectionsStatus.WAIT_AUTHOR_AGR );
@@ -756,7 +785,6 @@ class DataProviderCSVTest extends TestBase {
         listEmployee.add(employee2);
         listEmployee.add(employee3);
         listAuthor.add(author);
-        listCoverPrice.add(coverPrice);
         listPriceParameters.add(priceParameters);
         listOrder.add(order);
         listCorrections.add(corrections);

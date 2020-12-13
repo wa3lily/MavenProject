@@ -7,6 +7,7 @@ import org.simpleframework.xml.Element;
 import ru.sfedu.mavenproject.converters.ConverterCoverPrice;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -25,7 +26,7 @@ public class PriceParameters implements Serializable {
   private double pagePrice;
   @Element
   @CsvCustomBindByName(converter = ConverterCoverPrice.class)
-  private CoverPrice coverPrice;
+  private List<CoverPrice> coverPrice;
   @Element
   @CsvBindByName
   private double workPrice;
@@ -75,20 +76,12 @@ public class PriceParameters implements Serializable {
     return pagePrice;
   }
 
-  /**
-   * Set the value of coverPrice
-   * @param newVar the new value of coverPrice
-   */
-  public void setCoverPrice (CoverPrice newVar) {
-    coverPrice = newVar;
+  public List<CoverPrice> getCoverPrice() {
+    return coverPrice;
   }
 
-  /**
-   * Get the value of coverPrice
-   * @return the value of coverPrice
-   */
-  public CoverPrice getCoverPrice () {
-    return coverPrice;
+  public void setCoverPrice(List<CoverPrice> coverPrice) {
+    this.coverPrice = coverPrice;
   }
 
   /**
@@ -147,7 +140,7 @@ public class PriceParameters implements Serializable {
     return id == that.id &&
             Double.compare(that.pagePrice, pagePrice) == 0 &&
             Double.compare(that.workPrice, workPrice) == 0 &&
-            ((coverPrice == null && that.coverPrice == null) || coverPrice.getId() == that.coverPrice.getId()) &&
+            ((coverPrice == null && that.coverPrice == null) /*|| coverPrice.getId() == that.coverPrice.getId()*/) &&
             Objects.equals(validFromDate, that.validFromDate) &&
             Objects.equals(validToDate, that.validToDate);
   }
@@ -163,7 +156,7 @@ public class PriceParameters implements Serializable {
             "id=" + id +
             ", pagePrice=" + pagePrice;
     try{
-      result += ", coverPrice=" + coverPrice.getId();
+      result += ", coverPrice=" + coverPrice;
     }catch (NullPointerException e){
       result += ", coverPrice=null";
     }

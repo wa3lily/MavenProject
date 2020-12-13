@@ -6,6 +6,9 @@ import ru.sfedu.mavenproject.enums.CorrectionsStatus;
 import ru.sfedu.mavenproject.enums.CoverType;
 import ru.sfedu.mavenproject.enums.EmployeeType;
 
+import java.util.Collections;
+import java.util.List;
+
 public class TestBase {
 
     public People createPeople (long id, String firstName, String secondName, String lastName, String phone){
@@ -115,7 +118,7 @@ public class TestBase {
         return correction;
     }
 
-    public PriceParameters createPriceParameters(long id, double pagePrice, CoverPrice coverPrice, double workPrice, String validFromDate, String validToDate){
+    public PriceParameters createPriceParameters(long id, double pagePrice, List<CoverPrice> coverPrice, double workPrice, String validFromDate, String validToDate){
         PriceParameters priceParameters = new PriceParameters();
         priceParameters.setId(id);
         priceParameters.setPagePrice(pagePrice);
