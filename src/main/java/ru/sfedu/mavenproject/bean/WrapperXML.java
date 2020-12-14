@@ -1,4 +1,4 @@
-package ru.sfedu.mavenproject.api;
+package ru.sfedu.mavenproject.bean;
 
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;

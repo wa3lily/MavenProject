@@ -1,4 +1,4 @@
-package ru.sfedu.mavenproject.converters;
+package ru.sfedu.mavenproject.bean.converters;
 
 import com.opencsv.bean.AbstractBeanField;
 import org.apache.logging.log4j.LogManager;

@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 import ru.sfedu.mavenproject.bean.People;
+import ru.sfedu.mavenproject.bean.WrapperXML;
 import ru.sfedu.mavenproject.utils.ConfigurationUtil;
 
 import java.io.File;

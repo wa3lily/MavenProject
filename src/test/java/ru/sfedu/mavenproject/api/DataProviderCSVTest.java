@@ -5,10 +5,10 @@ import org.apache.logging.log4j.Logger;
 import ru.sfedu.mavenproject.TestBase;
 import ru.sfedu.mavenproject.bean.*;
 import org.junit.jupiter.api.Test;
-import ru.sfedu.mavenproject.enums.BookStatus;
-import ru.sfedu.mavenproject.enums.CorrectionsStatus;
-import ru.sfedu.mavenproject.enums.CoverType;
-import ru.sfedu.mavenproject.enums.EmployeeType;
+import ru.sfedu.mavenproject.bean.enums.BookStatus;
+import ru.sfedu.mavenproject.bean.enums.CorrectionsStatus;
+import ru.sfedu.mavenproject.bean.enums.CoverType;
+import ru.sfedu.mavenproject.bean.enums.EmployeeType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -1020,6 +1020,93 @@ class DataProviderCSVTest extends TestBase {
         instance.sendOrderInformation(order);
         instance.addBookEditor(1,1);
         assertEquals(order, instance.getBookByID(Order.class, 1));
+    }
+
+    @Test
+    public void countPublishedBooksSuccess() throws Exception{
+        log.info("countPublishedBooksSuccess");
+        DataProviderCSV instance = new DataProviderCSV();
+        List<Author> listAuthor = new ArrayList<>();
+        List<Book> listBook = new ArrayList<>();
+        instance.deleteFile(Book.class);
+        instance.deleteFile(Author.class);
+        instance.deleteFile(Order.class);
+        instance.deleteFile(Employee.class);
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        Book book = createBook(1,author,"Цифровая бухгалтерия",229);
+        Book book1 = createBook(2,author,"Экономическая теория",437);
+        Book book2 = createBook(3,author,"Цифровая экономика",394);
+        listAuthor.add(author);
+        listBook.add(book);
+        listBook.add(book1);
+        listBook.add(book2);
+        instance.insertPeople(Author.class, listAuthor);
+        instance.insertBook(listBook);
+        Order order = instance.makeOrder(1, "2019-09-03", "RIGID_COVER", 100).orElse(null);
+        order.setBookStatus(BookStatus.DONE);
+        instance.sendOrderInformation(order);
+        Order order1 = instance.makeOrder(2, "2020-04-01", "RIGID_COVER", 200).orElse(null);
+        order1.setBookStatus(BookStatus.DONE);
+        instance.sendOrderInformation(order1);
+        Order order2 = instance.makeOrder(3, "2020-10-03", "RIGID_COVER", 300).orElse(null);
+        order2.setBookStatus(BookStatus.DONE);
+        instance.sendOrderInformation(order2);
+        assertEquals(2, instance.countPublishedBooks("2020-01-01", "2020-10-03"));
+    }
+
+    @Test
+    public void countPublishedBooksFail() throws Exception{
+        log.info("countPublishedBooksFail");
+        DataProviderCSV instance = new DataProviderCSV();
+        List<Author> listAuthor = new ArrayList<>();
+        List<Book> listBook = new ArrayList<>();
+        instance.deleteFile(Book.class);
+        instance.deleteFile(Author.class);
+        instance.deleteFile(Order.class);
+        instance.deleteFile(Employee.class);
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        Book book = createBook(1,author,"Цифровая бухгалтерия",229);
+        Book book1 = createBook(2,author,"Экономическая теория",437);
+        Book book2 = createBook(3,author,"Цифровая экономика",394);
+        listAuthor.add(author);
+        listBook.add(book);
+        listBook.add(book1);
+        listBook.add(book2);
+        instance.insertPeople(Author.class, listAuthor);
+        instance.insertBook(listBook);
+        Order order = instance.makeOrder(1, "2019-09-03", "RIGID_COVER", 100).orElse(null);
+        order.setBookStatus(BookStatus.DONE);
+        instance.sendOrderInformation(order);
+        Order order1 = instance.makeOrder(2, "2020-04-01", "RIGID_COVER", 200).orElse(null);
+        order1.setBookStatus(BookStatus.DONE);
+        instance.sendOrderInformation(order1);
+        Order order2 = instance.makeOrder(3, "2020-10-03", "RIGID_COVER", 300).orElse(null);
+        order2.setBookStatus(BookStatus.DONE);
+        instance.sendOrderInformation(order2);
+        assertEquals(0, instance.countPublishedBooks("2018-01-01", "2018-10-03"));
+    }
+
+    @Test
+    public void addCoverPriceSuccess() throws Exception{
+        log.info("addCoverPriceSuccess");
+        DataProviderCSV instance = new DataProviderCSV();
+        CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
+        instance.deleteFile(CoverPrice.class);
+        CoverPrice coverPrice1 = instance.addCoverPrice(1, "RIGID_COVER", 123.5 ).orElse(null);
+        assertEquals(coverPrice, coverPrice1);
+    }
+
+    @Test
+    public void addCoverPriceFail() throws Exception{
+        log.info("addCoverPriceFail");
+        DataProviderCSV instance = new DataProviderCSV();
+        List<CoverPrice> list = new ArrayList<>();
+        instance.deleteFile(CoverPrice.class);
+        CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
+        list.add(coverPrice);
+        instance.insertCoverPrice(list);
+        CoverPrice coverPrice1 = instance.addCoverPrice(1, "RIGID_COVER", 153.2 ).orElse(null);
+        assertNull(coverPrice1);
     }
 
 

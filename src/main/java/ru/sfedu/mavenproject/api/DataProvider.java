@@ -1,9 +1,9 @@
 package ru.sfedu.mavenproject.api;
 
 import ru.sfedu.mavenproject.bean.*;
-import ru.sfedu.mavenproject.enums.BookStatus;
-import ru.sfedu.mavenproject.enums.CorrectionsStatus;
-import ru.sfedu.mavenproject.enums.CoverType;
+import ru.sfedu.mavenproject.bean.enums.BookStatus;
+import ru.sfedu.mavenproject.bean.enums.CorrectionsStatus;
+import ru.sfedu.mavenproject.bean.enums.CoverType;
 import java.util.List;
 import java.util.Optional;
 
@@ -235,7 +235,16 @@ public interface DataProvider {
       */
      long countEditingBooks (String startDate, String deadline);
 
+     /**
+      * @param startDate
+      * @param deadline
+      * @param bookStatus
+      * @return
+      */
+     long countStatistic (String startDate, String deadline, BookStatus bookStatus);
+
 ////Admin
+
 
      /**
       * @param id
@@ -246,7 +255,8 @@ public interface DataProvider {
       * @param validToDate
       * @return
       */
-     Optional<PriceParameters> createPriceParameters(long id, double pagePrice, List<CoverPrice> coverPrice, double workPrice, String validFromDate, String validToDate);
+     Optional<PriceParameters> addPriceParameters(long id, double pagePrice, List<CoverPrice> coverPrice, double workPrice, String validFromDate, String validToDate);
+
 
      /**
       * @param id
@@ -254,14 +264,13 @@ public interface DataProvider {
       * @param price
       * @return
       */
-     Optional<CoverPrice> createCoverPrice(long id, CoverType coverType, double price);
+     Optional<CoverPrice> addCoverPrice(long id, String coverType, double price);
+
 
      /**
-      * @param startDate
-      * @param deadline
+      * @param OrderId
       * @param bookStatus
       * @return
       */
-     long countEditing (String startDate, String deadline, BookStatus bookStatus);
-
+     boolean returnTo (long OrderId,BookStatus bookStatus);
 }

@@ -12,10 +12,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.sfedu.mavenproject.Constants;
 import ru.sfedu.mavenproject.bean.*;
-import ru.sfedu.mavenproject.enums.BookStatus;
-import ru.sfedu.mavenproject.enums.CorrectionsStatus;
-import ru.sfedu.mavenproject.enums.CoverType;
-import ru.sfedu.mavenproject.enums.EmployeeType;
+import ru.sfedu.mavenproject.bean.enums.BookStatus;
+import ru.sfedu.mavenproject.bean.enums.CorrectionsStatus;
+import ru.sfedu.mavenproject.bean.enums.CoverType;
+import ru.sfedu.mavenproject.bean.enums.EmployeeType;
 import ru.sfedu.mavenproject.utils.ConfigurationUtil;
 import java.io.*;
 import java.text.ParseException;
@@ -925,6 +925,7 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
+    @Override
     public boolean sendOrderInformation (Order order) {
         if (order == null){
             return false;
@@ -939,6 +940,7 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
+    @Override
     public Optional<Order> makeOrder (long id, String orderDate, String coverType, int numberOfCopies){
         if (getBookByID(Book.class, id) == null){
             log.info("There is not such Book");
@@ -975,6 +977,7 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
+    @Override
     public double calculateCost (long orderId) {
         Order order = (Order) getBookByID(Order.class, orderId);
         try {
@@ -1002,7 +1005,7 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
-    //additional
+    @Override
     public Optional<PriceParameters> selectPriceParameters(String date) {
         try {
             List<PriceParameters> list = read(PriceParameters.class);
@@ -1015,7 +1018,7 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
-    //additional
+    @Override
     public boolean belongInterval (String start, String end, String date) {
         try {
             SimpleDateFormat dateForm = new SimpleDateFormat("yyyy-MM-dd");
@@ -1033,6 +1036,7 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
+    @Override
     public double calculateEditorWorkCost (long idPriceParameters, int numberOfPages) {
         try {
             PriceParameters priceParameters = getPriceParametersByID(idPriceParameters);
@@ -1043,6 +1047,7 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
+    @Override
     public double calculatePrintingCost (long idPriceParameters, int numberOfPages){
         try {
             PriceParameters priceParameters = getPriceParametersByID(idPriceParameters);
@@ -1053,6 +1058,7 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
+    @Override
     public double calculateCoverCost (long idPriceParameters, CoverType coverType){
         try {
             PriceParameters priceParameters = getPriceParametersByID(idPriceParameters);
@@ -1077,6 +1083,7 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
+    @Override
     public boolean takeAwayOrder (long id) {
         try {
             Order order = (Order) getBookByID(Order.class, id);
@@ -1087,6 +1094,7 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
+    @Override
     public List<Corrections> getListOfCorrections (long authorId) {
         try{
             if (getPeopleByID(Author.class, authorId) != null){
@@ -1102,6 +1110,7 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
+    @Override
     public List<Order> getListOfAuthorOrder (long authorId) {
         try{
             if (getPeopleByID(Author.class, authorId) != null){
@@ -1116,6 +1125,7 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
+    @Override
     public List<Book> getListOfAuthorBook (long authorId) {
         try{
             if (getPeopleByID(Author.class, authorId) != null){
@@ -1130,6 +1140,7 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
+    @Override
     public Optional<Author> addAuthor(long id,String firstName,String secondName,String lastName,String phone, String email,String degree,String organization){
         try {
             List<Author> list = read(Author.class);
@@ -1145,6 +1156,7 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
+    @Override
     public void setAuthor(Author author, long id,String firstName,String secondName,String lastName,String phone, String email,String degree,String organization){
         author.setId(id);
         author.setFirstName(firstName);
@@ -1158,6 +1170,7 @@ public class DataProviderCSV implements DataProvider {
 
     ////Editor
 
+    @Override
     public boolean addBookEditor(long OrderId, long EmployeeId){
         try {
             Order order = (Order) getBookByID(Order.class,OrderId);
@@ -1174,10 +1187,12 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
+    @Override
     public boolean returnToAuthor (long OrderId){
         return returnTo(OrderId,BookStatus.WAIT_AUTHOR_CORRECTIONS);
     }
 
+    @Override
     public boolean endEditing (long OrderId){
         try {
             Order order = findOrder(OrderId).get();
@@ -1190,6 +1205,7 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
+    @Override
     public Optional<Corrections> sendCorrectionsToAuthor(long id, int page, String textBefore, String textAfter, String comment, Order order, Meeting meet, CorrectionsStatus status){
         Corrections correction = new Corrections();
         correction.setId(id);
@@ -1203,6 +1219,7 @@ public class DataProviderCSV implements DataProvider {
         return Optional.of(correction);
     }
 
+    @Override
     public boolean makeMeeting (long correctionsId, long id, String meetDate, boolean authorAgreement, boolean editorAgreement) {
         try {
             Corrections corrections = getCorrectionsByID(correctionsId);
@@ -1222,6 +1239,7 @@ public class DataProviderCSV implements DataProvider {
 
 ////Maker
 
+    @Override
     public Optional<Order> findOrder(long orderId){
         Order order = (Order) getBookByID(Order.class,orderId);
         if (order == null){
@@ -1230,6 +1248,7 @@ public class DataProviderCSV implements DataProvider {
         return Optional.of(order);
     }
 
+    @Override
     public boolean returnTo (long OrderId,BookStatus bookStatus){
         try {
             Order order = findOrder(OrderId).get();
@@ -1242,10 +1261,12 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
+    @Override
     public boolean returnToEditor (long OrderId){
         return returnTo (OrderId, BookStatus.WAIT_EDITOR_AGR);
     }
 
+    @Override
     public boolean takeForPrinting (long OrderId,long EmployeeId){
         try{
             Order order = (Order) getBookByID(Order.class,OrderId);
@@ -1262,6 +1283,7 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
+    @Override
     public boolean markAsFinished (long OrderId){
         try{
             Order order = findOrder(OrderId).get();
@@ -1276,21 +1298,48 @@ public class DataProviderCSV implements DataProvider {
 
 ////Chief
 
+    @Override
     public long countPublishedBooks (String startDate, String deadline){
-        return countEditing(startDate,deadline,BookStatus.DONE);
+        return countStatistic(startDate,deadline,BookStatus.DONE);
     }
 
+    @Override
     public long countPrintingBooks (String startDate, String deadline){
-        return countEditing(startDate,deadline,BookStatus.MAKING);
+        return countStatistic(startDate,deadline,BookStatus.MAKING);
     }
 
+    @Override
     public long countEditingBooks (String startDate, String deadline){
-        return countEditing(startDate,deadline,BookStatus.EDITING);
+        return countStatistic(startDate,deadline,BookStatus.EDITING);
+    }
+
+    @Override
+    public long countStatistic (String startDate, String deadline, BookStatus bookStatus){
+        try {
+            List<Order> list = read(Order.class);
+            list = list.stream()
+                    .filter(el->el.getBookStatus() == bookStatus)
+                    .filter(el2->belongInterval(startDate,deadline,el2.getOrderDate()))
+                    .collect(Collectors.toList());
+            return list.size();
+        } catch (IOException e) {
+            log.error(e);
+            return -1;
+        }
     }
 
 ////Admin
 
-    public Optional<PriceParameters> createPriceParameters(long id, double pagePrice, List<CoverPrice> coverPrice, double workPrice, String validFromDate, String validToDate){
+    @Override
+    public Optional<PriceParameters> addPriceParameters(long id, double pagePrice, List<CoverPrice> coverPrice, double workPrice, String validFromDate, String validToDate){
+        try {
+            if (getPriceParametersByID(id) != null){
+                return Optional.empty();
+            }
+        } catch (IOException e) {
+            log.error(e);
+            return Optional.empty();
+        }
         PriceParameters priceParameters = new PriceParameters();
         priceParameters.setId(id);
         priceParameters.setPagePrice(pagePrice);
@@ -1301,25 +1350,20 @@ public class DataProviderCSV implements DataProvider {
         return Optional.of(priceParameters);
     }
 
-    public Optional<CoverPrice> createCoverPrice(long id, CoverType coverType, double price){
-        CoverPrice coverPrice = new CoverPrice();
-        coverPrice.setId(id);
-        coverPrice.setCoverType(coverType);
-        coverPrice.setPrice(price);
-        return Optional.of(coverPrice);
-    }
-
-    public long countEditing (String startDate, String deadline, BookStatus bookStatus){
+    @Override
+    public Optional<CoverPrice> addCoverPrice(long id, String coverType, double price){
         try {
-            List<Order> list = read(Order.class);
-            list.stream()
-                    .filter(el->el.getBookStatus() == bookStatus)
-                    .filter(el2->belongInterval(startDate,deadline,el2.getOrderDate()))
-                    .collect(Collectors.toList());
-            return list.size();
+            if (getCoverPriceByID(id) != null){
+                return Optional.empty();
+            }
         } catch (IOException e) {
             log.error(e);
-            return -1;
+            return Optional.empty();
         }
+        CoverPrice coverPrice = new CoverPrice();
+        coverPrice.setId(id);
+        coverPrice.setCoverType(CoverType.valueOf(coverType));
+        coverPrice.setPrice(price);
+        return Optional.of(coverPrice);
     }
 }

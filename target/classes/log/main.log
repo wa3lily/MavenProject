@@ -3650,3 +3650,835 @@
 2020-12-14 02:53:30 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
 2020-12-14 02:53:30 DEBUG DataProviderCSV:305 - will add to csv Order{id=1, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Цифровая бухгалтерия', numberOfPages=229, orderDate='2020-09-03', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=0, finalNumberOfPages=229, numberOfCopies=100, price=-1.0, bookStatus=UNTOUCHED}
 2020-12-14 02:53:30 ERROR DataProviderCSV:76 - java.util.NoSuchElementException: No value present
+2020-12-14 03:10:26 INFO  DataProviderCSVTest:25 - insertPeopleSuccess
+2020-12-14 03:10:27 DEBUG DataProviderCSV:173 - will add to csv People{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890'}
+2020-12-14 03:10:27 DEBUG DataProviderCSV:173 - will add to csv People{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'}
+2020-12-14 03:10:27 DEBUG DataProviderCSV:173 - will add to csv People{id=3, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012'}
+2020-12-14 03:10:27 INFO  DataProviderCSVTest:113 - insertMeetingSuccess
+2020-12-14 03:10:27 DEBUG DataProviderCSV:201 - will add to csv Meeting{id=1, meetDate='15.12.2020 11:55', authorAgreement=true, editorAgreement=false}
+2020-12-14 03:10:27 INFO  DataProviderCSVTest:596 - alterBookInsertSuccess
+2020-12-14 03:10:27 DEBUG DataProviderCSV:173 - will add to csv Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 03:10:27 ERROR DataProviderCSV:89 - java.util.NoSuchElementException: No value present
+2020-12-14 03:10:27 INFO  DataProviderCSV:912 - Insert Book
+2020-12-14 03:10:27 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 03:10:27 DEBUG DataProviderCSV:384 - will add to csv Book{id=1, author=10, title='Цифровая бухгалтерия', numberOfPages=4}
+2020-12-14 03:10:27 INFO  DataProviderCSVTest:764 - getListOfCorrectionsSuccess
+2020-12-14 03:10:27 DEBUG DataProviderCSV:173 - will add to csv Employee{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'inn='234567890123', workRecordBook='2345678', emplpyeeType=MAKER}
+2020-12-14 03:10:27 DEBUG DataProviderCSV:173 - will add to csv Employee{id=3, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012'inn='345678901234', workRecordBook='3456789', emplpyeeType=EDITOR}
+2020-12-14 03:10:27 DEBUG DataProviderCSV:173 - will add to csv Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 03:10:28 DEBUG DataProviderCSV:224 - already exist in csv CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}
+2020-12-14 03:10:28 DEBUG DataProviderCSV:224 - already exist in csv CoverPrice{id=2, coverType=PAPERBACK, price=143.8}
+2020-12-14 03:10:28 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 03:10:28 DEBUG DataProviderCSV:267 - will add to csv PriceParameters{id=1, pagePrice=2.4, coverPrice=[CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}, CoverPrice{id=2, coverType=PAPERBACK, price=143.8}], workPrice=1.3, validFromDate='2019-01-01', validToDate='2021-01-01'}
+2020-12-14 03:10:28 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 03:10:28 DEBUG DataProviderCSV:305 - will add to csv Order{id=1, author=Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}, title='Цифровая бухгалтерия', numberOfPages=4, orderDate='2020-09-03', coverType=RIGID_COVER, bookMaker=2, bookEditor=3, bookPriceParameters=1, finalNumberOfPages=229, numberOfCopies=100, price=9700.75, bookStatus=EDITING}
+2020-12-14 03:10:28 DEBUG DataProviderCSV:338 - there is such Order and Meeting
+2020-12-14 03:10:28 DEBUG DataProviderCSV:345 - will add to csv Corrections{id=1, page=35, textBefore='Цифровой контроль - это компьютерные системы', textAfter='Цифровой контроль представляет собой компьютерные системы', comment='Повторяется конструкция', order=1, meet=null, status=WAIT_AUTHOR_AGR}
+2020-12-14 03:10:28 DEBUG DataProviderCSV:338 - there is such Order and Meeting
+2020-12-14 03:10:28 DEBUG DataProviderCSV:345 - will add to csv Corrections{id=2, page=65, textBefore='Цифровой контроль - это компьютерные системы', textAfter='Цифровой контроль представляет собой компьютерные системы', comment='Повторяется конструкция', order=1, meet=null, status=WAIT_AUTHOR_AGR}
+2020-12-14 03:10:28 DEBUG DataProviderCSVTest:803 - corrections for Author: [Corrections{id=1, page=35, textBefore='Цифровой контроль - это компьютерные системы', textAfter='Цифровой контроль представляет собой компьютерные системы', comment='Повторяется конструкция', order=1, meet=null, status=WAIT_AUTHOR_AGR}, Corrections{id=2, page=65, textBefore='Цифровой контроль - это компьютерные системы', textAfter='Цифровой контроль представляет собой компьютерные системы', comment='Повторяется конструкция', order=1, meet=null, status=WAIT_AUTHOR_AGR}]
+2020-12-14 03:10:28 INFO  DataProviderCSVTest:839 - sendOrderInformationSuccess
+2020-12-14 03:10:28 DEBUG DataProviderCSV:173 - will add to csv Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 03:10:28 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 03:10:28 DEBUG DataProviderCSV:384 - will add to csv Book{id=1, author=10, title='Цифровая бухгалтерия', numberOfPages=229}
+2020-12-14 03:10:28 DEBUG DataProviderCSV:173 - will add to csv Employee{id=0, firstName='Default', secondName='Default', lastName='Default', phone='00000000000'inn='000000000000', workRecordBook='0000000', emplpyeeType=ADMIN}
+2020-12-14 03:10:28 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=0, coverType=PAPERBACK, price=0.0}
+2020-12-14 03:10:28 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 03:10:28 DEBUG DataProviderCSV:267 - will add to csv PriceParameters{id=0, pagePrice=0.0, coverPrice=[CoverPrice{id=0, coverType=PAPERBACK, price=0.0}], workPrice=0.0, validFromDate='1970-01-01', validToDate='1970-01-02'}
+2020-12-14 03:10:28 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}
+2020-12-14 03:10:28 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=2, coverType=PAPERBACK, price=143.8}
+2020-12-14 03:10:28 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 03:10:28 DEBUG DataProviderCSV:267 - will add to csv PriceParameters{id=1, pagePrice=2.4, coverPrice=[CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}, CoverPrice{id=2, coverType=PAPERBACK, price=143.8}], workPrice=1.3, validFromDate='2019-01-01', validToDate='2021-01-01'}
+2020-12-14 03:10:28 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 03:10:28 DEBUG DataProviderCSV:305 - will add to csv Order{id=1, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Цифровая бухгалтерия', numberOfPages=229, orderDate='2020-09-03', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=0, finalNumberOfPages=229, numberOfCopies=100, price=-1.0, bookStatus=UNTOUCHED}
+2020-12-14 03:10:28 INFO  DataProviderCSVTest:295 - insertCorrectionsFail
+2020-12-14 03:10:28 ERROR DataProviderCSV:89 - java.util.NoSuchElementException: No value present
+2020-12-14 03:10:28 DEBUG DataProviderCSV:349 - there is not such Order or Meeting
+2020-12-14 03:10:28 ERROR DataProviderCSV:115 - java.util.NoSuchElementException: No value present
+2020-12-14 03:10:28 INFO  DataProviderCSVTest:667 - selectPriceParametersFail
+2020-12-14 03:10:28 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}
+2020-12-14 03:10:28 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=2, coverType=PAPERBACK, price=143.8}
+2020-12-14 03:10:28 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 03:10:28 DEBUG DataProviderCSV:267 - will add to csv PriceParameters{id=1, pagePrice=3.4, coverPrice=[CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}, CoverPrice{id=2, coverType=PAPERBACK, price=143.8}], workPrice=6.3, validFromDate='2019-01-01', validToDate='2021-12-31'}
+2020-12-14 03:10:28 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 03:10:28 DEBUG DataProviderCSV:267 - will add to csv PriceParameters{id=2, pagePrice=5.1, coverPrice=[CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}, CoverPrice{id=2, coverType=PAPERBACK, price=143.8}], workPrice=7.2, validFromDate='2016-01-01', validToDate='2018-12-31'}
+2020-12-14 03:10:28 INFO  DataProviderCSV:1006 - there is not suit PriceParameters
+2020-12-14 03:10:28 INFO  DataProviderCSVTest:322 - insertBookSuccess
+2020-12-14 03:10:28 DEBUG DataProviderCSV:173 - will add to csv Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 03:10:28 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 03:10:28 DEBUG DataProviderCSV:384 - will add to csv Book{id=1, author=10, title='Цифровая бухгалтерия', numberOfPages=4}
+2020-12-14 03:10:28 INFO  DataProviderCSVTest:827 - addAuthorFail
+2020-12-14 03:10:28 DEBUG DataProviderCSV:1135 - Author{id=1, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 03:10:28 DEBUG DataProviderCSV:173 - will add to csv Author{id=1, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 03:10:28 DEBUG DataProviderCSV:1135 - Author{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 03:10:28 DEBUG DataProviderCSV:168 - already exist in csv Author{id=1, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 03:10:28 DEBUG DataProviderCSV:170 - id already exist in csv Author{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 03:10:28 INFO  DataProviderCSVTest:460 - UpdateMeetingSuccess
+2020-12-14 03:10:28 DEBUG DataProviderCSV:201 - will add to csv Meeting{id=1, meetDate='2020-12-15 11:55', authorAgreement=true, editorAgreement=false}
+2020-12-14 03:10:29 DEBUG DataProviderCSV:201 - will add to csv Meeting{id=1, meetDate='2020-12-15 11:55', authorAgreement=false, editorAgreement=false}
+2020-12-14 03:10:29 DEBUG DataProviderCSV:464 - update success
+2020-12-14 03:10:29 INFO  DataProviderCSVTest:940 - calculateCostFail
+2020-12-14 03:10:29 INFO  DataProviderCSVTest:941 - calculateCostSuccess
+2020-12-14 03:10:29 DEBUG DataProviderCSV:173 - will add to csv Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 03:10:29 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 03:10:29 DEBUG DataProviderCSV:384 - will add to csv Book{id=1, author=10, title='Цифровая бухгалтерия', numberOfPages=299}
+2020-12-14 03:10:29 DEBUG DataProviderCSV:173 - will add to csv Employee{id=0, firstName='Default', secondName='Default', lastName='Default', phone='00000000000'inn='000000000000', workRecordBook='0000000', emplpyeeType=ADMIN}
+2020-12-14 03:10:29 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=0, coverType=PAPERBACK, price=0.0}
+2020-12-14 03:10:29 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 03:10:29 DEBUG DataProviderCSV:267 - will add to csv PriceParameters{id=0, pagePrice=0.0, coverPrice=[CoverPrice{id=0, coverType=PAPERBACK, price=0.0}], workPrice=0.0, validFromDate='1970-01-01', validToDate='1970-01-02'}
+2020-12-14 03:10:29 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}
+2020-12-14 03:10:29 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=2, coverType=PAPERBACK, price=143.8}
+2020-12-14 03:10:29 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 03:10:29 DEBUG DataProviderCSV:305 - will add to csv Order{id=1, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Цифровая бухгалтерия', numberOfPages=299, orderDate='2020-09-03', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=0, finalNumberOfPages=299, numberOfCopies=100, price=-1.0, bookStatus=UNTOUCHED}
+2020-12-14 03:10:29 INFO  DataProviderCSV:1006 - there is not suit PriceParameters
+2020-12-14 03:10:29 INFO  DataProviderCSV:1006 - there is not suit PriceParameters
+2020-12-14 03:10:29 DEBUG DataProviderCSV:983 - null
+2020-12-14 03:10:29 INFO  DataProviderCSVTest:552 - testDeleteBookFail
+2020-12-14 03:10:29 DEBUG DataProviderCSV:173 - will add to csv Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 03:10:29 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 03:10:29 DEBUG DataProviderCSV:384 - will add to csv Book{id=1, author=10, title='Цифровая бухгалтерия', numberOfPages=4}
+2020-12-14 03:10:29 INFO  DataProviderCSV:624 - delete author
+2020-12-14 03:10:29 DEBUG DataProviderCSV:788 - delete fail
+2020-12-14 03:10:29 INFO  DataProviderCSV:604 - delete book
+2020-12-14 03:10:29 DEBUG DataProviderCSV:685 - delete success
+2020-12-14 03:10:29 ERROR DataProviderCSV:89 - java.util.NoSuchElementException: No value present
+2020-12-14 03:10:29 INFO  DataProviderCSVTest:137 - insertCoverPriceSuccess
+2020-12-14 03:10:29 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}
+2020-12-14 03:10:29 INFO  DataProviderCSVTest:488 - testUpdateBookSuccess
+2020-12-14 03:10:29 DEBUG DataProviderCSV:173 - will add to csv Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 03:10:29 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 03:10:29 DEBUG DataProviderCSV:384 - will add to csv Book{id=1, author=10, title='Цифровая бухгалтерия', numberOfPages=4}
+2020-12-14 03:10:29 DEBUG DataProviderCSV:173 - will add to csv Author{id=12, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 03:10:29 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 03:10:29 DEBUG DataProviderCSV:384 - will add to csv Book{id=1, author=12, title='Цифровая бухгалтерия', numberOfPages=4}
+2020-12-14 03:10:29 DEBUG DataProviderCSV:579 - update success
+2020-12-14 03:10:29 INFO  DataProviderCSVTest:902 - calculateCostSuccess
+2020-12-14 03:10:29 DEBUG DataProviderCSV:173 - will add to csv Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 03:10:29 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 03:10:29 DEBUG DataProviderCSV:384 - will add to csv Book{id=1, author=10, title='Цифровая бухгалтерия', numberOfPages=299}
+2020-12-14 03:10:29 DEBUG DataProviderCSV:173 - will add to csv Employee{id=0, firstName='Default', secondName='Default', lastName='Default', phone='00000000000'inn='000000000000', workRecordBook='0000000', emplpyeeType=ADMIN}
+2020-12-14 03:10:29 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=0, coverType=PAPERBACK, price=0.0}
+2020-12-14 03:10:29 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 03:10:29 DEBUG DataProviderCSV:267 - will add to csv PriceParameters{id=0, pagePrice=0.0, coverPrice=[CoverPrice{id=0, coverType=PAPERBACK, price=0.0}], workPrice=0.0, validFromDate='1970-01-01', validToDate='1970-01-02'}
+2020-12-14 03:10:29 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}
+2020-12-14 03:10:29 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=2, coverType=PAPERBACK, price=143.8}
+2020-12-14 03:10:29 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 03:10:29 DEBUG DataProviderCSV:267 - will add to csv PriceParameters{id=1, pagePrice=2.4, coverPrice=[CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}, CoverPrice{id=2, coverType=PAPERBACK, price=143.8}], workPrice=1.3, validFromDate='2019-01-01', validToDate='2021-01-01'}
+2020-12-14 03:10:29 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 03:10:29 DEBUG DataProviderCSV:305 - will add to csv Order{id=1, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Цифровая бухгалтерия', numberOfPages=299, orderDate='2020-09-03', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=0, finalNumberOfPages=299, numberOfCopies=100, price=-1.0, bookStatus=UNTOUCHED}
+2020-12-14 03:10:29 INFO  DataProviderCSV:1006 - PriceParamets selected
+2020-12-14 03:10:29 INFO  DataProviderCSV:1006 - PriceParamets selected
+2020-12-14 03:10:29 DEBUG DataProviderCSV:983 - PriceParameters{id=1, pagePrice=2.4, coverPrice=[CoverPrice{id=1, coverType=null, price=0.0}, CoverPrice{id=2, coverType=null, price=0.0}], workPrice=1.3, validFromDate='2019-01-01', validToDate='2021-01-01'}
+2020-12-14 03:10:29 DEBUG DataProviderCSV:1063 - [CoverPrice{id=1, coverType=null, price=0.0}]
+2020-12-14 03:10:29 DEBUG DataProviderCSV:990 - calculate cost done
+2020-12-14 03:10:30 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 03:10:30 DEBUG DataProviderCSV:305 - will add to csv Order{id=1, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Цифровая бухгалтерия', numberOfPages=299, orderDate='2020-09-03', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=1, finalNumberOfPages=299, numberOfCopies=100, price=122980.0, bookStatus=UNTOUCHED}
+2020-12-14 03:10:30 DEBUG DataProviderCSV:533 - update success
+2020-12-14 03:10:30 INFO  DataProviderCSVTest:125 - insertMeetingFail
+2020-12-14 03:10:30 DEBUG DataProviderCSV:201 - will add to csv Meeting{id=1, meetDate='15.12.2020 11:55', authorAgreement=true, editorAgreement=false}
+2020-12-14 03:10:30 ERROR DataProviderCSV:102 - java.util.NoSuchElementException: No value present
+2020-12-14 03:10:30 INFO  DataProviderCSVTest:180 - insertPriceParametersFail
+2020-12-14 03:10:30 ERROR DataProviderCSV:141 - java.util.NoSuchElementException: No value present
+2020-12-14 03:10:30 DEBUG DataProviderCSV:271 - there is not such CoverPrice
+2020-12-14 03:10:30 ERROR DataProviderCSV:128 - java.util.NoSuchElementException: No value present
+2020-12-14 03:10:30 INFO  DataProviderCSVTest:353 - testInsertFewSuccess
+2020-12-14 03:10:30 DEBUG DataProviderCSV:173 - will add to csv Employee{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890'inn='123456789012', workRecordBook='1234567', emplpyeeType=CHIEF}
+2020-12-14 03:10:30 DEBUG DataProviderCSV:173 - will add to csv Employee{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'inn='234567890123', workRecordBook='2345678', emplpyeeType=MAKER}
+2020-12-14 03:10:30 DEBUG DataProviderCSV:173 - will add to csv Employee{id=3, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012'inn='345678901234', workRecordBook='3456789', emplpyeeType=EDITOR}
+2020-12-14 03:10:30 INFO  DataProviderCSVTest:149 - insertCoverPriceFail
+2020-12-14 03:10:30 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}
+2020-12-14 03:10:30 ERROR DataProviderCSV:141 - java.util.NoSuchElementException: No value present
+2020-12-14 03:10:30 INFO  DataProviderCSVTest:646 - selectPriceParametersSuccess
+2020-12-14 03:10:30 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}
+2020-12-14 03:10:30 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=2, coverType=PAPERBACK, price=143.8}
+2020-12-14 03:10:30 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 03:10:30 DEBUG DataProviderCSV:267 - will add to csv PriceParameters{id=1, pagePrice=3.4, coverPrice=[CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}, CoverPrice{id=2, coverType=PAPERBACK, price=143.8}], workPrice=6.3, validFromDate='2019-01-01', validToDate='2021-12-31'}
+2020-12-14 03:10:30 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 03:10:30 DEBUG DataProviderCSV:267 - will add to csv PriceParameters{id=2, pagePrice=5.1, coverPrice=[CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}, CoverPrice{id=2, coverType=PAPERBACK, price=143.8}], workPrice=7.2, validFromDate='2016-01-01', validToDate='2018-12-31'}
+2020-12-14 03:10:30 INFO  DataProviderCSV:1006 - PriceParamets selected
+2020-12-14 03:10:30 INFO  DataProviderCSVTest:425 - testUpdateSuccess
+2020-12-14 03:10:30 DEBUG DataProviderCSV:173 - will add to csv Employee{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890'inn='123456789012', workRecordBook='1234567', emplpyeeType=CHIEF}
+2020-12-14 03:10:30 DEBUG DataProviderCSV:173 - will add to csv Employee{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'inn='234567890123', workRecordBook='2345678', emplpyeeType=MAKER}
+2020-12-14 03:10:30 DEBUG DataProviderCSV:173 - will add to csv Employee{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890'inn='123456789012', workRecordBook='1234567', emplpyeeType=CHIEF}
+2020-12-14 03:10:30 DEBUG DataProviderCSV:173 - will add to csv Employee{id=2, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012'inn='345678901234', workRecordBook='3456789', emplpyeeType=EDITOR}
+2020-12-14 03:10:30 DEBUG DataProviderCSV:441 - update success
+2020-12-14 03:10:30 INFO  DataProviderCSVTest:97 - insertEmployeeFail
+2020-12-14 03:10:30 DEBUG DataProviderCSV:173 - will add to csv Employee{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890'inn='123456789012', workRecordBook='1234567', emplpyeeType=CHIEF}
+2020-12-14 03:10:30 DEBUG DataProviderCSV:173 - will add to csv Employee{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'inn='234567890123', workRecordBook='2345678', emplpyeeType=MAKER}
+2020-12-14 03:10:30 DEBUG DataProviderCSV:173 - will add to csv Employee{id=3, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012'inn='345678901234', workRecordBook='3456789', emplpyeeType=EDITOR}
+2020-12-14 03:10:30 ERROR DataProviderCSV:76 - java.util.NoSuchElementException: No value present
+2020-12-14 03:10:30 INFO  DataProviderCSVTest:416 - testReadFail
+2020-12-14 03:10:30 INFO  DataProviderCSVTest:444 - testUpdateFail
+2020-12-14 03:10:30 DEBUG DataProviderCSV:173 - will add to csv Employee{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890'inn='123456789012', workRecordBook='1234567', emplpyeeType=CHIEF}
+2020-12-14 03:10:30 DEBUG DataProviderCSV:173 - will add to csv Employee{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'inn='234567890123', workRecordBook='2345678', emplpyeeType=MAKER}
+2020-12-14 03:10:30 ERROR DataProviderCSV:76 - java.util.NoSuchElementException: No value present
+2020-12-14 03:10:30 DEBUG DataProviderCSV:449 - update fail
+2020-12-14 03:10:30 INFO  DataProviderCSVTest:254 - insertCorrectionsSuccess
+2020-12-14 03:10:30 DEBUG DataProviderCSV:173 - will add to csv Employee{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'inn='234567890123', workRecordBook='2345678', emplpyeeType=MAKER}
+2020-12-14 03:10:30 DEBUG DataProviderCSV:173 - will add to csv Employee{id=3, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012'inn='345678901234', workRecordBook='3456789', emplpyeeType=EDITOR}
+2020-12-14 03:10:30 DEBUG DataProviderCSV:173 - will add to csv Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 03:10:30 DEBUG DataProviderCSV:224 - already exist in csv CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}
+2020-12-14 03:10:30 DEBUG DataProviderCSV:224 - already exist in csv CoverPrice{id=2, coverType=PAPERBACK, price=143.8}
+2020-12-14 03:10:30 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 03:10:30 DEBUG DataProviderCSV:267 - will add to csv PriceParameters{id=1, pagePrice=2.4, coverPrice=[CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}, CoverPrice{id=2, coverType=PAPERBACK, price=143.8}], workPrice=1.3, validFromDate='2019-01-01', validToDate='2021-01-01'}
+2020-12-14 03:10:30 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 03:10:30 DEBUG DataProviderCSV:305 - will add to csv Order{id=1, author=Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}, title='Цифровая бухгалтерия', numberOfPages=4, orderDate='2020-09-03', coverType=RIGID_COVER, bookMaker=2, bookEditor=3, bookPriceParameters=1, finalNumberOfPages=229, numberOfCopies=100, price=9700.75, bookStatus=EDITING}
+2020-12-14 03:10:30 DEBUG DataProviderCSV:338 - there is such Order and Meeting
+2020-12-14 03:10:30 DEBUG DataProviderCSV:345 - will add to csv Corrections{id=1, page=35, textBefore='Цифровой контроль - это компьютерные системы', textAfter='Цифровой контроль представляет собой компьютерные системы', comment='Повторяется конструкция', order=1, meet=null, status=WAIT_AUTHOR_AGR}
+2020-12-14 03:10:30 INFO  DataProviderCSVTest:474 - UpdateMeetingSuccess
+2020-12-14 03:10:30 DEBUG DataProviderCSV:201 - will add to csv Meeting{id=1, meetDate='2020-12-15 11:55', authorAgreement=true, editorAgreement=false}
+2020-12-14 03:10:30 ERROR DataProviderCSV:102 - java.util.NoSuchElementException: No value present
+2020-12-14 03:10:30 DEBUG DataProviderCSV:472 - update fail
+2020-12-14 03:10:30 INFO  DataProviderCSVTest:588 - testGetMaxIdFail
+2020-12-14 03:10:30 ERROR DataProviderCSV:848 - java.util.NoSuchElementException: No value present
+2020-12-14 03:10:30 INFO  DataProviderCSVTest:688 - insertOrderSuccess
+2020-12-14 03:10:30 DEBUG DataProviderCSV:173 - will add to csv Employee{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'inn='234567890123', workRecordBook='2345678', emplpyeeType=MAKER}
+2020-12-14 03:10:30 DEBUG DataProviderCSV:173 - will add to csv Employee{id=3, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012'inn='345678901234', workRecordBook='3456789', emplpyeeType=EDITOR}
+2020-12-14 03:10:30 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}
+2020-12-14 03:10:30 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=2, coverType=PAPERBACK, price=143.8}
+2020-12-14 03:10:30 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 03:10:30 DEBUG DataProviderCSV:267 - will add to csv PriceParameters{id=1, pagePrice=2.4, coverPrice=[CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}, CoverPrice{id=2, coverType=PAPERBACK, price=143.8}], workPrice=1.3, validFromDate='2019-01-01', validToDate='2021-01-01'}
+2020-12-14 03:10:30 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 03:10:30 DEBUG DataProviderCSV:305 - will add to csv Order{id=1, author=Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}, title='Цифровая бухгалтерия', numberOfPages=4, orderDate='2020-09-03', coverType=RIGID_COVER, bookMaker=2, bookEditor=3, bookPriceParameters=1, finalNumberOfPages=229, numberOfCopies=100, price=9700.75, bookStatus=EDITING}
+2020-12-14 03:10:30 DEBUG DataProviderCSV:745 - delete success
+2020-12-14 03:10:30 ERROR DataProviderCSV:89 - java.util.NoSuchElementException: No value present
+2020-12-14 03:10:30 INFO  DataProviderCSVTest:532 - testDeleteBookSuccess
+2020-12-14 03:10:30 DEBUG DataProviderCSV:173 - will add to csv Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 03:10:30 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 03:10:30 DEBUG DataProviderCSV:384 - will add to csv Book{id=1, author=10, title='Цифровая бухгалтерия', numberOfPages=4}
+2020-12-14 03:10:30 INFO  DataProviderCSV:604 - delete book
+2020-12-14 03:10:30 DEBUG DataProviderCSV:685 - delete success
+2020-12-14 03:10:30 INFO  DataProviderCSV:624 - delete author
+2020-12-14 03:10:30 DEBUG DataProviderCSV:785 - delete success
+2020-12-14 03:10:30 ERROR DataProviderCSV:89 - java.util.NoSuchElementException: No value present
+2020-12-14 03:10:30 ERROR DataProviderCSV:76 - java.util.NoSuchElementException: No value present
+2020-12-14 03:10:30 INFO  DataProviderCSVTest:722 - takeAwayOrderFail
+2020-12-14 03:10:30 DEBUG DataProviderCSV:173 - will add to csv Employee{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'inn='234567890123', workRecordBook='2345678', emplpyeeType=MAKER}
+2020-12-14 03:10:30 DEBUG DataProviderCSV:173 - will add to csv Employee{id=3, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012'inn='345678901234', workRecordBook='3456789', emplpyeeType=EDITOR}
+2020-12-14 03:10:30 DEBUG DataProviderCSV:173 - will add to csv Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 03:10:30 DEBUG DataProviderCSV:224 - already exist in csv CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}
+2020-12-14 03:10:30 DEBUG DataProviderCSV:224 - already exist in csv CoverPrice{id=2, coverType=PAPERBACK, price=143.8}
+2020-12-14 03:10:30 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 03:10:30 DEBUG DataProviderCSV:267 - will add to csv PriceParameters{id=1, pagePrice=2.4, coverPrice=[CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}, CoverPrice{id=2, coverType=PAPERBACK, price=143.8}], workPrice=1.3, validFromDate='2019-01-01', validToDate='2021-01-01'}
+2020-12-14 03:10:30 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 03:10:30 DEBUG DataProviderCSV:305 - will add to csv Order{id=1, author=Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}, title='Цифровая бухгалтерия', numberOfPages=4, orderDate='2020-09-03', coverType=RIGID_COVER, bookMaker=2, bookEditor=3, bookPriceParameters=1, finalNumberOfPages=229, numberOfCopies=100, price=9700.75, bookStatus=EDITING}
+2020-12-14 03:10:31 DEBUG DataProviderCSV:338 - there is such Order and Meeting
+2020-12-14 03:10:31 DEBUG DataProviderCSV:345 - will add to csv Corrections{id=1, page=35, textBefore='Цифровой контроль - это компьютерные системы', textAfter='Цифровой контроль представляет собой компьютерные системы', comment='Повторяется конструкция', order=1, meet=null, status=WAIT_AUTHOR_AGR}
+2020-12-14 03:10:31 DEBUG DataProviderCSV:748 - delete fail
+2020-12-14 03:10:31 INFO  DataProviderCSVTest:817 - addAuthorSuccess
+2020-12-14 03:10:31 DEBUG DataProviderCSV:1135 - Author{id=1, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 03:10:31 DEBUG DataProviderCSV:173 - will add to csv Author{id=1, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 03:10:31 INFO  DataProviderCSVTest:1005 - addBookEditorFail
+2020-12-14 03:10:31 DEBUG DataProviderCSV:173 - will add to csv Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 03:10:31 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 03:10:31 DEBUG DataProviderCSV:384 - will add to csv Book{id=1, author=10, title='Цифровая бухгалтерия', numberOfPages=229}
+2020-12-14 03:10:31 DEBUG DataProviderCSV:173 - will add to csv Employee{id=0, firstName='Default', secondName='Default', lastName='Default', phone='00000000000'inn='000000000000', workRecordBook='0000000', emplpyeeType=ADMIN}
+2020-12-14 03:10:31 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=0, coverType=PAPERBACK, price=0.0}
+2020-12-14 03:10:31 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 03:10:31 DEBUG DataProviderCSV:267 - will add to csv PriceParameters{id=0, pagePrice=0.0, coverPrice=[CoverPrice{id=0, coverType=PAPERBACK, price=0.0}], workPrice=0.0, validFromDate='1970-01-01', validToDate='1970-01-02'}
+2020-12-14 03:10:31 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 03:10:31 DEBUG DataProviderCSV:305 - will add to csv Order{id=1, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Цифровая бухгалтерия', numberOfPages=229, orderDate='2020-09-03', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=0, finalNumberOfPages=229, numberOfCopies=100, price=-1.0, bookStatus=UNTOUCHED}
+2020-12-14 03:10:31 ERROR DataProviderCSV:76 - java.util.NoSuchElementException: No value present
+2020-12-14 03:10:31 INFO  DataProviderCSVTest:375 - testInsertFewFail
+2020-12-14 03:10:31 DEBUG DataProviderCSV:173 - will add to csv Employee{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890'inn='123456789012', workRecordBook='1234567', emplpyeeType=CHIEF}
+2020-12-14 03:10:31 DEBUG DataProviderCSV:173 - will add to csv Employee{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'inn='234567890123', workRecordBook='2345678', emplpyeeType=MAKER}
+2020-12-14 03:10:31 DEBUG DataProviderCSV:168 - already exist in csv Employee{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890'inn='123456789012', workRecordBook='1234567', emplpyeeType=CHIEF}
+2020-12-14 03:10:31 DEBUG DataProviderCSV:170 - id already exist in csv Employee{id=2, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012'inn='345678901234', workRecordBook='3456789', emplpyeeType=EDITOR}
+2020-12-14 03:10:31 INFO  DataProviderCSVTest:41 - insertPeopleFail
+2020-12-14 03:10:31 DEBUG DataProviderCSV:173 - will add to csv People{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890'}
+2020-12-14 03:10:31 DEBUG DataProviderCSV:173 - will add to csv People{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'}
+2020-12-14 03:10:31 DEBUG DataProviderCSV:173 - will add to csv People{id=3, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012'}
+2020-12-14 03:10:31 ERROR DataProviderCSV:76 - java.util.NoSuchElementException: No value present
+2020-12-14 03:10:31 INFO  DataProviderCSVTest:198 - insertOrderSuccess
+2020-12-14 03:10:31 DEBUG DataProviderCSV:173 - will add to csv Employee{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'inn='234567890123', workRecordBook='2345678', emplpyeeType=MAKER}
+2020-12-14 03:10:31 DEBUG DataProviderCSV:173 - will add to csv Employee{id=3, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012'inn='345678901234', workRecordBook='3456789', emplpyeeType=EDITOR}
+2020-12-14 03:10:31 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}
+2020-12-14 03:10:31 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=2, coverType=PAPERBACK, price=143.8}
+2020-12-14 03:10:31 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 03:10:31 DEBUG DataProviderCSV:267 - will add to csv PriceParameters{id=1, pagePrice=2.4, coverPrice=[CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}, CoverPrice{id=2, coverType=PAPERBACK, price=143.8}], workPrice=1.3, validFromDate='2019-01-01', validToDate='2021-01-01'}
+2020-12-14 03:10:31 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 03:10:31 DEBUG DataProviderCSV:305 - will add to csv Order{id=1, author=Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}, title='Цифровая бухгалтерия', numberOfPages=4, orderDate='2020-09-03', coverType=RIGID_COVER, bookMaker=2, bookEditor=3, bookPriceParameters=1, finalNumberOfPages=229, numberOfCopies=100, price=9700.75, bookStatus=EDITING}
+2020-12-14 03:10:31 INFO  DataProviderCSVTest:161 - insertPriceParametersSuccess
+2020-12-14 03:10:31 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}
+2020-12-14 03:10:31 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=2, coverType=PAPERBACK, price=143.8}
+2020-12-14 03:10:31 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 03:10:31 DEBUG DataProviderCSV:267 - will add to csv PriceParameters{id=1, pagePrice=13.4, coverPrice=[CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}, CoverPrice{id=2, coverType=PAPERBACK, price=143.8}], workPrice=16.3, validFromDate='2019-01-01', validToDate='2021-01-01'}
+2020-12-14 03:10:31 INFO  DataProviderCSVTest:400 - testReadSuccess
+2020-12-14 03:10:31 DEBUG DataProviderCSV:173 - will add to csv Employee{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890'inn='123456789012', workRecordBook='1234567', emplpyeeType=CHIEF}
+2020-12-14 03:10:31 DEBUG DataProviderCSV:173 - will add to csv Employee{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'inn='234567890123', workRecordBook='2345678', emplpyeeType=MAKER}
+2020-12-14 03:10:31 DEBUG DataProviderCSV:173 - will add to csv Employee{id=3, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012'inn='345678901234', workRecordBook='3456789', emplpyeeType=EDITOR}
+2020-12-14 03:10:31 INFO  DataProviderCSVTest:81 - insertEmployeeSuccess
+2020-12-14 03:10:31 DEBUG DataProviderCSV:173 - will add to csv Employee{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890'inn='123456789012', workRecordBook='1234567', emplpyeeType=CHIEF}
+2020-12-14 03:10:31 DEBUG DataProviderCSV:173 - will add to csv Employee{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'inn='234567890123', workRecordBook='2345678', emplpyeeType=MAKER}
+2020-12-14 03:10:31 DEBUG DataProviderCSV:173 - will add to csv Employee{id=3, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012'inn='345678901234', workRecordBook='3456789', emplpyeeType=EDITOR}
+2020-12-14 03:10:31 INFO  DataProviderCSVTest:57 - insertAuthorSuccess
+2020-12-14 03:10:31 DEBUG DataProviderCSV:173 - will add to csv Author{id=1, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 03:10:31 INFO  DataProviderCSVTest:611 - alterBookInsertFail
+2020-12-14 03:10:31 ERROR DataProviderCSV:76 - java.util.NoSuchElementException: No value present
+2020-12-14 03:10:31 INFO  DataProviderCSV:899 - There is not such Author
+2020-12-14 03:10:31 ERROR DataProviderCSV:89 - java.util.NoSuchElementException: No value present
+2020-12-14 03:10:31 INFO  DataProviderCSVTest:572 - testGetMaxIdSuccess
+2020-12-14 03:10:31 DEBUG DataProviderCSV:173 - will add to csv People{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890'}
+2020-12-14 03:10:31 DEBUG DataProviderCSV:173 - will add to csv People{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'}
+2020-12-14 03:10:31 DEBUG DataProviderCSV:173 - will add to csv People{id=3, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012'}
+2020-12-14 03:10:31 INFO  DataProviderCSVTest:511 - testUpdateBookFail
+2020-12-14 03:10:31 DEBUG DataProviderCSV:173 - will add to csv Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 03:10:31 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 03:10:31 DEBUG DataProviderCSV:384 - will add to csv Book{id=1, author=10, title='Цифровая бухгалтерия', numberOfPages=4}
+2020-12-14 03:10:31 ERROR DataProviderCSV:76 - java.util.NoSuchElementException: No value present
+2020-12-14 03:10:31 DEBUG DataProviderCSV:388 - there is not such Author
+2020-12-14 03:10:31 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 03:10:31 DEBUG DataProviderCSV:384 - will add to csv Book{id=1, author=10, title='Цифровая бухгалтерия', numberOfPages=4}
+2020-12-14 03:10:31 DEBUG DataProviderCSV:587 - update fail
+2020-12-14 03:10:31 INFO  DataProviderCSVTest:809 - getListOfCorrectionsFail
+2020-12-14 03:10:31 ERROR DataProviderCSV:76 - java.util.NoSuchElementException: No value present
+2020-12-14 03:10:31 INFO  DataProviderCSVTest:872 - sendOrderInformationFail
+2020-12-14 03:10:31 DEBUG DataProviderCSV:173 - will add to csv Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 03:10:31 ERROR DataProviderCSV:89 - java.util.NoSuchElementException: No value present
+2020-12-14 03:10:31 INFO  DataProviderCSV:940 - There is not such Book
+2020-12-14 03:10:31 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}
+2020-12-14 03:10:31 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=2, coverType=PAPERBACK, price=143.8}
+2020-12-14 03:10:31 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 03:10:31 DEBUG DataProviderCSV:267 - will add to csv PriceParameters{id=1, pagePrice=2.4, coverPrice=[CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}, CoverPrice{id=2, coverType=PAPERBACK, price=143.8}], workPrice=1.3, validFromDate='2019-01-01', validToDate='2021-01-01'}
+2020-12-14 03:10:31 ERROR DataProviderCSV:89 - java.util.NoSuchElementException: No value present
+2020-12-14 03:10:31 INFO  DataProviderCSVTest:621 - alterBookInsertSuccess
+2020-12-14 03:10:31 DEBUG DataProviderCSV:173 - will add to csv Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 03:10:31 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 03:10:31 DEBUG DataProviderCSV:384 - will add to csv Book{id=1, author=10, title='Цифровая бухгалтерия', numberOfPages=229}
+2020-12-14 03:10:31 DEBUG DataProviderCSV:173 - will add to csv Employee{id=0, firstName='Default', secondName='Default', lastName='Default', phone='00000000000'inn='000000000000', workRecordBook='0000000', emplpyeeType=ADMIN}
+2020-12-14 03:10:31 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=0, coverType=PAPERBACK, price=0.0}
+2020-12-14 03:10:31 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 03:10:31 DEBUG DataProviderCSV:267 - will add to csv PriceParameters{id=0, pagePrice=0.0, coverPrice=[CoverPrice{id=0, coverType=PAPERBACK, price=0.0}], workPrice=0.0, validFromDate='1970-01-01', validToDate='1970-01-02'}
+2020-12-14 03:10:32 INFO  DataProviderCSVTest:978 - addBookEditorSuccess
+2020-12-14 03:10:32 DEBUG DataProviderCSV:173 - will add to csv Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 03:10:32 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 03:10:32 DEBUG DataProviderCSV:384 - will add to csv Book{id=1, author=10, title='Цифровая бухгалтерия', numberOfPages=229}
+2020-12-14 03:10:32 DEBUG DataProviderCSV:173 - will add to csv Employee{id=0, firstName='Default', secondName='Default', lastName='Default', phone='00000000000'inn='000000000000', workRecordBook='0000000', emplpyeeType=ADMIN}
+2020-12-14 03:10:32 DEBUG DataProviderCSV:224 - already exist in csv CoverPrice{id=0, coverType=PAPERBACK, price=0.0}
+2020-12-14 03:10:32 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 03:10:32 DEBUG DataProviderCSV:262 - already exist in csv PriceParameters{id=0, pagePrice=0.0, coverPrice=[CoverPrice{id=0, coverType=PAPERBACK, price=0.0}], workPrice=0.0, validFromDate='1970-01-01', validToDate='1970-01-02'}
+2020-12-14 03:10:32 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 03:10:32 DEBUG DataProviderCSV:305 - will add to csv Order{id=1, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Цифровая бухгалтерия', numberOfPages=229, orderDate='2020-09-03', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=0, finalNumberOfPages=229, numberOfCopies=100, price=-1.0, bookStatus=UNTOUCHED}
+2020-12-14 03:10:32 DEBUG DataProviderCSV:173 - will add to csv Employee{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'inn='234567890123', workRecordBook='2345678', emplpyeeType=MAKER}
+2020-12-14 03:10:32 DEBUG DataProviderCSV:1165 - Order{id=1, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Цифровая бухгалтерия', numberOfPages=229, orderDate='2020-09-03', coverType=RIGID_COVER, bookMaker=0, bookEditor=2, bookPriceParameters=0, finalNumberOfPages=229, numberOfCopies=100, price=-1.0, bookStatus=UNTOUCHED}
+2020-12-14 03:10:32 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 03:10:32 DEBUG DataProviderCSV:305 - will add to csv Order{id=1, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Цифровая бухгалтерия', numberOfPages=229, orderDate='2020-09-03', coverType=RIGID_COVER, bookMaker=0, bookEditor=2, bookPriceParameters=0, finalNumberOfPages=229, numberOfCopies=100, price=-1.0, bookStatus=UNTOUCHED}
+2020-12-14 03:10:32 DEBUG DataProviderCSV:533 - update success
+2020-12-14 03:10:32 INFO  DataProviderCSVTest:230 - insertOrderFail
+2020-12-14 03:10:32 ERROR DataProviderCSV:76 - java.util.NoSuchElementException: No value present
+2020-12-14 03:10:32 DEBUG DataProviderCSV:309 - there is not such BookMaker or BookEditor or PriceParameters
+2020-12-14 03:10:32 ERROR DataProviderCSV:89 - java.util.NoSuchElementException: No value present
+2020-12-14 03:10:32 INFO  DataProviderCSVTest:638 - makeOrderFail
+2020-12-14 03:10:32 ERROR DataProviderCSV:89 - java.util.NoSuchElementException: No value present
+2020-12-14 03:10:32 INFO  DataProviderCSV:940 - There is not such Book
+2020-12-14 03:10:32 INFO  DataProviderCSVTest:69 - insertAuthorFail
+2020-12-14 03:10:32 DEBUG DataProviderCSV:173 - will add to csv Author{id=1, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 03:10:32 ERROR DataProviderCSV:76 - java.util.NoSuchElementException: No value present
+2020-12-14 03:10:32 INFO  DataProviderCSVTest:339 - insertBookFail
+2020-12-14 03:10:32 ERROR DataProviderCSV:76 - java.util.NoSuchElementException: No value present
+2020-12-14 03:10:32 DEBUG DataProviderCSV:388 - there is not such Author
+2020-12-14 03:10:32 ERROR DataProviderCSV:89 - java.util.NoSuchElementException: No value present
+2020-12-14 04:03:26 INFO  DataProviderCSVTest:25 - insertPeopleSuccess
+2020-12-14 04:03:26 DEBUG DataProviderCSV:173 - will add to csv People{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890'}
+2020-12-14 04:03:26 DEBUG DataProviderCSV:173 - will add to csv People{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'}
+2020-12-14 04:03:26 DEBUG DataProviderCSV:173 - will add to csv People{id=3, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012'}
+2020-12-14 04:03:26 INFO  DataProviderCSVTest:113 - insertMeetingSuccess
+2020-12-14 04:03:26 DEBUG DataProviderCSV:201 - will add to csv Meeting{id=1, meetDate='15.12.2020 11:55', authorAgreement=true, editorAgreement=false}
+2020-12-14 04:03:27 INFO  DataProviderCSVTest:596 - alterBookInsertSuccess
+2020-12-14 04:03:27 DEBUG DataProviderCSV:173 - will add to csv Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 04:03:27 ERROR DataProviderCSV:89 - java.util.NoSuchElementException: No value present
+2020-12-14 04:03:27 INFO  DataProviderCSV:916 - Insert Book
+2020-12-14 04:03:27 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 04:03:27 DEBUG DataProviderCSV:384 - will add to csv Book{id=1, author=10, title='Цифровая бухгалтерия', numberOfPages=4}
+2020-12-14 04:03:27 INFO  DataProviderCSVTest:764 - getListOfCorrectionsSuccess
+2020-12-14 04:03:27 DEBUG DataProviderCSV:173 - will add to csv Employee{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'inn='234567890123', workRecordBook='2345678', emplpyeeType=MAKER}
+2020-12-14 04:03:27 DEBUG DataProviderCSV:173 - will add to csv Employee{id=3, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012'inn='345678901234', workRecordBook='3456789', emplpyeeType=EDITOR}
+2020-12-14 04:03:27 DEBUG DataProviderCSV:173 - will add to csv Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 04:03:27 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}
+2020-12-14 04:03:27 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=2, coverType=PAPERBACK, price=143.8}
+2020-12-14 04:03:27 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 04:03:27 DEBUG DataProviderCSV:267 - will add to csv PriceParameters{id=1, pagePrice=2.4, coverPrice=[CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}, CoverPrice{id=2, coverType=PAPERBACK, price=143.8}], workPrice=1.3, validFromDate='2019-01-01', validToDate='2021-01-01'}
+2020-12-14 04:03:27 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 04:03:27 DEBUG DataProviderCSV:305 - will add to csv Order{id=1, author=Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}, title='Цифровая бухгалтерия', numberOfPages=4, orderDate='2020-09-03', coverType=RIGID_COVER, bookMaker=2, bookEditor=3, bookPriceParameters=1, finalNumberOfPages=229, numberOfCopies=100, price=9700.75, bookStatus=EDITING}
+2020-12-14 04:03:27 DEBUG DataProviderCSV:338 - there is such Order and Meeting
+2020-12-14 04:03:27 DEBUG DataProviderCSV:345 - will add to csv Corrections{id=1, page=35, textBefore='Цифровой контроль - это компьютерные системы', textAfter='Цифровой контроль представляет собой компьютерные системы', comment='Повторяется конструкция', order=1, meet=null, status=WAIT_AUTHOR_AGR}
+2020-12-14 04:03:27 DEBUG DataProviderCSV:338 - there is such Order and Meeting
+2020-12-14 04:03:27 DEBUG DataProviderCSV:345 - will add to csv Corrections{id=2, page=65, textBefore='Цифровой контроль - это компьютерные системы', textAfter='Цифровой контроль представляет собой компьютерные системы', comment='Повторяется конструкция', order=1, meet=null, status=WAIT_AUTHOR_AGR}
+2020-12-14 04:03:27 DEBUG DataProviderCSVTest:803 - corrections for Author: [Corrections{id=1, page=35, textBefore='Цифровой контроль - это компьютерные системы', textAfter='Цифровой контроль представляет собой компьютерные системы', comment='Повторяется конструкция', order=1, meet=null, status=WAIT_AUTHOR_AGR}, Corrections{id=2, page=65, textBefore='Цифровой контроль - это компьютерные системы', textAfter='Цифровой контроль представляет собой компьютерные системы', comment='Повторяется конструкция', order=1, meet=null, status=WAIT_AUTHOR_AGR}]
+2020-12-14 04:03:27 INFO  DataProviderCSVTest:839 - sendOrderInformationSuccess
+2020-12-14 04:03:27 DEBUG DataProviderCSV:173 - will add to csv Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 04:03:27 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 04:03:27 DEBUG DataProviderCSV:384 - will add to csv Book{id=1, author=10, title='Цифровая бухгалтерия', numberOfPages=229}
+2020-12-14 04:03:27 DEBUG DataProviderCSV:173 - will add to csv Employee{id=0, firstName='Default', secondName='Default', lastName='Default', phone='00000000000'inn='000000000000', workRecordBook='0000000', emplpyeeType=ADMIN}
+2020-12-14 04:03:27 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=0, coverType=PAPERBACK, price=0.0}
+2020-12-14 04:03:27 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 04:03:27 DEBUG DataProviderCSV:267 - will add to csv PriceParameters{id=0, pagePrice=0.0, coverPrice=[CoverPrice{id=0, coverType=PAPERBACK, price=0.0}], workPrice=0.0, validFromDate='1970-01-01', validToDate='1970-01-02'}
+2020-12-14 04:03:27 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}
+2020-12-14 04:03:27 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=2, coverType=PAPERBACK, price=143.8}
+2020-12-14 04:03:27 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 04:03:27 DEBUG DataProviderCSV:267 - will add to csv PriceParameters{id=1, pagePrice=2.4, coverPrice=[CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}, CoverPrice{id=2, coverType=PAPERBACK, price=143.8}], workPrice=1.3, validFromDate='2019-01-01', validToDate='2021-01-01'}
+2020-12-14 04:03:27 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 04:03:27 DEBUG DataProviderCSV:305 - will add to csv Order{id=1, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Цифровая бухгалтерия', numberOfPages=229, orderDate='2020-09-03', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=0, finalNumberOfPages=229, numberOfCopies=100, price=-1.0, bookStatus=UNTOUCHED}
+2020-12-14 04:03:27 INFO  DataProviderCSVTest:295 - insertCorrectionsFail
+2020-12-14 04:03:27 ERROR DataProviderCSV:89 - java.util.NoSuchElementException: No value present
+2020-12-14 04:03:27 DEBUG DataProviderCSV:349 - there is not such Order or Meeting
+2020-12-14 04:03:27 ERROR DataProviderCSV:115 - java.util.NoSuchElementException: No value present
+2020-12-14 04:03:27 INFO  DataProviderCSVTest:667 - selectPriceParametersFail
+2020-12-14 04:03:27 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}
+2020-12-14 04:03:27 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=2, coverType=PAPERBACK, price=143.8}
+2020-12-14 04:03:27 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 04:03:27 DEBUG DataProviderCSV:267 - will add to csv PriceParameters{id=1, pagePrice=3.4, coverPrice=[CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}, CoverPrice{id=2, coverType=PAPERBACK, price=143.8}], workPrice=6.3, validFromDate='2019-01-01', validToDate='2021-12-31'}
+2020-12-14 04:03:27 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 04:03:27 DEBUG DataProviderCSV:267 - will add to csv PriceParameters{id=2, pagePrice=5.1, coverPrice=[CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}, CoverPrice{id=2, coverType=PAPERBACK, price=143.8}], workPrice=7.2, validFromDate='2016-01-01', validToDate='2018-12-31'}
+2020-12-14 04:03:27 INFO  DataProviderCSV:1010 - there is not suit PriceParameters
+2020-12-14 04:03:27 INFO  DataProviderCSVTest:322 - insertBookSuccess
+2020-12-14 04:03:27 DEBUG DataProviderCSV:173 - will add to csv Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 04:03:27 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 04:03:27 DEBUG DataProviderCSV:384 - will add to csv Book{id=1, author=10, title='Цифровая бухгалтерия', numberOfPages=4}
+2020-12-14 04:03:27 INFO  DataProviderCSVTest:827 - addAuthorFail
+2020-12-14 04:03:27 DEBUG DataProviderCSV:1139 - Author{id=1, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 04:03:27 DEBUG DataProviderCSV:173 - will add to csv Author{id=1, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 04:03:27 DEBUG DataProviderCSV:1139 - Author{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 04:03:27 DEBUG DataProviderCSV:168 - already exist in csv Author{id=1, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 04:03:27 DEBUG DataProviderCSV:170 - id already exist in csv Author{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 04:03:28 INFO  DataProviderCSVTest:460 - UpdateMeetingSuccess
+2020-12-14 04:03:28 DEBUG DataProviderCSV:201 - will add to csv Meeting{id=1, meetDate='2020-12-15 11:55', authorAgreement=true, editorAgreement=false}
+2020-12-14 04:03:28 DEBUG DataProviderCSV:201 - will add to csv Meeting{id=1, meetDate='2020-12-15 11:55', authorAgreement=false, editorAgreement=false}
+2020-12-14 04:03:28 DEBUG DataProviderCSV:464 - update success
+2020-12-14 04:03:28 INFO  DataProviderCSVTest:940 - calculateCostFail
+2020-12-14 04:03:28 INFO  DataProviderCSVTest:941 - calculateCostSuccess
+2020-12-14 04:03:28 DEBUG DataProviderCSV:173 - will add to csv Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 04:03:28 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 04:03:28 DEBUG DataProviderCSV:384 - will add to csv Book{id=1, author=10, title='Цифровая бухгалтерия', numberOfPages=299}
+2020-12-14 04:03:28 DEBUG DataProviderCSV:173 - will add to csv Employee{id=0, firstName='Default', secondName='Default', lastName='Default', phone='00000000000'inn='000000000000', workRecordBook='0000000', emplpyeeType=ADMIN}
+2020-12-14 04:03:28 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=0, coverType=PAPERBACK, price=0.0}
+2020-12-14 04:03:28 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 04:03:28 DEBUG DataProviderCSV:267 - will add to csv PriceParameters{id=0, pagePrice=0.0, coverPrice=[CoverPrice{id=0, coverType=PAPERBACK, price=0.0}], workPrice=0.0, validFromDate='1970-01-01', validToDate='1970-01-02'}
+2020-12-14 04:03:28 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}
+2020-12-14 04:03:28 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=2, coverType=PAPERBACK, price=143.8}
+2020-12-14 04:03:28 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 04:03:28 DEBUG DataProviderCSV:305 - will add to csv Order{id=1, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Цифровая бухгалтерия', numberOfPages=299, orderDate='2020-09-03', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=0, finalNumberOfPages=299, numberOfCopies=100, price=-1.0, bookStatus=UNTOUCHED}
+2020-12-14 04:03:28 INFO  DataProviderCSV:1010 - there is not suit PriceParameters
+2020-12-14 04:03:28 INFO  DataProviderCSV:1010 - there is not suit PriceParameters
+2020-12-14 04:03:28 DEBUG DataProviderCSV:987 - null
+2020-12-14 04:03:28 INFO  DataProviderCSVTest:552 - testDeleteBookFail
+2020-12-14 04:03:28 DEBUG DataProviderCSV:173 - will add to csv Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 04:03:28 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 04:03:28 DEBUG DataProviderCSV:384 - will add to csv Book{id=1, author=10, title='Цифровая бухгалтерия', numberOfPages=4}
+2020-12-14 04:03:28 INFO  DataProviderCSV:624 - delete author
+2020-12-14 04:03:28 DEBUG DataProviderCSV:792 - delete fail
+2020-12-14 04:03:28 INFO  DataProviderCSV:604 - delete book
+2020-12-14 04:03:28 DEBUG DataProviderCSV:689 - delete success
+2020-12-14 04:03:28 ERROR DataProviderCSV:89 - java.util.NoSuchElementException: No value present
+2020-12-14 04:03:28 INFO  DataProviderCSVTest:137 - insertCoverPriceSuccess
+2020-12-14 04:03:28 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}
+2020-12-14 04:03:28 INFO  DataProviderCSVTest:488 - testUpdateBookSuccess
+2020-12-14 04:03:28 DEBUG DataProviderCSV:173 - will add to csv Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 04:03:28 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 04:03:28 DEBUG DataProviderCSV:384 - will add to csv Book{id=1, author=10, title='Цифровая бухгалтерия', numberOfPages=4}
+2020-12-14 04:03:28 DEBUG DataProviderCSV:173 - will add to csv Author{id=12, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 04:03:28 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 04:03:28 DEBUG DataProviderCSV:384 - will add to csv Book{id=1, author=12, title='Цифровая бухгалтерия', numberOfPages=4}
+2020-12-14 04:03:28 DEBUG DataProviderCSV:579 - update success
+2020-12-14 04:03:28 INFO  DataProviderCSVTest:902 - calculateCostSuccess
+2020-12-14 04:03:28 DEBUG DataProviderCSV:173 - will add to csv Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 04:03:28 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 04:03:28 DEBUG DataProviderCSV:384 - will add to csv Book{id=1, author=10, title='Цифровая бухгалтерия', numberOfPages=299}
+2020-12-14 04:03:28 DEBUG DataProviderCSV:173 - will add to csv Employee{id=0, firstName='Default', secondName='Default', lastName='Default', phone='00000000000'inn='000000000000', workRecordBook='0000000', emplpyeeType=ADMIN}
+2020-12-14 04:03:28 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=0, coverType=PAPERBACK, price=0.0}
+2020-12-14 04:03:28 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 04:03:28 DEBUG DataProviderCSV:267 - will add to csv PriceParameters{id=0, pagePrice=0.0, coverPrice=[CoverPrice{id=0, coverType=PAPERBACK, price=0.0}], workPrice=0.0, validFromDate='1970-01-01', validToDate='1970-01-02'}
+2020-12-14 04:03:28 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}
+2020-12-14 04:03:28 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=2, coverType=PAPERBACK, price=143.8}
+2020-12-14 04:03:28 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 04:03:28 DEBUG DataProviderCSV:267 - will add to csv PriceParameters{id=1, pagePrice=2.4, coverPrice=[CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}, CoverPrice{id=2, coverType=PAPERBACK, price=143.8}], workPrice=1.3, validFromDate='2019-01-01', validToDate='2021-01-01'}
+2020-12-14 04:03:28 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 04:03:28 DEBUG DataProviderCSV:305 - will add to csv Order{id=1, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Цифровая бухгалтерия', numberOfPages=299, orderDate='2020-09-03', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=0, finalNumberOfPages=299, numberOfCopies=100, price=-1.0, bookStatus=UNTOUCHED}
+2020-12-14 04:03:28 INFO  DataProviderCSV:1010 - PriceParamets selected
+2020-12-14 04:03:28 INFO  DataProviderCSV:1010 - PriceParamets selected
+2020-12-14 04:03:28 DEBUG DataProviderCSV:987 - PriceParameters{id=1, pagePrice=2.4, coverPrice=[CoverPrice{id=1, coverType=null, price=0.0}, CoverPrice{id=2, coverType=null, price=0.0}], workPrice=1.3, validFromDate='2019-01-01', validToDate='2021-01-01'}
+2020-12-14 04:03:28 DEBUG DataProviderCSV:1067 - [CoverPrice{id=1, coverType=null, price=0.0}]
+2020-12-14 04:03:28 DEBUG DataProviderCSV:994 - calculate cost done
+2020-12-14 04:03:28 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 04:03:28 DEBUG DataProviderCSV:305 - will add to csv Order{id=1, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Цифровая бухгалтерия', numberOfPages=299, orderDate='2020-09-03', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=1, finalNumberOfPages=299, numberOfCopies=100, price=122980.0, bookStatus=UNTOUCHED}
+2020-12-14 04:03:28 DEBUG DataProviderCSV:533 - update success
+2020-12-14 04:03:28 INFO  DataProviderCSVTest:125 - insertMeetingFail
+2020-12-14 04:03:28 DEBUG DataProviderCSV:201 - will add to csv Meeting{id=1, meetDate='15.12.2020 11:55', authorAgreement=true, editorAgreement=false}
+2020-12-14 04:03:28 ERROR DataProviderCSV:102 - java.util.NoSuchElementException: No value present
+2020-12-14 04:03:28 INFO  DataProviderCSVTest:180 - insertPriceParametersFail
+2020-12-14 04:03:28 ERROR DataProviderCSV:141 - java.util.NoSuchElementException: No value present
+2020-12-14 04:03:28 DEBUG DataProviderCSV:271 - there is not such CoverPrice
+2020-12-14 04:03:28 ERROR DataProviderCSV:128 - java.util.NoSuchElementException: No value present
+2020-12-14 04:03:28 INFO  DataProviderCSVTest:353 - testInsertFewSuccess
+2020-12-14 04:03:28 DEBUG DataProviderCSV:173 - will add to csv Employee{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890'inn='123456789012', workRecordBook='1234567', emplpyeeType=CHIEF}
+2020-12-14 04:03:28 DEBUG DataProviderCSV:173 - will add to csv Employee{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'inn='234567890123', workRecordBook='2345678', emplpyeeType=MAKER}
+2020-12-14 04:03:28 DEBUG DataProviderCSV:173 - will add to csv Employee{id=3, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012'inn='345678901234', workRecordBook='3456789', emplpyeeType=EDITOR}
+2020-12-14 04:03:28 INFO  DataProviderCSVTest:149 - insertCoverPriceFail
+2020-12-14 04:03:28 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}
+2020-12-14 04:03:28 ERROR DataProviderCSV:141 - java.util.NoSuchElementException: No value present
+2020-12-14 04:03:28 INFO  DataProviderCSVTest:646 - selectPriceParametersSuccess
+2020-12-14 04:03:28 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}
+2020-12-14 04:03:28 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=2, coverType=PAPERBACK, price=143.8}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 04:03:29 DEBUG DataProviderCSV:267 - will add to csv PriceParameters{id=1, pagePrice=3.4, coverPrice=[CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}, CoverPrice{id=2, coverType=PAPERBACK, price=143.8}], workPrice=6.3, validFromDate='2019-01-01', validToDate='2021-12-31'}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 04:03:29 DEBUG DataProviderCSV:267 - will add to csv PriceParameters{id=2, pagePrice=5.1, coverPrice=[CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}, CoverPrice{id=2, coverType=PAPERBACK, price=143.8}], workPrice=7.2, validFromDate='2016-01-01', validToDate='2018-12-31'}
+2020-12-14 04:03:29 INFO  DataProviderCSV:1010 - PriceParamets selected
+2020-12-14 04:03:29 INFO  DataProviderCSVTest:425 - testUpdateSuccess
+2020-12-14 04:03:29 DEBUG DataProviderCSV:173 - will add to csv Employee{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890'inn='123456789012', workRecordBook='1234567', emplpyeeType=CHIEF}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:173 - will add to csv Employee{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'inn='234567890123', workRecordBook='2345678', emplpyeeType=MAKER}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:173 - will add to csv Employee{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890'inn='123456789012', workRecordBook='1234567', emplpyeeType=CHIEF}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:173 - will add to csv Employee{id=2, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012'inn='345678901234', workRecordBook='3456789', emplpyeeType=EDITOR}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:441 - update success
+2020-12-14 04:03:29 INFO  DataProviderCSVTest:97 - insertEmployeeFail
+2020-12-14 04:03:29 DEBUG DataProviderCSV:173 - will add to csv Employee{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890'inn='123456789012', workRecordBook='1234567', emplpyeeType=CHIEF}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:173 - will add to csv Employee{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'inn='234567890123', workRecordBook='2345678', emplpyeeType=MAKER}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:173 - will add to csv Employee{id=3, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012'inn='345678901234', workRecordBook='3456789', emplpyeeType=EDITOR}
+2020-12-14 04:03:29 ERROR DataProviderCSV:76 - java.util.NoSuchElementException: No value present
+2020-12-14 04:03:29 INFO  DataProviderCSVTest:416 - testReadFail
+2020-12-14 04:03:29 INFO  DataProviderCSVTest:444 - testUpdateFail
+2020-12-14 04:03:29 DEBUG DataProviderCSV:173 - will add to csv Employee{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890'inn='123456789012', workRecordBook='1234567', emplpyeeType=CHIEF}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:173 - will add to csv Employee{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'inn='234567890123', workRecordBook='2345678', emplpyeeType=MAKER}
+2020-12-14 04:03:29 ERROR DataProviderCSV:76 - java.util.NoSuchElementException: No value present
+2020-12-14 04:03:29 DEBUG DataProviderCSV:449 - update fail
+2020-12-14 04:03:29 INFO  DataProviderCSVTest:254 - insertCorrectionsSuccess
+2020-12-14 04:03:29 DEBUG DataProviderCSV:173 - will add to csv Employee{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'inn='234567890123', workRecordBook='2345678', emplpyeeType=MAKER}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:173 - will add to csv Employee{id=3, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012'inn='345678901234', workRecordBook='3456789', emplpyeeType=EDITOR}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:173 - will add to csv Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:224 - already exist in csv CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:224 - already exist in csv CoverPrice{id=2, coverType=PAPERBACK, price=143.8}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 04:03:29 DEBUG DataProviderCSV:267 - will add to csv PriceParameters{id=1, pagePrice=2.4, coverPrice=[CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}, CoverPrice{id=2, coverType=PAPERBACK, price=143.8}], workPrice=1.3, validFromDate='2019-01-01', validToDate='2021-01-01'}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 04:03:29 DEBUG DataProviderCSV:305 - will add to csv Order{id=1, author=Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}, title='Цифровая бухгалтерия', numberOfPages=4, orderDate='2020-09-03', coverType=RIGID_COVER, bookMaker=2, bookEditor=3, bookPriceParameters=1, finalNumberOfPages=229, numberOfCopies=100, price=9700.75, bookStatus=EDITING}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:338 - there is such Order and Meeting
+2020-12-14 04:03:29 DEBUG DataProviderCSV:345 - will add to csv Corrections{id=1, page=35, textBefore='Цифровой контроль - это компьютерные системы', textAfter='Цифровой контроль представляет собой компьютерные системы', comment='Повторяется конструкция', order=1, meet=null, status=WAIT_AUTHOR_AGR}
+2020-12-14 04:03:29 INFO  DataProviderCSVTest:474 - UpdateMeetingSuccess
+2020-12-14 04:03:29 DEBUG DataProviderCSV:201 - will add to csv Meeting{id=1, meetDate='2020-12-15 11:55', authorAgreement=true, editorAgreement=false}
+2020-12-14 04:03:29 ERROR DataProviderCSV:102 - java.util.NoSuchElementException: No value present
+2020-12-14 04:03:29 DEBUG DataProviderCSV:472 - update fail
+2020-12-14 04:03:29 INFO  DataProviderCSVTest:588 - testGetMaxIdFail
+2020-12-14 04:03:29 ERROR DataProviderCSV:852 - java.util.NoSuchElementException: No value present
+2020-12-14 04:03:29 INFO  DataProviderCSVTest:688 - insertOrderSuccess
+2020-12-14 04:03:29 DEBUG DataProviderCSV:173 - will add to csv Employee{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'inn='234567890123', workRecordBook='2345678', emplpyeeType=MAKER}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:173 - will add to csv Employee{id=3, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012'inn='345678901234', workRecordBook='3456789', emplpyeeType=EDITOR}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=2, coverType=PAPERBACK, price=143.8}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 04:03:29 DEBUG DataProviderCSV:267 - will add to csv PriceParameters{id=1, pagePrice=2.4, coverPrice=[CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}, CoverPrice{id=2, coverType=PAPERBACK, price=143.8}], workPrice=1.3, validFromDate='2019-01-01', validToDate='2021-01-01'}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 04:03:29 DEBUG DataProviderCSV:305 - will add to csv Order{id=1, author=Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}, title='Цифровая бухгалтерия', numberOfPages=4, orderDate='2020-09-03', coverType=RIGID_COVER, bookMaker=2, bookEditor=3, bookPriceParameters=1, finalNumberOfPages=229, numberOfCopies=100, price=9700.75, bookStatus=EDITING}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:749 - delete success
+2020-12-14 04:03:29 ERROR DataProviderCSV:89 - java.util.NoSuchElementException: No value present
+2020-12-14 04:03:29 INFO  DataProviderCSVTest:532 - testDeleteBookSuccess
+2020-12-14 04:03:29 DEBUG DataProviderCSV:173 - will add to csv Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 04:03:29 DEBUG DataProviderCSV:384 - will add to csv Book{id=1, author=10, title='Цифровая бухгалтерия', numberOfPages=4}
+2020-12-14 04:03:29 INFO  DataProviderCSV:604 - delete book
+2020-12-14 04:03:29 DEBUG DataProviderCSV:689 - delete success
+2020-12-14 04:03:29 INFO  DataProviderCSV:624 - delete author
+2020-12-14 04:03:29 DEBUG DataProviderCSV:789 - delete success
+2020-12-14 04:03:29 ERROR DataProviderCSV:89 - java.util.NoSuchElementException: No value present
+2020-12-14 04:03:29 ERROR DataProviderCSV:76 - java.util.NoSuchElementException: No value present
+2020-12-14 04:03:29 INFO  DataProviderCSVTest:722 - takeAwayOrderFail
+2020-12-14 04:03:29 DEBUG DataProviderCSV:173 - will add to csv Employee{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'inn='234567890123', workRecordBook='2345678', emplpyeeType=MAKER}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:173 - will add to csv Employee{id=3, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012'inn='345678901234', workRecordBook='3456789', emplpyeeType=EDITOR}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:173 - will add to csv Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:224 - already exist in csv CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:224 - already exist in csv CoverPrice{id=2, coverType=PAPERBACK, price=143.8}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 04:03:29 DEBUG DataProviderCSV:267 - will add to csv PriceParameters{id=1, pagePrice=2.4, coverPrice=[CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}, CoverPrice{id=2, coverType=PAPERBACK, price=143.8}], workPrice=1.3, validFromDate='2019-01-01', validToDate='2021-01-01'}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 04:03:29 DEBUG DataProviderCSV:305 - will add to csv Order{id=1, author=Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}, title='Цифровая бухгалтерия', numberOfPages=4, orderDate='2020-09-03', coverType=RIGID_COVER, bookMaker=2, bookEditor=3, bookPriceParameters=1, finalNumberOfPages=229, numberOfCopies=100, price=9700.75, bookStatus=EDITING}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:338 - there is such Order and Meeting
+2020-12-14 04:03:29 DEBUG DataProviderCSV:345 - will add to csv Corrections{id=1, page=35, textBefore='Цифровой контроль - это компьютерные системы', textAfter='Цифровой контроль представляет собой компьютерные системы', comment='Повторяется конструкция', order=1, meet=null, status=WAIT_AUTHOR_AGR}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:752 - delete fail
+2020-12-14 04:03:29 INFO  DataProviderCSVTest:817 - addAuthorSuccess
+2020-12-14 04:03:29 DEBUG DataProviderCSV:1139 - Author{id=1, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:173 - will add to csv Author{id=1, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 04:03:29 INFO  DataProviderCSVTest:1005 - addBookEditorFail
+2020-12-14 04:03:29 DEBUG DataProviderCSV:173 - will add to csv Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 04:03:29 DEBUG DataProviderCSV:384 - will add to csv Book{id=1, author=10, title='Цифровая бухгалтерия', numberOfPages=229}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:173 - will add to csv Employee{id=0, firstName='Default', secondName='Default', lastName='Default', phone='00000000000'inn='000000000000', workRecordBook='0000000', emplpyeeType=ADMIN}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=0, coverType=PAPERBACK, price=0.0}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 04:03:29 DEBUG DataProviderCSV:267 - will add to csv PriceParameters{id=0, pagePrice=0.0, coverPrice=[CoverPrice{id=0, coverType=PAPERBACK, price=0.0}], workPrice=0.0, validFromDate='1970-01-01', validToDate='1970-01-02'}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 04:03:29 DEBUG DataProviderCSV:305 - will add to csv Order{id=1, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Цифровая бухгалтерия', numberOfPages=229, orderDate='2020-09-03', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=0, finalNumberOfPages=229, numberOfCopies=100, price=-1.0, bookStatus=UNTOUCHED}
+2020-12-14 04:03:29 ERROR DataProviderCSV:76 - java.util.NoSuchElementException: No value present
+2020-12-14 04:03:29 INFO  DataProviderCSVTest:375 - testInsertFewFail
+2020-12-14 04:03:29 DEBUG DataProviderCSV:173 - will add to csv Employee{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890'inn='123456789012', workRecordBook='1234567', emplpyeeType=CHIEF}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:173 - will add to csv Employee{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'inn='234567890123', workRecordBook='2345678', emplpyeeType=MAKER}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:168 - already exist in csv Employee{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890'inn='123456789012', workRecordBook='1234567', emplpyeeType=CHIEF}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:170 - id already exist in csv Employee{id=2, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012'inn='345678901234', workRecordBook='3456789', emplpyeeType=EDITOR}
+2020-12-14 04:03:29 INFO  DataProviderCSVTest:41 - insertPeopleFail
+2020-12-14 04:03:29 DEBUG DataProviderCSV:173 - will add to csv People{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890'}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:173 - will add to csv People{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:173 - will add to csv People{id=3, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012'}
+2020-12-14 04:03:29 ERROR DataProviderCSV:76 - java.util.NoSuchElementException: No value present
+2020-12-14 04:03:29 INFO  DataProviderCSVTest:198 - insertOrderSuccess
+2020-12-14 04:03:29 DEBUG DataProviderCSV:173 - will add to csv Employee{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'inn='234567890123', workRecordBook='2345678', emplpyeeType=MAKER}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:173 - will add to csv Employee{id=3, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012'inn='345678901234', workRecordBook='3456789', emplpyeeType=EDITOR}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=2, coverType=PAPERBACK, price=143.8}
+2020-12-14 04:03:29 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 04:03:29 DEBUG DataProviderCSV:267 - will add to csv PriceParameters{id=1, pagePrice=2.4, coverPrice=[CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}, CoverPrice{id=2, coverType=PAPERBACK, price=143.8}], workPrice=1.3, validFromDate='2019-01-01', validToDate='2021-01-01'}
+2020-12-14 04:03:30 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 04:03:30 DEBUG DataProviderCSV:305 - will add to csv Order{id=1, author=Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}, title='Цифровая бухгалтерия', numberOfPages=4, orderDate='2020-09-03', coverType=RIGID_COVER, bookMaker=2, bookEditor=3, bookPriceParameters=1, finalNumberOfPages=229, numberOfCopies=100, price=9700.75, bookStatus=EDITING}
+2020-12-14 04:03:30 INFO  DataProviderCSVTest:161 - insertPriceParametersSuccess
+2020-12-14 04:03:30 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}
+2020-12-14 04:03:30 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=2, coverType=PAPERBACK, price=143.8}
+2020-12-14 04:03:30 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 04:03:30 DEBUG DataProviderCSV:267 - will add to csv PriceParameters{id=1, pagePrice=13.4, coverPrice=[CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}, CoverPrice{id=2, coverType=PAPERBACK, price=143.8}], workPrice=16.3, validFromDate='2019-01-01', validToDate='2021-01-01'}
+2020-12-14 04:03:30 INFO  DataProviderCSVTest:400 - testReadSuccess
+2020-12-14 04:03:30 DEBUG DataProviderCSV:173 - will add to csv Employee{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890'inn='123456789012', workRecordBook='1234567', emplpyeeType=CHIEF}
+2020-12-14 04:03:30 DEBUG DataProviderCSV:173 - will add to csv Employee{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'inn='234567890123', workRecordBook='2345678', emplpyeeType=MAKER}
+2020-12-14 04:03:30 DEBUG DataProviderCSV:173 - will add to csv Employee{id=3, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012'inn='345678901234', workRecordBook='3456789', emplpyeeType=EDITOR}
+2020-12-14 04:03:30 INFO  DataProviderCSVTest:81 - insertEmployeeSuccess
+2020-12-14 04:03:30 DEBUG DataProviderCSV:173 - will add to csv Employee{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890'inn='123456789012', workRecordBook='1234567', emplpyeeType=CHIEF}
+2020-12-14 04:03:30 DEBUG DataProviderCSV:173 - will add to csv Employee{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'inn='234567890123', workRecordBook='2345678', emplpyeeType=MAKER}
+2020-12-14 04:03:30 DEBUG DataProviderCSV:173 - will add to csv Employee{id=3, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012'inn='345678901234', workRecordBook='3456789', emplpyeeType=EDITOR}
+2020-12-14 04:03:30 INFO  DataProviderCSVTest:57 - insertAuthorSuccess
+2020-12-14 04:03:30 DEBUG DataProviderCSV:173 - will add to csv Author{id=1, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 04:03:30 INFO  DataProviderCSVTest:611 - alterBookInsertFail
+2020-12-14 04:03:30 ERROR DataProviderCSV:76 - java.util.NoSuchElementException: No value present
+2020-12-14 04:03:30 INFO  DataProviderCSV:903 - There is not such Author
+2020-12-14 04:03:30 ERROR DataProviderCSV:89 - java.util.NoSuchElementException: No value present
+2020-12-14 04:03:30 INFO  DataProviderCSVTest:572 - testGetMaxIdSuccess
+2020-12-14 04:03:30 DEBUG DataProviderCSV:173 - will add to csv People{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890'}
+2020-12-14 04:03:30 DEBUG DataProviderCSV:173 - will add to csv People{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'}
+2020-12-14 04:03:30 DEBUG DataProviderCSV:173 - will add to csv People{id=3, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012'}
+2020-12-14 04:03:30 INFO  DataProviderCSVTest:511 - testUpdateBookFail
+2020-12-14 04:03:30 DEBUG DataProviderCSV:173 - will add to csv Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 04:03:30 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 04:03:30 DEBUG DataProviderCSV:384 - will add to csv Book{id=1, author=10, title='Цифровая бухгалтерия', numberOfPages=4}
+2020-12-14 04:03:30 ERROR DataProviderCSV:76 - java.util.NoSuchElementException: No value present
+2020-12-14 04:03:30 DEBUG DataProviderCSV:388 - there is not such Author
+2020-12-14 04:03:30 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 04:03:30 DEBUG DataProviderCSV:384 - will add to csv Book{id=1, author=10, title='Цифровая бухгалтерия', numberOfPages=4}
+2020-12-14 04:03:30 DEBUG DataProviderCSV:587 - update fail
+2020-12-14 04:03:30 INFO  DataProviderCSVTest:809 - getListOfCorrectionsFail
+2020-12-14 04:03:30 ERROR DataProviderCSV:76 - java.util.NoSuchElementException: No value present
+2020-12-14 04:03:30 INFO  DataProviderCSVTest:872 - sendOrderInformationFail
+2020-12-14 04:03:30 DEBUG DataProviderCSV:173 - will add to csv Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 04:03:30 ERROR DataProviderCSV:89 - java.util.NoSuchElementException: No value present
+2020-12-14 04:03:30 INFO  DataProviderCSV:944 - There is not such Book
+2020-12-14 04:03:30 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}
+2020-12-14 04:03:30 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=2, coverType=PAPERBACK, price=143.8}
+2020-12-14 04:03:30 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 04:03:30 DEBUG DataProviderCSV:267 - will add to csv PriceParameters{id=1, pagePrice=2.4, coverPrice=[CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}, CoverPrice{id=2, coverType=PAPERBACK, price=143.8}], workPrice=1.3, validFromDate='2019-01-01', validToDate='2021-01-01'}
+2020-12-14 04:03:30 ERROR DataProviderCSV:89 - java.util.NoSuchElementException: No value present
+2020-12-14 04:03:30 INFO  DataProviderCSVTest:621 - alterBookInsertSuccess
+2020-12-14 04:03:30 DEBUG DataProviderCSV:173 - will add to csv Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 04:03:30 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 04:03:30 DEBUG DataProviderCSV:384 - will add to csv Book{id=1, author=10, title='Цифровая бухгалтерия', numberOfPages=229}
+2020-12-14 04:03:30 DEBUG DataProviderCSV:173 - will add to csv Employee{id=0, firstName='Default', secondName='Default', lastName='Default', phone='00000000000'inn='000000000000', workRecordBook='0000000', emplpyeeType=ADMIN}
+2020-12-14 04:03:30 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=0, coverType=PAPERBACK, price=0.0}
+2020-12-14 04:03:30 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 04:03:30 DEBUG DataProviderCSV:267 - will add to csv PriceParameters{id=0, pagePrice=0.0, coverPrice=[CoverPrice{id=0, coverType=PAPERBACK, price=0.0}], workPrice=0.0, validFromDate='1970-01-01', validToDate='1970-01-02'}
+2020-12-14 04:03:30 INFO  DataProviderCSVTest:978 - addBookEditorSuccess
+2020-12-14 04:03:30 DEBUG DataProviderCSV:173 - will add to csv Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 04:03:30 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 04:03:30 DEBUG DataProviderCSV:384 - will add to csv Book{id=1, author=10, title='Цифровая бухгалтерия', numberOfPages=229}
+2020-12-14 04:03:30 DEBUG DataProviderCSV:173 - will add to csv Employee{id=0, firstName='Default', secondName='Default', lastName='Default', phone='00000000000'inn='000000000000', workRecordBook='0000000', emplpyeeType=ADMIN}
+2020-12-14 04:03:30 DEBUG DataProviderCSV:224 - already exist in csv CoverPrice{id=0, coverType=PAPERBACK, price=0.0}
+2020-12-14 04:03:30 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 04:03:30 DEBUG DataProviderCSV:262 - already exist in csv PriceParameters{id=0, pagePrice=0.0, coverPrice=[CoverPrice{id=0, coverType=PAPERBACK, price=0.0}], workPrice=0.0, validFromDate='1970-01-01', validToDate='1970-01-02'}
+2020-12-14 04:03:30 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 04:03:30 DEBUG DataProviderCSV:305 - will add to csv Order{id=1, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Цифровая бухгалтерия', numberOfPages=229, orderDate='2020-09-03', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=0, finalNumberOfPages=229, numberOfCopies=100, price=-1.0, bookStatus=UNTOUCHED}
+2020-12-14 04:03:30 DEBUG DataProviderCSV:173 - will add to csv Employee{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'inn='234567890123', workRecordBook='2345678', emplpyeeType=MAKER}
+2020-12-14 04:03:30 DEBUG DataProviderCSV:1169 - Order{id=1, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Цифровая бухгалтерия', numberOfPages=229, orderDate='2020-09-03', coverType=RIGID_COVER, bookMaker=0, bookEditor=2, bookPriceParameters=0, finalNumberOfPages=229, numberOfCopies=100, price=-1.0, bookStatus=UNTOUCHED}
+2020-12-14 04:03:30 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 04:03:30 DEBUG DataProviderCSV:305 - will add to csv Order{id=1, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Цифровая бухгалтерия', numberOfPages=229, orderDate='2020-09-03', coverType=RIGID_COVER, bookMaker=0, bookEditor=2, bookPriceParameters=0, finalNumberOfPages=229, numberOfCopies=100, price=-1.0, bookStatus=UNTOUCHED}
+2020-12-14 04:03:30 DEBUG DataProviderCSV:533 - update success
+2020-12-14 04:03:30 INFO  DataProviderCSVTest:230 - insertOrderFail
+2020-12-14 04:03:30 ERROR DataProviderCSV:76 - java.util.NoSuchElementException: No value present
+2020-12-14 04:03:30 DEBUG DataProviderCSV:309 - there is not such BookMaker or BookEditor or PriceParameters
+2020-12-14 04:03:30 ERROR DataProviderCSV:89 - java.util.NoSuchElementException: No value present
+2020-12-14 04:03:30 INFO  DataProviderCSVTest:638 - makeOrderFail
+2020-12-14 04:03:30 ERROR DataProviderCSV:89 - java.util.NoSuchElementException: No value present
+2020-12-14 04:03:30 INFO  DataProviderCSV:944 - There is not such Book
+2020-12-14 04:03:30 INFO  DataProviderCSVTest:69 - insertAuthorFail
+2020-12-14 04:03:30 DEBUG DataProviderCSV:173 - will add to csv Author{id=1, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 04:03:30 ERROR DataProviderCSV:76 - java.util.NoSuchElementException: No value present
+2020-12-14 04:03:30 INFO  DataProviderCSVTest:339 - insertBookFail
+2020-12-14 04:03:30 ERROR DataProviderCSV:76 - java.util.NoSuchElementException: No value present
+2020-12-14 04:03:30 DEBUG DataProviderCSV:388 - there is not such Author
+2020-12-14 04:03:30 ERROR DataProviderCSV:89 - java.util.NoSuchElementException: No value present
+2020-12-14 04:29:36 INFO  DataProviderCSVTest:1027 - countPublishedBooksSuccess
+2020-12-14 04:29:36 DEBUG DataProviderCSV:173 - will add to csv Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 04:29:36 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 04:29:36 DEBUG DataProviderCSV:384 - will add to csv Book{id=1, author=10, title='Цифровая бухгалтерия', numberOfPages=229}
+2020-12-14 04:29:36 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 04:29:36 DEBUG DataProviderCSV:384 - will add to csv Book{id=2, author=10, title='Экономическая теория', numberOfPages=437}
+2020-12-14 04:29:36 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 04:29:36 DEBUG DataProviderCSV:384 - will add to csv Book{id=3, author=10, title='Цифровая экономика', numberOfPages=394}
+2020-12-14 04:29:36 DEBUG DataProviderCSV:173 - will add to csv Employee{id=0, firstName='Default', secondName='Default', lastName='Default', phone='00000000000'inn='000000000000', workRecordBook='0000000', emplpyeeType=ADMIN}
+2020-12-14 04:29:36 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=0, coverType=PAPERBACK, price=0.0}
+2020-12-14 04:29:36 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 04:29:36 DEBUG DataProviderCSV:267 - will add to csv PriceParameters{id=0, pagePrice=0.0, coverPrice=[CoverPrice{id=0, coverType=PAPERBACK, price=0.0}], workPrice=0.0, validFromDate='1970-01-01', validToDate='1970-01-02'}
+2020-12-14 04:29:36 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 04:29:36 DEBUG DataProviderCSV:305 - will add to csv Order{id=1, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Цифровая бухгалтерия', numberOfPages=229, orderDate='2019-09-03', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=0, finalNumberOfPages=229, numberOfCopies=100, price=-1.0, bookStatus=UNTOUCHED}
+2020-12-14 04:29:36 DEBUG DataProviderCSV:168 - already exist in csv Employee{id=0, firstName='Default', secondName='Default', lastName='Default', phone='00000000000'inn='000000000000', workRecordBook='0000000', emplpyeeType=ADMIN}
+2020-12-14 04:29:36 DEBUG DataProviderCSV:224 - already exist in csv CoverPrice{id=0, coverType=PAPERBACK, price=0.0}
+2020-12-14 04:29:36 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 04:29:36 DEBUG DataProviderCSV:262 - already exist in csv PriceParameters{id=0, pagePrice=0.0, coverPrice=[CoverPrice{id=0, coverType=PAPERBACK, price=0.0}], workPrice=0.0, validFromDate='1970-01-01', validToDate='1970-01-02'}
+2020-12-14 04:29:36 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 04:29:36 DEBUG DataProviderCSV:305 - will add to csv Order{id=2, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Экономическая теория', numberOfPages=437, orderDate='2020-04-01', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=0, finalNumberOfPages=437, numberOfCopies=200, price=-1.0, bookStatus=UNTOUCHED}
+2020-12-14 04:29:36 DEBUG DataProviderCSV:168 - already exist in csv Employee{id=0, firstName='Default', secondName='Default', lastName='Default', phone='00000000000'inn='000000000000', workRecordBook='0000000', emplpyeeType=ADMIN}
+2020-12-14 04:29:36 DEBUG DataProviderCSV:224 - already exist in csv CoverPrice{id=0, coverType=PAPERBACK, price=0.0}
+2020-12-14 04:29:36 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 04:29:36 DEBUG DataProviderCSV:262 - already exist in csv PriceParameters{id=0, pagePrice=0.0, coverPrice=[CoverPrice{id=0, coverType=PAPERBACK, price=0.0}], workPrice=0.0, validFromDate='1970-01-01', validToDate='1970-01-02'}
+2020-12-14 04:29:37 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 04:29:37 DEBUG DataProviderCSV:305 - will add to csv Order{id=3, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Цифровая экономика', numberOfPages=394, orderDate='2020-10-03', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=0, finalNumberOfPages=394, numberOfCopies=300, price=-1.0, bookStatus=UNTOUCHED}
+2020-12-14 04:30:29 INFO  DataProviderCSVTest:1027 - countPublishedBooksSuccess
+2020-12-14 04:30:29 DEBUG DataProviderCSV:173 - will add to csv Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 04:30:30 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 04:30:30 DEBUG DataProviderCSV:384 - will add to csv Book{id=1, author=10, title='Цифровая бухгалтерия', numberOfPages=229}
+2020-12-14 04:30:30 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 04:30:30 DEBUG DataProviderCSV:384 - will add to csv Book{id=2, author=10, title='Экономическая теория', numberOfPages=437}
+2020-12-14 04:30:30 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 04:30:30 DEBUG DataProviderCSV:384 - will add to csv Book{id=3, author=10, title='Цифровая экономика', numberOfPages=394}
+2020-12-14 04:30:30 DEBUG DataProviderCSV:173 - will add to csv Employee{id=0, firstName='Default', secondName='Default', lastName='Default', phone='00000000000'inn='000000000000', workRecordBook='0000000', emplpyeeType=ADMIN}
+2020-12-14 04:30:30 DEBUG DataProviderCSV:224 - already exist in csv CoverPrice{id=0, coverType=PAPERBACK, price=0.0}
+2020-12-14 04:30:30 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 04:30:30 DEBUG DataProviderCSV:262 - already exist in csv PriceParameters{id=0, pagePrice=0.0, coverPrice=[CoverPrice{id=0, coverType=PAPERBACK, price=0.0}], workPrice=0.0, validFromDate='1970-01-01', validToDate='1970-01-02'}
+2020-12-14 04:30:30 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 04:30:30 DEBUG DataProviderCSV:305 - will add to csv Order{id=1, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Цифровая бухгалтерия', numberOfPages=229, orderDate='2019-09-03', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=0, finalNumberOfPages=229, numberOfCopies=100, price=-1.0, bookStatus=UNTOUCHED}
+2020-12-14 04:30:30 DEBUG DataProviderCSV:168 - already exist in csv Employee{id=0, firstName='Default', secondName='Default', lastName='Default', phone='00000000000'inn='000000000000', workRecordBook='0000000', emplpyeeType=ADMIN}
+2020-12-14 04:30:30 DEBUG DataProviderCSV:224 - already exist in csv CoverPrice{id=0, coverType=PAPERBACK, price=0.0}
+2020-12-14 04:30:30 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 04:30:30 DEBUG DataProviderCSV:262 - already exist in csv PriceParameters{id=0, pagePrice=0.0, coverPrice=[CoverPrice{id=0, coverType=PAPERBACK, price=0.0}], workPrice=0.0, validFromDate='1970-01-01', validToDate='1970-01-02'}
+2020-12-14 04:30:30 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 04:30:30 DEBUG DataProviderCSV:305 - will add to csv Order{id=2, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Экономическая теория', numberOfPages=437, orderDate='2020-04-01', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=0, finalNumberOfPages=437, numberOfCopies=200, price=-1.0, bookStatus=UNTOUCHED}
+2020-12-14 04:30:30 DEBUG DataProviderCSV:168 - already exist in csv Employee{id=0, firstName='Default', secondName='Default', lastName='Default', phone='00000000000'inn='000000000000', workRecordBook='0000000', emplpyeeType=ADMIN}
+2020-12-14 04:30:30 DEBUG DataProviderCSV:224 - already exist in csv CoverPrice{id=0, coverType=PAPERBACK, price=0.0}
+2020-12-14 04:30:30 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 04:30:30 DEBUG DataProviderCSV:262 - already exist in csv PriceParameters{id=0, pagePrice=0.0, coverPrice=[CoverPrice{id=0, coverType=PAPERBACK, price=0.0}], workPrice=0.0, validFromDate='1970-01-01', validToDate='1970-01-02'}
+2020-12-14 04:30:30 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 04:30:30 DEBUG DataProviderCSV:305 - will add to csv Order{id=3, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Цифровая экономика', numberOfPages=394, orderDate='2020-10-03', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=0, finalNumberOfPages=394, numberOfCopies=300, price=-1.0, bookStatus=UNTOUCHED}
+2020-12-14 04:33:16 INFO  DataProviderCSVTest:1027 - countPublishedBooksSuccess
+2020-12-14 04:33:16 DEBUG DataProviderCSV:173 - will add to csv Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 04:33:16 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 04:33:16 DEBUG DataProviderCSV:384 - will add to csv Book{id=1, author=10, title='Цифровая бухгалтерия', numberOfPages=229}
+2020-12-14 04:33:16 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 04:33:16 DEBUG DataProviderCSV:384 - will add to csv Book{id=2, author=10, title='Экономическая теория', numberOfPages=437}
+2020-12-14 04:33:16 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 04:33:16 DEBUG DataProviderCSV:384 - will add to csv Book{id=3, author=10, title='Цифровая экономика', numberOfPages=394}
+2020-12-14 04:33:16 DEBUG DataProviderCSV:173 - will add to csv Employee{id=0, firstName='Default', secondName='Default', lastName='Default', phone='00000000000'inn='000000000000', workRecordBook='0000000', emplpyeeType=ADMIN}
+2020-12-14 04:33:17 DEBUG DataProviderCSV:224 - already exist in csv CoverPrice{id=0, coverType=PAPERBACK, price=0.0}
+2020-12-14 04:33:17 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 04:33:17 DEBUG DataProviderCSV:262 - already exist in csv PriceParameters{id=0, pagePrice=0.0, coverPrice=[CoverPrice{id=0, coverType=PAPERBACK, price=0.0}], workPrice=0.0, validFromDate='1970-01-01', validToDate='1970-01-02'}
+2020-12-14 04:33:17 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 04:33:17 DEBUG DataProviderCSV:305 - will add to csv Order{id=1, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Цифровая бухгалтерия', numberOfPages=229, orderDate='2019-09-03', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=0, finalNumberOfPages=229, numberOfCopies=100, price=-1.0, bookStatus=UNTOUCHED}
+2020-12-14 04:33:17 DEBUG DataProviderCSV:168 - already exist in csv Employee{id=0, firstName='Default', secondName='Default', lastName='Default', phone='00000000000'inn='000000000000', workRecordBook='0000000', emplpyeeType=ADMIN}
+2020-12-14 04:33:17 DEBUG DataProviderCSV:224 - already exist in csv CoverPrice{id=0, coverType=PAPERBACK, price=0.0}
+2020-12-14 04:33:17 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 04:33:17 DEBUG DataProviderCSV:262 - already exist in csv PriceParameters{id=0, pagePrice=0.0, coverPrice=[CoverPrice{id=0, coverType=PAPERBACK, price=0.0}], workPrice=0.0, validFromDate='1970-01-01', validToDate='1970-01-02'}
+2020-12-14 04:33:17 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 04:33:17 DEBUG DataProviderCSV:305 - will add to csv Order{id=2, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Экономическая теория', numberOfPages=437, orderDate='2020-04-01', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=0, finalNumberOfPages=437, numberOfCopies=200, price=-1.0, bookStatus=UNTOUCHED}
+2020-12-14 04:33:17 DEBUG DataProviderCSV:168 - already exist in csv Employee{id=0, firstName='Default', secondName='Default', lastName='Default', phone='00000000000'inn='000000000000', workRecordBook='0000000', emplpyeeType=ADMIN}
+2020-12-14 04:33:17 DEBUG DataProviderCSV:224 - already exist in csv CoverPrice{id=0, coverType=PAPERBACK, price=0.0}
+2020-12-14 04:33:17 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 04:33:17 DEBUG DataProviderCSV:262 - already exist in csv PriceParameters{id=0, pagePrice=0.0, coverPrice=[CoverPrice{id=0, coverType=PAPERBACK, price=0.0}], workPrice=0.0, validFromDate='1970-01-01', validToDate='1970-01-02'}
+2020-12-14 04:33:17 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 04:33:17 DEBUG DataProviderCSV:305 - will add to csv Order{id=3, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Цифровая экономика', numberOfPages=394, orderDate='2020-10-03', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=0, finalNumberOfPages=394, numberOfCopies=300, price=-1.0, bookStatus=UNTOUCHED}
+2020-12-14 04:34:04 INFO  DataProviderCSVTest:1027 - countPublishedBooksSuccess
+2020-12-14 04:34:04 DEBUG DataProviderCSV:173 - will add to csv Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 04:34:04 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 04:34:04 DEBUG DataProviderCSV:384 - will add to csv Book{id=1, author=10, title='Цифровая бухгалтерия', numberOfPages=229}
+2020-12-14 04:34:04 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 04:34:04 DEBUG DataProviderCSV:384 - will add to csv Book{id=2, author=10, title='Экономическая теория', numberOfPages=437}
+2020-12-14 04:34:04 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 04:34:04 DEBUG DataProviderCSV:384 - will add to csv Book{id=3, author=10, title='Цифровая экономика', numberOfPages=394}
+2020-12-14 04:34:04 DEBUG DataProviderCSV:173 - will add to csv Employee{id=0, firstName='Default', secondName='Default', lastName='Default', phone='00000000000'inn='000000000000', workRecordBook='0000000', emplpyeeType=ADMIN}
+2020-12-14 04:34:04 DEBUG DataProviderCSV:224 - already exist in csv CoverPrice{id=0, coverType=PAPERBACK, price=0.0}
+2020-12-14 04:34:05 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 04:34:05 DEBUG DataProviderCSV:262 - already exist in csv PriceParameters{id=0, pagePrice=0.0, coverPrice=[CoverPrice{id=0, coverType=PAPERBACK, price=0.0}], workPrice=0.0, validFromDate='1970-01-01', validToDate='1970-01-02'}
+2020-12-14 04:34:05 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 04:34:05 DEBUG DataProviderCSV:305 - will add to csv Order{id=1, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Цифровая бухгалтерия', numberOfPages=229, orderDate='2019-09-03', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=0, finalNumberOfPages=229, numberOfCopies=100, price=-1.0, bookStatus=UNTOUCHED}
+2020-12-14 04:34:05 DEBUG DataProviderCSV:168 - already exist in csv Employee{id=0, firstName='Default', secondName='Default', lastName='Default', phone='00000000000'inn='000000000000', workRecordBook='0000000', emplpyeeType=ADMIN}
+2020-12-14 04:34:05 DEBUG DataProviderCSV:224 - already exist in csv CoverPrice{id=0, coverType=PAPERBACK, price=0.0}
+2020-12-14 04:34:05 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 04:34:05 DEBUG DataProviderCSV:262 - already exist in csv PriceParameters{id=0, pagePrice=0.0, coverPrice=[CoverPrice{id=0, coverType=PAPERBACK, price=0.0}], workPrice=0.0, validFromDate='1970-01-01', validToDate='1970-01-02'}
+2020-12-14 04:34:05 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 04:34:05 DEBUG DataProviderCSV:305 - will add to csv Order{id=2, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Экономическая теория', numberOfPages=437, orderDate='2020-04-01', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=0, finalNumberOfPages=437, numberOfCopies=200, price=-1.0, bookStatus=UNTOUCHED}
+2020-12-14 04:34:05 DEBUG DataProviderCSV:168 - already exist in csv Employee{id=0, firstName='Default', secondName='Default', lastName='Default', phone='00000000000'inn='000000000000', workRecordBook='0000000', emplpyeeType=ADMIN}
+2020-12-14 04:34:05 DEBUG DataProviderCSV:224 - already exist in csv CoverPrice{id=0, coverType=PAPERBACK, price=0.0}
+2020-12-14 04:34:05 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 04:34:05 DEBUG DataProviderCSV:262 - already exist in csv PriceParameters{id=0, pagePrice=0.0, coverPrice=[CoverPrice{id=0, coverType=PAPERBACK, price=0.0}], workPrice=0.0, validFromDate='1970-01-01', validToDate='1970-01-02'}
+2020-12-14 04:34:05 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 04:34:05 DEBUG DataProviderCSV:305 - will add to csv Order{id=3, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Цифровая экономика', numberOfPages=394, orderDate='2020-10-03', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=0, finalNumberOfPages=394, numberOfCopies=300, price=-1.0, bookStatus=UNTOUCHED}
+2020-12-14 04:34:05 DEBUG DataProviderCSV:1320 - [Order{id=1, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Цифровая бухгалтерия', numberOfPages=229, orderDate='2019-09-03', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=0, finalNumberOfPages=229, numberOfCopies=100, price=-1.0, bookStatus=UNTOUCHED}, Order{id=2, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Экономическая теория', numberOfPages=437, orderDate='2020-04-01', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=0, finalNumberOfPages=437, numberOfCopies=200, price=-1.0, bookStatus=UNTOUCHED}, Order{id=3, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Цифровая экономика', numberOfPages=394, orderDate='2020-10-03', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=0, finalNumberOfPages=394, numberOfCopies=300, price=-1.0, bookStatus=UNTOUCHED}]
+2020-12-14 04:36:07 INFO  DataProviderCSVTest:1027 - countPublishedBooksSuccess
+2020-12-14 04:36:07 DEBUG DataProviderCSV:173 - will add to csv Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 04:36:07 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 04:36:07 DEBUG DataProviderCSV:384 - will add to csv Book{id=1, author=10, title='Цифровая бухгалтерия', numberOfPages=229}
+2020-12-14 04:36:07 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 04:36:07 DEBUG DataProviderCSV:384 - will add to csv Book{id=2, author=10, title='Экономическая теория', numberOfPages=437}
+2020-12-14 04:36:07 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 04:36:07 DEBUG DataProviderCSV:384 - will add to csv Book{id=3, author=10, title='Цифровая экономика', numberOfPages=394}
+2020-12-14 04:36:07 DEBUG DataProviderCSV:173 - will add to csv Employee{id=0, firstName='Default', secondName='Default', lastName='Default', phone='00000000000'inn='000000000000', workRecordBook='0000000', emplpyeeType=ADMIN}
+2020-12-14 04:36:07 DEBUG DataProviderCSV:224 - already exist in csv CoverPrice{id=0, coverType=PAPERBACK, price=0.0}
+2020-12-14 04:36:07 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 04:36:07 DEBUG DataProviderCSV:262 - already exist in csv PriceParameters{id=0, pagePrice=0.0, coverPrice=[CoverPrice{id=0, coverType=PAPERBACK, price=0.0}], workPrice=0.0, validFromDate='1970-01-01', validToDate='1970-01-02'}
+2020-12-14 04:36:07 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 04:36:07 DEBUG DataProviderCSV:305 - will add to csv Order{id=1, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Цифровая бухгалтерия', numberOfPages=229, orderDate='2019-09-03', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=0, finalNumberOfPages=229, numberOfCopies=100, price=-1.0, bookStatus=DONE}
+2020-12-14 04:36:07 DEBUG DataProviderCSV:168 - already exist in csv Employee{id=0, firstName='Default', secondName='Default', lastName='Default', phone='00000000000'inn='000000000000', workRecordBook='0000000', emplpyeeType=ADMIN}
+2020-12-14 04:36:07 DEBUG DataProviderCSV:224 - already exist in csv CoverPrice{id=0, coverType=PAPERBACK, price=0.0}
+2020-12-14 04:36:07 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 04:36:07 DEBUG DataProviderCSV:262 - already exist in csv PriceParameters{id=0, pagePrice=0.0, coverPrice=[CoverPrice{id=0, coverType=PAPERBACK, price=0.0}], workPrice=0.0, validFromDate='1970-01-01', validToDate='1970-01-02'}
+2020-12-14 04:36:07 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 04:36:07 DEBUG DataProviderCSV:305 - will add to csv Order{id=2, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Экономическая теория', numberOfPages=437, orderDate='2020-04-01', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=0, finalNumberOfPages=437, numberOfCopies=200, price=-1.0, bookStatus=DONE}
+2020-12-14 04:36:07 DEBUG DataProviderCSV:168 - already exist in csv Employee{id=0, firstName='Default', secondName='Default', lastName='Default', phone='00000000000'inn='000000000000', workRecordBook='0000000', emplpyeeType=ADMIN}
+2020-12-14 04:36:07 DEBUG DataProviderCSV:224 - already exist in csv CoverPrice{id=0, coverType=PAPERBACK, price=0.0}
+2020-12-14 04:36:07 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 04:36:07 DEBUG DataProviderCSV:262 - already exist in csv PriceParameters{id=0, pagePrice=0.0, coverPrice=[CoverPrice{id=0, coverType=PAPERBACK, price=0.0}], workPrice=0.0, validFromDate='1970-01-01', validToDate='1970-01-02'}
+2020-12-14 04:36:08 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 04:36:08 DEBUG DataProviderCSV:305 - will add to csv Order{id=3, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Цифровая экономика', numberOfPages=394, orderDate='2020-10-03', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=0, finalNumberOfPages=394, numberOfCopies=300, price=-1.0, bookStatus=DONE}
+2020-12-14 04:36:08 DEBUG DataProviderCSV:1320 - [Order{id=1, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Цифровая бухгалтерия', numberOfPages=229, orderDate='2019-09-03', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=0, finalNumberOfPages=229, numberOfCopies=100, price=-1.0, bookStatus=DONE}, Order{id=2, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Экономическая теория', numberOfPages=437, orderDate='2020-04-01', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=0, finalNumberOfPages=437, numberOfCopies=200, price=-1.0, bookStatus=DONE}, Order{id=3, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Цифровая экономика', numberOfPages=394, orderDate='2020-10-03', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=0, finalNumberOfPages=394, numberOfCopies=300, price=-1.0, bookStatus=DONE}]
+2020-12-14 04:37:04 INFO  DataProviderCSVTest:1059 - countPublishedBooksFail
+2020-12-14 04:37:04 DEBUG DataProviderCSV:173 - will add to csv Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-14 04:37:04 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 04:37:04 DEBUG DataProviderCSV:384 - will add to csv Book{id=1, author=10, title='Цифровая бухгалтерия', numberOfPages=229}
+2020-12-14 04:37:04 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 04:37:04 DEBUG DataProviderCSV:384 - will add to csv Book{id=2, author=10, title='Экономическая теория', numberOfPages=437}
+2020-12-14 04:37:04 DEBUG DataProviderCSV:377 - there is such Author
+2020-12-14 04:37:04 DEBUG DataProviderCSV:384 - will add to csv Book{id=3, author=10, title='Цифровая экономика', numberOfPages=394}
+2020-12-14 04:37:04 DEBUG DataProviderCSV:173 - will add to csv Employee{id=0, firstName='Default', secondName='Default', lastName='Default', phone='00000000000'inn='000000000000', workRecordBook='0000000', emplpyeeType=ADMIN}
+2020-12-14 04:37:04 DEBUG DataProviderCSV:224 - already exist in csv CoverPrice{id=0, coverType=PAPERBACK, price=0.0}
+2020-12-14 04:37:05 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 04:37:05 DEBUG DataProviderCSV:262 - already exist in csv PriceParameters{id=0, pagePrice=0.0, coverPrice=[CoverPrice{id=0, coverType=PAPERBACK, price=0.0}], workPrice=0.0, validFromDate='1970-01-01', validToDate='1970-01-02'}
+2020-12-14 04:37:05 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 04:37:05 DEBUG DataProviderCSV:305 - will add to csv Order{id=1, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Цифровая бухгалтерия', numberOfPages=229, orderDate='2019-09-03', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=0, finalNumberOfPages=229, numberOfCopies=100, price=-1.0, bookStatus=DONE}
+2020-12-14 04:37:05 DEBUG DataProviderCSV:168 - already exist in csv Employee{id=0, firstName='Default', secondName='Default', lastName='Default', phone='00000000000'inn='000000000000', workRecordBook='0000000', emplpyeeType=ADMIN}
+2020-12-14 04:37:05 DEBUG DataProviderCSV:224 - already exist in csv CoverPrice{id=0, coverType=PAPERBACK, price=0.0}
+2020-12-14 04:37:05 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 04:37:05 DEBUG DataProviderCSV:262 - already exist in csv PriceParameters{id=0, pagePrice=0.0, coverPrice=[CoverPrice{id=0, coverType=PAPERBACK, price=0.0}], workPrice=0.0, validFromDate='1970-01-01', validToDate='1970-01-02'}
+2020-12-14 04:37:05 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 04:37:05 DEBUG DataProviderCSV:305 - will add to csv Order{id=2, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Экономическая теория', numberOfPages=437, orderDate='2020-04-01', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=0, finalNumberOfPages=437, numberOfCopies=200, price=-1.0, bookStatus=DONE}
+2020-12-14 04:37:05 DEBUG DataProviderCSV:168 - already exist in csv Employee{id=0, firstName='Default', secondName='Default', lastName='Default', phone='00000000000'inn='000000000000', workRecordBook='0000000', emplpyeeType=ADMIN}
+2020-12-14 04:37:05 DEBUG DataProviderCSV:224 - already exist in csv CoverPrice{id=0, coverType=PAPERBACK, price=0.0}
+2020-12-14 04:37:05 DEBUG DataProviderCSV:260 - there is such CoverPrice
+2020-12-14 04:37:05 DEBUG DataProviderCSV:262 - already exist in csv PriceParameters{id=0, pagePrice=0.0, coverPrice=[CoverPrice{id=0, coverType=PAPERBACK, price=0.0}], workPrice=0.0, validFromDate='1970-01-01', validToDate='1970-01-02'}
+2020-12-14 04:37:05 DEBUG DataProviderCSV:298 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-14 04:37:05 DEBUG DataProviderCSV:305 - will add to csv Order{id=3, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Цифровая экономика', numberOfPages=394, orderDate='2020-10-03', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=0, finalNumberOfPages=394, numberOfCopies=300, price=-1.0, bookStatus=DONE}
+2020-12-14 04:37:05 DEBUG DataProviderCSV:1320 - [Order{id=1, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Цифровая бухгалтерия', numberOfPages=229, orderDate='2019-09-03', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=0, finalNumberOfPages=229, numberOfCopies=100, price=-1.0, bookStatus=DONE}, Order{id=2, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Экономическая теория', numberOfPages=437, orderDate='2020-04-01', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=0, finalNumberOfPages=437, numberOfCopies=200, price=-1.0, bookStatus=DONE}, Order{id=3, author=Author{id=10, firstName='null', secondName='null', lastName='null', phone='null', email='null', degree='null', organization='null'}, title='Цифровая экономика', numberOfPages=394, orderDate='2020-10-03', coverType=RIGID_COVER, bookMaker=0, bookEditor=0, bookPriceParameters=0, finalNumberOfPages=394, numberOfCopies=300, price=-1.0, bookStatus=DONE}]
+2020-12-14 04:42:28 INFO  DataProviderCSVTest:1091 - createCoverPriceSuccess
+2020-12-14 04:42:29 ERROR DataProviderCSV:141 - java.util.NoSuchElementException: No value present
+2020-12-14 04:49:24 INFO  DataProviderCSVTest:1091 - createCoverPriceSuccess
+2020-12-14 04:49:25 ERROR DataProviderCSV:141 - java.util.NoSuchElementException: No value present
+2020-12-14 04:49:49 INFO  DataProviderCSVTest:1091 - createCoverPriceSuccess
+2020-12-14 04:49:50 ERROR DataProviderCSV:141 - java.util.NoSuchElementException: No value present
+2020-12-14 04:50:35 INFO  DataProviderCSVTest:1101 - createCoverPriceFail
+2020-12-14 04:50:35 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}
+2020-12-14 04:52:29 INFO  DataProviderCSVTest:1101 - createCoverPriceFail
+2020-12-14 04:52:29 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}
+2020-12-14 04:53:46 INFO  DataProviderCSVTest:1091 - createCoverPriceSuccess
+2020-12-14 04:53:47 ERROR DataProviderCSV:141 - java.util.NoSuchElementException: No value present
+2020-12-14 04:55:04 INFO  DataProviderCSVTest:1101 - addCoverPriceFail
+2020-12-14 04:55:04 DEBUG DataProviderCSV:229 - will add to csv CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}
+2020-12-14 04:55:04 DEBUG DataProviderCSVTest:1108 - [CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}]
+2020-12-14 04:56:51 INFO  DataProviderCSVTest:1091 - addCoverPriceSuccess
+2020-12-14 04:56:51 ERROR DataProviderCSV:141 - java.util.NoSuchElementException: No value present

@@ -1,4 +1,4 @@
-package ru.sfedu.mavenproject.enums;
+package ru.sfedu.mavenproject.bean.enums;
 
 public enum EmployeeType {
     CHIEF,

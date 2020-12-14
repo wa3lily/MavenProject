@@ -4,7 +4,7 @@ import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvCustomBindByName;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
-import ru.sfedu.mavenproject.converters.ConverterAuthor;
+import ru.sfedu.mavenproject.bean.converters.ConverterAuthor;
 
 import java.io.Serializable;
 import java.util.Objects;

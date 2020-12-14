@@ -1,11 +1,9 @@
 package ru.sfedu.mavenproject.bean;
 
 import com.opencsv.bean.CsvBindByName;
-import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
-import ru.sfedu.mavenproject.enums.EmployeeType;
+import ru.sfedu.mavenproject.bean.enums.EmployeeType;
 
-import java.io.Serializable;
 import java.util.Objects;
 
 /**

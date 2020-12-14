@@ -3,7 +3,7 @@ package ru.sfedu.mavenproject.bean;
 import com.opencsv.bean.CsvBindByName;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
-import ru.sfedu.mavenproject.enums.CoverType;
+import ru.sfedu.mavenproject.bean.enums.CoverType;
 
 import java.io.Serializable;
 import java.util.Objects;

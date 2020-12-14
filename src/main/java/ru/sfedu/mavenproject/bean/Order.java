@@ -3,10 +3,10 @@ package ru.sfedu.mavenproject.bean;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvCustomBindByName;
 import org.simpleframework.xml.Element;
-import ru.sfedu.mavenproject.converters.ConverterEmployee;
-import ru.sfedu.mavenproject.converters.ConverterPriceParameters;
-import ru.sfedu.mavenproject.enums.BookStatus;
-import ru.sfedu.mavenproject.enums.CoverType;
+import ru.sfedu.mavenproject.bean.converters.ConverterEmployee;
+import ru.sfedu.mavenproject.bean.converters.ConverterPriceParameters;
+import ru.sfedu.mavenproject.bean.enums.BookStatus;
+import ru.sfedu.mavenproject.bean.enums.CoverType;
 
 import java.util.Objects;
 

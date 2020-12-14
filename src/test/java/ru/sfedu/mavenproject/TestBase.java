@@ -1,12 +1,11 @@
 package ru.sfedu.mavenproject;
 
 import ru.sfedu.mavenproject.bean.*;
-import ru.sfedu.mavenproject.enums.BookStatus;
-import ru.sfedu.mavenproject.enums.CorrectionsStatus;
-import ru.sfedu.mavenproject.enums.CoverType;
-import ru.sfedu.mavenproject.enums.EmployeeType;
+import ru.sfedu.mavenproject.bean.enums.BookStatus;
+import ru.sfedu.mavenproject.bean.enums.CorrectionsStatus;
+import ru.sfedu.mavenproject.bean.enums.CoverType;
+import ru.sfedu.mavenproject.bean.enums.EmployeeType;
 
-import java.util.Collections;
 import java.util.List;
 
 public class TestBase {

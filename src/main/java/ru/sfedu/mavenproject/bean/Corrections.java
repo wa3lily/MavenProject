@@ -4,9 +4,9 @@ import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvCustomBindByName;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
-import ru.sfedu.mavenproject.converters.ConverterMeeting;
-import ru.sfedu.mavenproject.converters.ConverterOrder;
-import ru.sfedu.mavenproject.enums.CorrectionsStatus;
+import ru.sfedu.mavenproject.bean.converters.ConverterMeeting;
+import ru.sfedu.mavenproject.bean.converters.ConverterOrder;
+import ru.sfedu.mavenproject.bean.enums.CorrectionsStatus;
 
 import java.io.Serializable;
 import java.util.Objects;
