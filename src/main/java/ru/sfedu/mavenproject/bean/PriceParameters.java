@@ -7,8 +7,10 @@ import org.simpleframework.xml.Element;
 import ru.sfedu.mavenproject.converters.ConverterCoverPrice;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * Class PriceParameters
@@ -140,7 +142,7 @@ public class PriceParameters implements Serializable {
     return id == that.id &&
             Double.compare(that.pagePrice, pagePrice) == 0 &&
             Double.compare(that.workPrice, workPrice) == 0 &&
-            ((coverPrice == null && that.coverPrice == null) /*|| coverPrice.getId() == that.coverPrice.getId()*/) &&
+            ((coverPrice == null && that.coverPrice == null) || coverPrice.stream().allMatch(e1 -> that.coverPrice.stream().anyMatch(e2 -> e2.getId() == e1.getId()))) &&
             Objects.equals(validFromDate, that.validFromDate) &&
             Objects.equals(validToDate, that.validToDate);
   }
@@ -154,13 +156,9 @@ public class PriceParameters implements Serializable {
   public String toString() {
     String result = "PriceParameters{" +
             "id=" + id +
-            ", pagePrice=" + pagePrice;
-    try{
-      result += ", coverPrice=" + coverPrice;
-    }catch (NullPointerException e){
-      result += ", coverPrice=null";
-    }
-    result += ", workPrice=" + workPrice +
+            ", pagePrice=" + pagePrice +
+            ", coverPrice=" + coverPrice +
+            ", workPrice=" + workPrice +
             ", validFromDate='" + validFromDate + '\'' +
             ", validToDate='" + validToDate + '\'' +
             '}';

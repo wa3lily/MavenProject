@@ -1,104 +1,267 @@
 package ru.sfedu.mavenproject.api;
 
-import ru.sfedu.mavenproject.bean.Book;
-
+import ru.sfedu.mavenproject.bean.*;
+import ru.sfedu.mavenproject.enums.BookStatus;
+import ru.sfedu.mavenproject.enums.CorrectionsStatus;
+import ru.sfedu.mavenproject.enums.CoverType;
 import java.util.List;
+import java.util.Optional;
 
 public interface DataProvider {
 
-    //Author
+     /**
+      * @param cl
+      * @return
+      */
+     long getMaxId (Class cl);
 
-     <T extends Book> Object getBookByID(Class cl, long id);
+     /**
+      * @param cl
+      * @param obj
+      * @param <T>
+      * @return
+      */
+     <T> boolean deleteObj(Class cl, T obj);
 
+     //Author
+
+     /**
+      * @param authorId
+      * @param id
+      * @param title
+      * @param numberOfPages
+      * @return
+      */
      boolean alterBook (long authorId, long id, String title, int numberOfPages);
 
-//public Set_title (){}
+     /**
+      * @param order
+      * @return
+      */
+     boolean sendOrderInformation (Order order);
 
-//public Attach_file (){}
+     /**
+      * @param id
+      * @param orderDate
+      * @param coverType
+      * @param numberOfCopies
+      * @return
+      */
+     Optional<Order> makeOrder (long id, String orderDate, String coverType, int numberOfCopies);
 
-//public Set_number_of_pages (){}
+     /**
+      * @param orderId
+      * @return
+      */
+     double calculateCost (long orderId) ;
 
-//public Make_order (){}
+     /**
+      * @param date
+      * @return
+      */
+     Optional<PriceParameters> selectPriceParameters(String date);
 
-//public Set_order_date (){}
+     /**
+      * @param start
+      * @param end
+      * @param date
+      * @return
+      */
+     boolean belongInterval (String start, String end, String date);
 
-//public Set_cover_type (){}
+     /**
+      * @param idPriceParameters
+      * @param numberOfPages
+      * @return
+      */
+     double calculateEditorWorkCost (long idPriceParameters, int numberOfPages);
 
-//public Set_number_of_copies (){}
+     /**
+      * @param idPriceParameters
+      * @param numberOfPages
+      * @return
+      */
+     double calculatePrintingCost (long idPriceParameters, int numberOfPages);
 
-//public Calculate_cost (){}
+     /**
+      * @param idPriceParameters
+      * @param coverType
+      * @return
+      */
+     double calculateCoverCost (long idPriceParameters, CoverType coverType);
 
-//public Calculate_editor_work_cost (){}
+     /**
+      * @param id
+      * @return
+      */
+     boolean takeAwayOrder (long id);
 
-//public Calculate_printing_cost (){}
+     /**
+      * @param authorId
+      * @return
+      */
+     List<Corrections> getListOfCorrections (long authorId);
 
-//public Calculate_cover_cost (){}
+     /**
+      * @param authorId
+      * @return
+      */
+     List<Order> getListOfAuthorOrder (long authorId);
 
-//public Take_away_order (){}
+     /**
+      * @param authorId
+      * @return
+      */
+     List<Book> getListOfAuthorBook (long authorId);
 
-//public Get_list_of_corrections (){}
+     /**
+      * @param id
+      * @param firstName
+      * @param secondName
+      * @param lastName
+      * @param phone
+      * @param email
+      * @param degree
+      * @param organization
+      * @return
+      */
+     Optional<Author> addAuthor(long id,String firstName,String secondName,String lastName,String phone, String email,String degree,String organization);
 
-//public Agreement_correction (){}
+     /**
+      * @param author
+      * @param id
+      * @param firstName
+      * @param secondName
+      * @param lastName
+      * @param phone
+      * @param email
+      * @param degree
+      * @param organization
+      */
+     void setAuthor(Author author, long id,String firstName,String secondName,String lastName,String phone, String email,String degree,String organization);
 
-//public Agreement_edits (){}
+     ////Editor
 
-//public Add_comment (){}
+     /**
+      * @param OrderId
+      * @param EmployeeId
+      * @return
+      */
+     boolean addBookEditor(long OrderId, long EmployeeId);
 
-//public Agreement_meeting (){}
+     /**
+      * @param OrderId
+      * @return
+      */
+     boolean returnToAuthor (long OrderId);
 
-//public Add_author (){}
+     /**
+      * @param OrderId
+      * @return
+      */
+     boolean endEditing (long OrderId);
 
-////Editor
+     /**
+      * @param id
+      * @param page
+      * @param textBefore
+      * @param textAfter
+      * @param comment
+      * @param order
+      * @param meet
+      * @param status
+      * @return
+      */
+     Optional<Corrections> sendCorrectionsToAuthor(long id, int page, String textBefore, String textAfter, String comment, Order order, Meeting meet, CorrectionsStatus status);
 
-//public Edit_book (){}
-
-//public Get_Book (){}
-
-//public Return_to_author (){}
-
-//public Upload_editing_book_ (){}
-
-//public Upload_book_for_printing (){}
-
-//public End_editing (){}
-
-//public Send_corrections_to_author (){}
-
-//public Add_information_about_edits (){}
-
-//public Make_meeting (){}
-
-//public Return_to_author (){}
+     /**
+      * @param correctionsId
+      * @param id
+      * @param meetDate
+      * @param authorAgreement
+      * @param editorAgreement
+      * @return
+      */
+     boolean makeMeeting (long correctionsId, long id, String meetDate, boolean authorAgreement, boolean editorAgreement);
 
 ////Maker
 
-//public Return_to_editor (){}
+     /**
+      * @param orderId
+      * @return
+      */
+     Optional<Order> findOrder(long orderId);
 
-//public Take_for_printing (){}
+     /**
+      * @param OrderId
+      * @return
+      */
+     boolean returnToEditor (long OrderId);
 
-//public Mark_as_finished (){}
+     /**
+      * @param OrderId
+      * @param EmployeeId
+      * @return
+      */
+     boolean takeForPrinting (long OrderId,long EmployeeId);
+
+     /**
+      * @param OrderId
+      *
+      * @return
+      */
+     boolean markAsFinished (long OrderId);
 
 ////Chief
 
-//public Count_published_books (){}
+     /**
+      * @param startDate
+      * @param deadline
+      * @return
+      */
+     long countPublishedBooks (String startDate, String deadline);
 
-//public Count_printing_books (){}
+     /**
+      * @param startDate
+      * @param deadline
+      * @return
+      */
+     long countPrintingBooks (String startDate, String deadline);
 
-//public Count_editing_books (){}
+     /**
+      * @param startDate
+      * @param deadline
+      * @return
+      */
+     long countEditingBooks (String startDate, String deadline);
 
 ////Admin
 
-//public Set_parameters (){}
+     /**
+      * @param id
+      * @param pagePrice
+      * @param coverPrice
+      * @param workPrice
+      * @param validFromDate
+      * @param validToDate
+      * @return
+      */
+     Optional<PriceParameters> createPriceParameters(long id, double pagePrice, List<CoverPrice> coverPrice, double workPrice, String validFromDate, String validToDate);
 
-//public Change_page_cost (){}
+     /**
+      * @param id
+      * @param coverType
+      * @param price
+      * @return
+      */
+     Optional<CoverPrice> createCoverPrice(long id, CoverType coverType, double price);
 
-//public Change_work_cost (){}
-
-//public Change_cover_cost (){}
-
-//
-
-
-
+     /**
+      * @param startDate
+      * @param deadline
+      * @param bookStatus
+      * @return
+      */
+     long countEditing (String startDate, String deadline, BookStatus bookStatus);
 
 }

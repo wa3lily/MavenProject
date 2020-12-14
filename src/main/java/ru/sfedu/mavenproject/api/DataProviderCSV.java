@@ -77,7 +77,7 @@ public class DataProviderCSV implements DataProvider {
             return null;
         }
     }
-    @Override
+
     public <T extends Book> Object getBookByID(Class cl, long id) {
         try {
             List<T> list = this.read(cl);
@@ -158,11 +158,6 @@ public class DataProviderCSV implements DataProvider {
             log.debug("will add to csv "+obj);
             recordList.add(obj);
         }
-    }
-
-    //соединяет два массива, сохраняя повторяющиеся элементы второго в третий
-    public <T> void concatLists( List<T> list, List<T> returnList, List<T> recordList) {
-        list.stream().forEach(e1 -> separateDuplicates(returnList, recordList, e1));
     }
 
     public <T extends People> List<T> insertPeople(Class cl, List<T> list) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
@@ -593,48 +588,52 @@ public class DataProviderCSV implements DataProvider {
         return false;
     }
 
-    public <T> boolean deleteObj(Class cl, T obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-
-        switch (cl.getSimpleName().toLowerCase()) {
-            case Constants.CORRECTIONS:
-                Corrections corObj = (Corrections) obj;
-                log.info("delete "+Constants.CORRECTIONS);
-                return deleteCorrections(corObj);
-            case Constants.PEOPLE:
-                People peoplObj = (People) obj;
-                log.info("delete "+Constants.PEOPLE);
-                return deletePeople(peoplObj);
-            case Constants.BOOK:
-                Book bookObj = (Book) obj;
-                log.info("delete "+Constants.BOOK);
-                return deleteBook(bookObj);
-            case Constants.EMPLOYEE:
-                Employee emplObj = (Employee) obj;
-                log.info("delete "+Constants.EMPLOYEE);
-                return deleteEmployee(emplObj);
-            case Constants.PRICEPARAMETERS:
-                PriceParameters priceObj = (PriceParameters) obj;
-                log.info("delete "+Constants.PRICEPARAMETERS);
-                return deletePriceParameters(priceObj);
-            case Constants.ORDER:
-                Order ordObj = (Order) obj;
-                log.info("delete "+Constants.ORDER);
-                return deleteOrder(ordObj);
-            case Constants.MEETING:
-                Meeting meetObj = (Meeting) obj;
-                log.info("delete "+Constants.MEETING);
-                return deleteMeeting(meetObj);
-            case Constants.AUTHOR:
-                Author authObj = (Author) obj;
-                log.info("delete "+Constants.AUTHOR);
-                return deleteAuthor(authObj);
-            case Constants.COVERPRICE:
-                CoverPrice covObj = (CoverPrice) obj;
-                log.info("delete "+Constants.COVERPRICE);
-                return deleteCoverPrice(covObj);
-            default:
-                log.debug("default case");
-                return false;
+    public <T> boolean deleteObj(Class cl, T obj) {
+        try {
+            switch (cl.getSimpleName().toLowerCase()) {
+                case Constants.CORRECTIONS:
+                    Corrections corObj = (Corrections) obj;
+                    log.info("delete " + Constants.CORRECTIONS);
+                    return deleteCorrections(corObj);
+                case Constants.PEOPLE:
+                    People peoplObj = (People) obj;
+                    log.info("delete " + Constants.PEOPLE);
+                    return deletePeople(peoplObj);
+                case Constants.BOOK:
+                    Book bookObj = (Book) obj;
+                    log.info("delete " + Constants.BOOK);
+                    return deleteBook(bookObj);
+                case Constants.EMPLOYEE:
+                    Employee emplObj = (Employee) obj;
+                    log.info("delete " + Constants.EMPLOYEE);
+                    return deleteEmployee(emplObj);
+                case Constants.PRICEPARAMETERS:
+                    PriceParameters priceObj = (PriceParameters) obj;
+                    log.info("delete " + Constants.PRICEPARAMETERS);
+                    return deletePriceParameters(priceObj);
+                case Constants.ORDER:
+                    Order ordObj = (Order) obj;
+                    log.info("delete " + Constants.ORDER);
+                    return deleteOrder(ordObj);
+                case Constants.MEETING:
+                    Meeting meetObj = (Meeting) obj;
+                    log.info("delete " + Constants.MEETING);
+                    return deleteMeeting(meetObj);
+                case Constants.AUTHOR:
+                    Author authObj = (Author) obj;
+                    log.info("delete " + Constants.AUTHOR);
+                    return deleteAuthor(authObj);
+                case Constants.COVERPRICE:
+                    CoverPrice covObj = (CoverPrice) obj;
+                    log.info("delete " + Constants.COVERPRICE);
+                    return deleteCoverPrice(covObj);
+                default:
+                    log.debug("default case");
+                    return false;
+            }
+        }catch (IOException | CsvDataTypeMismatchException | CsvRequiredFieldEmptyException e){
+            log.error(e);
+            return false;
         }
     }
 
@@ -855,6 +854,46 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
+    public Employee createDefaultEmloyee(){
+        Employee employee = new Employee();
+        employee.setId(0);
+        employee.setFirstName("Default");
+        employee.setSecondName("Default");
+        employee.setLastName("Default");
+        employee.setPhone("00000000000");
+        employee.setInn("000000000000");
+        employee.setWorkRecordBook("0000000");
+        employee.setEmplpyeeType(EmployeeType.ADMIN);
+        return employee;
+    }
+
+    public PriceParameters createDefaultPriceParameters() throws IOException {
+        try {
+            List<CoverPrice> list = new ArrayList<>();
+            createDefaultCoverPrice();
+            list.add(getCoverPriceByID(0));
+            PriceParameters priceParameters = new PriceParameters();
+            priceParameters.setId(0);
+            priceParameters.setPagePrice(0.0);
+            priceParameters.setCoverPrice(list);
+            priceParameters.setWorkPrice(0.0);
+            priceParameters.setValidFromDate("1970-01-01");
+            priceParameters.setValidToDate("1970-01-02");
+            return priceParameters;
+        }catch (IOException e){
+            return null;
+        }
+    }
+
+    public CoverPrice createDefaultCoverPrice(){
+        CoverPrice coverPrice = new CoverPrice();
+        coverPrice.setId(0);
+        coverPrice.setCoverType(CoverType.PAPERBACK);
+        coverPrice.setCoverType(CoverType.PAPERBACK);
+        coverPrice.setPrice(0.0);
+        return coverPrice;
+    }
+
     //Author
 
     @Override
@@ -886,39 +925,19 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
-    public boolean addOrderInformation (long authorId, long id, String title, int numberOfPages, String orderDate,
-                                        CoverType coverType, int numberOfCopies) {
-        try{
-            if (getPeopleByID(Author.class, authorId) == null){
-                log.info("Нет автора с таким id");
-                return false;
-            }else if(getBookByID(Order.class, id) != null){
-                log.info("Уже есть Order с таким id");
-                return false;
-            }else{
-                Author author = (Author) getPeopleByID(Author.class, authorId);
-                Order order = new Order();
-                order.setId(id);
-                order.setAuthor(author);
-                order.setTitle(title);
-                order.setFinalNumberOfPages(numberOfPages);
-                order.setFinalNumberOfPages(numberOfPages);
-                order.setOrderDate(orderDate);
-                order.setCoverType(coverType);
-                order.setNumberOfCopies(numberOfCopies);
-                return true;
-            }
-        }catch (IOException e){
-            log.error(e);
+    public boolean sendOrderInformation (Order order) {
+        if (order == null){
+            return false;
+        }
+        List<Order> list = new ArrayList<>();
+        list.add(order);
+        try {
+            return (insertOrder(list).isEmpty());
+        } catch (IOException | CsvDataTypeMismatchException | CsvRequiredFieldEmptyException e) {
+            e.printStackTrace();
             return false;
         }
     }
-
-    //public Set_title (){}
-
-//public Attach_file (){}
-
-//public Set_number_of_pages (){}
 
     public Optional<Order> makeOrder (long id, String orderDate, String coverType, int numberOfCopies){
         if (getBookByID(Book.class, id) == null){
@@ -934,29 +953,47 @@ public class DataProviderCSV implements DataProvider {
             order.setFinalNumberOfPages(book.getNumberOfPages());
             order.setOrderDate(orderDate);
             order.setCoverType(CoverType.valueOf(coverType));
+            try {
+                List<Employee> listEmployee = new ArrayList<>();
+                listEmployee.add(createDefaultEmloyee());
+                insertPeople(Employee.class, listEmployee);
+                List<CoverPrice> listCoverPrice = new ArrayList<>();
+                listCoverPrice.add(createDefaultCoverPrice());
+                insertCoverPrice(listCoverPrice);
+                List<PriceParameters> listPriceParameters = new ArrayList<>();
+                listPriceParameters.add(createDefaultPriceParameters());
+                insertPriceParameters(listPriceParameters);
+                order.setBookMaker((Employee) getPeopleByID(Employee.class, 0));
+                order.setBookEditor((Employee) getPeopleByID(Employee.class, 0));
+                order.setBookPriceParameters(getPriceParametersByID(0));
+            } catch (IOException | CsvRequiredFieldEmptyException | CsvDataTypeMismatchException e) {
+                log.error(e);
+            }
             order.setNumberOfCopies(numberOfCopies);
             order.setBookStatus(BookStatus.UNTOUCHED);
             return Optional.of(order);
         }
     }
 
-//public Set_order_date (){}
-
-//public Set_cover_type (){}
-
-//public Set_number_of_copies (){}
-
-    public double calculateCost (Order order) throws IOException {
+    public double calculateCost (long orderId) {
+        Order order = (Order) getBookByID(Order.class, orderId);
         try {
+            if (order == null){
+                log.debug("There is not such Order");
+                return -1;
+            }
             double result = 0;
             order.setBookPriceParameters(selectPriceParameters(order.getOrderDate()).orElse(null));
+            log.debug(selectPriceParameters(order.getOrderDate()).orElse(null));
             if (order.getBookPriceParameters() != null){
                 long id = order.getBookPriceParameters().getId();
                 double work = calculateEditorWorkCost (id, order.getNumberOfPages());
                 double print = calculatePrintingCost (id, order.getNumberOfPages());
                 double cover = calculateCoverCost (id, order.getCoverType());
-                result = (work <= -1 && print>-1 && cover>-1) ? work+print+cover : -1;
+                result = (work > -1 && print>-1 && cover>-1) ? (work+print+cover)*order.getNumberOfCopies() : -1;
                 log.debug((result>-1) ? "calculate cost done" : "there is truble with PriceParamets");
+                order.setPrice(result);
+                updateOrder(order);
             }
         }catch (IOException e){
             log.error(e);
@@ -969,9 +1006,7 @@ public class DataProviderCSV implements DataProvider {
     public Optional<PriceParameters> selectPriceParameters(String date) {
         try {
             List<PriceParameters> list = read(PriceParameters.class);
-            log.debug("first list "+list);
             list = list.stream().filter(el -> belongInterval(el.getValidFromDate(), el.getValidToDate(), date)).collect(Collectors.toList());
-            log.debug("second list "+list);
             log.info((list.isEmpty()) ? "there is not suit PriceParameters" : "PriceParamets selected");
             return (list.isEmpty()) ? Optional.empty() : Optional.of(list.get(0));
         }catch (IOException e){
@@ -998,9 +1033,9 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
-    public double calculateEditorWorkCost (long id, int numberOfPages) throws IOException {
+    public double calculateEditorWorkCost (long idPriceParameters, int numberOfPages) {
         try {
-            PriceParameters priceParameters = getPriceParametersByID(id);
+            PriceParameters priceParameters = getPriceParametersByID(idPriceParameters);
             return priceParameters.getWorkPrice() * numberOfPages;
         }catch (IOException e){
             log.error(e);
@@ -1008,9 +1043,9 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
-    public double calculatePrintingCost (long id, int numberOfPages){
+    public double calculatePrintingCost (long idPriceParameters, int numberOfPages){
         try {
-            PriceParameters priceParameters = getPriceParametersByID(id);
+            PriceParameters priceParameters = getPriceParametersByID(idPriceParameters);
             return priceParameters.getPagePrice() * numberOfPages;
         }catch (IOException e){
             log.error(e);
@@ -1018,8 +1053,28 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
-    public double calculateCoverCost (long id, CoverType coverType){
-        return 0;
+    public double calculateCoverCost (long idPriceParameters, CoverType coverType){
+        try {
+            PriceParameters priceParameters = getPriceParametersByID(idPriceParameters);
+            List<CoverPrice> coverPriceList = priceParameters.getCoverPrice().stream().filter(el -> {
+                try {
+                    return getCoverPriceByID(el.getId()).getCoverType() == coverType;
+                } catch (IOException e) {
+                    log.error(e);
+                    return false;
+                }
+            }).collect(Collectors.toList());
+            log.debug(coverPriceList);
+            if (coverPriceList.isEmpty()){
+                return -1;
+            }else{
+                long actualId = coverPriceList.get(0).getId();
+                return getCoverPriceByID(actualId).getPrice();
+            }
+        }catch (IOException e){
+            log.error(e);
+            return -1;
+        }
     }
 
     public boolean takeAwayOrder (long id) {
@@ -1075,65 +1130,196 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
+    public Optional<Author> addAuthor(long id,String firstName,String secondName,String lastName,String phone, String email,String degree,String organization){
+        try {
+            List<Author> list = read(Author.class);
+            Author author = new Author();
+            setAuthor(author, id, firstName, secondName, lastName, phone, email, degree, organization);
+            list.add(author);
+            log.debug(author);
+            insertPeople(Author.class,list);
+            return Optional.of(author);
+        } catch (IOException | CsvRequiredFieldEmptyException | CsvDataTypeMismatchException e) {
+            log.error(e);
+            return Optional.empty();
+        }
+    }
 
-
-//public Agreement_correction (long id){
-//        List<>
-//}
-
-//public Agreement_edits (){}
-
-//public Add_comment (){}
-
-//public Agreement_meeting (){}
-
-//public Add_author (){}
+    public void setAuthor(Author author, long id,String firstName,String secondName,String lastName,String phone, String email,String degree,String organization){
+        author.setId(id);
+        author.setFirstName(firstName);
+        author.setSecondName(secondName);
+        author.setLastName(lastName);
+        author.setPhone(phone);
+        author.setEmail(email);
+        author.setDegree(degree);
+        author.setOrganization(organization);
+    }
 
     ////Editor
 
-//public Edit_book (){}
+    public boolean addBookEditor(long OrderId, long EmployeeId){
+        try {
+            Order order = (Order) getBookByID(Order.class,OrderId);
+            Employee employee = (Employee) getPeopleByID(Employee.class,EmployeeId);
+            if (order == null || employee == null){
+                return false;
+            }
+            order.setBookEditor(employee);
+            log.debug(order);
+            return updateOrder(order);
+        } catch (IOException | CsvRequiredFieldEmptyException | CsvDataTypeMismatchException e) {
+            log.error(e);
+            return false;
+        }
+    }
 
-//public Get_Book (){}
+    public boolean returnToAuthor (long OrderId){
+        return returnTo(OrderId,BookStatus.WAIT_AUTHOR_CORRECTIONS);
+    }
 
-//public Return_to_author (){}
+    public boolean endEditing (long OrderId){
+        try {
+            Order order = findOrder(OrderId).get();
+            order.setBookStatus(BookStatus.MAKING);
+            log.debug(order);
+            return updateOrder(order);
+        } catch (IOException | CsvRequiredFieldEmptyException | CsvDataTypeMismatchException e) {
+            log.error(e);
+            return false;
+        }
+    }
 
-//public Upload_editing_book_ (){}
+    public Optional<Corrections> sendCorrectionsToAuthor(long id, int page, String textBefore, String textAfter, String comment, Order order, Meeting meet, CorrectionsStatus status){
+        Corrections correction = new Corrections();
+        correction.setId(id);
+        correction.setPage(page);
+        correction.setTextBefore(textBefore);
+        correction.setTextAfter(textAfter);
+        correction.setComment(comment);
+        correction.setOrder(order);
+        correction.setMeet(meet);
+        correction.setStatus(status);
+        return Optional.of(correction);
+    }
 
-//public Upload_book_for_printing (){}
-
-//public End_editing (){}
-
-//public Send_corrections_to_author (){}
-
-//public Add_information_about_edits (){}
-
-//public Make_meeting (){}
-
-//public Return_to_author (){}
+    public boolean makeMeeting (long correctionsId, long id, String meetDate, boolean authorAgreement, boolean editorAgreement) {
+        try {
+            Corrections corrections = getCorrectionsByID(correctionsId);
+            Meeting meeting = new Meeting();
+            meeting.setId(id);
+            meeting.setMeetDate(meetDate);
+            meeting.setAuthorAgreement(authorAgreement);
+            meeting.setEditorAgreement(editorAgreement);
+            corrections.setMeet(meeting);
+            log.debug(corrections);
+            return true;
+        } catch (IOException e) {
+            log.error(e);
+            return false;
+        }
+    }
 
 ////Maker
 
-//public Return_to_editor (){}
+    public Optional<Order> findOrder(long orderId){
+        Order order = (Order) getBookByID(Order.class,orderId);
+        if (order == null){
+            return Optional.empty();
+        }
+        return Optional.of(order);
+    }
 
-//public Take_for_printing (){}
+    public boolean returnTo (long OrderId,BookStatus bookStatus){
+        try {
+            Order order = findOrder(OrderId).get();
+            order.setBookStatus(bookStatus);
+            log.debug(order);
+            return updateOrder(order);
+        } catch (IOException | CsvRequiredFieldEmptyException | CsvDataTypeMismatchException e) {
+            log.error(e);
+            return false;
+        }
+    }
 
-//public Mark_as_finished (){}
+    public boolean returnToEditor (long OrderId){
+        return returnTo (OrderId, BookStatus.WAIT_EDITOR_AGR);
+    }
+
+    public boolean takeForPrinting (long OrderId,long EmployeeId){
+        try{
+            Order order = (Order) getBookByID(Order.class,OrderId);
+            Employee employee = (Employee) getPeopleByID(Employee.class,EmployeeId);
+            if (order == null || employee == null) {
+                return false;
+            }
+            order.setBookMaker(employee);
+            log.debug(order);
+            return updateOrder(order);
+        } catch (IOException | CsvRequiredFieldEmptyException | CsvDataTypeMismatchException e) {
+            log.error(e);
+            return false;
+        }
+    }
+
+    public boolean markAsFinished (long OrderId){
+        try{
+            Order order = findOrder(OrderId).get();
+            order.setBookStatus(BookStatus.DONE);
+            log.debug(order);
+            return updateOrder(order);
+        } catch (IOException | CsvRequiredFieldEmptyException | CsvDataTypeMismatchException e) {
+            log.error(e);
+            return false;
+        }
+    }
 
 ////Chief
 
-//public Count_published_books (){}
+    public long countPublishedBooks (String startDate, String deadline){
+        return countEditing(startDate,deadline,BookStatus.DONE);
+    }
 
-//public Count_printing_books (){}
+    public long countPrintingBooks (String startDate, String deadline){
+        return countEditing(startDate,deadline,BookStatus.MAKING);
+    }
 
-//public Count_editing_books (){}
+    public long countEditingBooks (String startDate, String deadline){
+        return countEditing(startDate,deadline,BookStatus.EDITING);
+    }
 
 ////Admin
 
-//public Set_parameters (){}
+    public Optional<PriceParameters> createPriceParameters(long id, double pagePrice, List<CoverPrice> coverPrice, double workPrice, String validFromDate, String validToDate){
+        PriceParameters priceParameters = new PriceParameters();
+        priceParameters.setId(id);
+        priceParameters.setPagePrice(pagePrice);
+        priceParameters.setCoverPrice(coverPrice);
+        priceParameters.setWorkPrice(workPrice);
+        priceParameters.setValidFromDate(validFromDate);
+        priceParameters.setValidToDate(validToDate);
+        return Optional.of(priceParameters);
+    }
 
-//public Change_page_cost (){}
+    public Optional<CoverPrice> createCoverPrice(long id, CoverType coverType, double price){
+        CoverPrice coverPrice = new CoverPrice();
+        coverPrice.setId(id);
+        coverPrice.setCoverType(coverType);
+        coverPrice.setPrice(price);
+        return Optional.of(coverPrice);
+    }
 
-//public Change_work_cost (){}
-
-//public Change_cover_cost (){}
+    public long countEditing (String startDate, String deadline, BookStatus bookStatus){
+        try {
+            List<Order> list = read(Order.class);
+            list.stream()
+                    .filter(el->el.getBookStatus() == bookStatus)
+                    .filter(el2->belongInterval(startDate,deadline,el2.getOrderDate()))
+                    .collect(Collectors.toList());
+            return list.size();
+        } catch (IOException e) {
+            log.error(e);
+            return -1;
+        }
+    }
 }

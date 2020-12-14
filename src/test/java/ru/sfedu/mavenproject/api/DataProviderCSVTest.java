@@ -800,7 +800,8 @@ class DataProviderCSVTest extends TestBase {
         instance.insertPriceParameters(listPriceParameters);
         instance.insertOrder(listOrder);
         instance.insertCorrections(listCorrections);
-        //assertEquals(listCorrections, instance.getListOfCorrections());
+        log.debug("corrections for Author: "+instance.getListOfCorrections(author.getId()));
+        assertEquals(listCorrections, instance.getListOfCorrections(author.getId()));
     }
 
     @Test
@@ -808,7 +809,217 @@ class DataProviderCSVTest extends TestBase {
         log.info("getListOfCorrectionsFail");
         DataProviderCSV instance = new DataProviderCSV();
         instance.deleteFile(Corrections.class);
-        //assertTrue(instance.getListOfCorrections().isEmpty());
+        assertTrue(instance.getListOfCorrections(1).isEmpty());
+    }
+
+    @Test
+    public void addAuthorSuccess() throws Exception{
+        log.info("addAuthorSuccess");
+        DataProviderCSV instance = new DataProviderCSV();
+        Author author = createAuthor(1,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        instance.deleteFile(Author.class);
+        instance.addAuthor(1,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        assertEquals(author, instance.getPeopleByID(Author.class, 1));
+    }
+
+    @Test
+    public void addAuthorFail() throws Exception{
+        log.info("addAuthorFail");
+        List<Author> listAuthor = new ArrayList<>();
+        DataProviderCSV instance = new DataProviderCSV();
+        Author author = createAuthor(1,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        instance.deleteFile(Author.class);
+        instance.addAuthor(1,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        instance.addAuthor(1,"Иван","Иванович","Иванов","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        assertEquals(author, instance.getPeopleByID(Author.class, 1));
+    }
+
+    @Test
+    public void sendOrderInformationSuccess() throws Exception{
+        log.info("sendOrderInformationSuccess");
+        List<CoverPrice> listCoverPrice = new ArrayList<>();
+        List<PriceParameters> listPriceParameters = new ArrayList<>();
+        DataProviderCSV instance = new DataProviderCSV();
+        List<Author> listAuthor = new ArrayList<>();
+        List<Book> listBook = new ArrayList<>();
+        instance.deleteFile(Book.class);
+        instance.deleteFile(Author.class);
+        instance.deleteFile(Employee.class);
+        instance.deleteFile(CoverPrice.class);
+        instance.deleteFile(PriceParameters.class);
+        instance.deleteFile(Order.class);
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        Book book = createBook(1,author,"Цифровая бухгалтерия",229);
+        listAuthor.add(author);
+        listBook.add(book);
+        instance.insertPeople(Author.class, listAuthor);
+        instance.insertBook(listBook);
+        Order order = instance.makeOrder(1, "2020-09-03", "RIGID_COVER", 100).orElse(null);
+        CoverPrice coverPrice = createCoverPrice(1, CoverType.RIGID_COVER, 123.5);
+        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
+        listCoverPrice.add(coverPrice);
+        listCoverPrice.add(coverPrice2);
+        PriceParameters priceParameters = createPriceParameters(1, 2.4, listCoverPrice, 1.3, "2019-01-01", "2021-01-01");
+        listPriceParameters.add(priceParameters);
+        instance.insertCoverPrice(listCoverPrice);
+        instance.insertPriceParameters(listPriceParameters);
+        instance.sendOrderInformation(order);
+        assertEquals(order, instance.getBookByID(Order.class, 1));
+    }
+
+    @Test
+    public void sendOrderInformationFail() throws Exception{
+        log.info("sendOrderInformationFail");
+        List<CoverPrice> listCoverPrice = new ArrayList<>();
+        List<PriceParameters> listPriceParameters = new ArrayList<>();
+        DataProviderCSV instance = new DataProviderCSV();
+        List<Author> listAuthor = new ArrayList<>();
+        instance.deleteFile(Book.class);
+        instance.deleteFile(Author.class);
+        instance.deleteFile(Employee.class);
+        instance.deleteFile(CoverPrice.class);
+        instance.deleteFile(PriceParameters.class);
+        instance.deleteFile(Order.class);
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        Book book = createBook(1,author,"Цифровая бухгалтерия",229);
+        listAuthor.add(author);
+        instance.insertPeople(Author.class, listAuthor);
+        Order order = instance.makeOrder(1, "2020-09-03", "RIGID_COVER", 100).orElse(null);
+        CoverPrice coverPrice = createCoverPrice(1, CoverType.RIGID_COVER, 123.5);
+        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
+        listCoverPrice.add(coverPrice);
+        listCoverPrice.add(coverPrice2);
+        PriceParameters priceParameters = createPriceParameters(1, 2.4, listCoverPrice, 1.3, "2019-01-01", "2021-01-01");
+        listPriceParameters.add(priceParameters);
+        instance.insertCoverPrice(listCoverPrice);
+        instance.insertPriceParameters(listPriceParameters);
+        instance.sendOrderInformation(order);
+        assertNull(instance.getBookByID(Order.class, 1));
+    }
+
+    @Test
+    public void calculateCostSuccess() throws Exception {
+        log.info("calculateCostSuccess");
+        int numberOfPage = 299;
+        double work = 1.3;
+        double page = 2.4;
+        double cover = 123.5;
+        int copies = 100;
+        List<CoverPrice> listCoverPrice = new ArrayList<>();
+        List<PriceParameters> listPriceParameters = new ArrayList<>();
+        DataProviderCSV instance = new DataProviderCSV();
+        List<Author> listAuthor = new ArrayList<>();
+        List<Book> listBook = new ArrayList<>();
+        instance.deleteFile(Book.class);
+        instance.deleteFile(Author.class);
+        instance.deleteFile(Employee.class);
+        instance.deleteFile(CoverPrice.class);
+        instance.deleteFile(PriceParameters.class);
+        instance.deleteFile(Order.class);
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        Book book = createBook(1,author,"Цифровая бухгалтерия",numberOfPage);
+        listAuthor.add(author);
+        listBook.add(book);
+        instance.insertPeople(Author.class, listAuthor);
+        instance.insertBook(listBook);
+        Order order = instance.makeOrder(1, "2020-09-03", "RIGID_COVER", copies).orElse(null);
+        CoverPrice coverPrice = createCoverPrice(1, CoverType.RIGID_COVER, cover);
+        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
+        listCoverPrice.add(coverPrice);
+        listCoverPrice.add(coverPrice2);
+        PriceParameters priceParameters = createPriceParameters(1, page, listCoverPrice, work, "2019-01-01", "2021-01-01");
+        listPriceParameters.add(priceParameters);
+        instance.insertCoverPrice(listCoverPrice);
+        instance.insertPriceParameters(listPriceParameters);
+        instance.sendOrderInformation(order);
+        assertEquals((page*numberOfPage+work*numberOfPage+cover)*copies, instance.calculateCost(1));
+    }
+
+    @Test
+    public void calculateCostFail() throws Exception {
+        log.info("calculateCostFail");
+        log.info("calculateCostSuccess");
+        int numberOfPage = 299;
+        double work = 1.3;
+        double page = 2.4;
+        double cover = 123.5;
+        int copies = 100;
+        List<CoverPrice> listCoverPrice = new ArrayList<>();
+        List<PriceParameters> listPriceParameters = new ArrayList<>();
+        DataProviderCSV instance = new DataProviderCSV();
+        List<Author> listAuthor = new ArrayList<>();
+        List<Book> listBook = new ArrayList<>();
+        instance.deleteFile(Book.class);
+        instance.deleteFile(Author.class);
+        instance.deleteFile(Employee.class);
+        instance.deleteFile(CoverPrice.class);
+        instance.deleteFile(PriceParameters.class);
+        instance.deleteFile(Order.class);
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        Book book = createBook(1,author,"Цифровая бухгалтерия",numberOfPage);
+        listAuthor.add(author);
+        listBook.add(book);
+        instance.insertPeople(Author.class, listAuthor);
+        instance.insertBook(listBook);
+        Order order = instance.makeOrder(1, "2020-09-03", "RIGID_COVER", copies).orElse(null);
+        CoverPrice coverPrice = createCoverPrice(1, CoverType.RIGID_COVER, cover);
+        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
+        listCoverPrice.add(coverPrice);
+        listCoverPrice.add(coverPrice2);
+        PriceParameters priceParameters = createPriceParameters(1, page, listCoverPrice, work, "2019-01-01", "2021-01-01");
+        listPriceParameters.add(priceParameters);
+        instance.insertCoverPrice(listCoverPrice);
+        instance.sendOrderInformation(order);
+        assertEquals(-1, instance.calculateCost(1));
+    }
+
+    @Test
+    public void addBookEditorSuccess() throws Exception{
+        log.info("addBookEditorSuccess");
+        DataProviderCSV instance = new DataProviderCSV();
+        List<Author> listAuthor = new ArrayList<>();
+        List<Book> listBook = new ArrayList<>();
+        instance.deleteFile(Book.class);
+        instance.deleteFile(Author.class);
+        instance.deleteFile(Order.class);
+        instance.deleteFile(Employee.class);
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        Book book = createBook(1,author,"Цифровая бухгалтерия",229);
+        listAuthor.add(author);
+        listBook.add(book);
+        instance.insertPeople(Author.class, listAuthor);
+        instance.insertBook(listBook);
+        Order order = instance.makeOrder(1, "2020-09-03", "RIGID_COVER", 100).orElse(null);
+        instance.sendOrderInformation(order);
+        Employee employee = createEmployee(2,"Петр","Петрович","Петров","82345678901","234567890123", "2345678", EmployeeType.MAKER);
+        List<Employee> employeeList = new ArrayList<>();
+        employeeList.add(employee);
+        instance.insertPeople(Employee.class, employeeList);
+        instance.addBookEditor(1,2);
+        order.setBookEditor(employee);
+        assertEquals(order, instance.getBookByID(Order.class, 1));
+    }
+
+    @Test
+    public void addBookEditorFail() throws Exception{
+        log.info("addBookEditorFail");
+        DataProviderCSV instance = new DataProviderCSV();
+        List<Author> listAuthor = new ArrayList<>();
+        List<Book> listBook = new ArrayList<>();
+        instance.deleteFile(Book.class);
+        instance.deleteFile(Author.class);
+        instance.deleteFile(Order.class);
+        instance.deleteFile(Employee.class);
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        Book book = createBook(1,author,"Цифровая бухгалтерия",229);
+        listAuthor.add(author);
+        listBook.add(book);
+        instance.insertPeople(Author.class, listAuthor);
+        instance.insertBook(listBook);
+        Order order = instance.makeOrder(1, "2020-09-03", "RIGID_COVER", 100).orElse(null);
+        instance.sendOrderInformation(order);
+        instance.addBookEditor(1,1);
+        assertEquals(order, instance.getBookByID(Order.class, 1));
     }
 
 
