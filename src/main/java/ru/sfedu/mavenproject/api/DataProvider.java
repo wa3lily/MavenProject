@@ -38,7 +38,7 @@ public interface DataProvider {
       * @param order
       * @return
       */
-     boolean sendOrderInformation (Order order);
+     boolean saveOrderInformation (Order order);
 
      /**
       * @param id
@@ -103,6 +103,12 @@ public interface DataProvider {
      List<Corrections> getListOfCorrections (long authorId);
 
      /**
+      * @param orderId
+      * @return
+      */
+     List<Corrections> getListOfCorrectionsToOrder (long orderId);
+
+     /**
       * @param authorId
       * @return
       */
@@ -113,6 +119,38 @@ public interface DataProvider {
       * @return
       */
      List<Book> getListOfAuthorBook (long authorId);
+
+     /**
+      * @param correctionId
+      * @return
+      */
+     boolean agreementCorrection (long correctionId);
+
+     /**
+      * @param correctionId
+      * @param comment
+      * @return
+      */
+     boolean declineCorrection (long correctionId, String comment);
+
+     /**
+      * @param correctionId
+      * @return
+      */
+     long getMeetingInformation (long correctionId);
+
+     /**
+      * @param meetingId
+      * @return
+      */
+     boolean agreementMeeting (long meetingId);
+
+     /**
+      * @param meetingId
+      * @param date
+      * @return
+      */
+     boolean declineMeeting (long meetingId, String date);
 
      /**
       * @param id
@@ -141,6 +179,11 @@ public interface DataProvider {
      void setAuthor(Author author, long id,String firstName,String secondName,String lastName,String phone, String email,String degree,String organization);
 
      ////Editor
+
+     /**
+      * @return
+      */
+     List<Order> getOrderListWithoutEditor ();
 
      /**
       * @param OrderId

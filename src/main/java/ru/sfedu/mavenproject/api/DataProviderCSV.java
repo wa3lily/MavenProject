@@ -894,58 +894,53 @@ public class DataProviderCSV implements DataProvider {
         return coverPrice;
     }
 
+    public <T> void checkNotNullObject (T obj) throws Exception {
+        if (obj == null) throw new Exception("Object is null");
+    }
+
+    public <T> void checkListIsNotEmpty (List<T> list) throws Exception {
+        if (list.isEmpty()) throw new Exception("List is Empty");
+    }
+
+    public void checkTrue (boolean result) throws Exception {
+        if (!result) throw new Exception("Result false");
+    }
+
     //Author
 
     @Override
     public boolean alterBook (long authorId, long id, String title, int numberOfPages) {
-        try{
-            if (getPeopleByID(Author.class, authorId) == null){
-                log.info("There is not such Author");
-                return false;
-            }else{
-                Author author = (Author) getPeopleByID(Author.class, authorId);
-                Book book = new Book();
-                book.setId(id);
-                book.setAuthor(author);
-                book.setTitle(title);
-                book.setNumberOfPages(numberOfPages);
-                if(getBookByID(Book.class, id) != null){
-                    log.info("Update Book");
-                    return updateBook(book);
-                }else{
-                    log.info("Insert Book");
-                    List<Book> list = new ArrayList<>();
-                    list.add(book);
-                    return insertBook(list).isEmpty();
-                }
+        try {
+            checkNotNullObject(getPeopleByID(Author.class, authorId));
+            Author author = (Author) getPeopleByID(Author.class, authorId);
+            Book book = new Book();
+            book.setId(id);
+            book.setAuthor(author);
+            book.setTitle(title);
+            book.setNumberOfPages(numberOfPages);
+            if (getBookByID(Book.class, id) != null) {
+                log.info("Update Book");
+                return updateBook(book);
+            } else {
+                log.info("Insert Book");
+                List<Book> list = new ArrayList<>();
+                list.add(book);
+                return insertBook(list).isEmpty();
             }
         }catch (IOException | CsvRequiredFieldEmptyException | CsvDataTypeMismatchException e){
             log.error(e);
             return false;
-        }
-    }
-
-    @Override
-    public boolean sendOrderInformation (Order order) {
-        if (order == null){
-            return false;
-        }
-        List<Order> list = new ArrayList<>();
-        list.add(order);
-        try {
-            return (insertOrder(list).isEmpty());
-        } catch (IOException | CsvDataTypeMismatchException | CsvRequiredFieldEmptyException e) {
-            e.printStackTrace();
+        }catch (Exception e) {
+            log.error(e);
+            log.info("There is not such Author");
             return false;
         }
     }
 
     @Override
     public Optional<Order> makeOrder (long id, String orderDate, String coverType, int numberOfCopies){
-        if (getBookByID(Book.class, id) == null){
-            log.info("There is not such Book");
-            return Optional.empty();
-        }else{
+        try {
+            checkNotNullObject(getBookByID(Book.class, id));
             Book book = (Book) getBookByID(Book.class, id);
             Order order = new Order();
             order.setId(book.getId());
@@ -955,43 +950,60 @@ public class DataProviderCSV implements DataProvider {
             order.setFinalNumberOfPages(book.getNumberOfPages());
             order.setOrderDate(orderDate);
             order.setCoverType(CoverType.valueOf(coverType));
-            try {
-                List<Employee> listEmployee = new ArrayList<>();
-                listEmployee.add(createDefaultEmloyee());
-                insertPeople(Employee.class, listEmployee);
-                List<CoverPrice> listCoverPrice = new ArrayList<>();
-                listCoverPrice.add(createDefaultCoverPrice());
-                insertCoverPrice(listCoverPrice);
-                List<PriceParameters> listPriceParameters = new ArrayList<>();
-                listPriceParameters.add(createDefaultPriceParameters());
-                insertPriceParameters(listPriceParameters);
-                order.setBookMaker((Employee) getPeopleByID(Employee.class, 0));
-                order.setBookEditor((Employee) getPeopleByID(Employee.class, 0));
-                order.setBookPriceParameters(getPriceParametersByID(0));
-            } catch (IOException | CsvRequiredFieldEmptyException | CsvDataTypeMismatchException e) {
-                log.error(e);
-            }
+            List<Employee> listEmployee = new ArrayList<>();
+            listEmployee.add(createDefaultEmloyee());
+            insertPeople(Employee.class, listEmployee);
+            List<CoverPrice> listCoverPrice = new ArrayList<>();
+            listCoverPrice.add(createDefaultCoverPrice());
+            insertCoverPrice(listCoverPrice);
+            List<PriceParameters> listPriceParameters = new ArrayList<>();
+            listPriceParameters.add(createDefaultPriceParameters());
+            insertPriceParameters(listPriceParameters);
+            order.setBookMaker((Employee) getPeopleByID(Employee.class, 0));
+            order.setBookEditor((Employee) getPeopleByID(Employee.class, 0));
+            order.setBookPriceParameters(getPriceParametersByID(0));
             order.setNumberOfCopies(numberOfCopies);
             order.setBookStatus(BookStatus.UNTOUCHED);
             return Optional.of(order);
+        }catch (IOException | CsvRequiredFieldEmptyException | CsvDataTypeMismatchException e) {
+            log.error(e);
+        } catch (Exception e) {
+            log.error(e);
+            log.info("There is not such Book");
         }
+        return Optional.empty();
+
+
+    }
+
+    @Override
+    public boolean saveOrderInformation (Order order) {
+        try {
+            checkNotNullObject(order);
+            List<Order> list = new ArrayList<>();
+            list.add(order);
+            return (insertOrder(list).isEmpty());
+        } catch (IOException | CsvDataTypeMismatchException | CsvRequiredFieldEmptyException  e) {
+            log.error(e);
+        } catch (Exception e){
+            log.error(e);
+            log.info("Order is null");
+        }
+        return false;
     }
 
     @Override
     public double calculateCost (long orderId) {
         Order order = (Order) getBookByID(Order.class, orderId);
         try {
-            if (order == null){
-                log.debug("There is not such Order");
-                return -1;
-            }
+            checkNotNullObject(order);
             double result = 0;
             order.setBookPriceParameters(selectPriceParameters(order.getOrderDate()).orElse(null));
             log.debug(selectPriceParameters(order.getOrderDate()).orElse(null));
             if (order.getBookPriceParameters() != null){
                 long id = order.getBookPriceParameters().getId();
-                double work = calculateEditorWorkCost (id, order.getNumberOfPages());
-                double print = calculatePrintingCost (id, order.getNumberOfPages());
+                double work = calculateEditorWorkCost (id, order.getFinalNumberOfPages());
+                double print = calculatePrintingCost (id, order.getFinalNumberOfPages());
                 double cover = calculateCoverCost (id, order.getCoverType());
                 result = (work > -1 && print>-1 && cover>-1) ? (work+print+cover)*order.getNumberOfCopies() : -1;
                 log.debug((result>-1) ? "calculate cost done" : "there is truble with PriceParamets");
@@ -1000,6 +1012,10 @@ public class DataProviderCSV implements DataProvider {
             }
         }catch (IOException e){
             log.error(e);
+        } catch (Exception e){
+            log.error(e);
+            log.debug("There is not such Order");
+            return -1;
         }finally {
             return order.getPrice();
         }
@@ -1071,11 +1087,14 @@ public class DataProviderCSV implements DataProvider {
                 }
             }).collect(Collectors.toList());
             log.debug(coverPriceList);
-            if (coverPriceList.isEmpty()){
-                return -1;
-            }else{
+            try{
+                checkListIsNotEmpty(coverPriceList);
                 long actualId = coverPriceList.get(0).getId();
                 return getCoverPriceByID(actualId).getPrice();
+            }catch (Exception e){
+                log.error(e);
+                log.debug("There is not suit CoverPrice");
+                return -1;
             }
         }catch (IOException e){
             log.error(e);
@@ -1096,16 +1115,35 @@ public class DataProviderCSV implements DataProvider {
 
     @Override
     public List<Corrections> getListOfCorrections (long authorId) {
-        try{
-            if (getPeopleByID(Author.class, authorId) != null){
-                List<Order> orderList = getListOfAuthorOrder(authorId);
-                List<Corrections> correctionsList = read(Corrections.class);
-                correctionsList.stream().filter(el -> orderList.stream().anyMatch(e2 -> e2.getId() == el.getOrder().getId())).collect(Collectors.toList());
-            }
-
-            return read(Corrections.class);
+        try {
+            checkNotNullObject(getPeopleByID(Author.class, authorId));
+            List<Order> orderList = getListOfAuthorOrder(authorId);
+            List<Corrections> correctionsList = read(Corrections.class);
+            correctionsList = correctionsList.stream().filter(el -> orderList.stream().anyMatch(e2 -> e2.getId() == el.getOrder().getId())).collect(Collectors.toList());
+            return correctionsList;
         }catch (IOException e){
             log.error(e);
+            return new ArrayList<Corrections>();
+        } catch (Exception e){
+            log.error(e);
+            log.debug("Author is null");
+            return new ArrayList<Corrections>();
+        }
+    }
+
+    @Override
+    public List<Corrections> getListOfCorrectionsToOrder (long orderId) {
+        try {
+            checkNotNullObject(getBookByID(Order.class, orderId));
+            List<Corrections> correctionsList = read(Corrections.class);
+            correctionsList = correctionsList.stream().filter(el -> el.getId() == el.getOrder().getId()).collect(Collectors.toList());
+            return correctionsList;
+        }catch (IOException e){
+            log.error(e);
+            return new ArrayList<Corrections>();
+        } catch (Exception e){
+            log.error(e);
+            log.debug("Order is null");
             return new ArrayList<Corrections>();
         }
     }
@@ -1113,13 +1151,15 @@ public class DataProviderCSV implements DataProvider {
     @Override
     public List<Order> getListOfAuthorOrder (long authorId) {
         try{
-            if (getPeopleByID(Author.class, authorId) != null){
-                List<Order> list = read(Order.class);
-                list = list.stream().filter(el -> el.getAuthor().getId() == authorId).collect(Collectors.toList());
-                return list;
-            }
-            return read(Corrections.class);
+            checkNotNullObject(getPeopleByID(Author.class, authorId));
+            List<Order> list = read(Order.class);
+            list = list.stream().filter(el -> el.getAuthor().getId() == authorId).collect(Collectors.toList());
+            return list;
         }catch (IOException e){
+            log.error(e);
+            return new ArrayList<>();
+        }
+        catch (Exception e){
             log.error(e);
             return new ArrayList<>();
         }
@@ -1128,15 +1168,101 @@ public class DataProviderCSV implements DataProvider {
     @Override
     public List<Book> getListOfAuthorBook (long authorId) {
         try{
-            if (getPeopleByID(Author.class, authorId) != null){
-                List<Book> list = read(Book.class);
-                list = list.stream().filter(el -> el.getAuthor().getId() == authorId).collect(Collectors.toList());
-                return list;
-            }
-            return read(Corrections.class);
+            checkNotNullObject(getPeopleByID(Author.class, authorId));
+            List<Book> list = read(Book.class);
+            list = list.stream().filter(el -> el.getAuthor().getId() == authorId).collect(Collectors.toList());
+            return list;
         }catch (IOException e){
             log.error(e);
             return new ArrayList<Book>();
+        }catch (Exception e){
+            log.error(e);
+            return new ArrayList<>();
+        }
+    }
+
+    @Override
+    public boolean agreementCorrection (long correctionId){
+        try{
+            checkNotNullObject(getCorrectionsByID(correctionId));
+            Corrections correction = getCorrectionsByID(correctionId);
+            correction.setStatus(CorrectionsStatus.ACCEPTED);
+            boolean result = updateCorrections(correction);
+            checkTrue(result);
+            log.info("Status changed");
+            return result;
+        }catch (Exception e){
+            log.error(e);
+            log.info("Status changed fail");
+            return false;
+        }
+    }
+
+    @Override
+    public boolean declineCorrection (long correctionId, String comment){
+        try{
+            checkNotNullObject(getCorrectionsByID(correctionId));
+            Corrections correction = getCorrectionsByID(correctionId);
+            correction.setComment(comment);
+            correction.setStatus(CorrectionsStatus.WAIT_EDITOR_AGR);
+            boolean result = updateCorrections(correction);
+            checkTrue(result);
+            log.info("Comment added, status changed");
+            return result;
+        }catch (Exception e){
+            log.error(e);
+            log.info("Comment added and status changed fail");
+            return false;
+        }
+    }
+
+    public long getMeetingInformation (long correctionId){
+        try{
+            checkNotNullObject(getCorrectionsByID(correctionId));
+            Corrections correction = getCorrectionsByID(correctionId);
+            Meeting meet = correction.getMeet();
+            checkNotNullObject(meet);
+            log.info(getMeetingByID(meet.getId()));
+            return meet.getId();
+        }catch (Exception e){
+            log.error(e);
+            log.info("Comment added and status changed fail");
+            return -1;
+        }
+    }
+
+    @Override
+    public boolean agreementMeeting (long meetingId){
+        try{
+            checkNotNullObject(getMeetingByID(meetingId));
+            Meeting meet = getMeetingByID(meetingId);
+            meet.setAuthorAgreement(true);
+            boolean result = updateMeeting(meet);
+            checkTrue(result);
+            log.info("Status changed");
+            return result;
+        }catch (Exception e){
+            log.error(e);
+            log.info("Status changed fail");
+            return false;
+        }
+    }
+
+    @Override
+    public boolean declineMeeting (long meetingId, String date){
+        try{
+            checkNotNullObject(getMeetingByID(meetingId));
+            Meeting meet = getMeetingByID(meetingId);
+            meet.setEditorAgreement(false);
+            meet.setMeetDate(date);
+            boolean result = updateMeeting(meet);
+            checkTrue(result);
+            log.info("Status changed");
+            return result;
+        }catch (Exception e){
+            log.error(e);
+            log.info("Status changed fail");
+            return false;
         }
     }
 
@@ -1171,17 +1297,36 @@ public class DataProviderCSV implements DataProvider {
     ////Editor
 
     @Override
+    public List<Order> getOrderListWithoutEditor (){
+        try {
+            List<Order> list = read(Order.class);
+            list = list.stream().filter(el -> el.getBookEditor() == null || el.getBookEditor().getId() == 0).collect(Collectors.toList());
+            return list;
+        } catch (IOException e) {
+            log.error(e);
+            log.info("There is not information about orders");
+            return new ArrayList<>();
+        } catch (Exception e){
+            log.error(e);
+            log.info("There is not suit orders");
+            return new ArrayList<>();
+        }
+    }
+
+    @Override
     public boolean addBookEditor(long OrderId, long EmployeeId){
         try {
             Order order = (Order) getBookByID(Order.class,OrderId);
             Employee employee = (Employee) getPeopleByID(Employee.class,EmployeeId);
-            if (order == null || employee == null){
-                return false;
-            }
+            checkNotNullObject(order);
+            checkNotNullObject(employee);
             order.setBookEditor(employee);
             log.debug(order);
             return updateOrder(order);
         } catch (IOException | CsvRequiredFieldEmptyException | CsvDataTypeMismatchException e) {
+            log.error(e);
+            return false;
+        } catch (Exception e){
             log.error(e);
             return false;
         }
@@ -1196,10 +1341,11 @@ public class DataProviderCSV implements DataProvider {
     public boolean endEditing (long OrderId){
         try {
             Order order = findOrder(OrderId).get();
+            checkNotNullObject(order);
             order.setBookStatus(BookStatus.MAKING);
             log.debug(order);
             return updateOrder(order);
-        } catch (IOException | CsvRequiredFieldEmptyException | CsvDataTypeMismatchException e) {
+        } catch (Exception e) {
             log.error(e);
             return false;
         }
