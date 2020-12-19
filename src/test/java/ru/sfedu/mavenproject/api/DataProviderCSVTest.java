@@ -1039,8 +1039,8 @@ class DataProviderCSVTest extends TestBase {
         log.info("addCoverPriceSuccess");
         CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
         instance.deleteFile(CoverPrice.class);
-        CoverPrice coverPrice1 = instance.addCoverPrice(1, "RIGID_COVER", 123.5 ).orElse(null);
-        assertEquals(coverPrice, coverPrice1);
+        instance.addCoverPrice(1, "RIGID_COVER", 123.5 );
+        assertEquals(coverPrice, instance.getCoverPriceByID(1));
     }
 
     @Test
@@ -1048,11 +1048,8 @@ class DataProviderCSVTest extends TestBase {
         log.info("addCoverPriceFail");
         List<CoverPrice> list = new ArrayList<>();
         instance.deleteFile(CoverPrice.class);
-        CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
-        list.add(coverPrice);
-        instance.insertCoverPrice(list);
-        CoverPrice coverPrice1 = instance.addCoverPrice(1, "RIGID_COVER", 153.2 ).orElse(null);
-        assertNull(coverPrice1);
+        instance.addCoverPrice(1, "RIGID_COVER", 153.2 );
+        assertFalse(instance.addCoverPrice(1, "RIGID_COVER", 153.2 ));
     }
 
 

@@ -210,22 +210,19 @@ public interface DataProvider {
       * @param textBefore
       * @param textAfter
       * @param comment
-      * @param order
-      * @param meet
-      * @param status
+      * @param orderId
+      * @param meetingId
       * @return
       */
-     Optional<Corrections> sendCorrectionsToAuthor(long id, int page, String textBefore, String textAfter, String comment, Order order, Meeting meet, CorrectionsStatus status);
+     Optional<Corrections> sendCorrectionsToAuthor(long id, int page, String textBefore, String textAfter, String comment, long orderId, long meetingId);
 
      /**
       * @param correctionsId
       * @param id
       * @param meetDate
-      * @param authorAgreement
-      * @param editorAgreement
       * @return
       */
-     boolean makeMeeting (long correctionsId, long id, String meetDate, boolean authorAgreement, boolean editorAgreement);
+     boolean makeMeeting (long correctionsId, long id, String meetDate);
 
 ////Maker
 
@@ -278,16 +275,7 @@ public interface DataProvider {
       */
      long countEditingBooks (String startDate, String deadline);
 
-     /**
-      * @param startDate
-      * @param deadline
-      * @param bookStatus
-      * @return
-      */
-     long countStatistic (String startDate, String deadline, BookStatus bookStatus);
-
 ////Admin
-
 
      /**
       * @param id
@@ -298,8 +286,18 @@ public interface DataProvider {
       * @param validToDate
       * @return
       */
-     Optional<PriceParameters> addPriceParameters(long id, double pagePrice, List<CoverPrice> coverPrice, double workPrice, String validFromDate, String validToDate);
+     Optional<PriceParameters> setPriceParameters(long id, double pagePrice, List<CoverPrice> coverPrice, double workPrice, String validFromDate, String validToDate);
 
+     /**
+      * @param id
+      * @param pagePrice
+      * @param coverPrice
+      * @param workPrice
+      * @param validFromDate
+      * @param validToDate
+      * @return
+      */
+     boolean addPriceParameters(long id, double pagePrice, List<CoverPrice> coverPrice, double workPrice, String validFromDate, String validToDate);
 
      /**
       * @param id
@@ -307,13 +305,13 @@ public interface DataProvider {
       * @param price
       * @return
       */
-     Optional<CoverPrice> addCoverPrice(long id, String coverType, double price);
-
+     Optional<CoverPrice> setCoverPrice(long id, String coverType, double price);
 
      /**
-      * @param OrderId
-      * @param bookStatus
+      * @param id
+      * @param coverType
+      * @param price
       * @return
       */
-     boolean returnTo (long OrderId,BookStatus bookStatus);
+     boolean addCoverPrice(long id, String coverType, double price);
 }

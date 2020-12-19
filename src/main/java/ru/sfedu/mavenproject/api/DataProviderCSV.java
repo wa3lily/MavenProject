@@ -34,878 +34,6 @@ public class DataProviderCSV implements DataProvider {
 
     private static Logger log = LogManager.getLogger(DataProviderCSV.class);
 
-    //CRUD and helper methods
-
-    public FileWriter commonWriter(Class cl) throws IOException {
-        FileWriter writer = new FileWriter(getPath(cl));
-        return writer;
-    }
-
-    public <T> List<T> read(Class cl) throws IOException{
-        FileReader fileReader;
-        String path = getPath(cl);
-        try{
-            fileReader = new FileReader(path);
-        }catch (FileNotFoundException  e){
-            createFile(path);
-            fileReader = new FileReader(path);
-        }
-        CSVReader csvReader = new CSVReader(fileReader);
-        CsvToBean<T> csvToBean = new CsvToBeanBuilder<T>(csvReader)
-                .withType(cl)
-                .withIgnoreLeadingWhiteSpace(true)
-                .build();
-        List<T> list = csvToBean.parse();
-        return list;
-    }
-
-    public String getPath(Class cl) throws IOException {
-        return ConfigurationUtil.getConfigurationEntry(PATH_CSV)
-                + cl.getSimpleName().toLowerCase()
-                + ConfigurationUtil.getConfigurationEntry(FILE_EXTENSION_CSV);
-    }
-
-    public <T extends People> Object getPeopleByID(Class cl, long id) throws IOException {
-        List<T> list = this.read(cl);
-        try {
-            Object obj = list.stream()
-                    .filter(e1 -> e1.getId() == id)
-                    .findFirst().get();
-            return obj;
-        }catch (NoSuchElementException e){
-            log.error(e);
-            return null;
-        }
-    }
-
-    public <T extends Book> Object getBookByID(Class cl, long id) {
-        try {
-            List<T> list = this.read(cl);
-            Object obj = list.stream()
-                    .filter(e1 -> e1.getId() == id)
-                    .findFirst().get();
-            return obj;
-        }catch (IOException | NoSuchElementException  e){
-            log.error(e);
-            return null;
-        }
-    }
-
-    public Meeting getMeetingByID(long id) throws IOException {
-        List<Meeting> list = this.read(Meeting.class);
-        try {
-            Meeting obj = list.stream()
-                    .filter(e1 -> e1.getId() == id)
-                    .findFirst().get();
-            return obj;
-        }catch (NoSuchElementException e){
-            log.error(e);
-            return null;
-        }
-    }
-
-    public Corrections getCorrectionsByID(long id) throws IOException {
-        List<Corrections> list = this.read(Corrections.class);
-        try {
-            Corrections obj = list.stream()
-                    .filter(e1 -> e1.getId() == id)
-                    .findFirst().get();
-            return obj;
-        }catch (NoSuchElementException e){
-            log.error(e);
-            return null;
-        }
-    }
-
-    public PriceParameters getPriceParametersByID(long id) throws IOException {
-        List<PriceParameters> list = this.read(PriceParameters.class);
-        try {
-            PriceParameters obj = list.stream()
-                    .filter(e1 -> e1.getId() == id)
-                    .findFirst().get();
-            return obj;
-        }catch (NoSuchElementException e){
-            log.error(e);
-            return null;
-        }
-    }
-
-    public CoverPrice getCoverPriceByID(long id) throws IOException {
-        List<CoverPrice> list = this.read(CoverPrice.class);
-        try {
-            CoverPrice obj = list.stream()
-                    .filter(e1 -> e1.getId() == id)
-                    .findFirst().get();
-            return obj;
-        }catch (NoSuchElementException e){
-            log.error(e);
-            return null;
-        }
-    }
-
-    public String createFile(String path) throws IOException {
-        File file = new File(path);
-        file.createNewFile();
-        return path;
-    }
-
-    //добавляет элемент к одному из двух массивов: 1 массив - не повторяющиеся, 2 - повторяющиеся
-    public <T> void separateDuplicates( List<T> returnList, List<T> recordList, T obj) {
-        if (recordList.stream().anyMatch(e2 -> e2.equals(obj))){
-            log.debug("already exist in csv "+obj);
-            returnList.add(obj);
-        }else{
-            log.debug("will add to csv "+obj);
-            recordList.add(obj);
-        }
-    }
-
-    public <T extends People> List<T> insertPeople(Class cl, List<T> list) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-        List<T> returnList = new ArrayList<>();
-        List<T> recordList = read(cl);
-        list.stream().forEach(e1 -> {
-            if (recordList.stream().anyMatch(e2 -> e2.equals(e1))){
-                log.debug("already exist in csv "+e1);
-            }else if (recordList.stream().anyMatch(e2 -> e2.getId() == e1.getId())){
-                log.debug("id already exist in csv "+e1);
-                returnList.add(e1);
-            }else{
-                log.debug("will add to csv "+e1);
-                recordList.add(e1);
-            }
-        });
-        try {
-            CSVWriter csvWriter = new CSVWriter(commonWriter(cl));
-            StatefulBeanToCsv<T> beanToCsv = new StatefulBeanToCsvBuilder<T>(csvWriter)
-                    .withApplyQuotesToAll(false)
-                    .build();
-            beanToCsv.write(recordList);
-            csvWriter.close();
-        }catch (IndexOutOfBoundsException e){
-            log.error(e);
-        }finally {
-            return returnList;
-        }
-    }
-
-    public List<Meeting> insertMeeting(List<Meeting> list) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-        List<Meeting> returnList = new ArrayList<>();
-        List<Meeting> recordList = read(Meeting.class);
-        list.stream().forEach(e1 -> {
-            if (recordList.stream().anyMatch(e2 -> e2.equals(e1))){
-                log.debug("already exist in csv "+e1);
-            }else if (recordList.stream().anyMatch(e2 -> e2.getId() == e1.getId())){
-                log.debug("id already exist in csv "+e1);
-                returnList.add(e1);
-            }else{
-                log.debug("will add to csv "+e1);
-                recordList.add(e1);
-            }
-        });
-        try {
-            CSVWriter csvWriter = new CSVWriter(commonWriter(Meeting.class));
-            StatefulBeanToCsv<Meeting> beanToCsv = new StatefulBeanToCsvBuilder<Meeting>(csvWriter)
-                    .withApplyQuotesToAll(false)
-                    .build();
-            beanToCsv.write(recordList);
-            csvWriter.close();
-        }catch (IndexOutOfBoundsException e){
-            log.error(e);
-        }finally {
-            return returnList;
-        }
-    }
-
-    public List<CoverPrice> insertCoverPrice(List<CoverPrice> list) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-        List<CoverPrice> returnList = new ArrayList<>();
-        List<CoverPrice> recordList = read(CoverPrice.class);
-        list.stream().forEach(e1 -> {
-            if (recordList.stream().anyMatch(e2 -> e2.equals(e1))){
-                log.debug("already exist in csv "+e1);
-            }else if (recordList.stream().anyMatch(e2 -> e2.getId() == e1.getId())){
-                log.debug("id already exist in csv "+e1);
-                returnList.add(e1);
-            }else{
-                log.debug("will add to csv "+e1);
-                recordList.add(e1);
-            }
-        });
-        try {
-            CSVWriter csvWriter = new CSVWriter(commonWriter(CoverPrice.class));
-            StatefulBeanToCsv<CoverPrice> beanToCsv = new StatefulBeanToCsvBuilder<CoverPrice>(csvWriter)
-                    .withApplyQuotesToAll(false)
-                    .build();
-            beanToCsv.write(recordList);
-            csvWriter.close();
-        }catch (IndexOutOfBoundsException e){
-            log.error(e);
-        }finally {
-            return returnList;
-        }
-    }
-
-    public List<PriceParameters> insertPriceParameters(List<PriceParameters> list) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-        List<PriceParameters> returnList = new ArrayList<>();
-        List<PriceParameters> recordList = read(PriceParameters.class);
-        list.stream().forEach(el -> {
-            //проверка, есть ли элемент указанный в поле CoverPrice в соответствующем csv файле
-            if (el.getCoverPrice().isEmpty() || el.getCoverPrice().stream().allMatch(e2 -> {
-                try {
-                    return getCoverPriceByID(e2.getId()) != null;
-                } catch (IOException e) {
-                    log.error(e);
-                    return false;
-                }
-            })){
-                log.debug("there is such CoverPrice");
-                if (recordList.stream().anyMatch(e2 -> e2.equals(el))){
-                    log.debug("already exist in csv "+el);
-                }else if (recordList.stream().anyMatch(e2 -> e2.getId() == el.getId())) {
-                    log.debug("id already exist in csv " + el);
-                    returnList.add(el);
-                }else{
-                    log.debug("will add to csv "+el);
-                    recordList.add(el);
-                }
-            }else{
-                log.debug("there is not such CoverPrice");
-                returnList.add(el);
-            }
-        });
-        try {
-            CSVWriter csvWriter = new CSVWriter(commonWriter(PriceParameters.class));
-            StatefulBeanToCsv<PriceParameters> beanToCsv = new StatefulBeanToCsvBuilder<PriceParameters>(csvWriter)
-                    .withApplyQuotesToAll(false)
-                    .build();
-            beanToCsv.write(recordList);
-            csvWriter.close();
-        }catch (IndexOutOfBoundsException e){
-            log.error(e);
-        }finally {
-            return returnList;
-        }
-    }
-
-    public List<Order> insertOrder(List<Order> list) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-        List<Order> returnList = new ArrayList<>();
-        List<Order> recordList = read(Order.class);
-        list.stream().forEach(el -> {
-            try {
-                //проверка, есть ли элементы указанный в поле CoverPrice в соответствующем csv файле
-                if ((el.getBookMaker() == null || getPeopleByID(Employee.class,el.getBookMaker().getId()) != null)
-                && (el.getBookEditor() == null || getPeopleByID(Employee.class,el.getBookEditor().getId()) != null)
-                && (el.getBookPriceParameters() == null || getPriceParametersByID(el.getBookPriceParameters().getId()) != null)){
-                    log.debug("there is such BookMaker and BookEditor and PriceParameters");
-                    if (recordList.stream().anyMatch(e2 -> e2.equals(el))){
-                        log.debug("already exist in csv "+el);
-                    }else if (recordList.stream().anyMatch(e2 -> e2.getId() == el.getId())) {
-                        log.debug("id already exist in csv " + el);
-                        returnList.add(el);
-                    }else{
-                        log.debug("will add to csv "+el);
-                        recordList.add(el);
-                    }
-                }else{
-                    log.debug("there is not such BookMaker or BookEditor or PriceParameters");
-                    returnList.add(el);
-                }
-            } catch (IOException e) {
-                log.error(e);
-            }
-        });
-        try {
-            CSVWriter csvWriter = new CSVWriter(commonWriter(Order.class));
-            StatefulBeanToCsv<Order> beanToCsv = new StatefulBeanToCsvBuilder<Order>(csvWriter)
-                    .withApplyQuotesToAll(false)
-                    .build();
-            beanToCsv.write(recordList);
-            csvWriter.close();
-        }catch (IndexOutOfBoundsException e){
-            log.error(e);
-        }finally {
-            return returnList;
-        }
-    }
-
-    public List<Corrections> insertCorrections(List<Corrections> list) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-        List<Corrections> returnList = new ArrayList<>();
-        List<Corrections> recordList = read(Corrections.class);
-        list.stream().forEach(el -> {
-            try {
-                //проверка, есть ли элементы указанный в поле order и meet в соответствующем csv файле
-                if ((el.getOrder() == null || getBookByID(Order.class,el.getOrder().getId()) != null)
-                        && (el.getMeet() == null || getMeetingByID(el.getMeet().getId()) != null)){
-                    log.debug("there is such Order and Meeting");
-                    if (recordList.stream().anyMatch(e2 -> e2.equals(el))){
-                        log.debug("already exist in csv "+el);
-                    }else if (recordList.stream().anyMatch(e2 -> e2.getId() == el.getId())) {
-                        log.debug("id already exist in csv " + el);
-                        returnList.add(el);
-                    }else{
-                        log.debug("will add to csv "+el);
-                        recordList.add(el);
-                    }
-                }else{
-                    log.debug("there is not such Order or Meeting");
-                    returnList.add(el);
-                }
-            } catch (IOException e) {
-                log.error(e);
-            }
-        });
-        try {
-            CSVWriter csvWriter = new CSVWriter(commonWriter(Corrections.class));
-            StatefulBeanToCsv<Corrections> beanToCsv = new StatefulBeanToCsvBuilder<Corrections>(csvWriter)
-                    .withApplyQuotesToAll(false)
-                    .build();
-            beanToCsv.write(recordList);
-            csvWriter.close();
-        }catch (IndexOutOfBoundsException e){
-            log.error(e);
-        }finally {
-            return returnList;
-        }
-    }
-
-    public List<Book> insertBook(List<Book> list) throws IOException {
-        List<Book> returnList = new ArrayList<>();
-        List<Book> recordList = read(Book.class);
-        list.stream().forEach(el -> {
-            try {
-                //проверка, есть ли элемент указанный в поле Author в соответствующем csv файле
-                if (el.getAuthor() == null || getPeopleByID(Author.class, el.getAuthor().getId()) != null){
-                    log.debug("there is such Author");
-                    if (recordList.stream().anyMatch(e2 -> e2.equals(el))){
-                        log.debug("already exist in csv "+el);
-                    }else if (recordList.stream().anyMatch(e2 -> e2.getId() == el.getId())) {
-                        log.debug("id already exist in csv " + el);
-                        returnList.add(el);
-                    }else{
-                        log.debug("will add to csv "+el);
-                        recordList.add(el);
-                    }
-                }else{
-                    log.debug("there is not such Author");
-                    returnList.add(el);
-                }
-            } catch (IOException e) {
-                log.error(e);
-            }
-        });
-        try {
-            CSVWriter csvWriter = new CSVWriter(commonWriter(Book.class));
-            StatefulBeanToCsv<Book> beanToCsv = new StatefulBeanToCsvBuilder<Book>(csvWriter)
-                    .withApplyQuotesToAll(false)
-                    .build();
-            beanToCsv.write(recordList);
-            csvWriter.close();
-        }catch (IndexOutOfBoundsException | CsvDataTypeMismatchException | CsvRequiredFieldEmptyException e){
-            log.error(e);
-        }finally {
-            return returnList;
-        }
-    }
-
-    public boolean deleteFile(Class cl) {
-        try{
-            CSVWriter csvWriter = new CSVWriter(commonWriter(cl));
-            csvWriter.close();
-            return true;
-        }catch (IOException e){
-            log.error(e);
-            return false;
-        }
-    }
-
-    public boolean dropFile(Class cl) {
-        try{
-            File file= new File(getPath(cl));
-            log.debug("file delete "+file.delete());
-            return true;
-        }catch (IOException e){
-            log.error(e);
-            return false;
-        }
-    }
-
-    public <T extends People> boolean updatePeople(Class cl, T obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-        List<T> list = read(cl);
-        T prevObj;
-        int index = list.indexOf(getPeopleByID(cl, obj.getId()));
-        if (index>(-1)){
-            prevObj = list.get(index);
-            list.set(index, obj);
-            deleteFile(cl);
-            List<T> listNotInsert = insertPeople(cl, list);
-            if (listNotInsert.indexOf(obj)==-1){
-                log.debug("update success");
-                return true;
-            }else{
-                list.set(index, prevObj);
-                deleteFile(cl);
-                insertPeople(cl, list);
-            }
-        }
-        log.debug("update fail");
-        return false;
-    }
-
-    public boolean updateMeeting(Meeting obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-        Class cl = Meeting.class;
-        List<Meeting> list = read(cl);
-        Meeting prevObj;
-        int index = list.indexOf(getMeetingByID(obj.getId()));
-        if (index>(-1)){
-            prevObj = list.get(index);
-            list.set(index, obj);
-            deleteFile(cl);
-            List<Meeting> listNotInsert = insertMeeting(list);
-            if (listNotInsert.indexOf(obj)==-1){
-                log.debug("update success");
-                return true;
-            }else{
-                list.set(index, prevObj);
-                deleteFile(cl);
-                insertMeeting(list);
-            }
-        }
-        log.debug("update fail");
-        return false;
-    }
-
-    public boolean updateCoverPrice(CoverPrice obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-        Class cl = CoverPrice.class;
-        List<CoverPrice> list = read(cl);
-        CoverPrice prevObj;
-        int index = list.indexOf(getCoverPriceByID(obj.getId()));
-        if (index>(-1)){
-            prevObj = list.get(index);
-            list.set(index, obj);
-            deleteFile(cl);
-            List<CoverPrice> listNotInsert = insertCoverPrice(list);
-            if (listNotInsert.indexOf(obj)==-1){
-                log.debug("update success");
-                return true;
-            }else{
-                list.set(index, prevObj);
-                deleteFile(cl);
-                insertCoverPrice(list);
-            }
-        }
-        log.debug("update fail");
-        return false;
-    }
-
-    public boolean updatePriceParameters(PriceParameters obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-        Class cl = PriceParameters.class;
-        List<PriceParameters> list = read(cl);
-        PriceParameters prevObj;
-        int index = list.indexOf(getPriceParametersByID(obj.getId()));
-        if (index>(-1)){
-            prevObj = list.get(index);
-            list.set(index, obj);
-            deleteFile(cl);
-            List<PriceParameters> listNotInsert = insertPriceParameters(list);
-            if (listNotInsert.indexOf(obj)==-1){
-                log.debug("update success");
-                return true;
-            }else{
-                list.set(index, prevObj);
-                deleteFile(cl);
-                insertPriceParameters(list);
-            }
-        }
-        log.debug("update fail");
-        return false;
-    }
-
-    public boolean updateOrder(Order obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-        Class cl = Order.class;
-        List<Order> list = read(cl);
-        Order prevObj;
-        int index = list.indexOf(getBookByID(cl, obj.getId()));
-        if (index>(-1)){
-            prevObj = list.get(index);
-            list.set(index, obj);
-            deleteFile(cl);
-            List<Order> listNotInsert = insertOrder(list);
-            if (listNotInsert.indexOf(obj)==-1){
-                log.debug("update success");
-                return true;
-            }else{
-                list.set(index, prevObj);
-                deleteFile(cl);
-                insertOrder(list);
-            }
-        }
-        log.debug("update fail");
-        return false;
-    }
-
-    public boolean updateCorrections(Corrections obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-        Class cl = Corrections.class;
-        List<Corrections> list = read(cl);
-        Corrections prevObj;
-        int index = list.indexOf(getCorrectionsByID(obj.getId()));
-        if (index>(-1)){
-            prevObj = list.get(index);
-            list.set(index, obj);
-            deleteFile(cl);
-            List<Corrections> listNotInsert = insertCorrections(list);
-            if (listNotInsert.indexOf(obj)==-1){
-                log.debug("update success");
-                return true;
-            }else{
-                list.set(index, prevObj);
-                deleteFile(cl);
-                insertCorrections(list);
-            }
-        }
-        log.debug("update fail");
-        return false;
-    }
-
-    public boolean updateBook(Book obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-        Class cl = Book.class;
-        List<Book> list = read(cl);
-        Book prevObj;
-        int index = list.indexOf(getBookByID(cl, obj.getId()));
-        if (index>(-1)){
-            prevObj = list.get(index);
-            list.set(index, obj);
-            deleteFile(cl);
-            List<Book> listNotInsert = insertBook(list);
-            if (listNotInsert.indexOf(obj)==-1){
-                log.debug("update success");
-                return true;
-            }else{
-                list.set(index, prevObj);
-                deleteFile(cl);
-                insertBook(list);
-            }
-        }
-        log.debug("update fail");
-        return false;
-    }
-
-    public <T> boolean deleteObj(Class cl, T obj) {
-        try {
-            switch (cl.getSimpleName().toLowerCase()) {
-                case Constants.CORRECTIONS:
-                    Corrections corObj = (Corrections) obj;
-                    log.info("delete " + Constants.CORRECTIONS);
-                    return deleteCorrections(corObj);
-                case Constants.PEOPLE:
-                    People peoplObj = (People) obj;
-                    log.info("delete " + Constants.PEOPLE);
-                    return deletePeople(peoplObj);
-                case Constants.BOOK:
-                    Book bookObj = (Book) obj;
-                    log.info("delete " + Constants.BOOK);
-                    return deleteBook(bookObj);
-                case Constants.EMPLOYEE:
-                    Employee emplObj = (Employee) obj;
-                    log.info("delete " + Constants.EMPLOYEE);
-                    return deleteEmployee(emplObj);
-                case Constants.PRICEPARAMETERS:
-                    PriceParameters priceObj = (PriceParameters) obj;
-                    log.info("delete " + Constants.PRICEPARAMETERS);
-                    return deletePriceParameters(priceObj);
-                case Constants.ORDER:
-                    Order ordObj = (Order) obj;
-                    log.info("delete " + Constants.ORDER);
-                    return deleteOrder(ordObj);
-                case Constants.MEETING:
-                    Meeting meetObj = (Meeting) obj;
-                    log.info("delete " + Constants.MEETING);
-                    return deleteMeeting(meetObj);
-                case Constants.AUTHOR:
-                    Author authObj = (Author) obj;
-                    log.info("delete " + Constants.AUTHOR);
-                    return deleteAuthor(authObj);
-                case Constants.COVERPRICE:
-                    CoverPrice covObj = (CoverPrice) obj;
-                    log.info("delete " + Constants.COVERPRICE);
-                    return deleteCoverPrice(covObj);
-                default:
-                    log.debug("default case");
-                    return false;
-            }
-        }catch (IOException | CsvDataTypeMismatchException | CsvRequiredFieldEmptyException e){
-            log.error(e);
-            return false;
-        }
-    }
-
-    public boolean deleteCorrections(Corrections obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-        Class cl = Corrections.class;
-        List<Corrections> list = read(cl);
-        if (list.isEmpty()) {
-            log.debug("csv is empty");
-            return false;
-        }
-        if (list.indexOf(obj) > (-1)) {
-            list.removeIf(el -> el.equals(obj));
-            deleteFile(cl);
-            insertCorrections(list);
-            log.debug("delete success");
-            return true;
-        }else{
-            log.debug("delete fail");
-            return false;
-        }
-    }
-
-    public boolean deletePeople(People obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-        Class cl = People.class;
-        List<People> list = read(cl);
-        if (list.isEmpty()) {
-            log.debug("csv is empty");
-            return false;
-        }
-        if (list.indexOf(obj) > (-1)) {
-            list.removeIf(el -> el.equals(obj));
-            deleteFile(cl);
-            insertPeople(cl, list);
-            log.debug("delete success");
-            return true;
-        }else{
-            log.debug("delete fail");
-            return false;
-        }
-    }
-
-    public boolean deleteBook(Book obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-        Class cl = Book.class;
-        List<Book> list = read(cl);
-        if (list.isEmpty()) {
-            log.debug("csv is empty");
-            return false;
-        }
-        if (list.indexOf(obj) > (-1)) {
-            list.removeIf(el -> el.equals(obj));
-            deleteFile(cl);
-            insertBook(list);
-            log.debug("delete success");
-            return true;
-        }else{
-            log.debug("delete fail");
-            return false;
-        }
-    }
-
-    public boolean deleteEmployee(Employee obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-        Class cl = Employee.class;
-        List<Employee> list = read(cl);
-        if (list.isEmpty()) {
-            log.debug("csv is empty");
-            return false;
-        }
-        List<Order> listOrder = read(Order.class);
-        if (!listOrder.stream().anyMatch(el -> (el.getBookEditor().getId() != obj.getId() || el.getBookMaker().getId() == obj.getId()))) {
-            list.removeIf(el -> el.equals(obj));
-            deleteFile(cl);
-            insertPeople(cl, list);
-            log.debug("delete success");
-            return true;
-        }else{
-            log.debug("delete fail");
-            return false;
-        }
-    }
-
-    public boolean deletePriceParameters(PriceParameters obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-        Class cl = PriceParameters.class;
-        List<PriceParameters> list = read(cl);
-        if (list.isEmpty()) {
-            log.debug("csv is empty");
-            return false;
-        }
-        List<Order> listOrder2 = read(Order.class);
-        if (!listOrder2.stream().anyMatch(el -> el.getBookPriceParameters().getId() == obj.getId())) {
-            list.removeIf(el -> el.equals(obj));
-            deleteFile(cl);
-            insertPriceParameters(list);
-            log.debug("delete success");
-            return true;
-        }else{
-            log.debug("delete fail");
-            return false;
-        }
-    }
-
-    public boolean deleteOrder(Order obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-        Class cl = Order.class;
-        List<Order> list = read(cl);
-        if (list.isEmpty()) {
-            log.debug("csv is empty");
-            return false;
-        }
-        List<Corrections> listCorrections = read(Corrections.class);
-        if (!listCorrections.stream().anyMatch(el -> el.getOrder().getId() == obj.getId())) {
-            list.removeIf(el -> el.equals(obj));
-            deleteFile(cl);
-            insertOrder(list);
-            log.debug("delete success");
-            return true;
-        } else {
-            log.debug("delete fail");
-            return false;
-        }
-    }
-
-    public boolean deleteMeeting(Meeting obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-        Class cl = Meeting.class;
-        List<Meeting> list = read(cl);
-        if (list.isEmpty()) {
-            log.debug("csv is empty");
-            return false;
-        }
-        List<Corrections> listCorrections2 = read(Book.class);
-        if (!listCorrections2.stream().anyMatch(el -> el.getMeet().getId() == obj.getId())) {
-            list.removeIf(el -> el.equals(obj));
-            deleteFile(cl);
-            insertMeeting(list);
-            log.debug("delete success");
-            return true;
-        } else {
-            log.debug("delete fail");
-            return false;
-        }
-    }
-
-    public boolean deleteAuthor(Author obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-        Class cl = Author.class;
-        List<Author> list = read(cl);
-        if (list.isEmpty()) {
-            log.debug("csv is empty");
-            return false;
-        }
-        List<Book> listBook = read(Book.class);
-        if (!listBook.stream().anyMatch(el -> el.getAuthor().getId() == obj.getId())) {
-            list.removeIf(el -> el.equals(obj));
-            deleteFile(cl);
-            insertPeople(cl, list);
-            log.debug("delete success");
-            return true;
-        } else {
-            log.debug("delete fail");
-            return false;
-        }
-    }
-
-    public boolean deleteCoverPrice(CoverPrice obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-        Class cl = CoverPrice.class;
-        List<CoverPrice> list = read(cl);
-        if (list.isEmpty()) {
-            log.debug("csv is empty");
-            return false;
-        }
-        List<PriceParameters> listPriceParameters = read(PriceParameters.class);
-        if (!listPriceParameters.stream().anyMatch(el -> el.getCoverPrice().stream().anyMatch(id->id.getId()==obj.getId()))){
-            list.removeIf(el -> el.equals(obj));
-            deleteFile(cl);
-            insertCoverPrice(list);
-            log.debug("delete success");
-            return true;
-        } else {
-            log.debug("delete fail");
-            return false;
-        }
-    }
-
-    public long getMaxId (Class cl) {
-        try {
-            switch (cl.getSimpleName().toLowerCase()) {
-                case Constants.CORRECTIONS:
-                    List<Corrections> corList = read(cl);
-                    return corList.stream().max(Comparator.comparing(el -> el.getId())).get().getId();
-                case Constants.PEOPLE:
-                    List<People> poepList = read(cl);
-                    return poepList.stream().max(Comparator.comparing(el -> el.getId())).get().getId();
-                case Constants.BOOK:
-                    List<Book> bookList = read(cl);
-                    return bookList.stream().max(Comparator.comparing(el -> el.getId())).get().getId();
-                case Constants.EMPLOYEE:
-                    List<Employee> emplList = read(cl);
-                    return emplList.stream().max(Comparator.comparing(el -> el.getId())).get().getId();
-                case Constants.PRICEPARAMETERS:
-                    List<PriceParameters> priceList = read(cl);
-                    return priceList.stream().max(Comparator.comparing(el -> el.getId())).get().getId();
-                case Constants.ORDER:
-                    List<Order> orderList = read(cl);
-                    return orderList.stream().max(Comparator.comparing(el -> el.getId())).get().getId();
-                case Constants.MEETING:
-                    List<Meeting> meetList = read(cl);
-                    return meetList.stream().max(Comparator.comparing(el -> el.getId())).get().getId();
-                case Constants.AUTHOR:
-                    List<Author> authList = read(cl);
-                    return authList.stream().max(Comparator.comparing(el -> el.getId())).get().getId();
-                case Constants.COVERPRICE:
-                    List<CoverPrice> covList = read(cl);
-                    return covList.stream().max(Comparator.comparing(el -> el.getId())).get().getId();
-                default:
-                    log.debug("default case");
-                    return -1;
-            }
-        }catch (NoSuchElementException | IOException e){
-            log.error(e);
-            return -1;
-        }
-    }
-
-    public Employee createDefaultEmloyee(){
-        Employee employee = new Employee();
-        employee.setId(0);
-        employee.setFirstName("Default");
-        employee.setSecondName("Default");
-        employee.setLastName("Default");
-        employee.setPhone("00000000000");
-        employee.setInn("000000000000");
-        employee.setWorkRecordBook("0000000");
-        employee.setEmplpyeeType(EmployeeType.ADMIN);
-        return employee;
-    }
-
-    public PriceParameters createDefaultPriceParameters() throws IOException {
-        try {
-            List<CoverPrice> list = new ArrayList<>();
-            createDefaultCoverPrice();
-            list.add(getCoverPriceByID(0));
-            PriceParameters priceParameters = new PriceParameters();
-            priceParameters.setId(0);
-            priceParameters.setPagePrice(0.0);
-            priceParameters.setCoverPrice(list);
-            priceParameters.setWorkPrice(0.0);
-            priceParameters.setValidFromDate("1970-01-01");
-            priceParameters.setValidToDate("1970-01-02");
-            return priceParameters;
-        }catch (IOException e){
-            return null;
-        }
-    }
-
-    public CoverPrice createDefaultCoverPrice(){
-        CoverPrice coverPrice = new CoverPrice();
-        coverPrice.setId(0);
-        coverPrice.setCoverType(CoverType.PAPERBACK);
-        coverPrice.setCoverType(CoverType.PAPERBACK);
-        coverPrice.setPrice(0.0);
-        return coverPrice;
-    }
-
-    public <T> void checkNotNullObject (T obj) throws Exception {
-        if (obj == null) throw new Exception("Object is null");
-    }
-
-    public <T> void checkListIsNotEmpty (List<T> list) throws Exception {
-        if (list.isEmpty()) throw new Exception("List is Empty");
-    }
-
-    public void checkTrue (boolean result) throws Exception {
-        if (!result) throw new Exception("Result false");
-    }
-
     //Author
 
     @Override
@@ -1332,6 +460,19 @@ public class DataProviderCSV implements DataProvider {
         }
     }
 
+    public boolean returnTo (long OrderId,BookStatus bookStatus){
+        try {
+            Order order = findOrder(OrderId).get();
+            checkNotNullObject(order);
+            order.setBookStatus(bookStatus);
+            log.debug(order);
+            return updateOrder(order);
+        } catch (Exception e) {
+            log.error(e);
+            return false;
+        }
+    }
+
     @Override
     public boolean returnToAuthor (long OrderId){
         return returnTo(OrderId,BookStatus.WAIT_AUTHOR_CORRECTIONS);
@@ -1340,7 +481,7 @@ public class DataProviderCSV implements DataProvider {
     @Override
     public boolean endEditing (long OrderId){
         try {
-            Order order = findOrder(OrderId).get();
+            Order order = (Order) getBookByID(Order.class, OrderId);
             checkNotNullObject(order);
             order.setBookStatus(BookStatus.MAKING);
             log.debug(order);
@@ -1352,60 +493,61 @@ public class DataProviderCSV implements DataProvider {
     }
 
     @Override
-    public Optional<Corrections> sendCorrectionsToAuthor(long id, int page, String textBefore, String textAfter, String comment, Order order, Meeting meet, CorrectionsStatus status){
-        Corrections correction = new Corrections();
-        correction.setId(id);
-        correction.setPage(page);
-        correction.setTextBefore(textBefore);
-        correction.setTextAfter(textAfter);
-        correction.setComment(comment);
-        correction.setOrder(order);
-        correction.setMeet(meet);
-        correction.setStatus(status);
-        return Optional.of(correction);
+    public Optional<Corrections> sendCorrectionsToAuthor(long id, int page, String textBefore, String textAfter, String comment, long orderId, long meetingId){
+        try {
+            Corrections correction = new Corrections();
+            correction.setId(id);
+            correction.setPage(page);
+            correction.setTextBefore(textBefore);
+            correction.setTextAfter(textAfter);
+            correction.setComment(comment);
+            Order order = (Order) getBookByID(Order.class, orderId);
+            checkNotNullObject(order);
+            correction.setOrder(order);
+            Meeting meet = getMeetingByID(meetingId);
+            try{
+                checkNotNullObject(meet);
+            }catch(Exception e){
+                log.error(e);
+                meet = createDefaultMeeting();
+            }
+            correction.setMeet(meet);
+            correction.setStatus(CorrectionsStatus.WAIT_AUTHOR_AGR);
+            return Optional.of(correction);
+        }catch (Exception e){
+            log.error(e);
+            return Optional.empty();
+        }
     }
 
     @Override
-    public boolean makeMeeting (long correctionsId, long id, String meetDate, boolean authorAgreement, boolean editorAgreement) {
+    public boolean makeMeeting (long correctionsId, long id, String meetDate) {
         try {
+            checkNullObject(getMeetingByID(id));
             Corrections corrections = getCorrectionsByID(correctionsId);
             Meeting meeting = new Meeting();
             meeting.setId(id);
             meeting.setMeetDate(meetDate);
-            meeting.setAuthorAgreement(authorAgreement);
-            meeting.setEditorAgreement(editorAgreement);
+            meeting.setAuthorAgreement(false);
+            meeting.setEditorAgreement(true);
             corrections.setMeet(meeting);
+            updateCorrections(corrections);
+            List<Meeting> list = new ArrayList<>();
+            list.add(meeting);
+            insertMeeting(list);
             log.debug(corrections);
             return true;
         } catch (IOException e) {
             log.error(e);
             return false;
+        } catch (Exception e){
+            log.error(e);
+            log.info("Meeting id already exist");
+            return false;
         }
     }
 
 ////Maker
-
-    @Override
-    public Optional<Order> findOrder(long orderId){
-        Order order = (Order) getBookByID(Order.class,orderId);
-        if (order == null){
-            return Optional.empty();
-        }
-        return Optional.of(order);
-    }
-
-    @Override
-    public boolean returnTo (long OrderId,BookStatus bookStatus){
-        try {
-            Order order = findOrder(OrderId).get();
-            order.setBookStatus(bookStatus);
-            log.debug(order);
-            return updateOrder(order);
-        } catch (IOException | CsvRequiredFieldEmptyException | CsvDataTypeMismatchException e) {
-            log.error(e);
-            return false;
-        }
-    }
 
     @Override
     public boolean returnToEditor (long OrderId){
@@ -1417,13 +559,12 @@ public class DataProviderCSV implements DataProvider {
         try{
             Order order = (Order) getBookByID(Order.class,OrderId);
             Employee employee = (Employee) getPeopleByID(Employee.class,EmployeeId);
-            if (order == null || employee == null) {
-                return false;
-            }
+            checkNotNullObject(order);
+            checkNotNullObject(employee);
             order.setBookMaker(employee);
             log.debug(order);
             return updateOrder(order);
-        } catch (IOException | CsvRequiredFieldEmptyException | CsvDataTypeMismatchException e) {
+        } catch (Exception e) {
             log.error(e);
             return false;
         }
@@ -1432,11 +573,12 @@ public class DataProviderCSV implements DataProvider {
     @Override
     public boolean markAsFinished (long OrderId){
         try{
-            Order order = findOrder(OrderId).get();
+            Order order = (Order) getBookByID(Order.class, OrderId);
+            checkNotNullObject(order);
             order.setBookStatus(BookStatus.DONE);
             log.debug(order);
             return updateOrder(order);
-        } catch (IOException | CsvRequiredFieldEmptyException | CsvDataTypeMismatchException e) {
+        } catch (Exception e) {
             log.error(e);
             return false;
         }
@@ -1459,16 +601,16 @@ public class DataProviderCSV implements DataProvider {
         return countStatistic(startDate,deadline,BookStatus.EDITING);
     }
 
-    @Override
     public long countStatistic (String startDate, String deadline, BookStatus bookStatus){
         try {
             List<Order> list = read(Order.class);
+            checkListIsNotEmpty(list);
             list = list.stream()
                     .filter(el->el.getBookStatus() == bookStatus)
                     .filter(el2->belongInterval(startDate,deadline,el2.getOrderDate()))
                     .collect(Collectors.toList());
             return list.size();
-        } catch (IOException e) {
+        } catch (Exception e) {
             log.error(e);
             return -1;
         }
@@ -1477,15 +619,7 @@ public class DataProviderCSV implements DataProvider {
 ////Admin
 
     @Override
-    public Optional<PriceParameters> addPriceParameters(long id, double pagePrice, List<CoverPrice> coverPrice, double workPrice, String validFromDate, String validToDate){
-        try {
-            if (getPriceParametersByID(id) != null){
-                return Optional.empty();
-            }
-        } catch (IOException e) {
-            log.error(e);
-            return Optional.empty();
-        }
+    public Optional<PriceParameters> setPriceParameters(long id, double pagePrice, List<CoverPrice> coverPrice, double workPrice, String validFromDate, String validToDate){
         PriceParameters priceParameters = new PriceParameters();
         priceParameters.setId(id);
         priceParameters.setPagePrice(pagePrice);
@@ -1497,19 +631,938 @@ public class DataProviderCSV implements DataProvider {
     }
 
     @Override
-    public Optional<CoverPrice> addCoverPrice(long id, String coverType, double price){
+    public boolean addPriceParameters(long id, double pagePrice, List<CoverPrice> coverPrice, double workPrice, String validFromDate, String validToDate){
         try {
-            if (getCoverPriceByID(id) != null){
-                return Optional.empty();
-            }
-        } catch (IOException e) {
+            checkNullObject(getPriceParametersByID(id));
+            PriceParameters priceParameters = setPriceParameters(id, pagePrice, coverPrice, workPrice, validFromDate, validToDate).get();
+            List<PriceParameters> list = new ArrayList<>();
+            list.add(priceParameters);
+            return (!insertPriceParameters(list).isEmpty());
+        } catch (Exception e) {
             log.error(e);
-            return Optional.empty();
+            return false;
         }
+    }
+
+    @Override
+    public Optional<CoverPrice> setCoverPrice(long id, String coverType, double price){
         CoverPrice coverPrice = new CoverPrice();
         coverPrice.setId(id);
         coverPrice.setCoverType(CoverType.valueOf(coverType));
         coverPrice.setPrice(price);
         return Optional.of(coverPrice);
+    }
+
+    @Override
+    public boolean addCoverPrice(long id, String coverType, double price){
+        try {
+            checkNullObject(getCoverPriceByID(id));
+            CoverPrice coverPrice = setCoverPrice(id, coverType, price).get();
+            List<CoverPrice> list = new ArrayList<>();
+            list.add(coverPrice);
+            return (!insertCoverPrice(list).isEmpty());
+        } catch (Exception e) {
+            log.error(e);
+            return false;
+        }
+    }
+
+    @Override
+    public Optional<Order> findOrder(long orderId){
+        try {
+            Order order = (Order) getBookByID(Order.class, orderId);
+            checkNotNullObject(order);
+            return Optional.of(order);
+        }catch (Exception e) {
+            log.error(e);
+            return Optional.empty();
+        }
+    }
+
+    //CRUD and helper methods
+
+    public FileWriter commonWriter(Class cl) throws IOException {
+        FileWriter writer = new FileWriter(getPath(cl));
+        return writer;
+    }
+
+    public <T> void csvWriter(Class cl, List<T> list) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+        CSVWriter csvWriter = new CSVWriter(commonWriter(cl));
+        StatefulBeanToCsv<T> beanToCsv = new StatefulBeanToCsvBuilder<T>(csvWriter)
+                .withApplyQuotesToAll(false)
+                .build();
+        beanToCsv.write(list);
+        csvWriter.close();
+    }
+
+    public <T> List<T> read(Class cl) throws IOException{
+        FileReader fileReader;
+        String path = getPath(cl);
+        try{
+            fileReader = new FileReader(path);
+        }catch (FileNotFoundException  e){
+            createFile(path);
+            fileReader = new FileReader(path);
+        }
+        CSVReader csvReader = new CSVReader(fileReader);
+        CsvToBean<T> csvToBean = new CsvToBeanBuilder<T>(csvReader)
+                .withType(cl)
+                .withIgnoreLeadingWhiteSpace(true)
+                .build();
+        List<T> list = csvToBean.parse();
+        return list;
+    }
+
+    public String getPath(Class cl) throws IOException {
+        return ConfigurationUtil.getConfigurationEntry(PATH_CSV)
+                + cl.getSimpleName().toLowerCase()
+                + ConfigurationUtil.getConfigurationEntry(FILE_EXTENSION_CSV);
+    }
+
+    public <T extends People> Object getPeopleByID(Class cl, long id) throws IOException {
+        List<T> list = this.read(cl);
+        try {
+            Object obj = list.stream()
+                    .filter(e1 -> e1.getId() == id)
+                    .findFirst().get();
+            return obj;
+        }catch (NoSuchElementException e){
+            log.error(e);
+            return null;
+        }
+    }
+
+    public <T extends Book> Object getBookByID(Class cl, long id) {
+        try {
+            List<T> list = this.read(cl);
+            Object obj = list.stream()
+                    .filter(e1 -> e1.getId() == id)
+                    .findFirst().get();
+            return obj;
+        }catch (IOException | NoSuchElementException  e){
+            log.error(e);
+            return null;
+        }
+    }
+
+    public Meeting getMeetingByID(long id) throws IOException {
+        List<Meeting> list = this.read(Meeting.class);
+        try {
+            Meeting obj = list.stream()
+                    .filter(e1 -> e1.getId() == id)
+                    .findFirst().get();
+            return obj;
+        }catch (NoSuchElementException e){
+            log.error(e);
+            return null;
+        }
+    }
+
+    public Corrections getCorrectionsByID(long id) throws IOException {
+        List<Corrections> list = this.read(Corrections.class);
+        try {
+            Corrections obj = list.stream()
+                    .filter(e1 -> e1.getId() == id)
+                    .findFirst().get();
+            return obj;
+        }catch (NoSuchElementException e){
+            log.error(e);
+            return null;
+        }
+    }
+
+    public PriceParameters getPriceParametersByID(long id) throws IOException {
+        List<PriceParameters> list = this.read(PriceParameters.class);
+        try {
+            PriceParameters obj = list.stream()
+                    .filter(e1 -> e1.getId() == id)
+                    .findFirst().get();
+            return obj;
+        }catch (NoSuchElementException e){
+            log.error(e);
+            return null;
+        }
+    }
+
+    public CoverPrice getCoverPriceByID(long id) throws IOException {
+        List<CoverPrice> list = this.read(CoverPrice.class);
+        try {
+            CoverPrice obj = list.stream()
+                    .filter(e1 -> e1.getId() == id)
+                    .findFirst().get();
+            return obj;
+        }catch (NoSuchElementException e){
+            log.error(e);
+            return null;
+        }
+    }
+
+    public String createFile(String path) throws IOException {
+        File file = new File(path);
+        file.createNewFile();
+        return path;
+    }
+
+    //добавляет элемент к одному из двух массивов: 1 массив - не повторяющиеся, 2 - повторяющиеся
+    public <T> void separateDuplicates( List<T> returnList, List<T> recordList, T obj) {
+        if (recordList.stream().anyMatch(e2 -> e2.equals(obj))){
+            log.debug("already exist in csv "+obj);
+            returnList.add(obj);
+        }else{
+            log.debug("will add to csv "+obj);
+            recordList.add(obj);
+        }
+    }
+
+    public <T extends People> List<T> insertPeople(Class cl, List<T> list) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+        List<T> returnList = new ArrayList<>();
+        List<T> recordList = read(cl);
+        list.stream().forEach(e1 -> {
+            if (recordList.stream().anyMatch(e2 -> e2.equals(e1))){
+                log.debug("already exist in csv "+e1);
+            }else if (recordList.stream().anyMatch(e2 -> e2.getId() == e1.getId())){
+                log.debug("id already exist in csv "+e1);
+                returnList.add(e1);
+            }else{
+                log.debug("will add to csv "+e1);
+                recordList.add(e1);
+            }
+        });
+        try {
+            csvWriter(cl,recordList);
+        }catch (IndexOutOfBoundsException e){
+            log.error(e);
+        }finally {
+            return returnList;
+        }
+    }
+
+    public List<Meeting> insertMeeting(List<Meeting> list) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+        List<Meeting> returnList = new ArrayList<>();
+        List<Meeting> recordList = read(Meeting.class);
+        list.stream().forEach(e1 -> {
+            if (recordList.stream().anyMatch(e2 -> e2.equals(e1))){
+                log.debug("already exist in csv "+e1);
+            }else if (recordList.stream().anyMatch(e2 -> e2.getId() == e1.getId())){
+                log.debug("id already exist in csv "+e1);
+                returnList.add(e1);
+            }else{
+                log.debug("will add to csv "+e1);
+                recordList.add(e1);
+            }
+        });
+        try {
+            csvWriter(Meeting.class,recordList);
+        }catch (IndexOutOfBoundsException e){
+            log.error(e);
+        }finally {
+            return returnList;
+        }
+    }
+
+    public List<CoverPrice> insertCoverPrice(List<CoverPrice> list) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+        List<CoverPrice> returnList = new ArrayList<>();
+        List<CoverPrice> recordList = read(CoverPrice.class);
+        list.stream().forEach(e1 -> {
+            if (recordList.stream().anyMatch(e2 -> e2.equals(e1))){
+                log.debug("already exist in csv "+e1);
+            }else if (recordList.stream().anyMatch(e2 -> e2.getId() == e1.getId())){
+                log.debug("id already exist in csv "+e1);
+                returnList.add(e1);
+            }else{
+                log.debug("will add to csv "+e1);
+                recordList.add(e1);
+            }
+        });
+        try {
+            csvWriter(CoverPrice.class, recordList);
+        }catch (IndexOutOfBoundsException e){
+            log.error(e);
+        }finally {
+            return returnList;
+        }
+    }
+
+    public List<PriceParameters> insertPriceParameters(List<PriceParameters> list) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+        List<PriceParameters> returnList = new ArrayList<>();
+        List<PriceParameters> recordList = read(PriceParameters.class);
+        list.stream().forEach(el -> {
+            //проверка, есть ли элемент указанный в поле CoverPrice в соответствующем csv файле
+            if (el.getCoverPrice().isEmpty() || el.getCoverPrice().stream().allMatch(e2 -> {
+                try {
+                    return getCoverPriceByID(e2.getId()) != null;
+                } catch (IOException e) {
+                    log.error(e);
+                    return false;
+                }
+            })){
+                log.debug("there is such CoverPrice");
+                if (recordList.stream().anyMatch(e2 -> e2.equals(el))){
+                    log.debug("already exist in csv "+el);
+                }else if (recordList.stream().anyMatch(e2 -> e2.getId() == el.getId())) {
+                    log.debug("id already exist in csv " + el);
+                    returnList.add(el);
+                }else{
+                    log.debug("will add to csv "+el);
+                    recordList.add(el);
+                }
+            }else{
+                log.debug("there is not such CoverPrice");
+                returnList.add(el);
+            }
+        });
+        try {
+            csvWriter(PriceParameters.class, recordList);
+        }catch (IndexOutOfBoundsException e){
+            log.error(e);
+        }finally {
+            return returnList;
+        }
+    }
+
+    public List<Order> insertOrder(List<Order> list) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+        List<Order> returnList = new ArrayList<>();
+        List<Order> recordList = read(Order.class);
+        list.stream().forEach(el -> {
+            try {
+                //проверка, есть ли элементы указанный в поле CoverPrice в соответствующем csv файле
+                if ((el.getBookMaker() == null || getPeopleByID(Employee.class,el.getBookMaker().getId()) != null)
+                && (el.getBookEditor() == null || getPeopleByID(Employee.class,el.getBookEditor().getId()) != null)
+                && (el.getBookPriceParameters() == null || getPriceParametersByID(el.getBookPriceParameters().getId()) != null)){
+                    log.debug("there is such BookMaker and BookEditor and PriceParameters");
+                    if (recordList.stream().anyMatch(e2 -> e2.equals(el))){
+                        log.debug("already exist in csv "+el);
+                    }else if (recordList.stream().anyMatch(e2 -> e2.getId() == el.getId())) {
+                        log.debug("id already exist in csv " + el);
+                        returnList.add(el);
+                    }else{
+                        log.debug("will add to csv "+el);
+                        recordList.add(el);
+                    }
+                }else{
+                    log.debug("there is not such BookMaker or BookEditor or PriceParameters");
+                    returnList.add(el);
+                }
+            } catch (IOException e) {
+                log.error(e);
+            }
+        });
+        try {
+            csvWriter(Order.class, recordList);
+        }catch (IndexOutOfBoundsException e){
+            log.error(e);
+        }finally {
+            return returnList;
+        }
+    }
+
+    public List<Corrections> insertCorrections(List<Corrections> list) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+        List<Corrections> returnList = new ArrayList<>();
+        List<Corrections> recordList = read(Corrections.class);
+        list.stream().forEach(el -> {
+            try {
+                //проверка, есть ли элементы указанный в поле order и meet в соответствующем csv файле
+                if ((el.getOrder() == null || getBookByID(Order.class,el.getOrder().getId()) != null)
+                        && (el.getMeet() == null || getMeetingByID(el.getMeet().getId()) != null)){
+                    log.debug("there is such Order and Meeting");
+                    if (recordList.stream().anyMatch(e2 -> e2.equals(el))){
+                        log.debug("already exist in csv "+el);
+                    }else if (recordList.stream().anyMatch(e2 -> e2.getId() == el.getId())) {
+                        log.debug("id already exist in csv " + el);
+                        returnList.add(el);
+                    }else{
+                        log.debug("will add to csv "+el);
+                        recordList.add(el);
+                    }
+                }else{
+                    log.debug("there is not such Order or Meeting");
+                    returnList.add(el);
+                }
+            } catch (IOException e) {
+                log.error(e);
+            }
+        });
+        try {
+            csvWriter(Corrections.class, recordList);
+        }catch (IndexOutOfBoundsException e){
+            log.error(e);
+        }finally {
+            return returnList;
+        }
+    }
+
+    public List<Book> insertBook(List<Book> list) throws IOException {
+        List<Book> returnList = new ArrayList<>();
+        List<Book> recordList = read(Book.class);
+        list.stream().forEach(el -> {
+            try {
+                //проверка, есть ли элемент указанный в поле Author в соответствующем csv файле
+                if (el.getAuthor() == null || getPeopleByID(Author.class, el.getAuthor().getId()) != null){
+                    log.debug("there is such Author");
+                    if (recordList.stream().anyMatch(e2 -> e2.equals(el))){
+                        log.debug("already exist in csv "+el);
+                    }else if (recordList.stream().anyMatch(e2 -> e2.getId() == el.getId())) {
+                        log.debug("id already exist in csv " + el);
+                        returnList.add(el);
+                    }else{
+                        log.debug("will add to csv "+el);
+                        recordList.add(el);
+                    }
+                }else{
+                    log.debug("there is not such Author");
+                    returnList.add(el);
+                }
+            } catch (IOException e) {
+                log.error(e);
+            }
+        });
+        try {
+            csvWriter(Book.class, recordList);
+        }catch (IndexOutOfBoundsException | CsvDataTypeMismatchException | CsvRequiredFieldEmptyException e){
+            log.error(e);
+        }finally {
+            return returnList;
+        }
+    }
+
+    public boolean deleteFile(Class cl) {
+        try{
+            CSVWriter csvWriter = new CSVWriter(commonWriter(cl));
+            csvWriter.close();
+            return true;
+        }catch (IOException e){
+            log.error(e);
+            return false;
+        }
+    }
+
+    public boolean dropFile(Class cl) {
+        try{
+            File file= new File(getPath(cl));
+            log.debug("file delete "+file.delete());
+            return true;
+        }catch (IOException e){
+            log.error(e);
+            return false;
+        }
+    }
+
+    public <T extends People> boolean updatePeople(Class cl, T obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+        List<T> list = read(cl);
+        T prevObj;
+        int index = list.indexOf(getPeopleByID(cl, obj.getId()));
+        if (index>(-1)){
+            prevObj = list.get(index);
+            list.set(index, obj);
+            deleteFile(cl);
+            List<T> listNotInsert = insertPeople(cl, list);
+            if (listNotInsert.indexOf(obj)==-1){
+                log.debug("update success");
+                return true;
+            }else{
+                list.set(index, prevObj);
+                deleteFile(cl);
+                insertPeople(cl, list);
+            }
+        }
+        log.debug("update fail");
+        return false;
+    }
+
+    public boolean updateMeeting(Meeting obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+        Class cl = Meeting.class;
+        List<Meeting> list = read(cl);
+        Meeting prevObj;
+        int index = list.indexOf(getMeetingByID(obj.getId()));
+        if (index>(-1)){
+            prevObj = list.get(index);
+            list.set(index, obj);
+            deleteFile(cl);
+            List<Meeting> listNotInsert = insertMeeting(list);
+            if (listNotInsert.indexOf(obj)==-1){
+                log.debug("update success");
+                return true;
+            }else{
+                list.set(index, prevObj);
+                deleteFile(cl);
+                insertMeeting(list);
+            }
+        }
+        log.debug("update fail");
+        return false;
+    }
+
+    public boolean updateCoverPrice(CoverPrice obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+        Class cl = CoverPrice.class;
+        List<CoverPrice> list = read(cl);
+        CoverPrice prevObj;
+        int index = list.indexOf(getCoverPriceByID(obj.getId()));
+        if (index>(-1)){
+            prevObj = list.get(index);
+            list.set(index, obj);
+            deleteFile(cl);
+            List<CoverPrice> listNotInsert = insertCoverPrice(list);
+            if (listNotInsert.indexOf(obj)==-1){
+                log.debug("update success");
+                return true;
+            }else{
+                list.set(index, prevObj);
+                deleteFile(cl);
+                insertCoverPrice(list);
+            }
+        }
+        log.debug("update fail");
+        return false;
+    }
+
+    public boolean updatePriceParameters(PriceParameters obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+        Class cl = PriceParameters.class;
+        List<PriceParameters> list = read(cl);
+        PriceParameters prevObj;
+        int index = list.indexOf(getPriceParametersByID(obj.getId()));
+        if (index>(-1)){
+            prevObj = list.get(index);
+            list.set(index, obj);
+            deleteFile(cl);
+            List<PriceParameters> listNotInsert = insertPriceParameters(list);
+            if (listNotInsert.indexOf(obj)==-1){
+                log.debug("update success");
+                return true;
+            }else{
+                list.set(index, prevObj);
+                deleteFile(cl);
+                insertPriceParameters(list);
+            }
+        }
+        log.debug("update fail");
+        return false;
+    }
+
+    public boolean updateOrder(Order obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+        Class cl = Order.class;
+        List<Order> list = read(cl);
+        Order prevObj;
+        int index = list.indexOf(getBookByID(cl, obj.getId()));
+        if (index>(-1)){
+            prevObj = list.get(index);
+            list.set(index, obj);
+            deleteFile(cl);
+            List<Order> listNotInsert = insertOrder(list);
+            if (listNotInsert.indexOf(obj)==-1){
+                log.debug("update success");
+                return true;
+            }else{
+                list.set(index, prevObj);
+                deleteFile(cl);
+                insertOrder(list);
+            }
+        }
+        log.debug("update fail");
+        return false;
+    }
+
+    public boolean updateCorrections(Corrections obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+        Class cl = Corrections.class;
+        List<Corrections> list = read(cl);
+        Corrections prevObj;
+        int index = list.indexOf(getCorrectionsByID(obj.getId()));
+        if (index>(-1)){
+            prevObj = list.get(index);
+            list.set(index, obj);
+            deleteFile(cl);
+            List<Corrections> listNotInsert = insertCorrections(list);
+            if (listNotInsert.indexOf(obj)==-1){
+                log.debug("update success");
+                return true;
+            }else{
+                list.set(index, prevObj);
+                deleteFile(cl);
+                insertCorrections(list);
+            }
+        }
+        log.debug("update fail");
+        return false;
+    }
+
+    public boolean updateBook(Book obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+        Class cl = Book.class;
+        List<Book> list = read(cl);
+        Book prevObj;
+        int index = list.indexOf(getBookByID(cl, obj.getId()));
+        if (index>(-1)){
+            prevObj = list.get(index);
+            list.set(index, obj);
+            deleteFile(cl);
+            List<Book> listNotInsert = insertBook(list);
+            if (listNotInsert.indexOf(obj)==-1){
+                log.debug("update success");
+                return true;
+            }else{
+                list.set(index, prevObj);
+                deleteFile(cl);
+                insertBook(list);
+            }
+        }
+        log.debug("update fail");
+        return false;
+    }
+
+    public <T> boolean deleteObj(Class cl, T obj) {
+        try {
+            switch (cl.getSimpleName().toLowerCase()) {
+                case Constants.CORRECTIONS:
+                    Corrections corObj = (Corrections) obj;
+                    log.info("delete " + Constants.CORRECTIONS);
+                    return deleteCorrections(corObj);
+                case Constants.PEOPLE:
+                    People peoplObj = (People) obj;
+                    log.info("delete " + Constants.PEOPLE);
+                    return deletePeople(peoplObj);
+                case Constants.BOOK:
+                    Book bookObj = (Book) obj;
+                    log.info("delete " + Constants.BOOK);
+                    return deleteBook(bookObj);
+                case Constants.EMPLOYEE:
+                    Employee emplObj = (Employee) obj;
+                    log.info("delete " + Constants.EMPLOYEE);
+                    return deleteEmployee(emplObj);
+                case Constants.PRICEPARAMETERS:
+                    PriceParameters priceObj = (PriceParameters) obj;
+                    log.info("delete " + Constants.PRICEPARAMETERS);
+                    return deletePriceParameters(priceObj);
+                case Constants.ORDER:
+                    Order ordObj = (Order) obj;
+                    log.info("delete " + Constants.ORDER);
+                    return deleteOrder(ordObj);
+                case Constants.MEETING:
+                    Meeting meetObj = (Meeting) obj;
+                    log.info("delete " + Constants.MEETING);
+                    return deleteMeeting(meetObj);
+                case Constants.AUTHOR:
+                    Author authObj = (Author) obj;
+                    log.info("delete " + Constants.AUTHOR);
+                    return deleteAuthor(authObj);
+                case Constants.COVERPRICE:
+                    CoverPrice covObj = (CoverPrice) obj;
+                    log.info("delete " + Constants.COVERPRICE);
+                    return deleteCoverPrice(covObj);
+                default:
+                    log.debug("default case");
+                    return false;
+            }
+        }catch (IOException | CsvDataTypeMismatchException | CsvRequiredFieldEmptyException e){
+            log.error(e);
+            return false;
+        }
+    }
+
+    public boolean deleteCorrections(Corrections obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+        Class cl = Corrections.class;
+        List<Corrections> list = read(cl);
+        try {
+            checkListIsNotEmpty(list);
+            if (list.indexOf(obj) > (-1)) {
+                list.removeIf(el -> el.equals(obj));
+                deleteFile(cl);
+                insertCorrections(list);
+                log.debug("delete success");
+                return true;
+            } else {
+                log.debug("delete fail");
+                return false;
+            }
+        }catch (Exception e){
+            log.debug("csv is empty");
+            return false;
+        }
+    }
+
+    public boolean deletePeople(People obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+        Class cl = People.class;
+        List<People> list = read(cl);
+        try {
+            checkListIsNotEmpty(list);
+            if (list.indexOf(obj) > (-1)) {
+                list.removeIf(el -> el.equals(obj));
+                deleteFile(cl);
+                insertPeople(cl, list);
+                log.debug("delete success");
+                return true;
+            } else {
+                log.debug("delete fail");
+                return false;
+            }
+        }catch (Exception e){
+            log.debug("csv is empty");
+            return false;
+        }
+    }
+
+    public boolean deleteBook(Book obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+        Class cl = Book.class;
+        List<Book> list = read(cl);
+        try {
+            checkListIsNotEmpty(list);
+            if (list.indexOf(obj) > (-1)) {
+                list.removeIf(el -> el.equals(obj));
+                deleteFile(cl);
+                insertBook(list);
+                log.debug("delete success");
+                return true;
+            } else {
+                log.debug("delete fail");
+                return false;
+            }
+        }catch (Exception e){
+            log.debug("csv is empty");
+            return false;
+        }
+    }
+
+    public boolean deleteEmployee(Employee obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+        Class cl = Employee.class;
+        List<Employee> list = read(cl);
+        try {
+            checkListIsNotEmpty(list);
+            List<Order> listOrder = read(Order.class);
+            if (!listOrder.stream().anyMatch(el -> (el.getBookEditor().getId() != obj.getId() || el.getBookMaker().getId() == obj.getId()))) {
+                list.removeIf(el -> el.equals(obj));
+                deleteFile(cl);
+                insertPeople(cl, list);
+                log.debug("delete success");
+                return true;
+            } else {
+                log.debug("delete fail");
+                return false;
+            }
+        }catch (Exception e){
+            log.debug("csv is empty");
+            return false;
+        }
+    }
+
+    public boolean deletePriceParameters(PriceParameters obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+        Class cl = PriceParameters.class;
+        List<PriceParameters> list = read(cl);
+        try {
+            checkListIsNotEmpty(list);
+            List<Order> listOrder2 = read(Order.class);
+            if (!listOrder2.stream().anyMatch(el -> el.getBookPriceParameters().getId() == obj.getId())) {
+                list.removeIf(el -> el.equals(obj));
+                deleteFile(cl);
+                insertPriceParameters(list);
+                log.debug("delete success");
+                return true;
+            } else {
+                log.debug("delete fail");
+                return false;
+            }
+        }catch (Exception e){
+            log.debug("csv is empty");
+            return false;
+        }
+    }
+
+    public boolean deleteOrder(Order obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+        Class cl = Order.class;
+        List<Order> list = read(cl);
+        try {
+            checkListIsNotEmpty(list);
+            List<Corrections> listCorrections = read(Corrections.class);
+            if (!listCorrections.stream().anyMatch(el -> el.getOrder().getId() == obj.getId())) {
+                list.removeIf(el -> el.equals(obj));
+                deleteFile(cl);
+                insertOrder(list);
+                log.debug("delete success");
+                return true;
+            } else {
+                log.debug("delete fail");
+                return false;
+            }
+        }catch (Exception e){
+            log.debug("csv is empty");
+            return false;
+        }
+    }
+
+    public boolean deleteMeeting(Meeting obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+        Class cl = Meeting.class;
+        List<Meeting> list = read(cl);
+        try {
+            checkListIsNotEmpty(list);
+            List<Corrections> listCorrections2 = read(Book.class);
+            if (!listCorrections2.stream().anyMatch(el -> el.getMeet().getId() == obj.getId())) {
+                list.removeIf(el -> el.equals(obj));
+                deleteFile(cl);
+                insertMeeting(list);
+                log.debug("delete success");
+                return true;
+            } else {
+                log.debug("delete fail");
+                return false;
+            }
+        }catch (Exception e){
+            log.debug("csv is empty");
+            return false;
+        }
+    }
+
+    public boolean deleteAuthor(Author obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+        Class cl = Author.class;
+        List<Author> list = read(cl);
+        try {
+            checkListIsNotEmpty(list);
+            List<Book> listBook = read(Book.class);
+            if (!listBook.stream().anyMatch(el -> el.getAuthor().getId() == obj.getId())) {
+                list.removeIf(el -> el.equals(obj));
+                deleteFile(cl);
+                insertPeople(cl, list);
+                log.debug("delete success");
+                return true;
+            } else {
+                log.debug("delete fail");
+                return false;
+            }
+        }catch (Exception e){
+            log.debug("csv is empty");
+            return false;
+        }
+    }
+
+    public boolean deleteCoverPrice(CoverPrice obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+        Class cl = CoverPrice.class;
+        List<CoverPrice> list = read(cl);
+        try {
+            checkListIsNotEmpty(list);
+            List<PriceParameters> listPriceParameters = read(PriceParameters.class);
+            if (!listPriceParameters.stream().anyMatch(el -> el.getCoverPrice().stream().anyMatch(id -> id.getId() == obj.getId()))) {
+                list.removeIf(el -> el.equals(obj));
+                deleteFile(cl);
+                insertCoverPrice(list);
+                log.debug("delete success");
+                return true;
+            } else {
+                log.debug("delete fail");
+                return false;
+            }
+        }catch (Exception e){
+            log.debug("csv is empty");
+            return false;
+        }
+    }
+
+    public long getMaxId (Class cl) {
+        try {
+            switch (cl.getSimpleName().toLowerCase()) {
+                case Constants.CORRECTIONS:
+                    List<Corrections> corList = read(cl);
+                    return corList.stream().max(Comparator.comparing(el -> el.getId())).get().getId();
+                case Constants.PEOPLE:
+                    List<People> poepList = read(cl);
+                    return poepList.stream().max(Comparator.comparing(el -> el.getId())).get().getId();
+                case Constants.BOOK:
+                    List<Book> bookList = read(cl);
+                    return bookList.stream().max(Comparator.comparing(el -> el.getId())).get().getId();
+                case Constants.EMPLOYEE:
+                    List<Employee> emplList = read(cl);
+                    return emplList.stream().max(Comparator.comparing(el -> el.getId())).get().getId();
+                case Constants.PRICEPARAMETERS:
+                    List<PriceParameters> priceList = read(cl);
+                    return priceList.stream().max(Comparator.comparing(el -> el.getId())).get().getId();
+                case Constants.ORDER:
+                    List<Order> orderList = read(cl);
+                    return orderList.stream().max(Comparator.comparing(el -> el.getId())).get().getId();
+                case Constants.MEETING:
+                    List<Meeting> meetList = read(cl);
+                    return meetList.stream().max(Comparator.comparing(el -> el.getId())).get().getId();
+                case Constants.AUTHOR:
+                    List<Author> authList = read(cl);
+                    return authList.stream().max(Comparator.comparing(el -> el.getId())).get().getId();
+                case Constants.COVERPRICE:
+                    List<CoverPrice> covList = read(cl);
+                    return covList.stream().max(Comparator.comparing(el -> el.getId())).get().getId();
+                default:
+                    log.debug("default case");
+                    return -1;
+            }
+        }catch (NoSuchElementException | IOException e){
+            log.error(e);
+            return -1;
+        }
+    }
+
+    public Employee createDefaultEmloyee(){
+        Employee employee = new Employee();
+        employee.setId(0);
+        employee.setFirstName("Default");
+        employee.setSecondName("Default");
+        employee.setLastName("Default");
+        employee.setPhone("00000000000");
+        employee.setInn("000000000000");
+        employee.setWorkRecordBook("0000000");
+        employee.setEmplpyeeType(EmployeeType.ADMIN);
+        return employee;
+    }
+
+    public PriceParameters createDefaultPriceParameters() throws IOException {
+        try {
+            List<CoverPrice> list = new ArrayList<>();
+            createDefaultCoverPrice();
+            list.add(getCoverPriceByID(0));
+            PriceParameters priceParameters = new PriceParameters();
+            priceParameters.setId(0);
+            priceParameters.setPagePrice(0.0);
+            priceParameters.setCoverPrice(list);
+            priceParameters.setWorkPrice(0.0);
+            priceParameters.setValidFromDate("1970-01-01");
+            priceParameters.setValidToDate("1970-01-02");
+            return priceParameters;
+        }catch (IOException e){
+            return null;
+        }
+    }
+
+    public CoverPrice createDefaultCoverPrice(){
+        CoverPrice coverPrice = new CoverPrice();
+        coverPrice.setId(0);
+        coverPrice.setCoverType(CoverType.PAPERBACK);
+        coverPrice.setCoverType(CoverType.PAPERBACK);
+        coverPrice.setPrice(0.0);
+        return coverPrice;
+    }
+
+    public Meeting createDefaultMeeting(){
+        Meeting meet = null;
+        try {
+            meet = getMeetingByID(0);
+        } catch (IOException e) {
+            log.error(e);
+            meet = new Meeting();
+            meet.setId(0);
+            meet.setMeetDate("1970-01-01");
+            meet.setAuthorAgreement(false);
+            meet.setEditorAgreement(false);
+            List<Meeting> list = new ArrayList<>();
+            list.add(meet);
+            insertMeeting(list);
+        } finally {
+            return meet;
+        }
+    }
+
+    public <T> void checkNotNullObject (T obj) throws Exception {
+        if (obj == null) throw new Exception("Object is null");
+    }
+
+    public <T> void checkListIsNotEmpty (List<T> list) throws Exception {
+        if (list.isEmpty()) throw new Exception("List is Empty");
+    }
+
+    public void checkTrue (boolean result) throws Exception {
+        if (!result) throw new Exception("Result false");
+    }
+
+    public <T> void checkNullObject (T obj) throws Exception {
+        if (obj != null) throw new Exception("Object is not null");
     }
 }
