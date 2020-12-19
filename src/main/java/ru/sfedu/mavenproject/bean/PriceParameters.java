@@ -4,6 +4,7 @@ import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvCustomBindByName;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementList;
 import ru.sfedu.mavenproject.bean.converters.ConverterCoverPrice;
 
 import java.io.Serializable;
@@ -24,7 +25,7 @@ public class PriceParameters implements Serializable {
   @Element
   @CsvBindByName
   private double pagePrice;
-  @Element
+  @ElementList
   @CsvCustomBindByName(converter = ConverterCoverPrice.class)
   private List<CoverPrice> coverPrice;
   @Element
