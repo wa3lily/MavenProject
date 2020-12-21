@@ -673,15 +673,29 @@ public class DataProviderXML implements DataProvider{
     //CRUD and helper methods
 
 
-    public <T> void csvWriter(Class cl, List<T> list)  {
+    public <T> void hmlWriter(Class cl, List<T> list)  {
         try {
-            Writer writer = new FileWriter(getPath(cl));
+            String path = getPath(cl);
+            createFile(path);
+            Writer writer = new FileWriter(path);
             Serializer serializer = new Persister();
             WrapperXML<T> xml = new WrapperXML<>(list);
             serializer.write(xml, writer);
         } catch (Exception e){
             log.error(e);
         }
+    }
+
+    public <T> boolean deleteFile(Class cl) {
+        hmlWriter(cl, new ArrayList<>());
+//        try{
+//            Writer writer = new FileWriter(getPath(cl));
+//            return true;
+//        }catch ( Exception e){
+//            log.error(e);
+//            return false;
+//        }
+        return true;
     }
 
     public <T> List<T> readXML(Class cl) throws IOException{
@@ -696,10 +710,10 @@ public class DataProviderXML implements DataProvider{
                 return list;
             }
             file.close();
-            return Collections.emptyList();
+            return new ArrayList<>();
         } catch (Exception e) {
             log.error(e);
-            return Collections.emptyList();
+            return new ArrayList<>();
         }
     }
 
@@ -815,8 +829,8 @@ public class DataProviderXML implements DataProvider{
     }
 
     public <T extends People> List<T> insertPeople(Class cl, List<T> list) throws IOException {
-        String path = getPath(cl);
-        createFile(path);
+        //String path = getPath(cl);
+        //createFile(path);
         List<T> returnList = new ArrayList<>();
         List<T> recordList = readXML(cl);
         list.stream().forEach(e1 -> {
@@ -831,7 +845,7 @@ public class DataProviderXML implements DataProvider{
             }
         });
         try {
-            csvWriter(cl,recordList);
+            hmlWriter(cl,recordList);
         }catch (IndexOutOfBoundsException e){
             log.error(e);
         }finally {
@@ -840,8 +854,8 @@ public class DataProviderXML implements DataProvider{
     }
 
     public List<Meeting> insertMeeting(List<Meeting> list) throws IOException {
-        String path = getPath(Meeting.class);
-        createFile(path);
+        //String path = getPath(Meeting.class);
+        //createFile(path);
         List<Meeting> returnList = new ArrayList<>();
         List<Meeting> recordList = readXML(Meeting.class);
         list.stream().forEach(e1 -> {
@@ -856,7 +870,7 @@ public class DataProviderXML implements DataProvider{
             }
         });
         try {
-            csvWriter(Meeting.class,recordList);
+            hmlWriter(Meeting.class,recordList);
         }catch (IndexOutOfBoundsException e){
             log.error(e);
         }finally {
@@ -865,8 +879,8 @@ public class DataProviderXML implements DataProvider{
     }
 
     public List<CoverPrice> insertCoverPrice(List<CoverPrice> list) throws IOException{
-        String path = getPath(CoverPrice.class);
-        createFile(path);
+        //String path = getPath(CoverPrice.class);
+        //createFile(path);
         List<CoverPrice> returnList = new ArrayList<>();
         List<CoverPrice> recordList = readXML(CoverPrice.class);
         list.stream().forEach(e1 -> {
@@ -881,7 +895,7 @@ public class DataProviderXML implements DataProvider{
             }
         });
         try {
-            csvWriter(CoverPrice.class, recordList);
+            hmlWriter(CoverPrice.class, recordList);
         }catch (IndexOutOfBoundsException e){
             log.error(e);
         }finally {
@@ -890,8 +904,8 @@ public class DataProviderXML implements DataProvider{
     }
 
     public List<PriceParameters> insertPriceParameters(List<PriceParameters> list) throws IOException {
-        String path = getPath(PriceParameters.class);
-        createFile(path);
+        //String path = getPath(PriceParameters.class);
+        //createFile(path);
         List<PriceParameters> returnList = new ArrayList<>();
         List<PriceParameters> recordList = readXML(PriceParameters.class);
         list.stream().forEach(el -> {
@@ -920,7 +934,7 @@ public class DataProviderXML implements DataProvider{
             }
         });
         try {
-            csvWriter(PriceParameters.class, recordList);
+            hmlWriter(PriceParameters.class, recordList);
         }catch (IndexOutOfBoundsException e){
             log.error(e);
         }finally {
@@ -929,8 +943,8 @@ public class DataProviderXML implements DataProvider{
     }
 
     public List<Order> insertOrder(List<Order> list) throws IOException{
-        String path = getPath(Order.class);
-        createFile(path);
+        //String path = getPath(Order.class);
+        //createFile(path);
         List<Order> returnList = new ArrayList<>();
         List<Order> recordList = readXML(Order.class);
         list.stream().forEach(el -> {
@@ -958,7 +972,7 @@ public class DataProviderXML implements DataProvider{
             }
         });
         try {
-            csvWriter(Order.class, recordList);
+            hmlWriter(Order.class, recordList);
         }catch (IndexOutOfBoundsException e){
             log.error(e);
         }finally {
@@ -967,8 +981,8 @@ public class DataProviderXML implements DataProvider{
     }
 
     public List<Corrections> insertCorrections(List<Corrections> list) throws IOException {
-        String path = getPath(Corrections.class);
-        createFile(path);
+        //String path = getPath(Corrections.class);
+        //createFile(path);
         List<Corrections> returnList = new ArrayList<>();
         List<Corrections> recordList = readXML(Corrections.class);
         list.stream().forEach(el -> {
@@ -995,7 +1009,7 @@ public class DataProviderXML implements DataProvider{
             }
         });
         try {
-            csvWriter(Corrections.class, recordList);
+            hmlWriter(Corrections.class, recordList);
         }catch (IndexOutOfBoundsException e){
             log.error(e);
         }finally {
@@ -1004,8 +1018,8 @@ public class DataProviderXML implements DataProvider{
     }
 
     public List<Book> insertBook(List<Book> list) throws IOException {
-        String path = getPath(Book.class);
-        createFile(path);
+        //String path = getPath(Book.class);
+        //createFile(path);
         List<Book> returnList = new ArrayList<>();
         List<Book> recordList = readXML(Book.class);
         list.stream().forEach(el -> {
@@ -1031,21 +1045,11 @@ public class DataProviderXML implements DataProvider{
             }
         });
         try {
-            csvWriter(Book.class, recordList);
+            hmlWriter(Book.class, recordList);
         }catch (IndexOutOfBoundsException e){
             log.error(e);
         }finally {
             return returnList;
-        }
-    }
-
-    public <T> boolean deleteFile(Class cl) {
-        try{
-            Writer writer = new FileWriter(getPath(cl));
-            return true;
-        }catch ( Exception e){
-            log.error(e);
-            return false;
         }
     }
 
