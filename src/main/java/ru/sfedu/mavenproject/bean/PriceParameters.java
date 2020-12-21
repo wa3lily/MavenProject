@@ -25,7 +25,7 @@ public class PriceParameters implements Serializable {
   @Element
   @CsvBindByName
   private double pagePrice;
-  @ElementList
+  @ElementList(required = false)
   @CsvCustomBindByName(converter = ConverterCoverPrice.class)
   private List<CoverPrice> coverPrice;
   @Element
