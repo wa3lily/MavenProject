@@ -18326,3 +18326,1118 @@ Message: XML document structures must start and end within the same entity.
 2020-12-22 00:25:24 ERROR DataProviderXML:703 - javax.xml.stream.XMLStreamException: ParseError at [row,col]:[57,32]
 Message: XML document structures must start and end within the same entity.
 2020-12-22 00:25:24 ERROR DataProviderXML:761 - java.util.NoSuchElementException: No value present
+2020-12-22 00:30:02 INFO  DataProviderXMLTest:242 - insertCorrectionsSuccess
+2020-12-22 00:30:03 DEBUG DataProviderXMLTest:272 - insertPeople Employee
+2020-12-22 00:30:03 ERROR DataProviderXML:703 - java.lang.Exception: Object is null
+2020-12-22 00:30:03 DEBUG DataProviderXML:818 - will add to hml Employee{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'inn='234567890123', workRecordBook='2345678', emplpyeeType=MAKER}
+2020-12-22 00:30:03 DEBUG DataProviderXML:818 - will add to hml Employee{id=3, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012'inn='345678901234', workRecordBook='3456789', emplpyeeType=EDITOR}
+2020-12-22 00:30:03 DEBUG DataProviderXMLTest:274 - insertPeople Author
+2020-12-22 00:30:03 ERROR DataProviderXML:703 - java.lang.Exception: Object is null
+2020-12-22 00:30:03 DEBUG DataProviderXML:818 - will add to hml Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-22 00:30:03 DEBUG DataProviderXMLTest:276 - insertCoverPrice
+2020-12-22 00:30:03 ERROR DataProviderXML:703 - java.lang.Exception: Object is null
+2020-12-22 00:30:03 DEBUG DataProviderXML:864 - will add to hml CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}
+2020-12-22 00:30:03 DEBUG DataProviderXML:864 - will add to hml CoverPrice{id=2, coverType=PAPERBACK, price=143.8}
+2020-12-22 00:30:03 DEBUG DataProviderXMLTest:278 - insertPriceParameters
+2020-12-22 00:30:03 ERROR DataProviderXML:703 - java.lang.Exception: Object is null
+2020-12-22 00:30:03 DEBUG DataProviderXML:890 - there is such CoverPrice
+2020-12-22 00:30:03 DEBUG DataProviderXML:897 - will add to hml PriceParameters{id=1, pagePrice=2.4, coverPrice=[CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}, CoverPrice{id=2, coverType=PAPERBACK, price=143.8}], workPrice=1.3, validFromDate='2019-01-01', validToDate='2021-01-01'}
+2020-12-22 00:30:03 DEBUG DataProviderXMLTest:280 - insertOrder
+2020-12-22 00:30:03 ERROR DataProviderXML:703 - java.lang.Exception: Object is null
+2020-12-22 00:30:03 DEBUG DataProviderXML:923 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-22 00:30:03 DEBUG DataProviderXML:930 - will add to hml Order{id=1, author=Author{id=10, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}, title='Цифровая бухгалтерия', numberOfPages=4, orderDate='2020-09-03', coverType=RIGID_COVER, bookMaker=2, bookEditor=3, bookPriceParameters=1, finalNumberOfPages=229, numberOfCopies=100, price=9700.75, bookStatus=EDITING}
+2020-12-22 00:30:03 DEBUG DataProviderXMLTest:282 - insertCorrections
+2020-12-22 00:30:03 ERROR DataProviderXML:703 - java.lang.Exception: Object is null
+2020-12-22 00:30:03 ERROR DataProviderXML:703 - java.io.FileNotFoundException: .\src\main\resources\xml\meeting.xml (Не удается найти указанный файл)
+2020-12-22 00:30:03 ERROR DataProviderXML:748 - java.util.NoSuchElementException: No value present
+2020-12-22 00:30:03 DEBUG DataProviderXML:961 - there is such Order and Meeting
+2020-12-22 00:30:03 DEBUG DataProviderXML:968 - will add to hml Corrections{id=1, page=35, textBefore='Цифровой контроль - это компьютерные системы', textAfter='Цифровой контроль представляет собой компьютерные системы', comment='Повторяется конструкция', order=1, meet=null, status=WAIT_AUTHOR_AGR}
+2020-12-22 00:30:03 ERROR DataProviderXML:682 - org.simpleframework.xml.core.ElementException: Value for @org.simpleframework.xml.Element(name="", type=void.class, data=false, required=true) on field 'meet' private ru.sfedu.mavenproject.bean.Meeting ru.sfedu.mavenproject.bean.Corrections.meet is null in class ru.sfedu.mavenproject.bean.Corrections
+2020-12-22 00:30:03 ERROR DataProviderXML:703 - javax.xml.stream.XMLStreamException: ParseError at [row,col]:[57,32]
+Message: XML document structures must start and end within the same entity.
+2020-12-22 00:30:03 ERROR DataProviderXML:761 - java.util.NoSuchElementException: No value present
+2020-12-23 01:10:20 INFO  DataProviderDBTest:22 - createTablesSuccess
+2020-12-23 01:10:20 DEBUG DataProviderDB:54 - CREATE TABLE people (id serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-23 01:31:38 INFO  DataProviderDBTest:22 - createTablesSuccess
+2020-12-23 01:31:39 DEBUG DataProviderDB:54 - CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-23 01:31:39 ERROR DataProviderDB:79 - org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "PEOPLE" уже существует
+Table "PEOPLE" already exists; SQL statement:
+CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11))  [42101-200]
+2020-12-23 01:32:33 INFO  DataProviderDBTest:22 - createTablesSuccess
+2020-12-23 01:32:33 DEBUG DataProviderDB:54 - CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-23 01:32:33 ERROR DataProviderDB:79 - org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "PEOPLE" уже существует
+Table "PEOPLE" already exists; SQL statement:
+CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11))  [42101-200]
+2020-12-23 01:33:15 INFO  DataProviderDBTest:22 - createTablesSuccess
+2020-12-23 01:33:15 DEBUG DataProviderDB:54 - CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-23 01:34:23 INFO  DataProviderDBTest:22 - createTablesSuccess
+2020-12-23 01:34:23 DEBUG DataProviderDB:54 - CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-23 01:36:46 INFO  DataProviderDBTest:22 - createTablesSuccess
+2020-12-23 01:36:46 DEBUG DataProviderDB:54 - CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-23 01:39:38 INFO  DataProviderDBTest:22 - createTablesSuccess
+2020-12-23 01:39:38 DEBUG DataProviderDB:54 - CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-23 01:39:38 ERROR DataProviderDB:74 - org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "PEOPLE" уже существует
+Table "PEOPLE" already exists; SQL statement:
+CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11))  [42101-200]
+2020-12-23 03:14:33 INFO  DataProviderDBTest:22 - createTablesSuccess
+2020-12-23 03:14:33 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-23 03:14:34 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-23 03:14:34 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-23 03:14:34 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting (id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean,) 
+2020-12-23 03:14:34 ERROR DataProviderDB:83 - org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL " CREATE TABLE MEETING (ID BIGINT SERIAL PRIMARY KEY,MEETDATE VARCHAR(20),AUTHORAGREEMENT BOOLEAN,EDITORAGREEMENT BOOLEAN,)[*] "; ожидалось "identifier"
+Syntax error in SQL statement " CREATE TABLE MEETING (ID BIGINT SERIAL PRIMARY KEY,MEETDATE VARCHAR(20),AUTHORAGREEMENT BOOLEAN,EDITORAGREEMENT BOOLEAN,)[*] "; expected "identifier"; SQL statement:
+ CREATE TABLE meeting (id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean,)  [42001-200]
+2020-12-23 03:16:12 INFO  DataProviderDBTest:22 - createTablesSuccess
+2020-12-23 03:16:12 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-23 03:16:13 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-23 03:16:13 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-23 03:16:13 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-23 03:16:13 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-23 03:16:13 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-23 03:16:13 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS order; CREATE TABLE order (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30),) 
+2020-12-23 03:16:13 ERROR DataProviderDB:83 - org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "DROP TABLE IF EXISTS ORDER[*]; CREATE TABLE ORDER (ID BIGINT SERIAL PRIMARY KEY,AUTHOR BIGINT,TITLE VARCHAR(40),NUMBEROFPAGES INTEGER,ORDERDATE VARCHAR(20),COVERTYPE VARCHAR(30),BOOKMAKER BIGINT,BOOKEDITOR BIGINT,BOOKPRICEPARAMETERS BIGINT,FINALNUMBEROFPAGES INTEGER,NUMBEROFCOPIES INTEGER,PRICE NUMERIC(4),BOOKSTATUS VARCHAR(30),) "; ожидалось "identifier"
+Syntax error in SQL statement "DROP TABLE IF EXISTS ORDER[*]; CREATE TABLE ORDER (ID BIGINT SERIAL PRIMARY KEY,AUTHOR BIGINT,TITLE VARCHAR(40),NUMBEROFPAGES INTEGER,ORDERDATE VARCHAR(20),COVERTYPE VARCHAR(30),BOOKMAKER BIGINT,BOOKEDITOR BIGINT,BOOKPRICEPARAMETERS BIGINT,FINALNUMBEROFPAGES INTEGER,NUMBEROFCOPIES INTEGER,PRICE NUMERIC(4),BOOKSTATUS VARCHAR(30),) "; expected "identifier"; SQL statement:
+DROP TABLE IF EXISTS order; CREATE TABLE order (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30),)  [42001-200]
+2020-12-23 03:16:52 INFO  DataProviderDBTest:22 - createTablesSuccess
+2020-12-23 03:16:52 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-23 03:16:53 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-23 03:16:53 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-23 03:16:53 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-23 03:16:53 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-23 03:16:53 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-23 03:16:53 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS order; CREATE TABLE order (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-23 03:16:53 ERROR DataProviderDB:83 - org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "DROP TABLE IF EXISTS ORDER[*]; CREATE TABLE ORDER (ID BIGINT SERIAL PRIMARY KEY,AUTHOR BIGINT,TITLE VARCHAR(40),NUMBEROFPAGES INTEGER,ORDERDATE VARCHAR(20),COVERTYPE VARCHAR(30),BOOKMAKER BIGINT,BOOKEDITOR BIGINT,BOOKPRICEPARAMETERS BIGINT,FINALNUMBEROFPAGES INTEGER,NUMBEROFCOPIES INTEGER,PRICE NUMERIC(4),BOOKSTATUS VARCHAR(30)) "; ожидалось "identifier"
+Syntax error in SQL statement "DROP TABLE IF EXISTS ORDER[*]; CREATE TABLE ORDER (ID BIGINT SERIAL PRIMARY KEY,AUTHOR BIGINT,TITLE VARCHAR(40),NUMBEROFPAGES INTEGER,ORDERDATE VARCHAR(20),COVERTYPE VARCHAR(30),BOOKMAKER BIGINT,BOOKEDITOR BIGINT,BOOKPRICEPARAMETERS BIGINT,FINALNUMBEROFPAGES INTEGER,NUMBEROFCOPIES INTEGER,PRICE NUMERIC(4),BOOKSTATUS VARCHAR(30)) "; expected "identifier"; SQL statement:
+DROP TABLE IF EXISTS order; CREATE TABLE order (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30))  [42001-200]
+2020-12-23 03:27:14 INFO  DataProviderDBTest:22 - createTablesSuccess
+2020-12-23 03:27:14 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-23 03:27:15 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-23 03:27:15 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-23 03:27:15 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-23 03:27:15 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-23 03:27:15 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-23 03:27:15 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS order; CREATE TABLE order (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-23 03:27:15 ERROR DataProviderDB:83 - org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "DROP TABLE IF EXISTS ORDER[*]; CREATE TABLE ORDER (ID BIGINT SERIAL PRIMARY KEY,AUTHOR BIGINT,TITLE VARCHAR(40),NUMBEROFPAGES INTEGER,ORDERDATE VARCHAR(20),COVERTYPE VARCHAR(30),BOOKMAKER BIGINT,BOOKEDITOR BIGINT,BOOKPRICEPARAMETERS BIGINT,FINALNUMBEROFPAGES INTEGER,NUMBEROFCOPIES INTEGER,PRICE NUMERIC(4),BOOKSTATUS VARCHAR(30)) "; ожидалось "identifier"
+Syntax error in SQL statement "DROP TABLE IF EXISTS ORDER[*]; CREATE TABLE ORDER (ID BIGINT SERIAL PRIMARY KEY,AUTHOR BIGINT,TITLE VARCHAR(40),NUMBEROFPAGES INTEGER,ORDERDATE VARCHAR(20),COVERTYPE VARCHAR(30),BOOKMAKER BIGINT,BOOKEDITOR BIGINT,BOOKPRICEPARAMETERS BIGINT,FINALNUMBEROFPAGES INTEGER,NUMBEROFCOPIES INTEGER,PRICE NUMERIC(4),BOOKSTATUS VARCHAR(30)) "; expected "identifier"; SQL statement:
+DROP TABLE IF EXISTS order; CREATE TABLE order (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30))  [42001-200]
+2020-12-23 03:29:23 INFO  DataProviderDBTest:22 - createTablesSuccess
+2020-12-23 03:29:23 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-23 03:29:24 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-23 03:29:24 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-23 03:29:24 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-23 03:29:24 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-23 03:29:24 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-23 03:29:24 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS order; CREATE TABLE order ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-23 03:29:24 ERROR DataProviderDB:83 - org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "DROP TABLE IF EXISTS ORDER[*]; CREATE TABLE ORDER ( ID BIGINT SERIAL PRIMARY KEY,AUTHOR BIGINT,TITLE VARCHAR(40),NUMBEROFPAGES INTEGER,ORDERDATE VARCHAR(20),COVERTYPE VARCHAR(30),BOOKMAKER BIGINT,BOOKEDITOR BIGINT,BOOKPRICEPARAMETERS BIGINT,FINALNUMBEROFPAGES INTEGER,NUMBEROFCOPIES INTEGER,PRICE NUMERIC(4),BOOKSTATUS VARCHAR(30)) "; ожидалось "identifier"
+Syntax error in SQL statement "DROP TABLE IF EXISTS ORDER[*]; CREATE TABLE ORDER ( ID BIGINT SERIAL PRIMARY KEY,AUTHOR BIGINT,TITLE VARCHAR(40),NUMBEROFPAGES INTEGER,ORDERDATE VARCHAR(20),COVERTYPE VARCHAR(30),BOOKMAKER BIGINT,BOOKEDITOR BIGINT,BOOKPRICEPARAMETERS BIGINT,FINALNUMBEROFPAGES INTEGER,NUMBEROFCOPIES INTEGER,PRICE NUMERIC(4),BOOKSTATUS VARCHAR(30)) "; expected "identifier"; SQL statement:
+DROP TABLE IF EXISTS order; CREATE TABLE order ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30))  [42001-200]
+2020-12-23 03:36:19 INFO  DataProviderDBTest:22 - createTablesSuccess
+2020-12-23 03:36:19 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-23 03:36:19 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-23 03:36:19 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-23 03:36:19 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-23 03:36:19 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-23 03:36:19 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-23 03:36:19 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS "order"; CREATE TABLE "order" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-23 03:36:19 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),order bigint,meet bigint,status varchar(30),) 
+2020-12-23 03:36:19 ERROR DataProviderDB:83 - org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL " CREATE TABLE CORRECTIONS (ID BIGINT SERIAL PRIMARY KEY,PAGE INTEGER,TEXTBEFORE VARCHAR(255),TEXTAFTER VARCHAR(255),COMMENT VARCHAR(255),ORDER[*] BIGINT,MEET BIGINT,STATUS VARCHAR(30),) "; ожидалось "identifier"
+Syntax error in SQL statement " CREATE TABLE CORRECTIONS (ID BIGINT SERIAL PRIMARY KEY,PAGE INTEGER,TEXTBEFORE VARCHAR(255),TEXTAFTER VARCHAR(255),COMMENT VARCHAR(255),ORDER[*] BIGINT,MEET BIGINT,STATUS VARCHAR(30),) "; expected "identifier"; SQL statement:
+ CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),order bigint,meet bigint,status varchar(30),)  [42001-200]
+2020-12-23 03:37:54 INFO  DataProviderDBTest:22 - createTablesSuccess
+2020-12-23 03:37:54 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-23 03:37:55 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-23 03:37:55 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-23 03:37:55 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-23 03:37:55 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-23 03:37:55 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-23 03:37:55 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS "order"; CREATE TABLE "order" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-23 03:37:55 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),order bigint,meet bigint,status varchar(30)) 
+2020-12-23 03:37:55 ERROR DataProviderDB:83 - org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL " CREATE TABLE CORRECTIONS (ID BIGINT SERIAL PRIMARY KEY,PAGE INTEGER,TEXTBEFORE VARCHAR(255),TEXTAFTER VARCHAR(255),COMMENT VARCHAR(255),ORDER[*] BIGINT,MEET BIGINT,STATUS VARCHAR(30)) "; ожидалось "identifier"
+Syntax error in SQL statement " CREATE TABLE CORRECTIONS (ID BIGINT SERIAL PRIMARY KEY,PAGE INTEGER,TEXTBEFORE VARCHAR(255),TEXTAFTER VARCHAR(255),COMMENT VARCHAR(255),ORDER[*] BIGINT,MEET BIGINT,STATUS VARCHAR(30)) "; expected "identifier"; SQL statement:
+ CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),order bigint,meet bigint,status varchar(30))  [42001-200]
+2020-12-23 03:39:31 INFO  DataProviderDBTest:22 - createTablesSuccess
+2020-12-23 03:39:31 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-23 03:39:31 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-23 03:39:31 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-23 03:39:31 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-23 03:39:31 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-23 03:39:31 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-23 03:39:31 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-23 03:39:31 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-23 03:39:31 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-23 05:01:59 INFO  DataProviderDBTest:23 - createAllTables
+2020-12-23 05:01:59 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-23 05:01:59 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-23 05:01:59 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-23 05:01:59 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-23 05:01:59 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-23 05:01:59 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-23 05:01:59 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-23 05:01:59 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-23 05:01:59 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-23 05:01:59 INFO  DataProviderDBTest:29 - insertPeopleSuccess
+2020-12-23 05:01:59 DEBUG DataProviderDB:54 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES('Иван','Иванович','Иванов','81234567890')
+2020-12-23 05:01:59 DEBUG DataProviderDB:61 - SELECT * FROM people WHERE id = 1
+2020-12-23 05:01:59 ERROR DataProviderDB:105 - org.h2.jdbc.JdbcSQLNonTransientException: Объект уже закрыт
+The object is already closed [90007-200]
+2020-12-23 05:01:59 INFO  DataProviderDBTest:37 - insertPeopleFalse
+2020-12-23 05:01:59 DEBUG DataProviderDB:54 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES('Иван','Иванович','Иванов','81234567890')
+2020-12-23 05:01:59 DEBUG DataProviderDB:61 - SELECT * FROM people WHERE id = 100
+2020-12-23 05:01:59 ERROR DataProviderDB:105 - org.h2.jdbc.JdbcSQLNonTransientException: Объект уже закрыт
+The object is already closed [90007-200]
+2020-12-23 05:03:08 INFO  DataProviderDBTest:23 - createAllTables
+2020-12-23 05:03:08 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-23 05:03:08 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-23 05:03:08 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-23 05:03:08 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-23 05:03:08 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-23 05:03:08 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-23 05:03:08 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-23 05:03:08 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-23 05:03:08 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-23 05:03:08 INFO  DataProviderDBTest:29 - insertPeopleSuccess
+2020-12-23 05:03:08 DEBUG DataProviderDB:54 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES('Иван','Иванович','Иванов','81234567890')
+2020-12-23 05:03:08 DEBUG DataProviderDB:61 - SELECT * FROM people WHERE id = 0
+2020-12-23 05:03:08 ERROR DataProviderDB:105 - org.h2.jdbc.JdbcSQLNonTransientException: Объект уже закрыт
+The object is already closed [90007-200]
+2020-12-23 05:09:08 INFO  DataProviderDBTest:23 - createAllTables
+2020-12-23 05:09:08 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-23 05:09:09 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-23 05:09:09 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-23 05:09:09 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-23 05:09:09 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-23 05:09:09 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-23 05:09:09 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-23 05:09:09 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-23 05:09:09 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-23 05:09:09 INFO  DataProviderDBTest:29 - insertPeopleSuccess
+2020-12-23 05:09:09 DEBUG DataProviderDB:54 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES('Иван','Иванович','Иванов','81234567890')
+2020-12-23 05:09:09 DEBUG DataProviderDB:61 - SELECT * FROM people WHERE id = 0
+2020-12-23 05:09:09 ERROR DataProviderDB:100 - org.h2.jdbc.JdbcSQLNonTransientException: Объект уже закрыт
+The object is already closed [90007-200]
+2020-12-23 05:09:20 INFO  DataProviderDBTest:23 - createAllTables
+2020-12-23 05:09:20 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-23 05:09:20 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-23 05:09:20 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-23 05:09:20 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-23 05:09:20 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-23 05:09:20 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-23 05:09:20 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-23 05:09:20 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-23 05:09:20 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-23 05:09:20 INFO  DataProviderDBTest:29 - insertPeopleSuccess
+2020-12-23 05:09:20 DEBUG DataProviderDB:54 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES('Иван','Иванович','Иванов','81234567890')
+2020-12-23 05:09:20 DEBUG DataProviderDB:61 - SELECT * FROM people WHERE id = 1
+2020-12-23 05:09:20 ERROR DataProviderDB:100 - org.h2.jdbc.JdbcSQLNonTransientException: Объект уже закрыт
+The object is already closed [90007-200]
+2020-12-23 05:09:33 INFO  DataProviderDBTest:23 - createAllTables
+2020-12-23 05:09:33 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-23 05:09:34 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-23 05:09:34 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-23 05:09:34 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-23 05:09:34 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-23 05:09:34 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-23 05:09:34 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-23 05:09:34 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-23 05:09:34 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-23 05:09:34 INFO  DataProviderDBTest:29 - insertPeopleSuccess
+2020-12-23 05:09:34 DEBUG DataProviderDB:54 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES('Иван','Иванович','Иванов','81234567890')
+2020-12-23 05:09:34 DEBUG DataProviderDB:61 - SELECT * FROM people WHERE id = 1
+2020-12-23 05:09:34 ERROR DataProviderDB:100 - org.h2.jdbc.JdbcSQLNonTransientException: Объект уже закрыт
+The object is already closed [90007-200]
+2020-12-23 05:10:16 INFO  DataProviderDBTest:23 - createAllTables
+2020-12-23 05:10:16 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-23 05:10:16 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-23 05:10:16 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-23 05:10:16 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-23 05:10:16 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-23 05:10:16 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-23 05:10:16 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-23 05:10:16 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-23 05:10:16 DEBUG DataProviderDB:54 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-23 05:10:16 INFO  DataProviderDBTest:29 - insertPeopleSuccess
+2020-12-23 05:10:16 DEBUG DataProviderDB:54 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES('Иван','Иванович','Иванов','81234567890')
+2020-12-23 05:10:23 DEBUG DataProviderDB:61 - SELECT * FROM people WHERE id = 1
+2020-12-23 05:10:54 ERROR DataProviderDB:100 - org.h2.jdbc.JdbcSQLNonTransientException: Объект уже закрыт
+The object is already closed [90007-200]
+2020-12-23 05:11:05 INFO  DataProviderDBTest:23 - createAllTables
+2020-12-23 05:11:05 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-23 05:11:06 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-23 05:11:06 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-23 05:11:06 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-23 05:11:06 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-23 05:11:06 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-23 05:11:06 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-23 05:11:06 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-23 05:11:06 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-23 05:11:06 INFO  DataProviderDBTest:29 - insertPeopleSuccess
+2020-12-23 05:11:06 DEBUG DataProviderDB:51 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES('Иван','Иванович','Иванов','81234567890')
+2020-12-23 05:11:10 DEBUG DataProviderDB:58 - SELECT * FROM PEOPLE WHERE id = 1
+2020-12-23 05:12:00 ERROR DataProviderDB:97 - org.h2.jdbc.JdbcSQLNonTransientException: Объект уже закрыт
+The object is already closed [90007-200]
+2020-12-23 05:12:10 INFO  DataProviderDBTest:23 - createAllTables
+2020-12-23 05:12:11 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-23 05:12:11 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-23 05:12:11 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-23 05:12:11 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-23 05:12:11 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-23 05:12:11 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-23 05:12:11 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-23 05:12:11 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-23 05:12:11 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-23 05:12:11 INFO  DataProviderDBTest:29 - insertPeopleSuccess
+2020-12-23 05:12:11 DEBUG DataProviderDB:51 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES('Иван','Иванович','Иванов','81234567890')
+2020-12-23 05:12:16 DEBUG DataProviderDB:58 - SELECT * FROM CLASS WHERE id = 1
+2020-12-23 05:12:51 ERROR DataProviderDB:97 - org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "CLASS" не найдена
+Table "CLASS" not found; SQL statement:
+SELECT * FROM CLASS WHERE id = 1 [42102-200]
+2020-12-23 05:13:03 INFO  DataProviderDBTest:23 - createAllTables
+2020-12-23 05:13:03 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-23 05:13:04 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-23 05:13:04 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-23 05:13:04 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-23 05:13:04 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-23 05:13:04 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-23 05:13:04 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-23 05:13:04 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-23 05:13:04 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-23 05:13:04 INFO  DataProviderDBTest:29 - insertPeopleSuccess
+2020-12-23 05:13:04 DEBUG DataProviderDB:51 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES('Иван','Иванович','Иванов','81234567890')
+2020-12-23 05:13:04 DEBUG DataProviderDB:58 - SELECT * FROM PEOPLE WHERE id = 1
+2020-12-23 05:13:04 ERROR DataProviderDB:97 - org.h2.jdbc.JdbcSQLNonTransientException: Объект уже закрыт
+The object is already closed [90007-200]
+2020-12-23 05:17:57 INFO  DataProviderDBTest:23 - createAllTables
+2020-12-23 05:17:57 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-23 05:17:57 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-23 05:17:57 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-23 05:17:57 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-23 05:17:57 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-23 05:17:57 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-23 05:17:57 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-23 05:17:57 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-23 05:17:57 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-23 05:17:57 INFO  DataProviderDBTest:29 - insertPeopleSuccess
+2020-12-23 05:17:57 DEBUG DataProviderDB:51 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES('Иван','Иванович','Иванов','81234567890')
+2020-12-23 05:17:57 DEBUG DataProviderDB:58 - SELECT * FROM PEOPLE WHERE id = 1
+2020-12-23 05:17:57 DEBUG DataProviderDB:88 - rs0: null
+2020-12-23 05:17:57 ERROR DataProviderDB:98 - org.h2.jdbc.JdbcSQLNonTransientException: Объект уже закрыт
+The object is already closed [90007-200]
+2020-12-23 05:26:11 INFO  DataProviderDBTest:23 - createAllTables
+2020-12-23 05:26:11 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-23 05:26:11 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-23 05:26:11 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-23 05:26:11 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-23 05:26:11 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-23 05:26:11 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-23 05:26:11 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-23 05:26:11 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-23 05:26:11 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-23 05:26:11 INFO  DataProviderDBTest:29 - insertPeopleSuccess
+2020-12-23 05:26:11 DEBUG DataProviderDB:51 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES('Иван','Иванович','Иванов','81234567890')
+2020-12-23 05:26:11 DEBUG DataProviderDB:58 - SELECT * FROM PEOPLE WHERE id = 1
+2020-12-23 05:26:11 DEBUG DataProviderDB:88 - rs0: null
+2020-12-23 05:26:11 ERROR DataProviderDB:98 - org.h2.jdbc.JdbcSQLNonTransientException: Объект уже закрыт
+The object is already closed [90007-200]
+2020-12-23 05:26:11 INFO  DataProviderDBTest:37 - insertPeopleFalse
+2020-12-23 05:26:11 DEBUG DataProviderDB:51 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES('Иван','Иванович','Иванов','81234567890')
+2020-12-23 05:26:11 DEBUG DataProviderDB:58 - SELECT * FROM PEOPLE WHERE id = 100
+2020-12-23 05:26:11 DEBUG DataProviderDB:88 - rs1: null
+2020-12-23 05:26:11 ERROR DataProviderDB:98 - org.h2.jdbc.JdbcSQLNonTransientException: Объект уже закрыт
+The object is already closed [90007-200]
+2020-12-23 05:50:22 INFO  DataProviderDBTest:23 - createAllTables
+2020-12-23 05:50:22 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-23 05:50:23 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-23 05:50:23 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-23 05:50:23 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-23 05:50:23 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-23 05:50:23 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-23 05:50:23 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-23 05:50:23 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-23 05:50:23 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-23 05:50:23 INFO  DataProviderDBTest:29 - insertPeopleSuccess
+2020-12-23 05:50:23 DEBUG DataProviderDB:51 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES('Иван','Иванович','Иванов','81234567890')
+2020-12-23 05:50:23 DEBUG DataProviderDB:58 - SELECT * FROM PEOPLE WHERE id = 1
+2020-12-23 05:50:23 DEBUG DataProviderDB:88 - rs0: null
+2020-12-23 05:50:23 ERROR DataProviderDB:101 - org.h2.jdbc.JdbcSQLNonTransientException: Объект уже закрыт
+The object is already closed [90007-200]
+2020-12-23 05:50:23 INFO  DataProviderDBTest:37 - insertPeopleFalse
+2020-12-23 05:50:23 DEBUG DataProviderDB:51 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES('Иван','Иванович','Иванов','81234567890')
+2020-12-23 05:50:23 DEBUG DataProviderDB:58 - SELECT * FROM PEOPLE WHERE id = 100
+2020-12-23 05:50:23 DEBUG DataProviderDB:88 - rs1: null
+2020-12-23 05:50:23 ERROR DataProviderDB:101 - org.h2.jdbc.JdbcSQLNonTransientException: Объект уже закрыт
+The object is already closed [90007-200]
+2020-12-23 21:46:44 INFO  DataProviderDBTest:23 - createAllTables
+2020-12-23 21:46:44 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-23 21:46:45 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-23 21:46:45 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-23 21:46:45 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-23 21:46:45 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-23 21:46:45 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-23 21:46:45 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-23 21:46:45 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-23 21:46:45 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-23 21:46:45 INFO  DataProviderDBTest:29 - insertPeopleSuccess
+2020-12-23 21:46:45 DEBUG DataProviderDB:51 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES('Иван','Иванович','Иванов','81234567890')
+2020-12-23 21:46:45 DEBUG DataProviderDB:58 - SELECT * FROM PEOPLE WHERE id = 1
+2020-12-23 21:46:45 DEBUG DataProviderDB:93 - rs0: org.h2.result.LocalResultImpl@650eab8 columns: 5 rows: 1 pos: -1
+2020-12-23 21:47:45 INFO  DataProviderDBTest:23 - createAllTables
+2020-12-23 21:47:45 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-23 21:47:45 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-23 21:47:45 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-23 21:47:45 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-23 21:47:45 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-23 21:47:45 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-23 21:47:45 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-23 21:47:45 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-23 21:47:45 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-23 21:47:45 INFO  DataProviderDBTest:29 - insertPeopleSuccess
+2020-12-23 21:47:45 DEBUG DataProviderDB:51 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES('Иван','Иванович','Иванов','81234567890')
+2020-12-23 21:47:45 DEBUG DataProviderDB:58 - SELECT * FROM PEOPLE WHERE id = 1
+2020-12-23 21:47:45 DEBUG DataProviderDB:93 - rs0: org.h2.result.LocalResultImpl@636e8cc columns: 5 rows: 1 pos: -1
+2020-12-23 21:47:45 INFO  DataProviderDBTest:37 - insertPeopleFalse
+2020-12-23 21:47:45 DEBUG DataProviderDB:51 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES('Иван','Иванович','Иванов','81234567890')
+2020-12-23 21:47:45 DEBUG DataProviderDB:58 - SELECT * FROM PEOPLE WHERE id = 100
+2020-12-23 21:47:45 DEBUG DataProviderDB:93 - rs1: org.h2.result.LocalResultImpl@4baf352a columns: 5 rows: 0 pos: -1
+2020-12-23 21:51:27 INFO  DataProviderDBTest:23 - createAllTables
+2020-12-23 21:51:27 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-23 21:51:28 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-23 21:51:28 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-23 21:51:28 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-23 21:51:28 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-23 21:51:28 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-23 21:51:28 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-23 21:51:28 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-23 21:51:28 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-23 21:51:28 INFO  DataProviderDBTest:29 - insertPeopleSuccess
+2020-12-23 21:51:28 DEBUG DataProviderDB:51 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES(4,'Иван','Иванович','Иванов','81234567890')
+2020-12-23 21:51:28 INFO  DataProviderDBTest:37 - insertPeopleFalse
+2020-12-23 21:51:28 DEBUG DataProviderDB:51 - INSERT INTO people(firstName,secondName,lastName,phone) VALUES(1,'Иван','Иванович','Иванов','81234567890')
+2020-12-23 21:53:17 INFO  DataProviderDBTest:23 - createAllTables
+2020-12-23 21:53:17 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-23 21:53:17 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-23 21:53:17 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-23 21:53:18 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-23 21:53:18 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-23 21:53:18 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-23 21:53:18 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-23 21:53:18 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-23 21:53:18 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-23 21:53:18 INFO  DataProviderDBTest:29 - insertPeopleSuccess
+2020-12-23 21:53:18 DEBUG DataProviderDB:51 - INSERT INTO people(id,firstName,secondName,lastName,phone) VALUES(4,'Иван','Иванович','Иванов','81234567890')
+2020-12-23 21:53:18 DEBUG DataProviderDB:58 - SELECT * FROM PEOPLE WHERE id = 4
+2020-12-23 21:53:18 DEBUG DataProviderDB:93 - rs0: org.h2.result.LocalResultImpl@636e8cc columns: 5 rows: 1 pos: -1
+2020-12-23 21:53:18 INFO  DataProviderDBTest:37 - insertPeopleFalse
+2020-12-23 21:53:18 DEBUG DataProviderDB:51 - INSERT INTO people(id,firstName,secondName,lastName,phone) VALUES(1,'Иван','Иванович','Иванов','81234567890')
+2020-12-23 21:53:18 DEBUG DataProviderDB:58 - SELECT * FROM PEOPLE WHERE id = 100
+2020-12-23 21:53:18 DEBUG DataProviderDB:93 - rs1: org.h2.result.LocalResultImpl@4baf352a columns: 5 rows: 0 pos: -1
+2020-12-24 01:21:07 INFO  DataProviderDBTest:24 - createAllTables
+2020-12-24 01:21:07 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-24 01:21:08 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-24 01:21:08 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-24 01:21:08 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-24 01:21:08 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-24 01:21:08 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-24 01:21:08 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-24 01:21:08 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-24 01:21:08 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-24 01:21:08 INFO  DataProviderDBTest:30 - insertPeopleSuccess
+2020-12-24 01:21:08 DEBUG DataProviderDB:51 - INSERT INTO people(id,firstName,secondName,lastName,phone) VALUES(4,'Иван','Иванович','Иванов','81234567890')
+2020-12-24 01:21:08 DEBUG DataProviderDB:58 - SELECT * FROM %s
+2020-12-24 01:21:08 ERROR DataProviderDB:64 - org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "SELECT * FROM %[*]S"; ожидалось "identifier"
+Syntax error in SQL statement "SELECT * FROM %[*]S"; expected "identifier"; SQL statement:
+SELECT * FROM %s [42001-200]
+2020-12-24 01:21:08 DEBUG DataProviderDBTest:35 - null
+2020-12-24 01:21:08 DEBUG DataProviderDB:58 - SELECT * FROM PEOPLE WHERE id = 4
+2020-12-24 01:21:08 DEBUG DataProviderDB:93 - rs0: org.h2.result.LocalResultImpl@1e1d3956 columns: 5 rows: 1 pos: -1
+2020-12-24 01:21:34 INFO  DataProviderDBTest:24 - createAllTables
+2020-12-24 01:21:34 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-24 01:21:35 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-24 01:21:35 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-24 01:21:35 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-24 01:21:35 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-24 01:21:35 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-24 01:21:35 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-24 01:21:35 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-24 01:21:35 DEBUG DataProviderDB:51 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-24 01:21:35 INFO  DataProviderDBTest:30 - insertPeopleSuccess
+2020-12-24 01:21:35 DEBUG DataProviderDB:51 - INSERT INTO people(id,firstName,secondName,lastName,phone) VALUES(4,'Иван','Иванович','Иванов','81234567890')
+2020-12-24 01:21:35 DEBUG DataProviderDB:51 - INSERT INTO people(id,firstName,secondName,lastName,phone) VALUES(4,'Василий','Иванович','Иванов','81234567890')
+2020-12-24 01:42:07 INFO  DataProviderDBTest:24 - createAllTables
+2020-12-24 01:42:07 DEBUG DataProviderDB:52 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-24 01:42:08 DEBUG DataProviderDB:52 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-24 01:42:08 DEBUG DataProviderDB:52 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-24 01:42:08 DEBUG DataProviderDB:52 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-24 01:42:08 DEBUG DataProviderDB:52 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-24 01:42:08 DEBUG DataProviderDB:52 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-24 01:42:08 DEBUG DataProviderDB:52 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-24 01:42:08 DEBUG DataProviderDB:52 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-24 01:42:08 DEBUG DataProviderDB:52 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-24 01:42:08 INFO  DataProviderDBTest:30 - insertPeopleSuccess
+2020-12-24 01:42:08 INFO  DataProviderDB:231 - insertPeople
+2020-12-24 01:42:08 DEBUG DataProviderDB:52 - INSERT INTO people(id,firstName,secondName,lastName,phone) VALUES(4,'Иван','Иванович','Иванов','81234567890')
+2020-12-24 01:42:08 INFO  DataProviderDB:231 - insertPeople
+2020-12-24 01:42:08 DEBUG DataProviderDB:52 - INSERT INTO people(id,firstName,secondName,lastName,phone) VALUES(4,'Василий','Иванович','Иванов','81234567890')
+2020-12-24 01:42:08 ERROR DataProviderDB:245 - org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException: Нарушение уникального индекса или первичного ключа: "PRIMARY KEY ON PUBLIC.PEOPLE(ID) [4, STRINGDECODE('\u0418\u0432\u0430\u043d'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432\u0438\u0447'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432'), '81234567890']"
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.PEOPLE(ID) [4, STRINGDECODE('\u0418\u0432\u0430\u043d'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432\u0438\u0447'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432'), '81234567890']"; SQL statement:
+INSERT INTO people(id,firstName,secondName,lastName,phone) VALUES(4,'Василий','Иванович','Иванов','81234567890') [23505-200]
+2020-12-24 01:42:08 DEBUG DataProviderDB:59 - SELECT * FROM %s
+2020-12-24 01:42:08 ERROR DataProviderDB:65 - org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "SELECT * FROM %[*]S"; ожидалось "identifier"
+Syntax error in SQL statement "SELECT * FROM %[*]S"; expected "identifier"; SQL statement:
+SELECT * FROM %s [42001-200]
+2020-12-24 01:42:08 DEBUG DataProviderDBTest:35 - null
+2020-12-24 01:42:08 DEBUG DataProviderDB:59 - SELECT * FROM PEOPLE WHERE id = 4
+2020-12-24 01:42:08 DEBUG DataProviderDB:94 - rs0: org.h2.result.LocalResultImpl@24d4d7c9 columns: 5 rows: 1 pos: -1
+2020-12-24 01:43:42 INFO  DataProviderDBTest:24 - createAllTables
+2020-12-24 01:43:42 DEBUG DataProviderDB:52 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-24 01:43:43 DEBUG DataProviderDB:52 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-24 01:43:43 DEBUG DataProviderDB:52 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-24 01:43:43 DEBUG DataProviderDB:52 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-24 01:43:43 DEBUG DataProviderDB:52 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-24 01:43:43 DEBUG DataProviderDB:52 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-24 01:43:43 DEBUG DataProviderDB:52 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-24 01:43:43 DEBUG DataProviderDB:52 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-24 01:43:43 DEBUG DataProviderDB:52 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-24 01:43:43 INFO  DataProviderDBTest:30 - insertPeopleSuccess
+2020-12-24 01:43:43 INFO  DataProviderDB:231 - insertPeople
+2020-12-24 01:43:43 DEBUG DataProviderDB:52 - INSERT INTO people(id,firstName,secondName,lastName,phone) VALUES(4,'Иван','Иванович','Иванов','81234567890')
+2020-12-24 01:43:43 INFO  DataProviderDB:231 - insertPeople
+2020-12-24 01:43:43 DEBUG DataProviderDB:52 - INSERT INTO people(id,firstName,secondName,lastName,phone) VALUES(4,'Василий','Иванович','Иванов','81234567890')
+2020-12-24 01:43:43 ERROR DataProviderDB:245 - org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException: Нарушение уникального индекса или первичного ключа: "PRIMARY KEY ON PUBLIC.PEOPLE(ID) [4, STRINGDECODE('\u0418\u0432\u0430\u043d'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432\u0438\u0447'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432'), '81234567890']"
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.PEOPLE(ID) [4, STRINGDECODE('\u0418\u0432\u0430\u043d'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432\u0438\u0447'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432'), '81234567890']"; SQL statement:
+INSERT INTO people(id,firstName,secondName,lastName,phone) VALUES(4,'Василий','Иванович','Иванов','81234567890') [23505-200]
+2020-12-24 01:43:43 DEBUG DataProviderDB:59 - SELECT * FROM %s
+2020-12-24 01:43:43 ERROR DataProviderDB:65 - org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "SELECT * FROM %[*]S"; ожидалось "identifier"
+Syntax error in SQL statement "SELECT * FROM %[*]S"; expected "identifier"; SQL statement:
+SELECT * FROM %s [42001-200]
+2020-12-24 01:43:43 DEBUG DataProviderDBTest:35 - null
+2020-12-24 01:43:43 DEBUG DataProviderDB:59 - SELECT * FROM PEOPLE WHERE id = 4
+2020-12-24 01:43:43 DEBUG DataProviderDB:94 - rs0: org.h2.result.LocalResultImpl@24d4d7c9 columns: 5 rows: 1 pos: -1
+2020-12-24 01:48:50 INFO  DataProviderDBTest:30 - insertPeopleSuccess
+2020-12-24 01:48:50 INFO  DataProviderDB:231 - insertPeople
+2020-12-24 01:48:50 DEBUG DataProviderDB:52 - INSERT INTO people(id,firstName,secondName,lastName,phone) VALUES(4,'Иван','Иванович','Иванов','81234567890')
+2020-12-24 01:48:51 ERROR DataProviderDB:245 - org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException: Нарушение уникального индекса или первичного ключа: "PRIMARY KEY ON PUBLIC.PEOPLE(ID) [4, STRINGDECODE('\u0418\u0432\u0430\u043d'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432\u0438\u0447'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432'), '81234567890']"
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.PEOPLE(ID) [4, STRINGDECODE('\u0418\u0432\u0430\u043d'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432\u0438\u0447'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432'), '81234567890']"; SQL statement:
+INSERT INTO people(id,firstName,secondName,lastName,phone) VALUES(4,'Иван','Иванович','Иванов','81234567890') [23505-200]
+2020-12-24 01:48:51 INFO  DataProviderDB:231 - insertPeople
+2020-12-24 01:48:51 DEBUG DataProviderDB:52 - INSERT INTO people(id,firstName,secondName,lastName,phone) VALUES(4,'Василий','Иванович','Иванов','81234567890')
+2020-12-24 01:48:51 ERROR DataProviderDB:245 - org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException: Нарушение уникального индекса или первичного ключа: "PRIMARY KEY ON PUBLIC.PEOPLE(ID) [4, STRINGDECODE('\u0418\u0432\u0430\u043d'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432\u0438\u0447'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432'), '81234567890']"
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.PEOPLE(ID) [4, STRINGDECODE('\u0418\u0432\u0430\u043d'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432\u0438\u0447'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432'), '81234567890']"; SQL statement:
+INSERT INTO people(id,firstName,secondName,lastName,phone) VALUES(4,'Василий','Иванович','Иванов','81234567890') [23505-200]
+2020-12-24 01:48:51 DEBUG DataProviderDB:59 - SELECT * FROM %s
+2020-12-24 01:48:51 ERROR DataProviderDB:65 - org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "SELECT * FROM %[*]S"; ожидалось "identifier"
+Syntax error in SQL statement "SELECT * FROM %[*]S"; expected "identifier"; SQL statement:
+SELECT * FROM %s [42001-200]
+2020-12-24 01:48:51 DEBUG DataProviderDBTest:35 - null
+2020-12-24 01:48:51 DEBUG DataProviderDB:59 - SELECT * FROM PEOPLE WHERE id = 4
+2020-12-24 01:48:51 DEBUG DataProviderDB:94 - rs0: org.h2.result.LocalResultImpl@192d74fb columns: 5 rows: 1 pos: -1
+2020-12-24 01:48:51 INFO  DataProviderDBTest:41 - insertPeopleFalse
+2020-12-24 01:48:51 INFO  DataProviderDB:231 - insertPeople
+2020-12-24 01:48:51 DEBUG DataProviderDB:52 - INSERT INTO people(id,firstName,secondName,lastName,phone) VALUES(1,'Иван','Иванович','Иванов','81234567890')
+2020-12-24 01:48:51 DEBUG DataProviderDB:59 - SELECT * FROM PEOPLE WHERE id = 100
+2020-12-24 01:48:51 DEBUG DataProviderDB:94 - rs1: org.h2.result.LocalResultImpl@630cb4a4 columns: 5 rows: 0 pos: -1
+2020-12-24 01:56:21 INFO  DataProviderDBTest:30 - insertPeopleSuccess
+2020-12-24 01:56:21 DEBUG DataProviderDB:52 - DROP TABLE IF EXISTS "people"
+2020-12-24 01:56:21 DEBUG DataProviderDB:52 - DROP TABLE IF EXISTS "author"
+2020-12-24 01:56:21 DEBUG DataProviderDB:52 - DROP TABLE IF EXISTS "employee"
+2020-12-24 01:56:21 DEBUG DataProviderDB:52 - DROP TABLE IF EXISTS "meeting"
+2020-12-24 01:56:21 DEBUG DataProviderDB:52 - DROP TABLE IF EXISTS "coverprice"
+2020-12-24 01:56:21 DEBUG DataProviderDB:52 - DROP TABLE IF EXISTS "priceparameters"
+2020-12-24 01:56:21 DEBUG DataProviderDB:52 - DROP TABLE IF EXISTS "order"
+2020-12-24 01:56:21 DEBUG DataProviderDB:52 - DROP TABLE IF EXISTS "corrections"
+2020-12-24 01:56:21 DEBUG DataProviderDB:52 - DROP TABLE IF EXISTS "book"
+2020-12-24 01:56:21 INFO  DataProviderDB:249 - insertPeople
+2020-12-24 01:56:21 DEBUG DataProviderDB:52 - INSERT INTO "people"(id,firstName,secondName,lastName,phone) VALUES(4,'Иван','Иванович','Иванов','81234567890')
+2020-12-24 02:02:59 INFO  DataProviderDBTest:30 - insertPeopleSuccess
+2020-12-24 02:02:59 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "people"
+2020-12-24 02:03:00 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "author"
+2020-12-24 02:03:00 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "employee"
+2020-12-24 02:03:00 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "meeting"
+2020-12-24 02:03:00 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "coverprice"
+2020-12-24 02:03:00 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "priceparameters"
+2020-12-24 02:03:00 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "order"
+2020-12-24 02:03:00 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "corrections"
+2020-12-24 02:03:00 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "book"
+2020-12-24 02:03:00 INFO  DataProviderDB:250 - insertPeople
+2020-12-24 02:03:00 DEBUG DataProviderDB:53 - INSERT INTO "people"(id,firstName,secondName,lastName,phone) VALUES(4,'Иван','Иванович','Иванов','81234567890')
+2020-12-24 02:03:00 ERROR DataProviderDB:264 - org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "people" не найдена
+Table "people" not found; SQL statement:
+INSERT INTO "people"(id,firstName,secondName,lastName,phone) VALUES(4,'Иван','Иванович','Иванов','81234567890') [42102-200]
+2020-12-24 02:03:00 INFO  DataProviderDB:250 - insertPeople
+2020-12-24 02:03:00 DEBUG DataProviderDB:53 - INSERT INTO "people"(id,firstName,secondName,lastName,phone) VALUES(4,'Василий','Иванович','Иванов','81234567890')
+2020-12-24 02:03:00 ERROR DataProviderDB:264 - org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "people" не найдена
+Table "people" not found; SQL statement:
+INSERT INTO "people"(id,firstName,secondName,lastName,phone) VALUES(4,'Василий','Иванович','Иванов','81234567890') [42102-200]
+2020-12-24 02:03:00 DEBUG DataProviderDB:60 - SELECT * FROM "%s"
+2020-12-24 02:03:00 ERROR DataProviderDB:66 - org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "%s" не найдена
+Table "%s" not found; SQL statement:
+SELECT * FROM "%s" [42102-200]
+2020-12-24 02:03:00 DEBUG DataProviderDBTest:36 - null
+2020-12-24 02:03:00 DEBUG DataProviderDB:60 - SELECT * FROM "PEOPLE" WHERE id = 4
+2020-12-24 02:03:00 DEBUG DataProviderDB:113 - rs0: org.h2.result.LocalResultImpl@160ac7fb columns: 5 rows: 1 pos: -1
+2020-12-24 02:20:34 INFO  DataProviderDBTest:30 - insertPeopleSuccess
+2020-12-24 02:20:34 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "people"
+2020-12-24 02:20:35 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "author"
+2020-12-24 02:20:35 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "employee"
+2020-12-24 02:20:35 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "meeting"
+2020-12-24 02:20:35 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "coverprice"
+2020-12-24 02:20:35 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "priceparameters"
+2020-12-24 02:20:35 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "order"
+2020-12-24 02:20:35 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "corrections"
+2020-12-24 02:20:35 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "book"
+2020-12-24 02:20:35 INFO  DataProviderDB:250 - insertPeople
+2020-12-24 02:20:35 DEBUG DataProviderDB:53 - INSERT INTO "people"(id,firstName,secondName,lastName,phone) VALUES(4,'Иван','Иванович','Иванов','81234567890')
+2020-12-24 02:20:35 ERROR DataProviderDB:264 - org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "people" не найдена
+Table "people" not found; SQL statement:
+INSERT INTO "people"(id,firstName,secondName,lastName,phone) VALUES(4,'Иван','Иванович','Иванов','81234567890') [42102-200]
+2020-12-24 02:20:35 INFO  DataProviderDB:250 - insertPeople
+2020-12-24 02:20:35 DEBUG DataProviderDB:53 - INSERT INTO "people"(id,firstName,secondName,lastName,phone) VALUES(4,'Василий','Иванович','Иванов','81234567890')
+2020-12-24 02:20:35 ERROR DataProviderDB:264 - org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "people" не найдена
+Table "people" not found; SQL statement:
+INSERT INTO "people"(id,firstName,secondName,lastName,phone) VALUES(4,'Василий','Иванович','Иванов','81234567890') [42102-200]
+2020-12-24 02:20:35 DEBUG DataProviderDB:60 - SELECT * FROM "people"
+2020-12-24 02:20:35 ERROR DataProviderDB:66 - org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "people" не найдена
+Table "people" not found; SQL statement:
+SELECT * FROM "people" [42102-200]
+2020-12-24 02:20:35 DEBUG DataProviderDBTest:36 - null
+2020-12-24 02:20:35 DEBUG DataProviderDB:60 - SELECT * FROM "PEOPLE" WHERE id = 4
+2020-12-24 02:20:35 DEBUG DataProviderDB:113 - rs0: org.h2.result.LocalResultImpl@12bfd80d columns: 5 rows: 1 pos: -1
+2020-12-24 02:21:03 INFO  DataProviderDBTest:24 - createAllTables
+2020-12-24 02:21:03 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-24 02:21:03 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-24 02:21:03 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-24 02:21:03 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-24 02:21:03 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-24 02:21:03 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-24 02:21:03 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-24 02:21:03 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-24 02:21:03 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-24 02:21:03 INFO  DataProviderDBTest:30 - insertPeopleSuccess
+2020-12-24 02:21:03 INFO  DataProviderDB:250 - insertPeople
+2020-12-24 02:21:03 DEBUG DataProviderDB:53 - INSERT INTO "people"(id,firstName,secondName,lastName,phone) VALUES(4,'Иван','Иванович','Иванов','81234567890')
+2020-12-24 02:21:03 ERROR DataProviderDB:264 - org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "people" не найдена
+Table "people" not found; SQL statement:
+INSERT INTO "people"(id,firstName,secondName,lastName,phone) VALUES(4,'Иван','Иванович','Иванов','81234567890') [42102-200]
+2020-12-24 02:21:03 INFO  DataProviderDB:250 - insertPeople
+2020-12-24 02:21:03 DEBUG DataProviderDB:53 - INSERT INTO "people"(id,firstName,secondName,lastName,phone) VALUES(4,'Василий','Иванович','Иванов','81234567890')
+2020-12-24 02:21:03 ERROR DataProviderDB:264 - org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "people" не найдена
+Table "people" not found; SQL statement:
+INSERT INTO "people"(id,firstName,secondName,lastName,phone) VALUES(4,'Василий','Иванович','Иванов','81234567890') [42102-200]
+2020-12-24 02:21:03 DEBUG DataProviderDB:60 - SELECT * FROM "people"
+2020-12-24 02:21:03 ERROR DataProviderDB:66 - org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "people" не найдена
+Table "people" not found; SQL statement:
+SELECT * FROM "people" [42102-200]
+2020-12-24 02:21:03 DEBUG DataProviderDBTest:35 - null
+2020-12-24 02:21:03 DEBUG DataProviderDB:60 - SELECT * FROM "PEOPLE" WHERE id = 4
+2020-12-24 02:21:03 DEBUG DataProviderDB:113 - rs0: org.h2.result.LocalResultImpl@630cb4a4 columns: 5 rows: 0 pos: -1
+2020-12-24 02:21:03 INFO  DataProviderDBTest:41 - insertPeopleFalse
+2020-12-24 02:21:03 INFO  DataProviderDB:250 - insertPeople
+2020-12-24 02:21:03 DEBUG DataProviderDB:53 - INSERT INTO "people"(id,firstName,secondName,lastName,phone) VALUES(1,'Иван','Иванович','Иванов','81234567890')
+2020-12-24 02:21:03 ERROR DataProviderDB:264 - org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "people" не найдена
+Table "people" not found; SQL statement:
+INSERT INTO "people"(id,firstName,secondName,lastName,phone) VALUES(1,'Иван','Иванович','Иванов','81234567890') [42102-200]
+2020-12-24 02:21:03 DEBUG DataProviderDB:60 - SELECT * FROM "PEOPLE" WHERE id = 100
+2020-12-24 02:21:03 DEBUG DataProviderDB:113 - rs1: org.h2.result.LocalResultImpl@33e01298 columns: 5 rows: 0 pos: -1
+2020-12-24 02:32:02 INFO  DataProviderDBTest:24 - createAllTables
+2020-12-24 02:32:02 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-24 02:32:03 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-24 02:32:03 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-24 02:32:03 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-24 02:32:03 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-24 02:32:03 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-24 02:32:03 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-24 02:32:03 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-24 02:32:03 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-24 02:32:03 INFO  DataProviderDBTest:30 - insertPeopleSuccess
+2020-12-24 02:32:03 INFO  DataProviderDB:250 - insertPeople
+2020-12-24 02:32:03 DEBUG DataProviderDB:53 - INSERT INTO "people"(id,firstName,secondName,lastName,phone) VALUES(4,'Иван','Иванович','Иванов','81234567890')
+2020-12-24 02:32:03 ERROR DataProviderDB:264 - org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "people" не найдена
+Table "people" not found; SQL statement:
+INSERT INTO "people"(id,firstName,secondName,lastName,phone) VALUES(4,'Иван','Иванович','Иванов','81234567890') [42102-200]
+2020-12-24 02:32:03 INFO  DataProviderDB:250 - insertPeople
+2020-12-24 02:32:03 DEBUG DataProviderDB:53 - INSERT INTO "people"(id,firstName,secondName,lastName,phone) VALUES(4,'Василий','Иванович','Иванов','81234567890')
+2020-12-24 02:32:03 ERROR DataProviderDB:264 - org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "people" не найдена
+Table "people" not found; SQL statement:
+INSERT INTO "people"(id,firstName,secondName,lastName,phone) VALUES(4,'Василий','Иванович','Иванов','81234567890') [42102-200]
+2020-12-24 02:32:03 DEBUG DataProviderDB:60 - SELECT * FROM "PEOPLE"
+2020-12-24 02:32:03 DEBUG DataProviderDBTest:35 - rs0: org.h2.result.LocalResultImpl@207ea13 columns: 5 rows: 0 pos: -1
+2020-12-24 02:32:03 DEBUG DataProviderDB:60 - SELECT * FROM "PEOPLE" WHERE id = 4
+2020-12-24 02:32:03 DEBUG DataProviderDB:113 - rs1: org.h2.result.LocalResultImpl@f79a760 columns: 5 rows: 0 pos: -1
+2020-12-24 02:32:03 INFO  DataProviderDBTest:41 - insertPeopleFalse
+2020-12-24 02:32:03 INFO  DataProviderDB:250 - insertPeople
+2020-12-24 02:32:03 DEBUG DataProviderDB:53 - INSERT INTO "people"(id,firstName,secondName,lastName,phone) VALUES(1,'Иван','Иванович','Иванов','81234567890')
+2020-12-24 02:32:03 ERROR DataProviderDB:264 - org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "people" не найдена
+Table "people" not found; SQL statement:
+INSERT INTO "people"(id,firstName,secondName,lastName,phone) VALUES(1,'Иван','Иванович','Иванов','81234567890') [42102-200]
+2020-12-24 02:32:03 DEBUG DataProviderDB:60 - SELECT * FROM "PEOPLE" WHERE id = 100
+2020-12-24 02:32:03 DEBUG DataProviderDB:113 - rs2: org.h2.result.LocalResultImpl@a5b0b86 columns: 5 rows: 0 pos: -1
+2020-12-24 02:34:00 INFO  DataProviderDBTest:24 - createAllTables
+2020-12-24 02:34:00 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-24 02:34:01 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-24 02:34:01 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-24 02:34:01 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-24 02:34:01 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-24 02:34:01 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-24 02:34:01 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-24 02:34:01 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-24 02:34:01 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-24 02:34:01 INFO  DataProviderDBTest:30 - insertPeopleSuccess
+2020-12-24 02:34:01 INFO  DataProviderDB:250 - insertPeople
+2020-12-24 02:34:01 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(4,'Иван','Иванович','Иванов','81234567890')
+2020-12-24 02:34:01 INFO  DataProviderDB:250 - insertPeople
+2020-12-24 02:34:01 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(4,'Василий','Иванович','Иванов','81234567890')
+2020-12-24 02:34:01 ERROR DataProviderDB:264 - org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException: Нарушение уникального индекса или первичного ключа: "PRIMARY KEY ON PUBLIC.PEOPLE(ID) [4, STRINGDECODE('\u0418\u0432\u0430\u043d'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432\u0438\u0447'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432'), '81234567890']"
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.PEOPLE(ID) [4, STRINGDECODE('\u0418\u0432\u0430\u043d'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432\u0438\u0447'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432'), '81234567890']"; SQL statement:
+INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(4,'Василий','Иванович','Иванов','81234567890') [23505-200]
+2020-12-24 02:34:01 DEBUG DataProviderDB:60 - SELECT * FROM "PEOPLE"
+2020-12-24 02:34:01 DEBUG DataProviderDBTest:35 - rs0: org.h2.result.LocalResultImpl@1eb6749b columns: 5 rows: 1 pos: -1
+2020-12-24 02:34:01 DEBUG DataProviderDB:60 - SELECT * FROM "PEOPLE" WHERE id = 4
+2020-12-24 02:34:01 DEBUG DataProviderDB:113 - rs1: org.h2.result.LocalResultImpl@4e28bdd1 columns: 5 rows: 1 pos: -1
+2020-12-24 02:34:15 INFO  DataProviderDBTest:24 - createAllTables
+2020-12-24 02:34:15 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-24 02:34:15 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-24 02:34:15 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-24 02:34:15 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-24 02:34:15 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-24 02:34:15 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-24 02:34:16 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-24 02:34:16 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-24 02:34:16 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-24 02:34:16 INFO  DataProviderDBTest:30 - insertPeopleSuccess
+2020-12-24 02:34:16 INFO  DataProviderDB:250 - insertPeople
+2020-12-24 02:34:16 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(4,'Иван','Иванович','Иванов','81234567890')
+2020-12-24 02:34:16 INFO  DataProviderDB:250 - insertPeople
+2020-12-24 02:34:16 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(4,'Василий','Иванович','Иванов','81234567890')
+2020-12-24 02:34:16 ERROR DataProviderDB:264 - org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException: Нарушение уникального индекса или первичного ключа: "PRIMARY KEY ON PUBLIC.PEOPLE(ID) [4, STRINGDECODE('\u0418\u0432\u0430\u043d'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432\u0438\u0447'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432'), '81234567890']"
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.PEOPLE(ID) [4, STRINGDECODE('\u0418\u0432\u0430\u043d'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432\u0438\u0447'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432'), '81234567890']"; SQL statement:
+INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(4,'Василий','Иванович','Иванов','81234567890') [23505-200]
+2020-12-24 02:34:16 DEBUG DataProviderDB:60 - SELECT * FROM "PEOPLE"
+2020-12-24 02:34:16 DEBUG DataProviderDBTest:35 - rs0: org.h2.result.LocalResultImpl@654d8173 columns: 5 rows: 1 pos: -1
+2020-12-24 02:34:16 DEBUG DataProviderDB:60 - SELECT * FROM "PEOPLE" WHERE id = 4
+2020-12-24 02:34:16 DEBUG DataProviderDB:113 - rs1: org.h2.result.LocalResultImpl@619bfe29 columns: 5 rows: 1 pos: -1
+2020-12-24 02:34:16 INFO  DataProviderDBTest:41 - insertPeopleFalse
+2020-12-24 02:34:16 INFO  DataProviderDB:250 - insertPeople
+2020-12-24 02:34:16 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(1,'Иван','Иванович','Иванов','81234567890')
+2020-12-24 02:34:16 DEBUG DataProviderDB:60 - SELECT * FROM "PEOPLE" WHERE id = 100
+2020-12-24 02:34:16 DEBUG DataProviderDB:113 - rs2: org.h2.result.LocalResultImpl@2453f95d columns: 5 rows: 0 pos: -1
+2020-12-24 02:37:03 INFO  DataProviderDBTest:24 - createAllTables
+2020-12-24 02:37:03 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-24 02:37:04 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-24 02:37:04 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-24 02:37:04 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-24 02:37:04 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-24 02:37:04 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-24 02:37:04 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-24 02:37:04 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-24 02:37:04 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-24 02:37:04 INFO  DataProviderDBTest:30 - insertPeopleSuccess
+2020-12-24 02:37:04 INFO  DataProviderDB:250 - insertPeople
+2020-12-24 02:37:04 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(4,'Иван','Иванович','Иванов','81234567890')
+2020-12-24 02:37:04 INFO  DataProviderDB:250 - insertPeople
+2020-12-24 02:37:04 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(4,'Василий','Иванович','Иванов','81234567890')
+2020-12-24 02:37:04 ERROR DataProviderDB:264 - org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException: Нарушение уникального индекса или первичного ключа: "PRIMARY KEY ON PUBLIC.PEOPLE(ID) [4, STRINGDECODE('\u0418\u0432\u0430\u043d'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432\u0438\u0447'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432'), '81234567890']"
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.PEOPLE(ID) [4, STRINGDECODE('\u0418\u0432\u0430\u043d'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432\u0438\u0447'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432'), '81234567890']"; SQL statement:
+INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(4,'Василий','Иванович','Иванов','81234567890') [23505-200]
+2020-12-24 02:37:04 DEBUG DataProviderDB:60 - SELECT * FROM "PEOPLE"
+2020-12-24 02:37:04 DEBUG DataProviderDBTest:35 - readrs0: org.h2.result.LocalResultImpl@654d8173 columns: 5 rows: 1 pos: -1
+2020-12-24 02:37:04 DEBUG DataProviderDB:60 - SELECT * FROM "PEOPLE" WHERE id = 4
+2020-12-24 02:37:04 DEBUG DataProviderDB:113 - rs1: org.h2.result.LocalResultImpl@619bfe29 columns: 5 rows: 1 pos: -1
+2020-12-24 02:37:04 INFO  DataProviderDBTest:41 - insertPeopleFalse
+2020-12-24 02:37:04 INFO  DataProviderDB:250 - insertPeople
+2020-12-24 02:37:04 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(1,'Иван','Иванович','Иванов','81234567890')
+2020-12-24 02:37:04 DEBUG DataProviderDB:60 - SELECT * FROM "PEOPLE" WHERE id = 100
+2020-12-24 02:37:04 DEBUG DataProviderDB:113 - rs2: org.h2.result.LocalResultImpl@2453f95d columns: 5 rows: 0 pos: -1
+2020-12-24 02:38:04 INFO  DataProviderDBTest:24 - createAllTables
+2020-12-24 02:38:04 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-24 02:38:05 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-24 02:38:05 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-24 02:38:05 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-24 02:38:05 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-24 02:38:05 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-24 02:38:05 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-24 02:38:05 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-24 02:38:05 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-24 02:38:05 INFO  DataProviderDBTest:30 - insertPeopleSuccess
+2020-12-24 02:38:05 INFO  DataProviderDB:250 - insertPeople
+2020-12-24 02:38:05 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(4,'Иван','Иванович','Иванов','81234567890')
+2020-12-24 02:38:05 INFO  DataProviderDB:250 - insertPeople
+2020-12-24 02:38:05 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(4,'Василий','Иванович','Иванов','81234567890')
+2020-12-24 02:38:05 ERROR DataProviderDB:264 - org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException: Нарушение уникального индекса или первичного ключа: "PRIMARY KEY ON PUBLIC.PEOPLE(ID) [4, STRINGDECODE('\u0418\u0432\u0430\u043d'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432\u0438\u0447'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432'), '81234567890']"
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.PEOPLE(ID) [4, STRINGDECODE('\u0418\u0432\u0430\u043d'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432\u0438\u0447'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432'), '81234567890']"; SQL statement:
+INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(4,'Василий','Иванович','Иванов','81234567890') [23505-200]
+2020-12-24 02:38:05 DEBUG DataProviderDB:60 - SELECT * FROM "PEOPLE"
+2020-12-24 02:38:05 DEBUG DataProviderDBTest:35 - read log debug rs0: org.h2.result.LocalResultImpl@654d8173 columns: 5 rows: 1 pos: -1
+2020-12-24 02:38:05 DEBUG DataProviderDB:60 - SELECT * FROM "PEOPLE" WHERE id = 4
+2020-12-24 02:38:05 DEBUG DataProviderDB:113 - rs1: org.h2.result.LocalResultImpl@619bfe29 columns: 5 rows: 1 pos: -1
+2020-12-24 02:38:05 INFO  DataProviderDBTest:41 - insertPeopleFalse
+2020-12-24 02:38:05 INFO  DataProviderDB:250 - insertPeople
+2020-12-24 02:38:05 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(1,'Иван','Иванович','Иванов','81234567890')
+2020-12-24 02:38:05 DEBUG DataProviderDB:60 - SELECT * FROM "PEOPLE" WHERE id = 100
+2020-12-24 02:38:05 DEBUG DataProviderDB:113 - rs2: org.h2.result.LocalResultImpl@2453f95d columns: 5 rows: 0 pos: -1
+2020-12-24 02:57:48 INFO  DataProviderDBTest:24 - createAllTables
+2020-12-24 02:57:48 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-24 02:57:48 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-24 02:57:48 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-24 02:57:48 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-24 02:57:48 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-24 02:57:48 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-24 02:57:48 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-24 02:57:48 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-24 02:57:48 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-24 02:57:48 INFO  DataProviderDBTest:30 - insertPeopleSuccess
+2020-12-24 02:57:48 INFO  DataProviderDB:250 - insertPeople
+2020-12-24 02:57:48 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(4,'Иван','Иванович','Иванов','81234567890')
+2020-12-24 02:57:48 INFO  DataProviderDB:250 - insertPeople
+2020-12-24 02:57:48 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(4,'Василий','Иванович','Иванов','81234567890')
+2020-12-24 02:57:48 ERROR DataProviderDB:264 - org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException: Нарушение уникального индекса или первичного ключа: "PRIMARY KEY ON PUBLIC.PEOPLE(ID) [4, STRINGDECODE('\u0418\u0432\u0430\u043d'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432\u0438\u0447'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432'), '81234567890']"
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.PEOPLE(ID) [4, STRINGDECODE('\u0418\u0432\u0430\u043d'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432\u0438\u0447'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432'), '81234567890']"; SQL statement:
+INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(4,'Василий','Иванович','Иванов','81234567890') [23505-200]
+2020-12-24 02:57:48 DEBUG DataProviderDB:53 - SELECT * FROM "PEOPLE"
+2020-12-24 03:09:25 INFO  DataProviderDBTest:25 - createAllTables
+2020-12-24 03:09:25 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-24 03:09:25 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-24 03:09:25 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-24 03:09:25 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-24 03:09:25 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-24 03:09:25 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-24 03:09:25 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-24 03:09:25 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-24 03:09:25 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-24 03:09:25 INFO  DataProviderDBTest:31 - insertPeopleSuccess
+2020-12-24 03:09:25 INFO  DataProviderDB:250 - insertPeople
+2020-12-24 03:09:25 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(4,'Иван','Иванович','Иванов','81234567890')
+2020-12-24 03:09:25 INFO  DataProviderDB:250 - insertPeople
+2020-12-24 03:09:25 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(4,'Василий','Иванович','Иванов','81234567890')
+2020-12-24 03:09:25 ERROR DataProviderDB:264 - org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException: Нарушение уникального индекса или первичного ключа: "PRIMARY KEY ON PUBLIC.PEOPLE(ID) [4, STRINGDECODE('\u0418\u0432\u0430\u043d'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432\u0438\u0447'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432'), '81234567890']"
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.PEOPLE(ID) [4, STRINGDECODE('\u0418\u0432\u0430\u043d'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432\u0438\u0447'), STRINGDECODE('\u0418\u0432\u0430\u043d\u043e\u0432'), '81234567890']"; SQL statement:
+INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(4,'Василий','Иванович','Иванов','81234567890') [23505-200]
+2020-12-24 03:09:25 DEBUG DataProviderDB:60 - SELECT * FROM "PEOPLE" WHERE id = 4
+2020-12-24 03:09:25 DEBUG DataProviderDB:113 - rs0: org.h2.result.LocalResultImpl@5b057c8c columns: 5 rows: 1 pos: -1
+2020-12-24 03:09:25 INFO  DataProviderDBTest:25 - createAllTables
+2020-12-24 03:09:25 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-24 03:09:25 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-24 03:09:25 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-24 03:09:25 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-24 03:09:25 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-24 03:09:25 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-24 03:09:25 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-24 03:09:25 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-24 03:09:25 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-24 03:09:25 INFO  DataProviderDBTest:41 - insertPeopleFalse
+2020-12-24 03:09:25 INFO  DataProviderDB:250 - insertPeople
+2020-12-24 03:09:25 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(1,'Иван','Иванович','Иванов','81234567890')
+2020-12-24 03:09:25 DEBUG DataProviderDB:60 - SELECT * FROM "PEOPLE" WHERE id = 4
+2020-12-24 03:09:25 DEBUG DataProviderDB:113 - rs1: org.h2.result.LocalResultImpl@33e01298 columns: 5 rows: 0 pos: -1
+2020-12-24 03:50:50 INFO  DataProviderDBTest:28 - createAllTables
+2020-12-24 03:50:50 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-24 03:50:51 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-24 03:50:51 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-24 03:50:51 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-24 03:50:51 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-24 03:50:51 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-24 03:50:51 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-24 03:50:51 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-24 03:50:51 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-24 03:50:51 INFO  DataProviderDBTest:53 - insertPeopleSuccess
+2020-12-24 03:50:51 INFO  DataProviderDB:250 - insertPeople
+2020-12-24 03:50:51 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(1,'Иван','Иванович','Иванов','81234567890')
+2020-12-24 03:50:51 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(2,'Петр','Петрович','Петров','82345678901')
+2020-12-24 03:50:51 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(3,'Виктор','Иванович','Ткач','83456789012')
+2020-12-24 03:50:51 DEBUG DataProviderDB:60 - SELECT * FROM "PEOPLE" WHERE id = 2
+2020-12-24 03:50:51 DEBUG DataProviderDB:113 - rs0: org.h2.result.LocalResultImpl@619bfe29 columns: 5 rows: 1 pos: -1
+2020-12-24 03:50:51 INFO  DataProviderDBTest:28 - createAllTables
+2020-12-24 03:50:51 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-24 03:50:51 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-24 03:50:51 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-24 03:50:51 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-24 03:50:51 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-24 03:50:51 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-24 03:50:51 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-24 03:50:51 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-24 03:50:51 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-24 03:50:51 INFO  DataProviderDBTest:67 - insertPeopleFail
+2020-12-24 03:50:51 INFO  DataProviderDB:250 - insertPeople
+2020-12-24 03:50:51 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(1,'Иван','Иванович','Иванов','81234567890')
+2020-12-24 03:50:51 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(2,'Петр','Петрович','Петров','82345678901')
+2020-12-24 03:50:51 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(3,'Виктор','Иванович','Ткач','83456789012')
+2020-12-24 03:50:51 DEBUG DataProviderDB:60 - SELECT * FROM "PEOPLE" WHERE id = 4
+2020-12-24 03:50:51 DEBUG DataProviderDB:113 - rs1: org.h2.result.LocalResultImpl@31e75d13 columns: 5 rows: 0 pos: -1
+2020-12-24 04:01:57 INFO  DataProviderDBTest:28 - createAllTables
+2020-12-24 04:01:57 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-24 04:01:58 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-24 04:01:58 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-24 04:01:58 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-24 04:01:58 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-24 04:01:58 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-24 04:01:58 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-24 04:01:58 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-24 04:01:58 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-24 04:01:58 INFO  DataProviderDBTest:53 - insertPeopleSuccess
+2020-12-24 04:01:58 INFO  DataProviderDB:250 - insertPeople
+2020-12-24 04:01:58 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(1,'Иван','Иванович','Иванов','81234567890')
+2020-12-24 04:01:58 DEBUG DataProviderDB:264 - will add to db People{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890'}
+2020-12-24 04:01:58 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(2,'Петр','Петрович','Петров','82345678901')
+2020-12-24 04:01:58 DEBUG DataProviderDB:264 - will add to db People{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'}
+2020-12-24 04:01:58 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(3,'Виктор','Иванович','Ткач','83456789012')
+2020-12-24 04:01:58 DEBUG DataProviderDB:264 - will add to db People{id=3, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012'}
+2020-12-24 04:01:58 DEBUG DataProviderDB:60 - SELECT * FROM "PEOPLE" WHERE id = 2
+2020-12-24 04:01:58 DEBUG DataProviderDB:113 - rs0: org.h2.result.LocalResultImpl@619bfe29 columns: 5 rows: 1 pos: -1
+2020-12-24 04:01:58 INFO  DataProviderDBTest:28 - createAllTables
+2020-12-24 04:01:58 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-24 04:01:58 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-24 04:01:58 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-24 04:01:58 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-24 04:01:58 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-24 04:01:58 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-24 04:01:58 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-24 04:01:58 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-24 04:01:58 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-24 04:01:58 INFO  DataProviderDBTest:67 - insertPeopleFail
+2020-12-24 04:01:58 INFO  DataProviderDB:250 - insertPeople
+2020-12-24 04:01:58 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(1,'Иван','Иванович','Иванов','81234567890')
+2020-12-24 04:01:58 DEBUG DataProviderDB:264 - will add to db People{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890'}
+2020-12-24 04:01:58 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(2,'Петр','Петрович','Петров','82345678901')
+2020-12-24 04:01:58 DEBUG DataProviderDB:264 - will add to db People{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'}
+2020-12-24 04:01:58 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(3,'Виктор','Иванович','Ткач','83456789012')
+2020-12-24 04:01:58 DEBUG DataProviderDB:264 - will add to db People{id=3, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012'}
+2020-12-24 04:01:58 DEBUG DataProviderDB:60 - SELECT * FROM "PEOPLE" WHERE id = 4
+2020-12-24 04:01:58 DEBUG DataProviderDB:113 - rs1: org.h2.result.LocalResultImpl@31e75d13 columns: 5 rows: 0 pos: -1
+2020-12-24 04:05:58 INFO  DataProviderDBTest:28 - createAllTables
+2020-12-24 04:05:58 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-24 04:05:59 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-24 04:05:59 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-24 04:05:59 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-24 04:05:59 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-24 04:05:59 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-24 04:05:59 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-24 04:05:59 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-24 04:05:59 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-24 04:05:59 INFO  DataProviderDBTest:53 - insertPeopleSuccess
+2020-12-24 04:05:59 INFO  DataProviderDB:248 - insertPeople
+2020-12-24 04:05:59 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(1,'Иван','Иванович','Иванов','81234567890')
+2020-12-24 04:05:59 DEBUG DataProviderDB:262 - will add to db People{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890'}
+2020-12-24 04:05:59 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(2,'Петр','Петрович','Петров','82345678901')
+2020-12-24 04:05:59 DEBUG DataProviderDB:262 - will add to db People{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'}
+2020-12-24 04:05:59 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(3,'Виктор','Иванович','Ткач','83456789012')
+2020-12-24 04:05:59 DEBUG DataProviderDB:262 - will add to db People{id=3, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012'}
+2020-12-24 04:05:59 DEBUG DataProviderDB:60 - SELECT * FROM "PEOPLE" WHERE id = 2
+2020-12-24 04:05:59 INFO  DataProviderDBTest:28 - createAllTables
+2020-12-24 04:05:59 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-24 04:05:59 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-24 04:05:59 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-24 04:05:59 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-24 04:05:59 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-24 04:05:59 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-24 04:05:59 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-24 04:05:59 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-24 04:05:59 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-24 04:05:59 INFO  DataProviderDBTest:67 - insertPeopleFail
+2020-12-24 04:05:59 INFO  DataProviderDB:248 - insertPeople
+2020-12-24 04:05:59 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(1,'Иван','Иванович','Иванов','81234567890')
+2020-12-24 04:05:59 DEBUG DataProviderDB:262 - will add to db People{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890'}
+2020-12-24 04:05:59 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(2,'Петр','Петрович','Петров','82345678901')
+2020-12-24 04:05:59 DEBUG DataProviderDB:262 - will add to db People{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'}
+2020-12-24 04:05:59 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(3,'Виктор','Иванович','Ткач','83456789012')
+2020-12-24 04:05:59 DEBUG DataProviderDB:262 - will add to db People{id=3, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012'}
+2020-12-24 04:05:59 DEBUG DataProviderDB:60 - SELECT * FROM "PEOPLE" WHERE id = 4
+2020-12-24 04:13:49 INFO  DataProviderDBTest:28 - createAllTables
+2020-12-24 04:13:49 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-24 04:13:49 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-24 04:13:49 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-24 04:13:49 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-24 04:13:49 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-24 04:13:49 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-24 04:13:49 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-24 04:13:49 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-24 04:13:49 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-24 04:13:49 INFO  DataProviderDBTest:53 - insertPeopleSuccess
+2020-12-24 04:13:49 INFO  DataProviderDB:248 - insertPeople
+2020-12-24 04:13:49 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(1,'Иван','Иванович','Иванов','81234567890')
+2020-12-24 04:13:49 DEBUG DataProviderDB:262 - will add to db People{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890'}
+2020-12-24 04:13:49 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(2,'Петр','Петрович','Петров','82345678901')
+2020-12-24 04:13:49 DEBUG DataProviderDB:262 - will add to db People{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'}
+2020-12-24 04:13:49 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(3,'Виктор','Иванович','Ткач','83456789012')
+2020-12-24 04:13:49 DEBUG DataProviderDB:262 - will add to db People{id=3, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012'}
+2020-12-24 04:13:49 DEBUG DataProviderDB:60 - SELECT * FROM "PEOPLE" WHERE id = 2
+2020-12-24 04:13:50 INFO  DataProviderDBTest:28 - createAllTables
+2020-12-24 04:13:50 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-24 04:13:50 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-24 04:13:50 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-24 04:13:50 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-24 04:13:50 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-24 04:13:50 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-24 04:13:50 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-24 04:13:50 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-24 04:13:50 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-24 04:13:50 INFO  DataProviderDBTest:67 - insertPeopleFail
+2020-12-24 04:13:50 INFO  DataProviderDB:248 - insertPeople
+2020-12-24 04:13:50 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(1,'Иван','Иванович','Иванов','81234567890')
+2020-12-24 04:13:50 DEBUG DataProviderDB:262 - will add to db People{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890'}
+2020-12-24 04:13:50 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(2,'Петр','Петрович','Петров','82345678901')
+2020-12-24 04:13:50 DEBUG DataProviderDB:262 - will add to db People{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'}
+2020-12-24 04:13:50 DEBUG DataProviderDB:53 - INSERT INTO "PEOPLE"(id,firstName,secondName,lastName,phone) VALUES(3,'Виктор','Иванович','Ткач','83456789012')
+2020-12-24 04:13:50 DEBUG DataProviderDB:262 - will add to db People{id=3, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012'}
+2020-12-24 04:13:50 DEBUG DataProviderDB:60 - SELECT * FROM "PEOPLE" WHERE id = 4
+2020-12-24 04:50:34 INFO  DataProviderDBTest:28 - createAllTables
+2020-12-24 04:50:34 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-24 04:50:34 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-24 04:50:34 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-24 04:50:34 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-24 04:50:34 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-24 04:50:34 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-24 04:50:34 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-24 04:50:34 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-24 04:50:34 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-24 04:50:34 INFO  DataProviderDBTest:91 - insertAuthorFail
+2020-12-24 04:50:34 INFO  DataProviderDB:273 - insertAuthor
+2020-12-24 04:50:34 DEBUG DataProviderDB:53 - INSERT INTO "AUTHOR"(id,firstName,secondName,lastName,phone,email,degree,organization) VALUES(1,'Виктор','Иванович','Ткач','83456789012','tkach@gmail.com','docent','Donstu')
+2020-12-24 04:50:34 DEBUG DataProviderDB:288 - will add to db Author{id=1, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-24 04:50:34 DEBUG DataProviderDB:60 - SELECT * FROM "PEOPLE" WHERE id = 2
+2020-12-24 04:51:05 INFO  DataProviderDBTest:28 - createAllTables
+2020-12-24 04:51:05 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-24 04:51:06 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-24 04:51:06 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-24 04:51:06 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-24 04:51:06 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-24 04:51:06 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-24 04:51:06 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-24 04:51:06 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-24 04:51:06 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-24 04:51:06 INFO  DataProviderDBTest:81 - insertAuthorSuccess
+2020-12-24 04:51:06 INFO  DataProviderDB:273 - insertAuthor
+2020-12-24 04:51:06 DEBUG DataProviderDB:53 - INSERT INTO "AUTHOR"(id,firstName,secondName,lastName,phone,email,degree,organization) VALUES(1,'Виктор','Иванович','Ткач','83456789012','tkach@gmail.com','docent','Donstu')
+2020-12-24 04:51:06 DEBUG DataProviderDB:288 - will add to db Author{id=1, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-24 04:51:06 DEBUG DataProviderDB:60 - SELECT * FROM "PEOPLE" WHERE id = 1
+2020-12-24 04:51:43 INFO  DataProviderDBTest:28 - createAllTables
+2020-12-24 04:51:43 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-24 04:51:44 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-24 04:51:44 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-24 04:51:44 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-24 04:51:44 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-24 04:51:44 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-24 04:51:44 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-24 04:51:44 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-24 04:51:44 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-24 04:51:44 INFO  DataProviderDBTest:81 - insertAuthorSuccess
+2020-12-24 04:51:44 INFO  DataProviderDB:273 - insertAuthor
+2020-12-24 04:51:44 DEBUG DataProviderDB:53 - INSERT INTO "AUTHOR"(id,firstName,secondName,lastName,phone,email,degree,organization) VALUES(1,'Виктор','Иванович','Ткач','83456789012','tkach@gmail.com','docent','Donstu')
+2020-12-24 04:51:44 DEBUG DataProviderDB:288 - will add to db Author{id=1, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012', email='tkach@gmail.com', degree='docent', organization='Donstu'}
+2020-12-24 04:51:44 DEBUG DataProviderDB:60 - SELECT * FROM "AUTHOR" WHERE id = 1
+2020-12-24 05:17:41 INFO  DataProviderDBTest:28 - createAllTables
+2020-12-24 05:17:41 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-24 05:17:41 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-24 05:17:41 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(11),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-24 05:17:41 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-24 05:17:41 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-24 05:17:41 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-24 05:17:41 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-24 05:17:41 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-24 05:17:41 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-24 05:17:41 INFO  DataProviderDBTest:101 - insertEmployeeSuccess
+2020-12-24 05:17:41 INFO  DataProviderDB:299 - insertAuthor
+2020-12-24 05:17:41 DEBUG DataProviderDB:53 - INSERT INTO "EMPLOYEE"(id,firstName,secondName,lastName,phone,inn,workRecordBook,employeeType) VALUES(1,'Иван','Иванович','Иванов','81234567890','123456789012','1234567','CHIEF')
+2020-12-24 05:17:41 ERROR DataProviderDB:316 - org.h2.jdbc.JdbcSQLDataException: Значение слишком длинное для поля "INN VARCHAR(11)": "'123456789012' (12)"
+Value too long for column "INN VARCHAR(11)": "'123456789012' (12)"; SQL statement:
+INSERT INTO "EMPLOYEE"(id,firstName,secondName,lastName,phone,inn,workRecordBook,employeeType) VALUES(1,'Иван','Иванович','Иванов','81234567890','123456789012','1234567','CHIEF') [22001-200]
+2020-12-24 05:17:41 DEBUG DataProviderDB:317 - id already exist in db Employee{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890'inn='123456789012', workRecordBook='1234567', emplpyeeType=CHIEF}
+2020-12-24 05:17:41 DEBUG DataProviderDB:53 - INSERT INTO "EMPLOYEE"(id,firstName,secondName,lastName,phone,inn,workRecordBook,employeeType) VALUES(2,'Петр','Петрович','Петров','82345678901','234567890123','2345678','MAKER')
+2020-12-24 05:17:41 ERROR DataProviderDB:316 - org.h2.jdbc.JdbcSQLDataException: Значение слишком длинное для поля "INN VARCHAR(11)": "'234567890123' (12)"
+Value too long for column "INN VARCHAR(11)": "'234567890123' (12)"; SQL statement:
+INSERT INTO "EMPLOYEE"(id,firstName,secondName,lastName,phone,inn,workRecordBook,employeeType) VALUES(2,'Петр','Петрович','Петров','82345678901','234567890123','2345678','MAKER') [22001-200]
+2020-12-24 05:17:42 DEBUG DataProviderDB:317 - id already exist in db Employee{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'inn='234567890123', workRecordBook='2345678', emplpyeeType=MAKER}
+2020-12-24 05:17:42 DEBUG DataProviderDB:53 - INSERT INTO "EMPLOYEE"(id,firstName,secondName,lastName,phone,inn,workRecordBook,employeeType) VALUES(3,'Виктор','Иванович','Ткач','83456789012','345678901234','3456789','EDITOR')
+2020-12-24 05:17:42 ERROR DataProviderDB:316 - org.h2.jdbc.JdbcSQLDataException: Значение слишком длинное для поля "INN VARCHAR(11)": "'345678901234' (12)"
+Value too long for column "INN VARCHAR(11)": "'345678901234' (12)"; SQL statement:
+INSERT INTO "EMPLOYEE"(id,firstName,secondName,lastName,phone,inn,workRecordBook,employeeType) VALUES(3,'Виктор','Иванович','Ткач','83456789012','345678901234','3456789','EDITOR') [22001-200]
+2020-12-24 05:17:42 DEBUG DataProviderDB:317 - id already exist in db Employee{id=3, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012'inn='345678901234', workRecordBook='3456789', emplpyeeType=EDITOR}
+2020-12-24 05:17:42 DEBUG DataProviderDB:60 - SELECT * FROM "EMPLOYEE" WHERE id = 2
+2020-12-24 05:17:42 ERROR DataProviderDB:164 - org.h2.jdbc.JdbcSQLNonTransientException: Нет данных
+No data is available [2000-200]
+2020-12-24 05:19:15 INFO  DataProviderDBTest:28 - createAllTables
+2020-12-24 05:19:15 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-24 05:19:16 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-24 05:19:16 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(12),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-24 05:19:16 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-24 05:19:16 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-24 05:19:16 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-24 05:19:16 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-24 05:19:16 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-24 05:19:16 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-24 05:19:16 INFO  DataProviderDBTest:101 - insertEmployeeSuccess
+2020-12-24 05:19:16 INFO  DataProviderDB:299 - insertAuthor
+2020-12-24 05:19:16 DEBUG DataProviderDB:53 - INSERT INTO "EMPLOYEE"(id,firstName,secondName,lastName,phone,inn,workRecordBook,employeeType) VALUES(1,'Иван','Иванович','Иванов','81234567890','123456789012','1234567','CHIEF')
+2020-12-24 05:19:16 DEBUG DataProviderDB:314 - will add to db Employee{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890'inn='123456789012', workRecordBook='1234567', emplpyeeType=CHIEF}
+2020-12-24 05:19:16 DEBUG DataProviderDB:53 - INSERT INTO "EMPLOYEE"(id,firstName,secondName,lastName,phone,inn,workRecordBook,employeeType) VALUES(2,'Петр','Петрович','Петров','82345678901','234567890123','2345678','MAKER')
+2020-12-24 05:19:16 DEBUG DataProviderDB:314 - will add to db Employee{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'inn='234567890123', workRecordBook='2345678', emplpyeeType=MAKER}
+2020-12-24 05:19:16 DEBUG DataProviderDB:53 - INSERT INTO "EMPLOYEE"(id,firstName,secondName,lastName,phone,inn,workRecordBook,employeeType) VALUES(3,'Виктор','Иванович','Ткач','83456789012','345678901234','3456789','EDITOR')
+2020-12-24 05:19:16 DEBUG DataProviderDB:314 - will add to db Employee{id=3, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012'inn='345678901234', workRecordBook='3456789', emplpyeeType=EDITOR}
+2020-12-24 05:19:16 DEBUG DataProviderDB:60 - SELECT * FROM "EMPLOYEE" WHERE id = 2
+2020-12-24 05:19:27 INFO  DataProviderDBTest:28 - createAllTables
+2020-12-24 05:19:27 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-24 05:19:28 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-24 05:19:28 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(12),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-24 05:19:28 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-24 05:19:28 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-24 05:19:28 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-24 05:19:28 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-24 05:19:28 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-24 05:19:28 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-24 05:19:28 INFO  DataProviderDBTest:115 - insertEmployeeFail
+2020-12-24 05:19:28 INFO  DataProviderDB:299 - insertAuthor
+2020-12-24 05:19:28 DEBUG DataProviderDB:53 - INSERT INTO "EMPLOYEE"(id,firstName,secondName,lastName,phone,inn,workRecordBook,employeeType) VALUES(1,'Иван','Иванович','Иванов','81234567890','123456789012','1234567','CHIEF')
+2020-12-24 05:19:28 DEBUG DataProviderDB:314 - will add to db Employee{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890'inn='123456789012', workRecordBook='1234567', emplpyeeType=CHIEF}
+2020-12-24 05:19:28 DEBUG DataProviderDB:53 - INSERT INTO "EMPLOYEE"(id,firstName,secondName,lastName,phone,inn,workRecordBook,employeeType) VALUES(2,'Петр','Петрович','Петров','82345678901','234567890123','2345678','MAKER')
+2020-12-24 05:19:28 DEBUG DataProviderDB:314 - will add to db Employee{id=2, firstName='Петр', secondName='Петрович', lastName='Петров', phone='82345678901'inn='234567890123', workRecordBook='2345678', emplpyeeType=MAKER}
+2020-12-24 05:19:28 DEBUG DataProviderDB:53 - INSERT INTO "EMPLOYEE"(id,firstName,secondName,lastName,phone,inn,workRecordBook,employeeType) VALUES(3,'Виктор','Иванович','Ткач','83456789012','345678901234','3456789','EDITOR')
+2020-12-24 05:19:28 DEBUG DataProviderDB:314 - will add to db Employee{id=3, firstName='Виктор', secondName='Иванович', lastName='Ткач', phone='83456789012'inn='345678901234', workRecordBook='3456789', emplpyeeType=EDITOR}
+2020-12-24 05:19:28 DEBUG DataProviderDB:60 - SELECT * FROM "EMPLOYEE" WHERE id = 4
+2020-12-24 05:19:28 ERROR DataProviderDB:164 - org.h2.jdbc.JdbcSQLNonTransientException: Нет данных
+No data is available [2000-200]
+2020-12-24 05:29:33 INFO  DataProviderDBTest:28 - createAllTables
+2020-12-24 05:29:33 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-24 05:29:34 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-24 05:29:34 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(12),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-24 05:29:34 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-24 05:29:34 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-24 05:29:34 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-24 05:29:34 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-24 05:29:34 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-24 05:29:34 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-24 05:29:34 INFO  DataProviderDBTest:129 - insertMeetingSuccess
+2020-12-24 05:29:34 INFO  DataProviderDB:328 - insertMeeting
+2020-12-24 05:29:34 DEBUG DataProviderDB:53 - INSERT INTO "MEETING"(id,meetDate,authorAgreement,editorAgreement) VALUES(1,'15.12.2020 11:55',true,false)
+2020-12-24 05:29:34 DEBUG DataProviderDB:342 - will add to db Meeting{id=1, meetDate='15.12.2020 11:55', authorAgreement=true, editorAgreement=false}
+2020-12-24 05:29:34 DEBUG DataProviderDB:60 - SELECT * FROM "EMPLOYEE" WHERE id = 1
+2020-12-24 05:29:34 ERROR DataProviderDB:200 - org.h2.jdbc.JdbcSQLNonTransientException: Нет данных
+No data is available [2000-200]
+2020-12-24 05:34:08 INFO  DataProviderDBTest:28 - createAllTables
+2020-12-24 05:34:08 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-24 05:34:09 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-24 05:34:09 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(12),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-24 05:34:09 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-24 05:34:09 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-24 05:34:09 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-24 05:34:09 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-24 05:34:09 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-24 05:34:09 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-24 05:34:09 INFO  DataProviderDBTest:129 - insertMeetingSuccess
+2020-12-24 05:34:09 INFO  DataProviderDB:328 - insertMeeting
+2020-12-24 05:34:09 DEBUG DataProviderDB:53 - INSERT INTO "MEETING"(id,meetDate,authorAgreement,editorAgreement) VALUES(1,'2020-12-15 11:55',true,false)
+2020-12-24 05:34:09 DEBUG DataProviderDB:342 - will add to db Meeting{id=1, meetDate='2020-12-15 11:55', authorAgreement=true, editorAgreement=false}
+2020-12-24 05:34:09 DEBUG DataProviderDB:60 - SELECT * FROM "MEETING" WHERE id = 1
+2020-12-24 05:34:29 INFO  DataProviderDBTest:28 - createAllTables
+2020-12-24 05:34:29 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS people; CREATE TABLE people (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11)) 
+2020-12-24 05:34:30 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS author; CREATE TABLE author (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),email varchar(40),degree varchar(40),organization varchar(40)) 
+2020-12-24 05:34:30 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS employee; CREATE TABLE employee (id bigint serial Primary Key,firstName varchar(40),secondName varchar(40),lastName varchar(40),phone varchar(11),inn varchar(12),workRecordBook varchar(7),employeeType varchar(7)) 
+2020-12-24 05:34:30 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS meeting; CREATE TABLE meeting ( id bigint serial Primary Key,meetDate varchar(20),authorAgreement boolean,editorAgreement boolean) 
+2020-12-24 05:34:30 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS coverprice; CREATE TABLE coverprice (id bigint serial Primary Key,coverType varchar(30),price numeric(4)) 
+2020-12-24 05:34:30 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS priceparameters; CREATE TABLE priceparameters (id bigint serial Primary Key,pagePrice numeric(4),coverPrice bigint,workPrice numeric(4),validFromDate varchar(20),validToDate varchar(20)) 
+2020-12-24 05:34:30 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS "ORDER"; CREATE TABLE "ORDER" ( id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer,orderDate varchar(20),coverType varchar(30),bookMaker bigint,bookEditor bigint,bookPriceParameters bigint,finalNumberOfPages integer,numberOfCopies integer,price numeric(4),bookStatus varchar(30)) 
+2020-12-24 05:34:30 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS corrections; CREATE TABLE corrections (id bigint serial Primary Key,page integer,textBefore varchar(255),textAfter varchar(255),comment varchar(255),"ORDER" bigint,meet bigint,status varchar(30)) 
+2020-12-24 05:34:30 DEBUG DataProviderDB:53 - DROP TABLE IF EXISTS book; CREATE TABLE book (id bigint serial Primary Key,author bigint,title varchar(40),numberOfPages integer) 
+2020-12-24 05:34:30 INFO  DataProviderDBTest:139 - insertMeetingFail
+2020-12-24 05:34:30 INFO  DataProviderDB:328 - insertMeeting
+2020-12-24 05:34:30 DEBUG DataProviderDB:53 - INSERT INTO "MEETING"(id,meetDate,authorAgreement,editorAgreement) VALUES(1,'2020-12-15 11:55',true,false)
+2020-12-24 05:34:30 DEBUG DataProviderDB:342 - will add to db Meeting{id=1, meetDate='2020-12-15 11:55', authorAgreement=true, editorAgreement=false}
+2020-12-24 05:34:30 DEBUG DataProviderDB:60 - SELECT * FROM "MEETING" WHERE id = 2
+2020-12-24 05:34:30 ERROR DataProviderDB:200 - org.h2.jdbc.JdbcSQLNonTransientException: Нет данных
+No data is available [2000-200]
