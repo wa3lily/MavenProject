@@ -164,283 +164,267 @@ class DataProviderDBTest extends TestBase {
         assertNull(instance.getCoverPriceByID(2));
     }
 
-//    @Test
-//    public void testInsertPriceParametersSuccess() throws Exception{
-//        log.info("insertPriceParametersSuccess");
-//        List<PriceParameters> listPriceParameters = new ArrayList<>();
-//        List<CoverPrice> listCoverPrice = new ArrayList<>();
-//        CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
-//        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
-//        listCoverPrice.add(coverPrice);
-//        listCoverPrice.add(coverPrice2);
-//        PriceParameters priceParameters = createPriceParameters(1, 13.4, listCoverPrice, 16.3, "2019-01-01", "2021-01-01");
-//        listPriceParameters.add(priceParameters);
-//        instance.insertCoverPrice(listCoverPrice);
-//        instance.insertPriceParameters(listPriceParameters);
-//        assertEquals(1, instance.getPriceParametersByID(1).getId());
-//    }
-//
-//    @Test
-//    public void testInsertPriceParametersFail() throws Exception{
-//        log.info("insertPriceParametersFail");
-//        List<PriceParameters> listPriceParameters = new ArrayList<>();
-//        List<CoverPrice> listCoverPrice = new ArrayList<>();
-//        CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
-//        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
-//        listCoverPrice.add(coverPrice);
-//        listCoverPrice.add(coverPrice2);
-//        PriceParameters priceParameters = createPriceParameters(1, 13.4, listCoverPrice, 16.3, "2019-01-01", "2021-01-01");
-//        listPriceParameters.add(priceParameters);
-//        instance.insertPriceParameters(listPriceParameters);
-//        assertNull(instance.getPriceParametersByID(1));
-//    }
-//
-//    @Test
-//    public void testInsertOrderSuccess() throws Exception{
-//        log.info("insertOrderSuccess");
-//        List<Order> listOrder = new ArrayList<>();
-//        List<Employee> listEmployee = new ArrayList<>();
-//        List<CoverPrice> listCoverPrice = new ArrayList<>();
-//        List<PriceParameters> listPriceParameters = new ArrayList<>();
-//        Employee employee2 = createEmployee(2,"Петр","Петрович","Петров","82345678901","234567890123", "2345678", EmployeeType.MAKER);
-//        Employee employee3 = createEmployee(3,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
-//        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
-//        CoverPrice coverPrice = createCoverPrice(1, CoverType.RIGID_COVER, 123.5);
-//        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
-//        listCoverPrice.add(coverPrice);
-//        listCoverPrice.add(coverPrice2);
-//        PriceParameters priceParameters = createPriceParameters(1, 2.4, listCoverPrice, 1.3, "2019-01-01", "2021-01-01");
-//        Order order = createOrder(1,author,"Цифровая бухгалтерия",4,"2020-09-03", CoverType.RIGID_COVER, employee2, employee3, priceParameters, 229, 100, 9700.75 , BookStatus.EDITING);
-//        listOrder.add(order);
-//        listEmployee.add(employee2);
-//        listEmployee.add(employee3);
-//        listPriceParameters.add(priceParameters);
-//        instance.insertPeople(Employee.class, listEmployee);
-//        instance.insertCoverPrice(listCoverPrice);
-//        instance.insertPriceParameters(listPriceParameters);
-//        instance.insertOrder(listOrder);
-//        assertEquals(order, instance.getBookByID(Order.class, 1));
-//    }
-//
-//    @Test
-//    public void testInsertOrderFail() throws Exception{
-//        log.info("insertOrderFail");
-//        List<Order> listOrder = new ArrayList<>();
-//        List<CoverPrice> listCoverPrice = new ArrayList<>();
-//        Employee employee2 = createEmployee(2,"Петр","Петрович","Петров","82345678901","234567890123", "2345678", EmployeeType.MAKER);
-//        Employee employee3 = createEmployee(3,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
-//        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
-//        CoverPrice coverPrice = createCoverPrice(1, CoverType.RIGID_COVER, 123.5);
-//        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
-//        listCoverPrice.add(coverPrice);
-//        listCoverPrice.add(coverPrice2);
-//        PriceParameters priceParameters = createPriceParameters(1, 2.4, listCoverPrice, 1.3, "2019-01-01", "2021-01-01");
-//        Order order = createOrder(1,author,"Цифровая бухгалтерия",4,"2020-09-03", CoverType.RIGID_COVER, employee2, employee3, priceParameters, 229, 100, 9700.75 , BookStatus.EDITING);
-//        listOrder.add(order);
-//        instance.insertOrder(listOrder);
-//        assertNull(instance.getBookByID(Order.class, 1));
-//    }
-//
-//    @Test
-//    public void testInsertCorrectionsSuccess() throws Exception{
-//        log.info("insertCorrectionsSuccess");
-//        List<Corrections> listCorrections = new ArrayList<>();
-//        List<Employee> listEmployee = new ArrayList<>();
-//        List<Author> listAuthor = new ArrayList<>();
-//        List<CoverPrice> listCoverPrice = new ArrayList<>();
-//        List<PriceParameters> listPriceParameters = new ArrayList<>();
-//        List<Order> listOrder = new ArrayList<>();
-//        Employee employee2 = createEmployee(2,"Петр","Петрович","Петров","82345678901","234567890123", "2345678", EmployeeType.MAKER);
-//        Employee employee3 = createEmployee(3,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
-//        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
-//        CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
-//        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
-//        listCoverPrice.add(coverPrice);
-//        listCoverPrice.add(coverPrice2);
-//        PriceParameters priceParameters = createPriceParameters(1, 2.4, listCoverPrice, 1.3, "2019-01-01", "2021-01-01");
-//        Order order = createOrder(1,author,"Цифровая бухгалтерия",4,"2020-09-03", CoverType.RIGID_COVER, employee2, employee3, priceParameters, 229, 100, 9700.75 , BookStatus.EDITING  );
-//        Corrections corrections = createCorrections(1,35, "Цифровой контроль - это компьютерные системы",
-//                "Цифровой контроль представляет собой компьютерные системы", "Повторяется конструкция", order, null, CorrectionsStatus.WAIT_AUTHOR_AGR );
-//        listEmployee.add(employee2);
-//        listEmployee.add(employee3);
-//        listAuthor.add(author);
-//        listPriceParameters.add(priceParameters);
-//        listOrder.add(order);
-//        listCorrections.add(corrections);
-//        instance.insertPeople(Employee.class, listEmployee);
-//        instance.insertPeople(Author.class, listAuthor);
-//        instance.insertCoverPrice(listCoverPrice);
-//        instance.insertPriceParameters(listPriceParameters);
-//        instance.insertOrder(listOrder);
-//        instance.insertCorrections(listCorrections);
-//        assertEquals(corrections, instance.getCorrectionsByID(1));
-//    }
-//
-//    @Test
-//    public void testInsertCorrectionsFail() throws Exception{
-//        log.info("insertCorrectionsFail");
-//        List<Corrections> listCorrections = new ArrayList<>();
-//        List<CoverPrice> listCoverPrice = new ArrayList<>();
-//        Employee employee2 = createEmployee(2,"Петр","Петрович","Петров","82345678901","234567890123", "2345678", EmployeeType.MAKER);
-//        Employee employee3 = createEmployee(3,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
-//        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
-//        CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
-//        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
-//        listCoverPrice.add(coverPrice);
-//        listCoverPrice.add(coverPrice2);
-//        PriceParameters priceParameters = createPriceParameters(1, 2.4, listCoverPrice, 1.3, "2019-01-01", "2021-01-01");
-//        Order order = createOrder(1,author,"Цифровая бухгалтерия",4,"2020-09-03", CoverType.RIGID_COVER, employee2, employee3, priceParameters, 229, 100, 9700.75 , BookStatus.EDITING  );
-//        Corrections corrections = createCorrections(1,35, "Цифровой контроль - это компьютерные системы",
-//                "Цифровой контроль представляет собой компьютерные системы", "Повторяется конструкция", order, null, CorrectionsStatus.WAIT_AUTHOR_AGR );
-//        listCorrections.add(corrections);
-//        instance.insertCorrections(listCorrections);
-//        assertNull(instance.getCorrectionsByID(1));
-//    }
-//
-//    @Test
-//    public void testInsertBookSuccess() throws Exception{
-//        log.info("insertBookSuccess");
-//        List<Book> listBook = new ArrayList<>();
-//        List<Author> listAuthor = new ArrayList<>();
-//        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
-//        Book book = createBook(1,author,"Цифровая бухгалтерия",4);
-//        listBook.add(book);
-//        listAuthor.add(author);
-//        instance.insertPeople(Author.class, listAuthor);
-//        instance.insertBook(listBook);
-//        assertEquals(book, instance.getBookByID(Book.class,1));
-//    }
-//
-//    @Test
-//    public void testInsertBookFail() throws Exception{
-//        log.info("insertBookFail");
-//        List<Book> listBook = new ArrayList<>();
-//        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
-//        Book book = createBook(1,author,"Цифровая бухгалтерия",4);
-//        listBook.add(book);
-//        instance.insertBook(listBook);
-//        assertNull(instance.getBookByID(Book.class,1));
-//    }
-//
-//    @Test
-//    public void testInsertFewSuccess() throws Exception{
-//        log.info("testInsertFewSuccess");
-//        List<Employee> listEmployee = new ArrayList<>();
-//        List<Employee> expectListEmployee = new ArrayList<>();
-//        Employee employee1 = createEmployee(1,"Иван","Иванович","Иванов","81234567890", "123456789012","1234567", EmployeeType.CHIEF);
-//        Employee employee2 = createEmployee(2,"Петр","Петрович","Петров","82345678901","234567890123", "2345678", EmployeeType.MAKER);
-//        Employee employee3 = createEmployee(3,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
-//        listEmployee.add(employee1);
-//        listEmployee.add(employee2);
-//        instance.insertPeople(Employee.class, listEmployee);
-//        listEmployee.clear();
-//        listEmployee.add(employee3);
-//        assertEquals(expectListEmployee, instance.insertPeople(Employee.class, listEmployee));
-//        expectListEmployee.add(employee1);
-//        expectListEmployee.add(employee2);
-//        expectListEmployee.add(employee3);
-//        assertEquals(expectListEmployee, instance.read(Employee.class));
-//    }
-//
-//    @Test
-//    public void testInsertFewFail() throws Exception{
-//        log.info("testInsertFewFail");
-//        List<Employee> listEmployee = new ArrayList<>();
-//        List<Employee> expectListEmployee = new ArrayList<>();
-//        Employee employee1 = createEmployee(1,"Иван","Иванович","Иванов","81234567890", "123456789012","1234567", EmployeeType.CHIEF);
-//        Employee employee2 = createEmployee(2,"Петр","Петрович","Петров","82345678901","234567890123", "2345678", EmployeeType.MAKER);
-//        Employee employee3 = createEmployee(2,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
-//        listEmployee.add(employee1);
-//        listEmployee.add(employee2);
-//        instance.insertPeople(Employee.class, listEmployee);
-//        listEmployee.clear();
-//        listEmployee.add(employee1);
-//        listEmployee.add(employee3);
-//        expectListEmployee.add(employee3);
-//        assertEquals(expectListEmployee, instance.insertPeople(Employee.class, listEmployee));
-//        expectListEmployee.clear();
-//        expectListEmployee.add(employee1);
-//        expectListEmployee.add(employee2);
-//        assertEquals(expectListEmployee, instance.read(Employee.class));
-//    }
-//
-//    //read
-//    @Test
-//    public void testReadSuccess() throws Exception{
-//        log.info("testReadSuccess");
-//        List<Employee> listEmployee = new ArrayList<>();
-//        Employee employee1 = createEmployee(1,"Иван","Иванович","Иванов","81234567890", "123456789012","1234567", EmployeeType.CHIEF);
-//        Employee employee2 = createEmployee(2,"Петр","Петрович","Петров","82345678901","234567890123", "2345678", EmployeeType.MAKER);
-//        Employee employee3 = createEmployee(3,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
-//        listEmployee.add(employee1);
-//        listEmployee.add(employee2);
-//        listEmployee.add(employee3);
-//        instance.insertPeople(Employee.class, listEmployee);
-//        assertEquals(listEmployee, instance.read(Employee.class));
-//    }
-//
-//    @Test
-//    public void testReadFail() throws Exception{
-//        log.info("testReadFail");
-//        assertNotNull(instance.read(Employee.class));
-//    }
-//
-//    //update
-//    @Test
-//    public void testUpdateEmployeeSuccess() throws Exception{
-//        log.info("testUpdateSuccess");
-//        List<Employee> listEmployee = new ArrayList<>();
-//        Employee employee1 = createEmployee (1,"Иван","Иванович","Иванов","81234567890", "123456789012","1234567", EmployeeType.CHIEF);
-//        Employee employee2 = createEmployee(2,"Петр","Петрович","Петров","82345678901","234567890123", "2345678", EmployeeType.MAKER);
-//        Employee employee3 = createEmployee(2,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
-//        listEmployee.add(employee1);
-//        listEmployee.add(employee2);
-//        instance.insertPeople(Employee.class, listEmployee);
-//        instance.updatePeople(Employee.class, employee3);
-//        listEmployee.clear();
-//        listEmployee.add(employee1);
-//        listEmployee.add(employee3);
-//        assertEquals(listEmployee, instance.read(Employee.class));
-//    }
-//
-//    @Test
-//    public void testUpdateEmployeeFail() throws Exception{
-//        log.info("testUpdateFail");
-//        List<Employee> listEmployee = new ArrayList<>();
-//        Employee employee1 = createEmployee(1,"Иван","Иванович","Иванов","81234567890", "123456789012","1234567", EmployeeType.CHIEF);
-//        Employee employee2 = createEmployee(2,"Петр","Петрович","Петров","82345678901","234567890123", "2345678", EmployeeType.MAKER);
-//        Employee employee3 = createEmployee(3,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
-//        listEmployee.add(employee1);
-//        listEmployee.add(employee2);
-//        instance.insertPeople(Employee.class, listEmployee);
-//        instance.updatePeople(Employee.class, employee3);
-//        assertEquals(listEmployee, instance.read(Employee.class));
-//    }
-//
-//    @Test
-//    public void testUpdateMeetingSuccess() throws Exception{
-//        log.info("UpdateMeetingSuccess");
-//        List<Meeting> listMeeting = new ArrayList<>();
-//        Meeting meeting = createMeeting(1,"2020-12-15 11:55",true, false);
-//        listMeeting.add(meeting);
-//        instance.insertMeeting(listMeeting);
-//        Meeting meeting2 = createMeeting(1,"2020-12-15 11:55",false, false);
-//        instance.updateMeeting(meeting2);
-//        assertEquals(meeting2, instance.getMeetingByID(1));
-//    }
-//
-//    @Test
-//    public void testUpdateMeetingFail() throws Exception{
-//        log.info("UpdateMeetingSuccess");
-//        List<Meeting> listMeeting = new ArrayList<>();
-//        Meeting meeting = createMeeting(1,"2020-12-15 11:55",true, false);
-//        listMeeting.add(meeting);
-//        instance.insertMeeting(listMeeting);
-//        Meeting meeting2 = createMeeting(2,"2020-12-15 11:55",false, false);
-//        instance.updateMeeting(meeting2);
-//        assertEquals(listMeeting, instance.read(Meeting.class));
-//    }
-//
+    @Test
+    public void testInsertPriceParametersSuccess() throws Exception{
+        log.info("insertPriceParametersSuccess");
+        List<PriceParameters> listPriceParameters = new ArrayList<>();
+        List<CoverPrice> listCoverPrice = new ArrayList<>();
+        CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
+        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
+        listCoverPrice.add(coverPrice);
+        listCoverPrice.add(coverPrice2);
+        PriceParameters priceParameters = createPriceParameters(1, 13.4, listCoverPrice, 16.3, "2019-01-01", "2021-01-01");
+        listPriceParameters.add(priceParameters);
+        instance.insertCoverPrice(listCoverPrice);
+        instance.insertPriceParameters(listPriceParameters);
+        assertEquals(1, instance.getPriceParametersByID(1).getId());
+    }
+
+    @Test
+    public void testInsertPriceParametersFail() throws Exception{
+        log.info("insertPriceParametersFail");
+        List<PriceParameters> listPriceParameters = new ArrayList<>();
+        List<CoverPrice> listCoverPrice = new ArrayList<>();
+        CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
+        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
+        listCoverPrice.add(coverPrice);
+        listCoverPrice.add(coverPrice2);
+        PriceParameters priceParameters = createPriceParameters(1, 13.4, listCoverPrice, 16.3, "2019-01-01", "2021-01-01");
+        listPriceParameters.add(priceParameters);
+        instance.insertPriceParameters(listPriceParameters);
+        assertNull(instance.getPriceParametersByID(1));
+    }
+
+    @Test
+    public void testInsertOrderSuccess() throws Exception{
+        log.info("insertOrderSuccess");
+        List<Order> listOrder = new ArrayList<>();
+        List<Employee> listEmployee = new ArrayList<>();
+        List<Author> listAuthor = new ArrayList<>();
+        List<CoverPrice> listCoverPrice = new ArrayList<>();
+        List<PriceParameters> listPriceParameters = new ArrayList<>();
+        Employee employee2 = createEmployee(2,"Петр","Петрович","Петров","82345678901","234567890123", "2345678", EmployeeType.MAKER);
+        Employee employee3 = createEmployee(3,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        listAuthor.add(author);
+        CoverPrice coverPrice = createCoverPrice(1, CoverType.RIGID_COVER, 123.5);
+        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
+        listCoverPrice.add(coverPrice);
+        listCoverPrice.add(coverPrice2);
+        PriceParameters priceParameters = createPriceParameters(1, 2.4, listCoverPrice, 1.3, "2019-01-01", "2021-01-01");
+        Order order = createOrder(1,author,"Цифровая бухгалтерия",4,"2020-09-03", CoverType.RIGID_COVER, employee2, employee3, priceParameters, 229, 100, 9700.75 , BookStatus.EDITING);
+        listOrder.add(order);
+        listEmployee.add(employee2);
+        listEmployee.add(employee3);
+        listPriceParameters.add(priceParameters);
+        instance.insertAuthor(listAuthor);
+        instance.insertEmployee(listEmployee);
+        instance.insertCoverPrice(listCoverPrice);
+        instance.insertPriceParameters(listPriceParameters);
+        instance.insertOrder(listOrder);
+        assertEquals(order, instance.getOrderByID(1));
+    }
+
+    @Test
+    public void testInsertOrderFail() throws Exception{
+        log.info("insertOrderFail");
+        List<Order> listOrder = new ArrayList<>();
+        List<CoverPrice> listCoverPrice = new ArrayList<>();
+        Employee employee2 = createEmployee(2,"Петр","Петрович","Петров","82345678901","234567890123", "2345678", EmployeeType.MAKER);
+        Employee employee3 = createEmployee(3,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        CoverPrice coverPrice = createCoverPrice(1, CoverType.RIGID_COVER, 123.5);
+        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
+        listCoverPrice.add(coverPrice);
+        listCoverPrice.add(coverPrice2);
+        PriceParameters priceParameters = createPriceParameters(1, 2.4, listCoverPrice, 1.3, "2019-01-01", "2021-01-01");
+        Order order = createOrder(1,author,"Цифровая бухгалтерия",4,"2020-09-03", CoverType.RIGID_COVER, employee2, employee3, priceParameters, 229, 100, 9700.75 , BookStatus.EDITING);
+        listOrder.add(order);
+        instance.insertOrder(listOrder);
+        assertNull(instance.getOrderByID(1));
+    }
+
+    @Test
+    public void testInsertCorrectionsSuccess() throws Exception{
+        log.info("insertCorrectionsSuccess");
+        List<Corrections> listCorrections = new ArrayList<>();
+        List<Employee> listEmployee = new ArrayList<>();
+        List<Author> listAuthor = new ArrayList<>();
+        List<CoverPrice> listCoverPrice = new ArrayList<>();
+        List<PriceParameters> listPriceParameters = new ArrayList<>();
+        List<Order> listOrder = new ArrayList<>();
+        Employee employee2 = createEmployee(2,"Петр","Петрович","Петров","82345678901","234567890123", "2345678", EmployeeType.MAKER);
+        Employee employee3 = createEmployee(3,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
+        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
+        listCoverPrice.add(coverPrice);
+        listCoverPrice.add(coverPrice2);
+        Meeting meet = instance.createDefaultMeeting();
+        PriceParameters priceParameters = createPriceParameters(1, 2.4, listCoverPrice, 1.3, "2019-01-01", "2021-01-01");
+        Order order = createOrder(1,author,"Цифровая бухгалтерия",4,"2020-09-03", CoverType.RIGID_COVER, employee2, employee3, priceParameters, 229, 100, 9700.75 , BookStatus.EDITING  );
+        Corrections corrections = createCorrections(1,35, "Цифровой контроль - это компьютерные системы",
+                "Цифровой контроль представляет собой компьютерные системы", "Повторяется конструкция", order, meet, CorrectionsStatus.WAIT_AUTHOR_AGR );
+        listEmployee.add(employee2);
+        listEmployee.add(employee3);
+        listAuthor.add(author);
+        listPriceParameters.add(priceParameters);
+        listOrder.add(order);
+        listCorrections.add(corrections);
+        instance.insertEmployee(listEmployee);
+        instance.insertAuthor(listAuthor);
+        instance.insertCoverPrice(listCoverPrice);
+        instance.insertPriceParameters(listPriceParameters);
+        instance.insertOrder(listOrder);
+        instance.insertCorrections(listCorrections);
+        assertEquals(corrections, instance.getCorrectionsByID(1));
+    }
+
+    @Test
+    public void testInsertCorrectionsFail() throws Exception{
+        log.info("insertCorrectionsFail");
+        List<Corrections> listCorrections = new ArrayList<>();
+        List<CoverPrice> listCoverPrice = new ArrayList<>();
+        Employee employee2 = createEmployee(2,"Петр","Петрович","Петров","82345678901","234567890123", "2345678", EmployeeType.MAKER);
+        Employee employee3 = createEmployee(3,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
+        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
+        listCoverPrice.add(coverPrice);
+        listCoverPrice.add(coverPrice2);
+        PriceParameters priceParameters = createPriceParameters(1, 2.4, listCoverPrice, 1.3, "2019-01-01", "2021-01-01");
+        Order order = createOrder(1,author,"Цифровая бухгалтерия",4,"2020-09-03", CoverType.RIGID_COVER, employee2, employee3, priceParameters, 229, 100, 9700.75 , BookStatus.EDITING  );
+        Corrections corrections = createCorrections(1,35, "Цифровой контроль - это компьютерные системы",
+                "Цифровой контроль представляет собой компьютерные системы", "Повторяется конструкция", order, null, CorrectionsStatus.WAIT_AUTHOR_AGR );
+        listCorrections.add(corrections);
+        instance.insertCorrections(listCorrections);
+        assertNull(instance.getCorrectionsByID(1));
+    }
+
+    @Test
+    public void testInsertBookSuccess() throws Exception{
+        log.info("insertBookSuccess");
+        List<Book> listBook = new ArrayList<>();
+        List<Author> listAuthor = new ArrayList<>();
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        Book book = createBook(1,author,"Цифровая бухгалтерия",4);
+        listBook.add(book);
+        listAuthor.add(author);
+        instance.insertAuthor(listAuthor);
+        instance.insertBook(listBook);
+        assertEquals(book, instance.getBookByID(1));
+    }
+
+    @Test
+    public void testInsertBookFail() throws Exception{
+        log.info("insertBookFail");
+        List<Book> listBook = new ArrayList<>();
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        Book book = createBook(1,author,"Цифровая бухгалтерия",4);
+        listBook.add(book);
+        instance.insertBook(listBook);
+        assertNull(instance.getBookByID(1));
+    }
+
+    @Test
+    public void testInsertFewSuccess() throws Exception{
+        log.info("testInsertFewSuccess");
+        List<Employee> listEmployee = new ArrayList<>();
+        List<Employee> expectListEmployee = new ArrayList<>();
+        Employee employee1 = createEmployee(1,"Иван","Иванович","Иванов","81234567890", "123456789012","1234567", EmployeeType.CHIEF);
+        Employee employee2 = createEmployee(2,"Петр","Петрович","Петров","82345678901","234567890123", "2345678", EmployeeType.MAKER);
+        Employee employee3 = createEmployee(3,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
+        listEmployee.add(employee1);
+        listEmployee.add(employee2);
+        instance.insertEmployee(listEmployee);
+        listEmployee.clear();
+        listEmployee.add(employee3);
+        assertEquals(expectListEmployee, instance.insertEmployee(listEmployee));
+        assertEquals(employee1, instance.getEmployeeById(1));
+        assertEquals(employee2, instance.getEmployeeById(2));
+        assertEquals(employee3, instance.getEmployeeById(3));
+    }
+
+    @Test
+    public void testInsertFewFail() throws Exception{
+        log.info("testInsertFewFail");
+        List<Employee> listEmployee = new ArrayList<>();
+        List<Employee> expectListEmployee = new ArrayList<>();
+        Employee employee1 = createEmployee(1,"Иван","Иванович","Иванов","81234567890", "123456789012","1234567", EmployeeType.CHIEF);
+        Employee employee2 = createEmployee(2,"Петр","Петрович","Петров","82345678901","234567890123", "2345678", EmployeeType.MAKER);
+        Employee employee3 = createEmployee(2,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
+        listEmployee.add(employee1);
+        listEmployee.add(employee2);
+        instance.insertEmployee(listEmployee);
+        listEmployee.clear();
+        listEmployee.add(employee1);
+        listEmployee.add(employee3);
+        expectListEmployee.add(employee3);
+        expectListEmployee.clear();
+        expectListEmployee.add(employee1);
+        expectListEmployee.add(employee2);
+        assertEquals(employee1, instance.getEmployeeById(1));
+        assertEquals(employee2, instance.getEmployeeById(2));
+        assertNotEquals(employee3, instance.getEmployeeById(2));
+    }
+
+    //update
+    @Test
+    public void testUpdateEmployeeSuccess() throws Exception{
+        log.info("testUpdateSuccess");
+        List<Employee> listEmployee = new ArrayList<>();
+        Employee employee1 = createEmployee (1,"Иван","Иванович","Иванов","81234567890", "123456789012","1234567", EmployeeType.CHIEF);
+        Employee employee2 = createEmployee(2,"Петр","Петрович","Петров","82345678901","234567890123", "2345678", EmployeeType.MAKER);
+        Employee employee3 = createEmployee(2,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
+        listEmployee.add(employee1);
+        listEmployee.add(employee2);
+        instance.insertEmployee(listEmployee);
+        instance.updateEmployee(employee3);
+        listEmployee.clear();
+        listEmployee.add(employee1);
+        listEmployee.add(employee3);
+        assertEquals(employee1, instance.getEmployeeById(1));
+        assertEquals(employee3, instance.getEmployeeById(2));
+    }
+
+    @Test
+    public void testUpdateEmployeeFail() throws Exception{
+        log.info("testUpdateFail");
+        List<Employee> listEmployee = new ArrayList<>();
+        Employee employee1 = createEmployee(1,"Иван","Иванович","Иванов","81234567890", "123456789012","1234567", EmployeeType.CHIEF);
+        Employee employee2 = createEmployee(2,"Петр","Петрович","Петров","82345678901","234567890123", "2345678", EmployeeType.MAKER);
+        Employee employee3 = createEmployee(3,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
+        listEmployee.add(employee1);
+        listEmployee.add(employee2);
+        instance.insertEmployee(listEmployee);
+        instance.updateEmployee(employee3);
+        assertNull(instance.getEmployeeById(3));
+    }
+
+    @Test
+    public void testUpdateMeetingSuccess() throws Exception{
+        log.info("UpdateMeetingSuccess");
+        List<Meeting> listMeeting = new ArrayList<>();
+        Meeting meeting = createMeeting(1,"2020-12-15 11:55",true, false);
+        listMeeting.add(meeting);
+        instance.insertMeeting(listMeeting);
+        Meeting meeting2 = createMeeting(1,"2020-12-15 11:55",false, false);
+        instance.updateMeeting(meeting2);
+        assertEquals(meeting2, instance.getMeetingByID(1));
+    }
+
+    @Test
+    public void testUpdateMeetingFail() throws Exception{
+        log.info("UpdateMeetingSuccess");
+        List<Meeting> listMeeting = new ArrayList<>();
+        Meeting meeting = createMeeting(1,"2020-12-15 11:55",true, false);
+        listMeeting.add(meeting);
+        instance.insertMeeting(listMeeting);
+        Meeting meeting2 = createMeeting(2,"2020-12-15 11:55",false, false);
+        instance.updateMeeting(meeting2);
+        assertNull(instance.getMeetingByID(2));
+    }
+
 //    @Test
 //    public void testUpdateBookSuccess() throws Exception{
 //        log.info("testUpdateBookSuccess");
