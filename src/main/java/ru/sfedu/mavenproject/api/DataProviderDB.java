@@ -645,405 +645,275 @@ public class DataProviderDB {
         return false;
     }
 
-//    public boolean updateCoverPrice(CoverPrice obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-//        Class cl = CoverPrice.class;
-//        List<CoverPrice> list = read(cl);
-//        CoverPrice prevObj;
-//        int index = list.indexOf(getCoverPriceByID(obj.getId()));
-//        if (index>(-1)){
-//            prevObj = list.get(index);
-//            list.set(index, obj);
-//            deleteFile(cl);
-//            List<CoverPrice> listNotInsert = insertCoverPrice(list);
-//            if (listNotInsert.indexOf(obj)==-1){
-//                log.debug("update success");
-//                return true;
-//            }else{
-//                list.set(index, prevObj);
-//                deleteFile(cl);
-//                insertCoverPrice(list);
-//            }
-//        }
-//        log.debug("update fail");
-//        return false;
-//    }
-//
-//    public boolean updatePriceParameters(PriceParameters obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-//        Class cl = PriceParameters.class;
-//        List<PriceParameters> list = read(cl);
-//        PriceParameters prevObj;
-//        int index = list.indexOf(getPriceParametersByID(obj.getId()));
-//        if (index>(-1)){
-//            prevObj = list.get(index);
-//            list.set(index, obj);
-//            deleteFile(cl);
-//            List<PriceParameters> listNotInsert = insertPriceParameters(list);
-//            if (listNotInsert.indexOf(obj)==-1){
-//                log.debug("update success");
-//                return true;
-//            }else{
-//                list.set(index, prevObj);
-//                deleteFile(cl);
-//                insertPriceParameters(list);
-//            }
-//        }
-//        log.debug("update fail");
-//        return false;
-//    }
-//
-//    public boolean updateOrder(Order obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-//        Class cl = Order.class;
-//        List<Order> list = read(cl);
-//        Order prevObj;
-//        int index = list.indexOf(getBookByID(cl, obj.getId()));
-//        if (index>(-1)){
-//            prevObj = list.get(index);
-//            list.set(index, obj);
-//            deleteFile(cl);
-//            List<Order> listNotInsert = insertOrder(list);
-//            if (listNotInsert.indexOf(obj)==-1){
-//                log.debug("update success");
-//                return true;
-//            }else{
-//                list.set(index, prevObj);
-//                deleteFile(cl);
-//                insertOrder(list);
-//            }
-//        }
-//        log.debug("update fail");
-//        return false;
-//    }
-//
-//    public boolean updateCorrections(Corrections obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-//        Class cl = Corrections.class;
-//        List<Corrections> list = read(cl);
-//        Corrections prevObj;
-//        int index = list.indexOf(getCorrectionsByID(obj.getId()));
-//        if (index>(-1)){
-//            prevObj = list.get(index);
-//            list.set(index, obj);
-//            deleteFile(cl);
-//            List<Corrections> listNotInsert = insertCorrections(list);
-//            if (listNotInsert.indexOf(obj)==-1){
-//                log.debug("update success");
-//                return true;
-//            }else{
-//                list.set(index, prevObj);
-//                deleteFile(cl);
-//                insertCorrections(list);
-//            }
-//        }
-//        log.debug("update fail");
-//        return false;
-//    }
-//
-//    public boolean updateBook(Book obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-//        Class cl = Book.class;
-//        List<Book> list = read(cl);
-//        Book prevObj;
-//        int index = list.indexOf(getBookByID(cl, obj.getId()));
-//        if (index>(-1)){
-//            prevObj = list.get(index);
-//            list.set(index, obj);
-//            deleteFile(cl);
-//            List<Book> listNotInsert = insertBook(list);
-//            if (listNotInsert.indexOf(obj)==-1){
-//                log.debug("update success");
-//                return true;
-//            }else{
-//                list.set(index, prevObj);
-//                deleteFile(cl);
-//                insertBook(list);
-//            }
-//        }
-//        log.debug("update fail");
-//        return false;
-//    }
-//
-//    public <T> boolean deleteObj(Class cl, T obj) {
-//        try {
-//            switch (cl.getSimpleName().toLowerCase()) {
-//                case Constants.CORRECTIONS:
-//                    Corrections corObj = (Corrections) obj;
-//                    log.info("delete " + Constants.CORRECTIONS);
-//                    return deleteCorrections(corObj);
-//                case Constants.PEOPLE:
-//                    People peoplObj = (People) obj;
-//                    log.info("delete " + Constants.PEOPLE);
-//                    return deletePeople(peoplObj);
-//                case Constants.BOOK:
-//                    Book bookObj = (Book) obj;
-//                    log.info("delete " + Constants.BOOK);
-//                    return deleteBook(bookObj);
-//                case Constants.EMPLOYEE:
-//                    Employee emplObj = (Employee) obj;
-//                    log.info("delete " + Constants.EMPLOYEE);
-//                    return deleteEmployee(emplObj);
-//                case Constants.PRICEPARAMETERS:
-//                    PriceParameters priceObj = (PriceParameters) obj;
-//                    log.info("delete " + Constants.PRICEPARAMETERS);
-//                    return deletePriceParameters(priceObj);
-//                case Constants.ORDER:
-//                    Order ordObj = (Order) obj;
-//                    log.info("delete " + Constants.ORDER);
-//                    return deleteOrder(ordObj);
-//                case Constants.MEETING:
-//                    Meeting meetObj = (Meeting) obj;
-//                    log.info("delete " + Constants.MEETING);
-//                    return deleteMeeting(meetObj);
-//                case Constants.AUTHOR:
-//                    Author authObj = (Author) obj;
-//                    log.info("delete " + Constants.AUTHOR);
-//                    return deleteAuthor(authObj);
-//                case Constants.COVERPRICE:
-//                    CoverPrice covObj = (CoverPrice) obj;
-//                    log.info("delete " + Constants.COVERPRICE);
-//                    return deleteCoverPrice(covObj);
-//                default:
-//                    log.debug("default case");
-//                    return false;
-//            }
-//        }catch (IOException | CsvDataTypeMismatchException | CsvRequiredFieldEmptyException e){
-//            log.error(e);
-//            return false;
-//        }
-//    }
-//
-//    public boolean deleteCorrections(Corrections obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-//        Class cl = Corrections.class;
-//        List<Corrections> list = read(cl);
-//        try {
-//            checkListIsNotEmpty(list);
-//            if (list.indexOf(obj) > (-1)) {
-//                list.removeIf(el -> el.equals(obj));
-//                deleteFile(cl);
-//                insertCorrections(list);
-//                log.debug("delete success");
-//                return true;
-//            } else {
-//                log.debug("delete fail");
-//                return false;
-//            }
-//        }catch (Exception e){
-//            log.debug("csv is empty");
-//            return false;
-//        }
-//    }
-//
-//    public boolean deletePeople(People obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-//        Class cl = People.class;
-//        List<People> list = read(cl);
-//        try {
-//            checkListIsNotEmpty(list);
-//            if (list.indexOf(obj) > (-1)) {
-//                list.removeIf(el -> el.equals(obj));
-//                deleteFile(cl);
-//                insertPeople(cl, list);
-//                log.debug("delete success");
-//                return true;
-//            } else {
-//                log.debug("delete fail");
-//                return false;
-//            }
-//        }catch (Exception e){
-//            log.debug("csv is empty");
-//            return false;
-//        }
-//    }
-//
-//    public boolean deleteBook(Book obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-//        Class cl = Book.class;
-//        List<Book> list = read(cl);
-//        try {
-//            checkListIsNotEmpty(list);
-//            if (list.indexOf(obj) > (-1)) {
-//                list.removeIf(el -> el.equals(obj));
-//                deleteFile(cl);
-//                insertBook(list);
-//                log.debug("delete success");
-//                return true;
-//            } else {
-//                log.debug("delete fail");
-//                return false;
-//            }
-//        }catch (Exception e){
-//            log.debug("csv is empty");
-//            return false;
-//        }
-//    }
-//
-//    public boolean deleteEmployee(Employee obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-//        Class cl = Employee.class;
-//        List<Employee> list = read(cl);
-//        try {
-//            checkListIsNotEmpty(list);
-//            List<Order> listOrder = read(Order.class);
-//            if (!listOrder.stream().anyMatch(el -> (el.getBookEditor().getId() != obj.getId() || el.getBookMaker().getId() == obj.getId()))) {
-//                list.removeIf(el -> el.equals(obj));
-//                deleteFile(cl);
-//                insertPeople(cl, list);
-//                log.debug("delete success");
-//                return true;
-//            } else {
-//                log.debug("delete fail");
-//                return false;
-//            }
-//        }catch (Exception e){
-//            log.debug("csv is empty");
-//            return false;
-//        }
-//    }
-//
-//    public boolean deletePriceParameters(PriceParameters obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-//        Class cl = PriceParameters.class;
-//        List<PriceParameters> list = read(cl);
-//        try {
-//            checkListIsNotEmpty(list);
-//            List<Order> listOrder2 = read(Order.class);
-//            if (!listOrder2.stream().anyMatch(el -> el.getBookPriceParameters().getId() == obj.getId())) {
-//                list.removeIf(el -> el.equals(obj));
-//                deleteFile(cl);
-//                insertPriceParameters(list);
-//                log.debug("delete success");
-//                return true;
-//            } else {
-//                log.debug("delete fail");
-//                return false;
-//            }
-//        }catch (Exception e){
-//            log.debug("csv is empty");
-//            return false;
-//        }
-//    }
-//
-//    public boolean deleteOrder(Order obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-//        Class cl = Order.class;
-//        List<Order> list = read(cl);
-//        try {
-//            checkListIsNotEmpty(list);
-//            List<Corrections> listCorrections = read(Corrections.class);
-//            if (!listCorrections.stream().anyMatch(el -> el.getOrder().getId() == obj.getId())) {
-//                list.removeIf(el -> el.equals(obj));
-//                deleteFile(cl);
-//                insertOrder(list);
-//                log.debug("delete success");
-//                return true;
-//            } else {
-//                log.debug("delete fail");
-//                return false;
-//            }
-//        }catch (Exception e){
-//            log.debug("csv is empty");
-//            return false;
-//        }
-//    }
-//
-//    public boolean deleteMeeting(Meeting obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-//        Class cl = Meeting.class;
-//        List<Meeting> list = read(cl);
-//        try {
-//            checkListIsNotEmpty(list);
-//            List<Corrections> listCorrections2 = read(Book.class);
-//            if (!listCorrections2.stream().anyMatch(el -> el.getMeet().getId() == obj.getId())) {
-//                list.removeIf(el -> el.equals(obj));
-//                deleteFile(cl);
-//                insertMeeting(list);
-//                log.debug("delete success");
-//                return true;
-//            } else {
-//                log.debug("delete fail");
-//                return false;
-//            }
-//        }catch (Exception e){
-//            log.debug("csv is empty");
-//            return false;
-//        }
-//    }
-//
-//    public boolean deleteAuthor(Author obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-//        Class cl = Author.class;
-//        List<Author> list = read(cl);
-//        try {
-//            checkListIsNotEmpty(list);
-//            List<Book> listBook = read(Book.class);
-//            if (!listBook.stream().anyMatch(el -> el.getAuthor().getId() == obj.getId())) {
-//                list.removeIf(el -> el.equals(obj));
-//                deleteFile(cl);
-//                insertPeople(cl, list);
-//                log.debug("delete success");
-//                return true;
-//            } else {
-//                log.debug("delete fail");
-//                return false;
-//            }
-//        }catch (Exception e){
-//            log.debug("csv is empty");
-//            return false;
-//        }
-//    }
-//
-//    public boolean deleteCoverPrice(CoverPrice obj) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-//        Class cl = CoverPrice.class;
-//        List<CoverPrice> list = read(cl);
-//        try {
-//            checkListIsNotEmpty(list);
-//            List<PriceParameters> listPriceParameters = read(PriceParameters.class);
-//            if (!listPriceParameters.stream().anyMatch(el -> el.getCoverPrice().stream().anyMatch(id -> id.getId() == obj.getId()))) {
-//                list.removeIf(el -> el.equals(obj));
-//                deleteFile(cl);
-//                insertCoverPrice(list);
-//                log.debug("delete success");
-//                return true;
-//            } else {
-//                log.debug("delete fail");
-//                return false;
-//            }
-//        }catch (Exception e){
-//            log.debug("csv is empty");
-//            return false;
-//        }
-//    }
-//
-//    public long getMaxId (Class cl) {
-//        try {
-//            switch (cl.getSimpleName().toLowerCase()) {
-//                case Constants.CORRECTIONS:
-//                    List<Corrections> corList = read(cl);
-//                    return corList.stream().max(Comparator.comparing(el -> el.getId())).get().getId();
-//                case Constants.PEOPLE:
-//                    List<People> poepList = read(cl);
-//                    return poepList.stream().max(Comparator.comparing(el -> el.getId())).get().getId();
-//                case Constants.BOOK:
-//                    List<Book> bookList = read(cl);
-//                    return bookList.stream().max(Comparator.comparing(el -> el.getId())).get().getId();
-//                case Constants.EMPLOYEE:
-//                    List<Employee> emplList = read(cl);
-//                    return emplList.stream().max(Comparator.comparing(el -> el.getId())).get().getId();
-//                case Constants.PRICEPARAMETERS:
-//                    List<PriceParameters> priceList = read(cl);
-//                    return priceList.stream().max(Comparator.comparing(el -> el.getId())).get().getId();
-//                case Constants.ORDER:
-//                    List<Order> orderList = read(cl);
-//                    return orderList.stream().max(Comparator.comparing(el -> el.getId())).get().getId();
-//                case Constants.MEETING:
-//                    List<Meeting> meetList = read(cl);
-//                    return meetList.stream().max(Comparator.comparing(el -> el.getId())).get().getId();
-//                case Constants.AUTHOR:
-//                    List<Author> authList = read(cl);
-//                    return authList.stream().max(Comparator.comparing(el -> el.getId())).get().getId();
-//                case Constants.COVERPRICE:
-//                    List<CoverPrice> covList = read(cl);
-//                    return covList.stream().max(Comparator.comparing(el -> el.getId())).get().getId();
-//                default:
-//                    log.debug("default case");
-//                    return -1;
-//            }
-//        }catch (NoSuchElementException | IOException e){
-//            log.error(e);
-//            return -1;
-//        }
-//    }
-//
+    public boolean updateCoverPrice(CoverPrice el)  {
+        log.info("updateCoverPrice");
+        try {
+            this.execute(String.format(
+                    DB_UPDATE, LOWER_COVERPRICE,
+                    String.format(COVERPRICE_UPDATE_FORMAT,el.getCoverType(), el.getPrice()),
+                    el.getId()
+            ));
+            return true;
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            log.error(e);
+        }
+        return false;
+    }
+
+    public boolean updateOrder(Order el)  {
+        log.info("updateOrder");
+        try {
+            checkNotNullObject(getEmployeeById(el.getBookMaker().getId()));
+            checkNotNullObject(getEmployeeById(el.getBookEditor().getId()));
+            checkNotNullObject(getPriceParametersByID(el.getBookPriceParameters().getId()));
+            this.execute(String.format(
+                    DB_UPDATE, LOWER_ORDER,
+                    String.format(ORDER_UPDATE_FORMAT,el.getAuthor().getId(), el.getTitle(), el.getNumberOfPages(),
+                            el.getOrderDate(),el.getCoverType(),el.getBookMaker().getId(),el.getBookEditor().getId(),
+                            el.getBookPriceParameters().getId(),el.getFinalNumberOfPages(),el.getNumberOfCopies(),
+                            el.getPrice(),el.getBookStatus()),
+                    el.getId()
+            ));
+            return true;
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            log.error(e);
+        } catch (Exception e) {
+            log.error(e);
+        }
+        return false;
+    }
+
+    public boolean updateCorrections(Corrections el)  {
+        log.info("updateCorrections");
+        try {
+            checkNotNullObject(getOrderByID(el.getOrder().getId()));
+            checkNotNullObject(getMeetingByID(el.getMeet().getId()));
+            this.execute(String.format(
+                    DB_UPDATE, LOWER_CORRECTIONS,
+                    String.format(CORRECTIONS_UPDATE_FORMAT,el.getPage(), el.getTextBefore(), el.getTextAfter(),
+                            el.getComment(), el.getOrder().getId(), el.getMeet().getId(), el.getStatus()),
+                    el.getId()
+            ));
+            return true;
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            log.error(e);
+        } catch (Exception e) {
+            log.error(e);
+        }
+        return false;
+    }
+
+    public boolean updateBook(Book el)  {
+        log.info("updateBook");
+        try {
+            checkNotNullObject(getAuthorById(el.getAuthor().getId()));
+            this.execute(String.format(
+                    DB_UPDATE, LOWER_BOOK,
+                    String.format(BOOK_UPDATE_FORMAT,el.getAuthor().getId(), el.getTitle(), el.getNumberOfPages()),
+                    el.getId()
+            ));
+            return true;
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            log.error(e);
+        } catch (Exception e) {
+            log.error(e);
+        }
+        return false;
+    }
+
+    public <T> boolean deleteObj(Class cl, T obj) {
+        switch (cl.getSimpleName().toLowerCase()) {
+            case Constants.CORRECTIONS:
+                Corrections corObj = (Corrections) obj;
+                return deleteCorrections(corObj);
+            case Constants.PEOPLE:
+                People peoplObj = (People) obj;
+                return deletePeople(peoplObj);
+            case Constants.BOOK:
+                Book bookObj = (Book) obj;
+                return deleteBook(bookObj);
+            case Constants.EMPLOYEE:
+                Employee emplObj = (Employee) obj;
+                return deleteEmployee(emplObj);
+            case Constants.PRICEPARAMETERS:
+                PriceParameters priceObj = (PriceParameters) obj;
+                return deletePriceParameters(priceObj);
+            case Constants.ORDER:
+                Order ordObj = (Order) obj;
+                return deleteOrder(ordObj);
+            case Constants.MEETING:
+                Meeting meetObj = (Meeting) obj;
+                return deleteMeeting(meetObj);
+            case Constants.AUTHOR:
+                Author authObj = (Author) obj;
+                return deleteAuthor(authObj);
+            case Constants.COVERPRICE:
+                CoverPrice covObj = (CoverPrice) obj;
+                return deleteCoverPrice(covObj);
+            default:
+                log.debug("default case");
+                return false;
+        }
+    }
+
+    public boolean deleteCorrections(Corrections el) {
+        log.info("deleteCorrections");
+        try {
+            this.execute(String.format(
+                    DB_DELETE_BY_ID, LOWER_CORRECTIONS, el.getId()
+            ));
+            return true;
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            log.error(e);
+        }
+        return false;
+    }
+
+    public boolean deletePeople(People el) {
+        log.info("deletePeople");
+        try {
+            this.execute(String.format(
+                    DB_DELETE_BY_ID, LOWER_PEOPLE, el.getId()
+            ));
+            return true;
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            log.error(e);
+        }
+        return false;
+    }
+
+    public boolean deleteBook(Book el) {
+        log.info("deleteBook");
+        try {
+            this.execute(String.format(
+                    DB_DELETE_BY_ID, LOWER_BOOK, el.getId()
+            ));
+            return true;
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            log.error(e);
+        }
+        return false;
+    }
+
+    public boolean deleteEmployee(Employee el) {
+        log.info("deleteEmployee");
+        try {
+            ResultSet set = getResultSet(String.format(DB_SELECT_WHERE, Order.class.getSimpleName().toUpperCase(),ORDER_BOOK_MAKER,el.getId()));
+            checkFalse(set.next());
+            ResultSet set2 = getResultSet(String.format(DB_SELECT_WHERE, Order.class.getSimpleName().toUpperCase(),ORDER_BOOK_EDITOR,el.getId()));
+            checkFalse(set2.next());
+            this.execute(String.format(
+                    DB_DELETE_BY_ID, LOWER_EMPLOYEE, el.getId()
+            ));
+            return true;
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            log.error(e);
+        } catch (Exception e){
+            log.error(e);
+        }
+        return false;
+    }
+
+    public boolean deletePriceParameters(PriceParameters el) {
+        log.info("deletePriceParameters");
+        try {
+            ResultSet set = getResultSet(String.format(DB_SELECT_WHERE, Order.class.getSimpleName().toUpperCase(),ORDER_BOOK_PRICE_PARAMETERS,el.getId()));
+            checkFalse(set.next());
+            this.execute(String.format(
+                    DB_DELETE_BY_ID, LOWER_PRICEPARAMETERS, el.getId()
+            ));
+            return true;
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            log.error(e);
+        } catch (Exception e){
+            log.error(e);
+        }
+        return false;
+    }
+
+    public boolean deleteOrder(Order el) {
+        log.info("deleteOrder");
+        try {
+            ResultSet set = getResultSet(String.format(DB_SELECT_WHERE, Corrections.class.getSimpleName().toUpperCase(),CORRECTIONS_ORDER,el.getId()));
+            checkFalse(set.next());
+            this.execute(String.format(
+                    DB_DELETE_BY_ID, LOWER_ORDER, el.getId()
+            ));
+            return true;
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            log.error(e);
+        } catch (Exception e){
+            log.error(e);
+        }
+        return false;
+    }
+
+    public boolean deleteMeeting(Meeting el) {
+        log.info("deleteMeeting");
+        try {
+            ResultSet set = getResultSet(String.format(DB_SELECT_WHERE, Corrections.class.getSimpleName().toUpperCase(),CORRECTIONS_MEET,el.getId()));
+            checkFalse(set.next());
+            this.execute(String.format(
+                    DB_DELETE_BY_ID, LOWER_MEETING, el.getId()
+            ));
+            return true;
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            log.error(e);
+        } catch (Exception e){
+            log.error(e);
+        }
+        return false;
+    }
+
+    public boolean deleteAuthor(Author el) {
+        log.info("deleteAuthor");
+        try {
+            ResultSet set = getResultSet(String.format(DB_SELECT_WHERE, Book.class.getSimpleName().toUpperCase(),BOOK_AUTHOR,el.getId()));
+            checkFalse(set.next());
+            ResultSet set2 = getResultSet(String.format(DB_SELECT_WHERE, Order.class.getSimpleName().toUpperCase(),BOOK_AUTHOR,el.getId()));
+            checkFalse(set2.next());
+            this.execute(String.format(
+                    DB_DELETE_BY_ID, LOWER_AUTHOR, el.getId()
+            ));
+            return true;
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            log.error(e);
+        } catch (Exception e){
+            log.error(e);
+        }
+        return false;
+    }
+
+    public boolean deleteCoverPrice(CoverPrice el) {
+        log.info("deleteCoverPrice");
+        try {
+            ResultSet set = getResultSet(String.format(DB_SELECT_WHERE, COVERLINK,COVERLINK_COVERPRICE,el.getId()));
+            checkFalse(set.next());
+            this.execute(String.format(
+                    DB_DELETE_BY_ID, LOWER_COVERPRICE, el.getId()
+            ));
+            return true;
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            log.error(e);
+        } catch (Exception e){
+            log.error(e);
+        }
+        return false;
+    }
+
+    public long getMaxId (Class cl) {
+        try {
+            String tableName = cl.getSimpleName().toUpperCase();
+            ResultSet set = getResultSet(String.format(DB_SELECT_MAX_ID, tableName, tableName));
+            set.next();
+            return set.getLong(ID);
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            log.error(e);
+        }
+        return -1;
+
+    }
+
     public Employee createDefaultEmloyee(){
         Employee employee = new Employee();
         employee.setId(DEFAULT_ID);
@@ -1114,6 +984,10 @@ public class DataProviderDB {
 
     public void checkTrue (boolean result) throws Exception {
         if (!result) throw new Exception("Result false");
+    }
+
+    public void checkFalse (boolean result) throws Exception {
+        if (result) throw new Exception("Result true");
     }
 
     public <T> void checkNullObject (T obj) throws Exception {

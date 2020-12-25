@@ -425,98 +425,160 @@ class DataProviderDBTest extends TestBase {
         assertNull(instance.getMeetingByID(2));
     }
 
-//    @Test
-//    public void testUpdateBookSuccess() throws Exception{
-//        log.info("testUpdateBookSuccess");
-//        List<Book> listBook = new ArrayList<>();
-//        List<Author> listAuthor = new ArrayList<>();
-//        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
-//        Book book = createBook(1,author,"Цифровая бухгалтерия",4);
-//        listBook.add(book);
-//        listAuthor.add(author);
-//        instance.insertPeople(Author.class, listAuthor);
-//        instance.insertBook(listBook);
-//        Author author2 = createAuthor(12,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
-//        Book book2 = createBook(1,author2,"Цифровая бухгалтерия",4);
-//        listAuthor.clear();
-//        listAuthor.add(author2);
-//        instance.insertPeople(Author.class, listAuthor);
-//        instance.updateBook(book2);
-//        assertEquals(book2, instance.getBookByID(Book.class,1));
-//    }
-//
-//    @Test
-//    public void testUpdateBookFail() throws Exception{
-//        log.info("testUpdateBookFail");
-//        List<Book> listBook = new ArrayList<>();
-//        List<Author> listAuthor = new ArrayList<>();
-//        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
-//        Book book = createBook(1,author,"Цифровая бухгалтерия",4);
-//        listBook.add(book);
-//        listAuthor.add(author);
-//        instance.insertPeople(Author.class, listAuthor);
-//        instance.insertBook(listBook);
-//        Author author2 = createAuthor(12,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
-//        Book book2 = createBook(1,author2,"Цифровая бухгалтерия",4);
-//        instance.updateBook(book2);
-//        assertEquals(book, instance.getBookByID(Book.class,1));
-//    }
-//
-//    //delete
-//    @Test
-//    public void testDeleteBookSuccess() throws Exception{
-//        log.info("testDeleteBookSuccess");
-//        List<Book> listBook = new ArrayList<>();
-//        List<Author> listAuthor = new ArrayList<>();
-//        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
-//        Book book = createBook(1,author,"Цифровая бухгалтерия",4);
-//        listBook.add(book);
-//        listAuthor.add(author);
-//        instance.insertPeople(Author.class, listAuthor);
-//        instance.insertBook(listBook);
-//        instance.deleteObj(Book.class, book);
-//        instance.deleteObj(Author.class, author);
-//        assertNull(instance.getBookByID(Book.class,1));
-//        assertNull(instance.getPeopleByID(Author.class,10));
-//    }
-//
-//    @Test
-//    public void testDeleteBookFail() throws Exception{
-//        log.info("testDeleteBookFail");
-//        List<Book> listBook = new ArrayList<>();
-//        List<Author> listAuthor = new ArrayList<>();
-//        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
-//        Book book = createBook(1,author,"Цифровая бухгалтерия",4);
-//        listBook.add(book);
-//        listAuthor.add(author);
-//        instance.insertPeople(Author.class, listAuthor);
-//        instance.insertBook(listBook);
-//        instance.deleteObj(Author.class, author);
-//        instance.deleteObj(Book.class, book);
-//        assertEquals(author, instance.getPeopleByID(Author.class,10));
-//        assertNull(instance.getBookByID(Book.class,1));
-//    }
-//
-//    @Test
-//    public void testGetMaxIdSuccess() throws Exception {
-//        log.info("testGetMaxIdSuccess");
-//        List<People> listPeople = new ArrayList<>();
-//        People people1 = createPeople(1, "Иван", "Иванович", "Иванов", "81234567890");
-//        People people2 = createPeople(2, "Петр", "Петрович", "Петров", "82345678901");
-//        People people3 = createPeople(3, "Виктор", "Иванович", "Ткач", "83456789012");
-//        listPeople.add(people1);
-//        listPeople.add(people2);
-//        listPeople.add(people3);
-//        instance.insertPeople(People.class, listPeople);
-//        assertEquals(3, instance.getMaxId(People.class));
-//    }
-//
-//    @Test
-//    public void testGetMaxIdFail() throws Exception {
-//        log.info("testGetMaxIdFail");
-//        assertEquals(-1, instance.getMaxId(People.class));
-//    }
-//
+    @Test
+    public void testUpdateBookSuccess() throws Exception{
+        log.info("testUpdateBookSuccess");
+        List<Book> listBook = new ArrayList<>();
+        List<Author> listAuthor = new ArrayList<>();
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        Book book = createBook(1,author,"Цифровая бухгалтерия",4);
+        listBook.add(book);
+        listAuthor.add(author);
+        instance.insertAuthor(listAuthor);
+        instance.insertBook(listBook);
+        Author author2 = createAuthor(12,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        Book book2 = createBook(1,author2,"Цифровая бухгалтерия",4);
+        listAuthor.clear();
+        listAuthor.add(author2);
+        instance.insertAuthor(listAuthor);
+        instance.updateBook(book2);
+        assertEquals(book2, instance.getBookByID(1));
+    }
+
+    @Test
+    public void testUpdateBookFail() throws Exception{
+        log.info("testUpdateBookFail");
+        List<Book> listBook = new ArrayList<>();
+        List<Author> listAuthor = new ArrayList<>();
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        Book book = createBook(1,author,"Цифровая бухгалтерия",4);
+        listBook.add(book);
+        listAuthor.add(author);
+        instance.insertAuthor(listAuthor);
+        instance.insertBook(listBook);
+        Author author2 = createAuthor(12,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        Book book2 = createBook(1,author2,"Цифровая бухгалтерия",4);
+        instance.updateBook(book2);
+        assertEquals(book, instance.getBookByID(1));
+    }
+
+    //delete
+    @Test
+    public void testDeleteBookSuccess() throws Exception{
+        log.info("testDeleteBookSuccess");
+        List<Book> listBook = new ArrayList<>();
+        List<Author> listAuthor = new ArrayList<>();
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        Book book = createBook(1,author,"Цифровая бухгалтерия",4);
+        listBook.add(book);
+        listAuthor.add(author);
+        instance.insertAuthor(listAuthor);
+        instance.insertBook(listBook);
+        instance.deleteObj(Book.class, book);
+        instance.deleteObj(Author.class, author);
+        assertNull(instance.getBookByID(1));
+        assertNull(instance.getAuthorById(10));
+    }
+
+    @Test
+    public void testDeleteBookFail() throws Exception{
+        log.info("testDeleteBookFail");
+        List<Book> listBook = new ArrayList<>();
+        List<Author> listAuthor = new ArrayList<>();
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        Book book = createBook(1,author,"Цифровая бухгалтерия",4);
+        listBook.add(book);
+        listAuthor.add(author);
+        instance.insertAuthor(listAuthor);
+        instance.insertBook(listBook);
+        instance.deleteObj(Author.class, author);
+        instance.deleteObj(Book.class, book);
+        assertEquals(author, instance.getAuthorById(10));
+        assertNull(instance.getBookByID(1));
+    }
+
+    @Test
+    public void testDeleteOrderSuccess() throws Exception{
+        log.info("testDeleteOrderSuccess");
+        List<Order> listOrder = new ArrayList<>();
+        List<Employee> listEmployee = new ArrayList<>();
+        List<Author> listAuthor = new ArrayList<>();
+        List<CoverPrice> listCoverPrice = new ArrayList<>();
+        List<PriceParameters> listPriceParameters = new ArrayList<>();
+        Employee employee2 = createEmployee(2,"Петр","Петрович","Петров","82345678901","234567890123", "2345678", EmployeeType.MAKER);
+        Employee employee3 = createEmployee(3,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        listAuthor.add(author);
+        CoverPrice coverPrice = createCoverPrice(1, CoverType.RIGID_COVER, 123.5);
+        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
+        listCoverPrice.add(coverPrice);
+        listCoverPrice.add(coverPrice2);
+        PriceParameters priceParameters = createPriceParameters(1, 2.4, listCoverPrice, 1.3, "2019-01-01", "2021-01-01");
+        Order order = createOrder(1,author,"Цифровая бухгалтерия",4,"2020-09-03", CoverType.RIGID_COVER, employee2, employee3, priceParameters, 229, 100, 9700.75 , BookStatus.EDITING);
+        listOrder.add(order);
+        listEmployee.add(employee2);
+        listEmployee.add(employee3);
+        listPriceParameters.add(priceParameters);
+        instance.insertAuthor(listAuthor);
+        instance.insertEmployee(listEmployee);
+        instance.insertCoverPrice(listCoverPrice);
+        instance.insertPriceParameters(listPriceParameters);
+        instance.insertOrder(listOrder);
+        instance.deleteObj(Order.class,order);
+        assertNull(instance.getOrderByID(1));
+    }
+
+    @Test
+    public void testDeleteOrderFail() throws Exception{
+        log.info("testDeleteOrderFail");
+        List<Order> listOrder = new ArrayList<>();
+        List<Employee> listEmployee = new ArrayList<>();
+        List<Author> listAuthor = new ArrayList<>();
+        List<CoverPrice> listCoverPrice = new ArrayList<>();
+        List<PriceParameters> listPriceParameters = new ArrayList<>();
+        Employee employee2 = createEmployee(2,"Петр","Петрович","Петров","82345678901","234567890123", "2345678", EmployeeType.MAKER);
+        Employee employee3 = createEmployee(3,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        listAuthor.add(author);
+        CoverPrice coverPrice = createCoverPrice(1, CoverType.RIGID_COVER, 123.5);
+        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
+        listCoverPrice.add(coverPrice);
+        listCoverPrice.add(coverPrice2);
+        PriceParameters priceParameters = createPriceParameters(1, 2.4, listCoverPrice, 1.3, "2019-01-01", "2021-01-01");
+        Order order = createOrder(1,author,"Цифровая бухгалтерия",4,"2020-09-03", CoverType.RIGID_COVER, employee2, employee3, priceParameters, 229, 100, 9700.75 , BookStatus.EDITING);
+        listOrder.add(order);
+        listEmployee.add(employee2);
+        listEmployee.add(employee3);
+        listPriceParameters.add(priceParameters);
+        instance.insertAuthor(listAuthor);
+        instance.insertEmployee(listEmployee);
+        instance.insertCoverPrice(listCoverPrice);
+        instance.insertPriceParameters(listPriceParameters);
+        instance.insertOrder(listOrder);
+        instance.deleteObj(Employee.class,employee2);
+        assertEquals(employee2,instance.getEmployeeById(2));
+    }
+
+    @Test
+    public void testGetMaxIdSuccess() throws Exception {
+        log.info("testGetMaxIdSuccess");
+        List<People> listPeople = new ArrayList<>();
+        People people1 = createPeople(1, "Иван", "Иванович", "Иванов", "81234567890");
+        People people2 = createPeople(2, "Петр", "Петрович", "Петров", "82345678901");
+        People people3 = createPeople(3, "Виктор", "Иванович", "Ткач", "83456789012");
+        listPeople.add(people1);
+        listPeople.add(people2);
+        listPeople.add(people3);
+        instance.insertPeople(listPeople);
+        assertEquals(3, instance.getMaxId(People.class));
+    }
+
+    @Test
+    public void testGetMaxIdFail() throws Exception {
+        log.info("testGetMaxIdFail");
+        assertEquals(-1, instance.getMaxId(People.class));
+    }
+
 //    @Test
 //    public void alterBookInsertSuccess() throws Exception {
 //        log.info("alterBookInsertSuccess");

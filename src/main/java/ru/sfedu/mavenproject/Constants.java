@@ -17,11 +17,12 @@ public class Constants {
     static public final String DB_INSERT="INSERT INTO \"%s\"(%s) VALUES(%s)";
     static public final String DB_SELECT_BY_ID="SELECT * FROM \"%s\" WHERE id = %d";
     static public final String DB_SELECT_ALL="SELECT * FROM \"%s\"";
-    static public final String DB_SELECT_WHERE="SELECT * FROM \"%s\" WHERE %s";
+    static public final String DB_SELECT_WHERE="SELECT * FROM \"%s\" WHERE \"%S\"=%d";
     static public final String DB_UPDATE="UPDATE \"%s\" SET %s WHERE id = %d";
     static public final String DB_TRUNCATE="TRUNCATE TABLE \"%s\"";
     static public final String DB_DROP="DROP TABLE IF EXISTS \"%s\"";
-    static public final String DB_DELETE_BY_ID="DELETE FROM %s WHERE id = %d";
+    static public final String DB_DELETE_BY_ID="DELETE FROM \"%S\" WHERE id = %d";
+    static public final String DB_SELECT_MAX_ID="SELECT id FROM \"%S\" WHERE id in (SELECT max(id) from \"%S\")";
     static public final long DEFAULT_ID=1000;
 
     static public final String CREATE_PEOPLE="DROP TABLE IF EXISTS people; " +
@@ -109,6 +110,7 @@ public class Constants {
     static public final String COVERPRICE_PRICE="price";
     static public final String COVERPRICE_FIELDS=ID+","+COVERPRICE_COVER_TYPE+","+COVERPRICE_PRICE;
     static public final String COVERPRICE_INSERT_FORMAT="%d,'%s',%s";
+    static public final String COVERPRICE_UPDATE_FORMAT=COVERPRICE_COVER_TYPE+"='%s',"+COVERPRICE_COVER_TYPE+"=%s";
 
     static public final String CREATE_PRICEPARAMETERS="DROP TABLE IF EXISTS priceparameters; " +
             "CREATE TABLE priceparameters " +
@@ -126,6 +128,8 @@ public class Constants {
     static public final String PRICEPARAMETERS_FIELDS=ID+","+PRICEPARAMETERS_PAGE_PRICE+","
             +PRICEPARAMETERS_WORK_PRICE+","+PRICEPARAMETERS_VALID_FROM_DATE+","+PRICEPARAMETERS_VALID_TO_DATE;
     static public final String PRICEPARAMETERS_INSERT_FORMAT="%d,%s,%s,'%s','%s'";
+    static public final String PRICEPARAMETERS_UPDATE_FORMAT=PRICEPARAMETERS_PAGE_PRICE+"=%s,"+PRICEPARAMETERS_WORK_PRICE
+            +"=%s,"+PRICEPARAMETERS_VALID_FROM_DATE+"='%s',"+PRICEPARAMETERS_VALID_TO_DATE+"='%s'";
 
     static public final String CREATE_COVERLINK="DROP TABLE IF EXISTS COVERLINK; " +
             "CREATE TABLE COVERLINK " +
@@ -151,6 +155,7 @@ public class Constants {
     static public final String BOOK_NUMBER_OF_PAGES="numberOfPages";
     static public final String BOOK_FIELDS=ID+","+BOOK_AUTHOR+","+BOOK_TITLE+","+BOOK_NUMBER_OF_PAGES;
     static public final String BOOK_INSERT_FORMAT="%d,%d,'%s',%d";
+    static public final String BOOK_UPDATE_FORMAT=BOOK_AUTHOR+"=%d,"+BOOK_TITLE+"='%s',"+BOOK_NUMBER_OF_PAGES+"=%d";
 
     static public final String CREATE_ORDER="DROP TABLE IF EXISTS \"ORDER\"; " +
             "CREATE TABLE \"ORDER\" " +
@@ -182,6 +187,9 @@ public class Constants {
             +ORDER_DATE+","+ORDER_COVER_TYPE+","+ORDER_BOOK_MAKER+","+ORDER_BOOK_EDITOR+"," +ORDER_BOOK_PRICE_PARAMETERS+","
             +ORDER_FINAL_NUMBER_OF_PAGES+","+ORDER_NUMBER_OF_COPIES+","+ORDER_PRICE+","+ORDER_BOOK_STATUS;
     static public final String ORDER_INSERT_FORMAT="%d,%d,'%s',%d,'%s','%s',%d,%d,%d,%d,%d,%s,'%s'";
+    static public final String ORDER_UPDATE_FORMAT=BOOK_UPDATE_FORMAT+","+ORDER_DATE+"='%s',"+ORDER_COVER_TYPE+"='%s',"
+            +ORDER_BOOK_MAKER+"=%d,"+ORDER_BOOK_EDITOR+"=%d,"+ORDER_BOOK_PRICE_PARAMETERS+"=%d,"+ORDER_FINAL_NUMBER_OF_PAGES
+            +"=%d,"+ORDER_NUMBER_OF_COPIES+"=%d,"+ORDER_PRICE+"=%s,"+ORDER_BOOK_STATUS+"='%s'";
 
     static public final String CREATE_CORRECTIONS="DROP TABLE IF EXISTS corrections; " +
             "CREATE TABLE corrections " +
@@ -205,6 +213,8 @@ public class Constants {
     static public final String CORRECTIONS_FIELDS=ID+","+CORRECTIONS_PAGE+","+CORRECTIONS_TEXT_BEFORE+","+CORRECTIONS_TEXT_AFTER+","
             +CORRECTIONS_COMMENT+",\"ORDER\","+CORRECTIONS_MEET+","+CORRECTIONS_STATUS;
     static public final String CORRECTIONS_INSERT_FORMAT="%d,%d,'%s','%s','%s',%d,%d,'%s'";
+    static public final String CORRECTIONS_UPDATE_FORMAT=CORRECTIONS_PAGE+"=%d,"+CORRECTIONS_TEXT_BEFORE+"='%s',"+CORRECTIONS_TEXT_AFTER
+            +"='%s',"+CORRECTIONS_COMMENT+"='%s',\"ORDER\"=%d,"+CORRECTIONS_MEET+"=%d,"+CORRECTIONS_STATUS+"='%s'";
 
     static public final String PATH_XML = "xml_path";
     static public final String FILE_EXTENSION_XML = "xml";
