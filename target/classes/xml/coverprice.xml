@@ -1,0 +1,10 @@
+<main>
+   <object class="ru.sfedu.mavenproject.bean.CoverPrice" id="1">
+      <coverType>RIGID_COVER</coverType>
+      <price>123.5</price>
+   </object>
+   <object class="ru.sfedu.mavenproject.bean.CoverPrice" id="2">
+      <coverType>PAPERBACK</coverType>
+      <price>143.8</price>
+   </object>
+</main>

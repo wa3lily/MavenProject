@@ -1,0 +1,18 @@
+<main>
+   <object class="ru.sfedu.mavenproject.bean.PriceParameters" id="1">
+      <pagePrice>2.4</pagePrice>
+      <coverPrice class="java.util.ArrayList">
+         <coverPrice id="1">
+            <coverType>RIGID_COVER</coverType>
+            <price>123.5</price>
+         </coverPrice>
+         <coverPrice id="2">
+            <coverType>PAPERBACK</coverType>
+            <price>143.8</price>
+         </coverPrice>
+      </coverPrice>
+      <workPrice>1.3</workPrice>
+      <validFromDate>2019-01-01</validFromDate>
+      <validToDate>2021-01-01</validToDate>
+   </object>
+</main>

@@ -1,7 +1,5 @@
 package ru.sfedu.mavenproject.api;
 
-import com.opencsv.exceptions.CsvDataTypeMismatchException;
-import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.sfedu.mavenproject.Constants;
@@ -14,15 +12,19 @@ import ru.sfedu.mavenproject.bean.enums.EmployeeType;
 import java.io.*;
 import java.sql.*;
 import java.text.DecimalFormatSymbols;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.Date;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.Collectors;
 
 import static ru.sfedu.mavenproject.Constants.*;
 import static ru.sfedu.mavenproject.utils.ConfigurationUtil.getConfigurationEntry;
 
-public class DataProviderDB {
+public class DataProviderDB implements DataProvider{
 
-    private static Logger log = LogManager.getLogger(DataProviderDB.class);
+    private final Logger log = LogManager.getLogger(DataProviderDB.class);
     private Connection connection;
 
     private Connection connection() throws ClassNotFoundException, SQLException, IOException {
@@ -33,15 +35,6 @@ public class DataProviderDB {
         );
         return connection;
     }
-
-//    private Connection getConnection() throws IOException, ClassNotFoundException, SQLException {
-//        Class.forName(getConfigurationEntry(DB_DRIVER));
-//        return DriverManager.getConnection(
-//                getConfigurationEntry(DB_URL),
-//                getConfigurationEntry(DB_USER),
-//                getConfigurationEntry(DB_PASS)
-//        );
-//    }
 
     public void execute(String sql) throws SQLException, IOException, ClassNotFoundException {
         log.debug(sql);
@@ -533,7 +526,7 @@ public class DataProviderDB {
         return returnList;
     }
 
-    public List<Book> insertBook(List<Book> list) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+    public List<Book> insertBook(List<Book> list) throws IOException {
         log.info("insertBook");
         List<Book> returnList = new ArrayList<>();
         list.stream().forEach(el -> {
@@ -927,23 +920,24 @@ public class DataProviderDB {
         return employee;
     }
 
-//    public PriceParameters createDefaultPriceParameters() throws IOException {
-//        try {
-//            List<CoverPrice> list = new ArrayList<>();
-//            createDefaultCoverPrice();
-//            list.add(getCoverPriceByID(DEFAULT_ID));
-//            PriceParameters priceParameters = new PriceParameters();
-//            priceParameters.setId(DEFAULT_ID);
-//            priceParameters.setPagePrice(0.0);
-//            priceParameters.setCoverPrice(list);
-//            priceParameters.setWorkPrice(0.0);
-//            priceParameters.setValidFromDate("1970-01-01");
-//            priceParameters.setValidToDate("1970-01-02");
-//            return priceParameters;
-//        }catch (IOException e){
-//            return null;
-//        }
-//    }
+    public PriceParameters createDefaultPriceParameters() throws IOException {
+        try {
+            List<CoverPrice> list = new ArrayList<>();
+            createDefaultCoverPrice();
+            list.add(getCoverPriceByID(DEFAULT_ID));
+            PriceParameters priceParameters = new PriceParameters();
+            priceParameters.setId(DEFAULT_ID);
+            priceParameters.setPagePrice(0.0);
+            priceParameters.setCoverPrice(list);
+            priceParameters.setWorkPrice(0.0);
+            priceParameters.setValidFromDate("1970-01-01");
+            priceParameters.setValidToDate("1970-01-02");
+            return priceParameters;
+        } catch (SQLException | ClassNotFoundException e) {
+            log.error(e);
+        }
+        return null;
+    }
 
     public CoverPrice createDefaultCoverPrice(){
         CoverPrice coverPrice = new CoverPrice();
@@ -994,5 +988,793 @@ public class DataProviderDB {
         if (obj != null) throw new Exception("Object is not null");
     }
 
+    //Author
 
+    @Override
+    public boolean alterBook (long authorId, long id, String title, int numberOfPages) {
+        try {
+            checkNotNullObject(getAuthorById(authorId));
+            Author author = getAuthorById(authorId);
+            Book book = new Book();
+            book.setId(id);
+            book.setAuthor(author);
+            book.setTitle(title);
+            book.setNumberOfPages(numberOfPages);
+            if (getBookByID(id) != null) {
+                log.info("Update Book");
+                return updateBook(book);
+            } else {
+                log.info("Insert Book");
+                List<Book> list = new ArrayList<>();
+                list.add(book);
+                return insertBook(list).isEmpty();
+            }
+        }catch (IOException e){
+            log.error(e);
+            return false;
+        }catch (Exception e) {
+            log.error(e);
+            log.info("There is not such Author");
+            return false;
+        }
+    }
+
+    @Override
+    public Optional<Order> makeOrder (long id, String orderDate, String coverType, int numberOfCopies){
+        try {
+            checkNotNullObject(getBookByID(id));
+            Book book = getBookByID(id);
+            Order order = new Order();
+            order.setId(book.getId());
+            order.setAuthor(book.getAuthor());
+            order.setTitle(book.getTitle());
+            order.setNumberOfPages(book.getNumberOfPages());
+            order.setFinalNumberOfPages(book.getNumberOfPages());
+            order.setOrderDate(orderDate);
+            order.setCoverType(CoverType.valueOf(coverType));
+            List<Employee> listEmployee = new ArrayList<>();
+            listEmployee.add(createDefaultEmloyee());
+            insertEmployee(listEmployee);
+            List<CoverPrice> listCoverPrice = new ArrayList<>();
+            listCoverPrice.add(createDefaultCoverPrice());
+            insertCoverPrice(listCoverPrice);
+            List<PriceParameters> listPriceParameters = new ArrayList<>();
+            listPriceParameters.add(createDefaultPriceParameters());
+            insertPriceParameters(listPriceParameters);
+            order.setBookMaker(getEmployeeById(DEFAULT_ID));
+            order.setBookEditor(getEmployeeById(DEFAULT_ID));
+            order.setBookPriceParameters(getPriceParametersByID(DEFAULT_ID));
+            order.setNumberOfCopies(numberOfCopies);
+            order.setBookStatus(BookStatus.UNTOUCHED);
+            return Optional.of(order);
+        }catch (IOException e) {
+            log.error(e);
+        } catch (Exception e) {
+            log.error(e);
+            log.info("There is not such Book");
+        }
+        return Optional.empty();
+
+
+    }
+
+    @Override
+    public boolean saveOrderInformation (Order order) {
+        try {
+            checkNotNullObject(order);
+            List<Order> list = new ArrayList<>();
+            list.add(order);
+            return (insertOrder(list).isEmpty());
+        } catch (IOException  e) {
+            log.error(e);
+        } catch (Exception e){
+            log.error(e);
+            log.info("Order is null");
+        }
+        return false;
+    }
+
+    @Override
+    public double calculateCost (long orderId) {
+        try {
+            Order order = getOrderByID(orderId);
+            checkNotNullObject(order);
+            double result = 0;
+            order.setBookPriceParameters(selectPriceParameters(order.getOrderDate()).orElse(null));
+            log.debug(selectPriceParameters(order.getOrderDate()).orElse(null));
+            if (order.getBookPriceParameters() != null){
+                long id = order.getBookPriceParameters().getId();
+                double work = calculateEditorWorkCost (id, order.getFinalNumberOfPages());
+                double print = calculatePrintingCost (id, order.getFinalNumberOfPages());
+                double cover = calculateCoverCost (id, order.getCoverType());
+                result = (work > -1 && print>-1 && cover>-1) ? (work+print+cover)*order.getNumberOfCopies() : -1;
+                log.debug((result>-1) ? "calculate cost done" : "there is truble with PriceParamets");
+                order.setPrice(result);
+                updateOrder(order);
+            }
+            return order.getPrice();
+        }catch (IOException | SQLException | ClassNotFoundException e){
+            log.error(e);
+        } catch (Exception e){
+            log.error(e);
+            log.debug("There is not such Order");
+        }
+        return -1;
+    }
+
+    @Override
+    public Optional<PriceParameters> selectPriceParameters(String date) {
+        List<PriceParameters> list = new ArrayList<>();
+        try {
+            ResultSet set = getResultSet(String.format(DB_SELECT_ALL, PriceParameters.class.getSimpleName().toUpperCase()));
+            while (set.next()) {
+                PriceParameters priceParameters = new PriceParameters();
+                priceParameters.setId(set.getLong(ID));
+                priceParameters.setPagePrice(set.getDouble(PRICEPARAMETERS_PAGE_PRICE));
+                ResultSet set2 = getResultSet(String.format(COVERLINK_GET_ID, set.getLong(ID)));
+                List<CoverPrice> coverPriceList = new ArrayList<>();
+                while (set2.next()) {
+                    CoverPrice coverPrice = getCoverPriceByID(set2.getLong(COVERLINK_COVERPRICE));
+                    coverPriceList.add(coverPrice);
+                }
+                priceParameters.setCoverPrice(coverPriceList);
+                priceParameters.setWorkPrice(set.getDouble(PRICEPARAMETERS_WORK_PRICE));
+                priceParameters.setValidFromDate(set.getString(PRICEPARAMETERS_VALID_FROM_DATE));
+                priceParameters.setValidToDate(set.getString(PRICEPARAMETERS_VALID_TO_DATE));
+                list.add(priceParameters);
+            }
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            log.error(e);
+        }
+        list = list.stream().filter(el -> belongInterval(el.getValidFromDate(), el.getValidToDate(), date)).collect(Collectors.toList());
+        log.info((list.isEmpty()) ? "there is not suit PriceParameters" : "PriceParamets selected");
+        return (list.isEmpty()) ? Optional.empty() : Optional.of(list.get(0));
+    }
+
+    @Override
+    public boolean belongInterval (String start, String end, String date) {
+        try {
+            SimpleDateFormat dateForm = new SimpleDateFormat("yyyy-MM-dd");
+            Date dstart = dateForm.parse(start);
+            Date dend = dateForm.parse(end);
+            Date ddate = dateForm.parse(date);
+            if ((dstart.before(ddate) || dstart.equals(ddate) ) && (dend.after(ddate) || dend.equals(ddate))){
+                return true;
+            }else{
+                return false;
+            }
+        }catch (ParseException e){
+            log.error(e);
+            return false;
+        }
+    }
+
+    @Override
+    public double calculateEditorWorkCost (long idPriceParameters, int numberOfPages) {
+        try {
+            PriceParameters priceParameters = getPriceParametersByID(idPriceParameters);
+            return priceParameters.getWorkPrice() * numberOfPages;
+        }catch (IOException | SQLException | ClassNotFoundException e){
+            log.error(e);
+            return -1;
+        }
+    }
+
+    @Override
+    public double calculatePrintingCost (long idPriceParameters, int numberOfPages){
+        try {
+            PriceParameters priceParameters = getPriceParametersByID(idPriceParameters);
+            return priceParameters.getPagePrice() * numberOfPages;
+        }catch (IOException | SQLException | ClassNotFoundException e){
+            log.error(e);
+            return -1;
+        }
+    }
+
+    @Override
+    public double calculateCoverCost (long idPriceParameters, CoverType coverType){
+        try {
+            PriceParameters priceParameters = getPriceParametersByID(idPriceParameters);
+            List<CoverPrice> coverPriceList = priceParameters.getCoverPrice().stream().filter(el -> {
+                try {
+                    return getCoverPriceByID(el.getId()).getCoverType() == coverType;
+                } catch (IOException | SQLException | ClassNotFoundException e) {
+                    log.error(e);
+                    return false;
+                }
+            }).collect(Collectors.toList());
+            log.debug(coverPriceList);
+            try{
+                checkListIsNotEmpty(coverPriceList);
+                long actualId = coverPriceList.get(0).getId();
+                return getCoverPriceByID(actualId).getPrice();
+            }catch (Exception e){
+                log.error(e);
+                log.debug("There is not suit CoverPrice");
+                return -1;
+            }
+        }catch (IOException | SQLException | ClassNotFoundException e){
+            log.error(e);
+            return -1;
+        }
+    }
+
+    @Override
+    public boolean takeAwayOrder (long id) {
+        try {
+            Order order = getOrderByID(id);
+            return deleteOrder(order);
+        }catch (IOException | SQLException | ClassNotFoundException e){
+            log.error(e);
+            return false;
+        }
+    }
+
+    @Override
+    public List<Corrections> getListOfCorrections (long authorId) {
+        try {
+            checkNotNullObject(getAuthorById(authorId));
+            List<Order> orderList = getListOfAuthorOrder(authorId);
+            List<Corrections> correctionsList = new ArrayList<>();
+            ResultSet set = getResultSet(String.format(DB_SELECT_ALL, Corrections.class.getSimpleName().toUpperCase()));
+            try {
+                while (set.next()) {
+                    Corrections corrections = new Corrections();
+                    corrections.setId(set.getLong(ID));
+                    corrections.setPage(set.getInt(CORRECTIONS_PAGE));
+                    corrections.setTextBefore(set.getString(CORRECTIONS_TEXT_BEFORE));
+                    corrections.setTextAfter(set.getString(CORRECTIONS_TEXT_AFTER));
+                    corrections.setComment(set.getString(CORRECTIONS_COMMENT));
+                    corrections.setOrder(getOrderByID(set.getLong(CORRECTIONS_ORDER)));
+                    corrections.setMeet(getMeetingByID(set.getLong(CORRECTIONS_MEET)));
+                    corrections.setStatus(CorrectionsStatus.valueOf(set.getString(CORRECTIONS_STATUS)));
+                    correctionsList.add(corrections);
+                }
+            }catch (SQLException e){
+                log.error(e);
+            }
+            correctionsList = correctionsList.stream().filter(el -> orderList.stream().anyMatch(e2 -> e2.getId() == el.getOrder().getId())).collect(Collectors.toList());
+            return correctionsList;
+        }catch (IOException e){
+            log.error(e);
+            return new ArrayList<Corrections>();
+        } catch (Exception e){
+            log.error(e);
+            log.debug("Author is null");
+            return new ArrayList<Corrections>();
+        }
+    }
+
+    @Override
+    public List<Corrections> getListOfCorrectionsToOrder (long orderId) {
+        try {
+            checkNotNullObject(getOrderByID(orderId));
+            List<Corrections> correctionsList = new ArrayList<>();
+            ResultSet set = getResultSet(String.format(DB_SELECT_ALL, Corrections.class.getSimpleName().toUpperCase()));
+            try {
+                while (set.next()) {
+                    Corrections corrections = new Corrections();
+                    corrections.setId(set.getLong(ID));
+                    corrections.setPage(set.getInt(CORRECTIONS_PAGE));
+                    corrections.setTextBefore(set.getString(CORRECTIONS_TEXT_BEFORE));
+                    corrections.setTextAfter(set.getString(CORRECTIONS_TEXT_AFTER));
+                    corrections.setComment(set.getString(CORRECTIONS_COMMENT));
+                    corrections.setOrder(getOrderByID(set.getLong(CORRECTIONS_ORDER)));
+                    corrections.setMeet(getMeetingByID(set.getLong(CORRECTIONS_MEET)));
+                    corrections.setStatus(CorrectionsStatus.valueOf(set.getString(CORRECTIONS_STATUS)));
+                    correctionsList.add(corrections);
+                }
+            }catch (SQLException e){
+                log.error(e);
+            }
+            correctionsList = correctionsList.stream().filter(el -> el.getId() == el.getOrder().getId()).collect(Collectors.toList());
+            return correctionsList;
+        }catch (IOException e){
+            log.error(e);
+            return new ArrayList<Corrections>();
+        } catch (Exception e){
+            log.error(e);
+            log.debug("Order is null");
+            return new ArrayList<Corrections>();
+        }
+    }
+
+    @Override
+    public List<Order> getListOfAuthorOrder (long authorId) {
+        try{
+            checkNotNullObject(getAuthorById(authorId));
+            List<Order> list = new ArrayList<>();
+            ResultSet set = getResultSet(String.format(DB_SELECT_ALL, Order.class.getSimpleName().toUpperCase()));
+            try {
+                while(set.next()) {
+                    Order order = new Order();
+                    order.setId(set.getLong(ID));
+                    order.setAuthor(getAuthorById(set.getLong(BOOK_AUTHOR)));
+                    order.setTitle(set.getString(BOOK_TITLE));
+                    order.setNumberOfPages(set.getInt(BOOK_NUMBER_OF_PAGES));
+                    order.setOrderDate(set.getString(ORDER_DATE));
+                    order.setCoverType(CoverType.valueOf(set.getString(ORDER_COVER_TYPE)));
+                    order.setBookMaker(getEmployeeById(set.getLong(ORDER_BOOK_MAKER)));
+                    order.setBookEditor(getEmployeeById(set.getLong(ORDER_BOOK_EDITOR)));
+                    order.setBookPriceParameters(getPriceParametersByID(set.getLong(ORDER_BOOK_PRICE_PARAMETERS)));
+                    order.setFinalNumberOfPages(set.getInt(ORDER_FINAL_NUMBER_OF_PAGES));
+                    order.setNumberOfCopies(set.getInt(ORDER_NUMBER_OF_COPIES));
+                    order.setPrice(set.getDouble(ORDER_PRICE));
+                    order.setBookStatus(BookStatus.valueOf(set.getString(ORDER_BOOK_STATUS)));
+                    list.add(order);
+                }
+            }catch (SQLException e){
+                log.error(e);
+            }
+            list = list.stream().filter(el -> el.getAuthor().getId() == authorId).collect(Collectors.toList());
+            return list;
+        }catch (IOException e){
+            log.error(e);
+            return new ArrayList<>();
+        }
+        catch (Exception e){
+            log.error(e);
+            return new ArrayList<>();
+        }
+    }
+
+    @Override
+    public List<Book> getListOfAuthorBook (long authorId) {
+        try{
+            checkNotNullObject(getAuthorById(authorId));
+            List<Book> list = new ArrayList<>();
+            ResultSet set = getResultSet(String.format(DB_SELECT_ALL, Book.class.getSimpleName().toUpperCase()));
+            try {
+                while(set.next()) {
+                    Book book = new Book();
+                    book.setId(set.getLong(ID));
+                    book.setAuthor(getAuthorById(set.getLong(BOOK_AUTHOR)));
+                    book.setTitle(set.getString(BOOK_TITLE));
+                    book.setNumberOfPages(set.getInt(BOOK_NUMBER_OF_PAGES));
+                    list.add(book);
+                }
+            }catch (SQLException e){
+                log.error(e);
+            }
+            list = list.stream().filter(el -> el.getAuthor().getId() == authorId).collect(Collectors.toList());
+            return list;
+        }catch (IOException e){
+            log.error(e);
+            return new ArrayList<Book>();
+        }catch (Exception e){
+            log.error(e);
+            return new ArrayList<>();
+        }
+    }
+
+    @Override
+    public boolean agreementCorrection (long correctionId){
+        try{
+            checkNotNullObject(getCorrectionsByID(correctionId));
+            Corrections correction = getCorrectionsByID(correctionId);
+            correction.setStatus(CorrectionsStatus.ACCEPTED);
+            boolean result = updateCorrections(correction);
+            checkTrue(result);
+            log.info("Status changed");
+            return result;
+        }catch (Exception e){
+            log.error(e);
+            log.info("Status changed fail");
+            return false;
+        }
+    }
+
+    @Override
+    public boolean declineCorrection (long correctionId, String comment){
+        try{
+            checkNotNullObject(getCorrectionsByID(correctionId));
+            Corrections correction = getCorrectionsByID(correctionId);
+            correction.setComment(comment);
+            correction.setStatus(CorrectionsStatus.WAIT_EDITOR_AGR);
+            boolean result = updateCorrections(correction);
+            checkTrue(result);
+            log.info("Comment added, status changed");
+            return result;
+        }catch (Exception e){
+            log.error(e);
+            log.info("Comment added and status changed fail");
+            return false;
+        }
+    }
+
+    public long getMeetingInformation (long correctionId){
+        try{
+            checkNotNullObject(getCorrectionsByID(correctionId));
+            Corrections correction = getCorrectionsByID(correctionId);
+            Meeting meet = correction.getMeet();
+            checkNotNullObject(meet);
+            log.info(getMeetingByID(meet.getId()));
+            return meet.getId();
+        }catch (Exception e){
+            log.error(e);
+            log.info("Comment added and status changed fail");
+            return -1;
+        }
+    }
+
+    @Override
+    public boolean agreementMeeting (long meetingId){
+        try{
+            checkNotNullObject(getMeetingByID(meetingId));
+            Meeting meet = getMeetingByID(meetingId);
+            meet.setAuthorAgreement(true);
+            boolean result = updateMeeting(meet);
+            checkTrue(result);
+            log.info("Status changed");
+            return result;
+        }catch (Exception e){
+            log.error(e);
+            log.info("Status changed fail");
+            return false;
+        }
+    }
+
+    @Override
+    public boolean declineMeeting (long meetingId, String date){
+        try{
+            checkNotNullObject(getMeetingByID(meetingId));
+            Meeting meet = getMeetingByID(meetingId);
+            meet.setEditorAgreement(false);
+            meet.setMeetDate(date);
+            boolean result = updateMeeting(meet);
+            checkTrue(result);
+            log.info("Status changed");
+            return result;
+        }catch (Exception e){
+            log.error(e);
+            log.info("Status changed fail");
+            return false;
+        }
+    }
+
+    @Override
+    public Optional<Author> addAuthor(long id,String firstName,String secondName,String lastName,String phone, String email,String degree,String organization){
+        try {
+            List<Author> list = new ArrayList<>();
+            try {
+                ResultSet set = getResultSet(String.format(DB_SELECT_BY_ID, Author.class.getSimpleName().toUpperCase(),id));
+                while(set.next()) {
+                    Author author = new Author();
+                    author.setId(set.getLong(ID));
+                    author.setFirstName(set.getString(PEOPLE_FIRST_NAME));
+                    author.setSecondName(set.getString(PEOPLE_SECOND_NAME));
+                    author.setLastName(set.getString(PEOPLE_LAST_NAME));
+                    author.setPhone(set.getString(PEOPLE_PHONE));
+                    author.setEmail(set.getString(AUTHOR_EMAIL));
+                    author.setDegree(set.getString(AUTHOR_DEGREE));
+                    author.setOrganization(set.getString(AUTHOR_ORGANIZATION));
+                    list.add(author);
+                }
+            }catch (SQLException | IOException | ClassNotFoundException e){
+                log.error(e);
+            }
+            Author author = new Author();
+            setAuthor(author, id, firstName, secondName, lastName, phone, email, degree, organization);
+            list.add(author);
+            log.debug(author);
+            insertAuthor(list);
+            return Optional.of(author);
+        } catch (IOException | SQLException | ClassNotFoundException e) {
+            log.error(e);
+            return Optional.empty();
+        }
+    }
+
+    @Override
+    public void setAuthor(Author author, long id,String firstName,String secondName,String lastName,String phone, String email,String degree,String organization){
+        author.setId(id);
+        author.setFirstName(firstName);
+        author.setSecondName(secondName);
+        author.setLastName(lastName);
+        author.setPhone(phone);
+        author.setEmail(email);
+        author.setDegree(degree);
+        author.setOrganization(organization);
+    }
+
+    ////Editor
+
+    @Override
+    public List<Order> getOrderListWithoutEditor (){
+        try {
+            List<Order> list = new ArrayList<>();
+            ResultSet set = getResultSet(String.format(DB_SELECT_ALL, Order.class.getSimpleName().toUpperCase()));
+            try {
+                while(set.next()) {
+                    Order order = new Order();
+                    order.setId(set.getLong(ID));
+                    order.setAuthor(getAuthorById(set.getLong(BOOK_AUTHOR)));
+                    order.setTitle(set.getString(BOOK_TITLE));
+                    order.setNumberOfPages(set.getInt(BOOK_NUMBER_OF_PAGES));
+                    order.setOrderDate(set.getString(ORDER_DATE));
+                    order.setCoverType(CoverType.valueOf(set.getString(ORDER_COVER_TYPE)));
+                    order.setBookMaker(getEmployeeById(set.getLong(ORDER_BOOK_MAKER)));
+                    order.setBookEditor(getEmployeeById(set.getLong(ORDER_BOOK_EDITOR)));
+                    order.setBookPriceParameters(getPriceParametersByID(set.getLong(ORDER_BOOK_PRICE_PARAMETERS)));
+                    order.setFinalNumberOfPages(set.getInt(ORDER_FINAL_NUMBER_OF_PAGES));
+                    order.setNumberOfCopies(set.getInt(ORDER_NUMBER_OF_COPIES));
+                    order.setPrice(set.getDouble(ORDER_PRICE));
+                    order.setBookStatus(BookStatus.valueOf(set.getString(ORDER_BOOK_STATUS)));
+                    list.add(order);
+                }
+            }catch (SQLException e){
+                log.error(e);
+            }
+            list = list.stream().filter(el -> el.getBookEditor() == null || el.getBookEditor().getId() == DEFAULT_ID).collect(Collectors.toList());
+            return list;
+        } catch (IOException e) {
+            log.error(e);
+            log.info("There is not information about orders");
+            return new ArrayList<>();
+        } catch (Exception e){
+            log.error(e);
+            log.info("There is not suit orders");
+            return new ArrayList<>();
+        }
+    }
+
+    @Override
+    public boolean addBookEditor(long OrderId, long EmployeeId){
+        try {
+            Order order = getOrderByID(OrderId);
+            Employee employee = getEmployeeById(EmployeeId);
+            checkNotNullObject(order);
+            checkNotNullObject(employee);
+            order.setBookEditor(employee);
+            log.debug(order);
+            return updateOrder(order);
+        } catch (IOException e) {
+            log.error(e);
+            return false;
+        } catch (Exception e){
+            log.error(e);
+            return false;
+        }
+    }
+
+    public boolean returnTo (long OrderId,BookStatus bookStatus){
+        try {
+            Order order = findOrder(OrderId).get();
+            checkNotNullObject(order);
+            order.setBookStatus(bookStatus);
+            log.debug(order);
+            return updateOrder(order);
+        } catch (Exception e) {
+            log.error(e);
+            return false;
+        }
+    }
+
+    @Override
+    public boolean returnToAuthor (long OrderId){
+        return returnTo(OrderId,BookStatus.WAIT_AUTHOR_CORRECTIONS);
+    }
+
+    @Override
+    public boolean endEditing (long OrderId){
+        try {
+            Order order = getOrderByID(OrderId);
+            checkNotNullObject(order);
+            order.setBookStatus(BookStatus.MAKING);
+            log.debug(order);
+            return updateOrder(order);
+        } catch (Exception e) {
+            log.error(e);
+            return false;
+        }
+    }
+
+    @Override
+    public Optional<Corrections> sendCorrectionsToAuthor(long id, int page, String textBefore, String textAfter, String comment, long orderId, long meetingId){
+        try {
+            Corrections correction = new Corrections();
+            correction.setId(id);
+            correction.setPage(page);
+            correction.setTextBefore(textBefore);
+            correction.setTextAfter(textAfter);
+            correction.setComment(comment);
+            Order order = getOrderByID(orderId);
+            checkNotNullObject(order);
+            correction.setOrder(order);
+            Meeting meet = getMeetingByID(meetingId);
+            try{
+                checkNotNullObject(meet);
+            }catch(Exception e){
+                log.error(e);
+                meet = createDefaultMeeting();
+            }
+            correction.setMeet(meet);
+            correction.setStatus(CorrectionsStatus.WAIT_AUTHOR_AGR);
+            return Optional.of(correction);
+        }catch (Exception e){
+            log.error(e);
+            return Optional.empty();
+        }
+    }
+
+    @Override
+    public boolean makeMeeting (long correctionsId, long id, String meetDate) {
+        try {
+            checkNullObject(getMeetingByID(id));
+            Corrections corrections = getCorrectionsByID(correctionsId);
+            Meeting meeting = new Meeting();
+            meeting.setId(id);
+            meeting.setMeetDate(meetDate);
+            meeting.setAuthorAgreement(false);
+            meeting.setEditorAgreement(true);
+            corrections.setMeet(meeting);
+            updateCorrections(corrections);
+            List<Meeting> list = new ArrayList<>();
+            list.add(meeting);
+            insertMeeting(list);
+            log.debug(corrections);
+            return true;
+        } catch (IOException e) {
+            log.error(e);
+            return false;
+        } catch (Exception e){
+            log.error(e);
+            log.info("Meeting id already exist");
+            return false;
+        }
+    }
+
+////Maker
+
+    @Override
+    public boolean returnToEditor (long OrderId){
+        return returnTo (OrderId, BookStatus.WAIT_EDITOR_AGR);
+    }
+
+    @Override
+    public boolean takeForPrinting (long OrderId,long EmployeeId){
+        try{
+            Order order = (Order) getOrderByID(OrderId);
+            Employee employee = getEmployeeById(EmployeeId);
+            checkNotNullObject(order);
+            checkNotNullObject(employee);
+            order.setBookMaker(employee);
+            log.debug(order);
+            return updateOrder(order);
+        } catch (Exception e) {
+            log.error(e);
+            return false;
+        }
+    }
+
+    @Override
+    public boolean markAsFinished (long OrderId){
+        try{
+            Order order = getOrderByID(OrderId);
+            checkNotNullObject(order);
+            order.setBookStatus(BookStatus.DONE);
+            log.debug(order);
+            return updateOrder(order);
+        } catch (Exception e) {
+            log.error(e);
+            return false;
+        }
+    }
+
+////Chief
+
+    @Override
+    public long countPublishedBooks (String startDate, String deadline){
+        return countStatistic(startDate,deadline,BookStatus.DONE);
+    }
+
+    @Override
+    public long countPrintingBooks (String startDate, String deadline){
+        return countStatistic(startDate,deadline,BookStatus.MAKING);
+    }
+
+    @Override
+    public long countEditingBooks (String startDate, String deadline){
+        return countStatistic(startDate,deadline,BookStatus.EDITING);
+    }
+
+    public long countStatistic (String startDate, String deadline, BookStatus bookStatus){
+        try {
+            List<Order> list = new ArrayList<>();
+            ResultSet set = getResultSet(String.format(DB_SELECT_ALL, Order.class.getSimpleName().toUpperCase()));
+            try {
+                while(set.next()) {
+                    Order order = new Order();
+                    order.setId(set.getLong(ID));
+                    order.setAuthor(getAuthorById(set.getLong(BOOK_AUTHOR)));
+                    order.setTitle(set.getString(BOOK_TITLE));
+                    order.setNumberOfPages(set.getInt(BOOK_NUMBER_OF_PAGES));
+                    order.setOrderDate(set.getString(ORDER_DATE));
+                    order.setCoverType(CoverType.valueOf(set.getString(ORDER_COVER_TYPE)));
+                    order.setBookMaker(getEmployeeById(set.getLong(ORDER_BOOK_MAKER)));
+                    order.setBookEditor(getEmployeeById(set.getLong(ORDER_BOOK_EDITOR)));
+                    order.setBookPriceParameters(getPriceParametersByID(set.getLong(ORDER_BOOK_PRICE_PARAMETERS)));
+                    order.setFinalNumberOfPages(set.getInt(ORDER_FINAL_NUMBER_OF_PAGES));
+                    order.setNumberOfCopies(set.getInt(ORDER_NUMBER_OF_COPIES));
+                    order.setPrice(set.getDouble(ORDER_PRICE));
+                    order.setBookStatus(BookStatus.valueOf(set.getString(ORDER_BOOK_STATUS)));
+                    list.add(order);
+                }
+            }catch (SQLException e){
+                log.error(e);
+            }
+            checkListIsNotEmpty(list);
+            list = list.stream()
+                    .filter(el->el.getBookStatus() == bookStatus)
+                    .filter(el2->belongInterval(startDate,deadline,el2.getOrderDate()))
+                    .collect(Collectors.toList());
+            return list.size();
+        } catch (Exception e) {
+            log.error(e);
+            return -1;
+        }
+    }
+
+////Admin
+
+    @Override
+    public Optional<PriceParameters> setPriceParameters(long id, double pagePrice, List<CoverPrice> coverPrice, double workPrice, String validFromDate, String validToDate){
+        PriceParameters priceParameters = new PriceParameters();
+        priceParameters.setId(id);
+        priceParameters.setPagePrice(pagePrice);
+        priceParameters.setCoverPrice(coverPrice);
+        priceParameters.setWorkPrice(workPrice);
+        priceParameters.setValidFromDate(validFromDate);
+        priceParameters.setValidToDate(validToDate);
+        return Optional.of(priceParameters);
+    }
+
+    @Override
+    public boolean addPriceParameters(long id, double pagePrice, List<CoverPrice> coverPrice, double workPrice, String validFromDate, String validToDate){
+        try {
+            checkNullObject(getPriceParametersByID(id));
+            PriceParameters priceParameters = setPriceParameters(id, pagePrice, coverPrice, workPrice, validFromDate, validToDate).get();
+            List<PriceParameters> list = new ArrayList<>();
+            list.add(priceParameters);
+            return (!insertPriceParameters(list).isEmpty());
+        } catch (Exception e) {
+            log.error(e);
+            return false;
+        }
+    }
+
+    @Override
+    public Optional<CoverPrice> setCoverPrice(long id, String coverType, double price){
+        CoverPrice coverPrice = new CoverPrice();
+        coverPrice.setId(id);
+        coverPrice.setCoverType(CoverType.valueOf(coverType));
+        coverPrice.setPrice(price);
+        return Optional.of(coverPrice);
+    }
+
+    @Override
+    public boolean addCoverPrice(long id, String coverType, double price){
+        try {
+            checkNullObject(getCoverPriceByID(id));
+            CoverPrice coverPrice = setCoverPrice(id, coverType, price).get();
+            List<CoverPrice> list = new ArrayList<>();
+            list.add(coverPrice);
+            return (!insertCoverPrice(list).isEmpty());
+        } catch (Exception e) {
+            log.error(e);
+            return false;
+        }
+    }
+
+    @Override
+    public Optional<Order> findOrder(long orderId){
+        try {
+            Order order = getOrderByID(orderId);
+            checkNotNullObject(order);
+            return Optional.of(order);
+        }catch (Exception e) {
+            log.error(e);
+            return Optional.empty();
+        }
+    }
 }

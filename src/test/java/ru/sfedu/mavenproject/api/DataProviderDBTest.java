@@ -29,24 +29,6 @@ class DataProviderDBTest extends TestBase {
         instance.createAllTables();
     }
 
-//    @Test
-//    public void testInsertPeopleSuccess() throws Exception{
-//        log.info("insertPeopleSuccess");
-//        People people = createPeople(4,"Иван","Иванович","Иванов","81234567890");
-//        instance.insertPeople(people);
-//        People people1 = createPeople(4,"Василий","Иванович","Иванов","81234567890");
-//        instance.insertPeople(people1);
-//        assertEquals(people, instance.getPeopleById(4));
-//    }
-//
-//    @Test
-//    public void testInsertPeopleFalse() throws Exception{
-//        log.info("insertPeopleFalse");
-//        People people = createPeople(1,"Иван","Иванович","Иванов","81234567890");
-//        instance.insertPeople(people);
-//        assertNull(instance.getPeopleById(4));
-//    }
-
     //insert
     @Test
     public void testInsertPeopleSuccess() throws Exception{
@@ -579,424 +561,425 @@ class DataProviderDBTest extends TestBase {
         assertEquals(-1, instance.getMaxId(People.class));
     }
 
-//    @Test
-//    public void alterBookInsertSuccess() throws Exception {
-//        log.info("alterBookInsertSuccess");
-//        List<Author> listAuthor = new ArrayList<>();
-//        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
-//        Book book = createBook(1,author,"Цифровая бухгалтерия",4);
-//        listAuthor.add(author);
-//        instance.insertPeople(Author.class, listAuthor);
-//        instance.alterBook(10, 1,"Цифровая бухгалтерия",4 );
-//        assertEquals(book, instance.getBookByID(Book.class,1));
-//    }
-//
-//    @Test
-//    public void alterBookInsertFail() throws Exception {
-//        log.info("alterBookInsertFail");
-//        instance.alterBook(10, 1,"Цифровая бухгалтерия",4 );
-//        assertNull(instance.getBookByID(Book.class,1));
-//    }
-//
-//    @Test
-//    public void makeOrderSuccess() throws Exception {
-//        log.info("alterBookInsertSuccess");
-//        List<Author> listAuthor = new ArrayList<>();
-//        List<Book> listBook = new ArrayList<>();
-//        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
-//        Book book = createBook(1,author,"Цифровая бухгалтерия",229);
-//        listAuthor.add(author);
-//        listBook.add(book);
-//        instance.insertPeople(Author.class, listAuthor);
-//        instance.insertBook(listBook);
-//        assertNotNull(instance.makeOrder(1, "2020-09-03", "RIGID_COVER", 100).orElse(null));
-//    }
-//
-//    @Test
-//    public void makeOrderFail() throws Exception {
-//        log.info("makeOrderFail");
-//        assertNull(instance.makeOrder(1, "2020-09-03", "RIGID_COVER", 100).orElse(null));
-//    }
-//
-//    @Test
-//    public void selectPriceParametersSuccess() throws Exception {
-//        log.info("selectPriceParametersSuccess");
-//        List<PriceParameters> listPriceParameters = new ArrayList<>();
-//        List<CoverPrice> listCoverPrice = new ArrayList<>();
-//        CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
-//        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
-//        listCoverPrice.add(coverPrice);
-//        listCoverPrice.add(coverPrice2);
-//        PriceParameters priceParameters = createPriceParameters(1, 3.4, listCoverPrice, 6.3, "2019-01-01", "2021-12-31");
-//        PriceParameters priceParameters2 = createPriceParameters(2, 5.1, listCoverPrice, 7.2, "2016-01-01", "2018-12-31");
-//        listPriceParameters.add(priceParameters);
-//        listPriceParameters.add(priceParameters2);
-//        instance.insertCoverPrice(listCoverPrice);
-//        instance.insertPriceParameters(listPriceParameters);
-//        assertEquals(priceParameters, instance.selectPriceParameters("2019-01-01").orElse(null));
-//    }
-//
-//    @Test
-//    public void selectPriceParametersFail() throws Exception {
-//        log.info("selectPriceParametersFail");
-//        List<PriceParameters> listPriceParameters = new ArrayList<>();
-//        List<CoverPrice> listCoverPrice = new ArrayList<>();
-//        CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
-//        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
-//        listCoverPrice.add(coverPrice);
-//        listCoverPrice.add(coverPrice2);
-//        PriceParameters priceParameters = createPriceParameters(1, 3.4, listCoverPrice, 6.3, "2019-01-01", "2021-12-31");
-//        PriceParameters priceParameters2 = createPriceParameters(2, 5.1, listCoverPrice, 7.2, "2016-01-01", "2018-12-31");
-//        listPriceParameters.add(priceParameters);
-//        listPriceParameters.add(priceParameters2);
-//        instance.insertCoverPrice(listCoverPrice);
-//        instance.insertPriceParameters(listPriceParameters);
-//        assertNull(instance.selectPriceParameters("2007-01-01").orElse(null));
-//    }
-//
-//    @Test
-//    public void takeAwayOrderSuccess() throws Exception{
-//        log.info("insertOrderSuccess");
-//        List<Order> listOrder = new ArrayList<>();
-//        List<Employee> listEmployee = new ArrayList<>();
-//        List<CoverPrice> listCoverPrice = new ArrayList<>();
-//        List<PriceParameters> listPriceParameters = new ArrayList<>();
-//        Employee employee2 = createEmployee(2,"Петр","Петрович","Петров","82345678901","234567890123", "2345678", EmployeeType.MAKER);
-//        Employee employee3 = createEmployee(3,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
-//        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
-//        CoverPrice coverPrice = createCoverPrice(1, CoverType.RIGID_COVER, 123.5);
-//        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
-//        listCoverPrice.add(coverPrice);
-//        listCoverPrice.add(coverPrice2);
-//        PriceParameters priceParameters = createPriceParameters(1, 2.4, listCoverPrice, 1.3, "2019-01-01", "2021-01-01");
-//        Order order = createOrder(1,author,"Цифровая бухгалтерия",4,"2020-09-03", CoverType.RIGID_COVER, employee2, employee3, priceParameters, 229, 100, 9700.75 , BookStatus.EDITING);
-//        listOrder.add(order);
-//        listEmployee.add(employee2);
-//        listEmployee.add(employee3);
-//        listPriceParameters.add(priceParameters);
-//        instance.insertPeople(Employee.class, listEmployee);
-//        instance.insertCoverPrice(listCoverPrice);
-//        instance.insertPriceParameters(listPriceParameters);
-//        instance.insertOrder(listOrder);
-//        instance.takeAwayOrder(1);
-//        assertNull(instance.getBookByID(Order.class, 1));
-//    }
-//
-//    @Test
-//    public void takeAwayOrderFail() throws Exception{
-//        log.info("takeAwayOrderFail");
-//        List<Corrections> listCorrections = new ArrayList<>();
-//        List<Employee> listEmployee = new ArrayList<>();
-//        List<Author> listAuthor = new ArrayList<>();
-//        List<CoverPrice> listCoverPrice = new ArrayList<>();
-//        List<PriceParameters> listPriceParameters = new ArrayList<>();
-//        List<Order> listOrder = new ArrayList<>();
-//        Employee employee2 = createEmployee(2,"Петр","Петрович","Петров","82345678901","234567890123", "2345678", EmployeeType.MAKER);
-//        Employee employee3 = createEmployee(3,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
-//        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
-//        CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
-//        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
-//        listCoverPrice.add(coverPrice);
-//        listCoverPrice.add(coverPrice2);
-//        PriceParameters priceParameters = createPriceParameters(1, 2.4, listCoverPrice, 1.3, "2019-01-01", "2021-01-01");
-//        Order order = createOrder(1,author,"Цифровая бухгалтерия",4,"2020-09-03", CoverType.RIGID_COVER, employee2, employee3, priceParameters, 229, 100, 9700.75 , BookStatus.EDITING  );
-//        Corrections corrections = createCorrections(1,35, "Цифровой контроль - это компьютерные системы",
-//                "Цифровой контроль представляет собой компьютерные системы", "Повторяется конструкция", order, null, CorrectionsStatus.WAIT_AUTHOR_AGR );
-//        listEmployee.add(employee2);
-//        listEmployee.add(employee3);
-//        listAuthor.add(author);
-//        listPriceParameters.add(priceParameters);
-//        listOrder.add(order);
-//        listCorrections.add(corrections);
-//        instance.insertPeople(Employee.class, listEmployee);
-//        instance.insertPeople(Author.class, listAuthor);
-//        instance.insertCoverPrice(listCoverPrice);
-//        instance.insertPriceParameters(listPriceParameters);
-//        instance.insertOrder(listOrder);
-//        instance.insertCorrections(listCorrections);
-//        instance.takeAwayOrder(1);
-//        assertNotNull(instance.getBookByID(Order.class, 1));
-//    }
-//
-//    @Test
-//    public void getListOfCorrectionsSuccess() throws Exception {
-//        log.info("getListOfCorrectionsSuccess");
-//        List<Corrections> listCorrections = new ArrayList<>();
-//        List<Employee> listEmployee = new ArrayList<>();
-//        List<Author> listAuthor = new ArrayList<>();
-//        List<CoverPrice> listCoverPrice = new ArrayList<>();
-//        List<PriceParameters> listPriceParameters = new ArrayList<>();
-//        List<Order> listOrder = new ArrayList<>();
-//        Employee employee2 = createEmployee(2,"Петр","Петрович","Петров","82345678901","234567890123", "2345678", EmployeeType.MAKER);
-//        Employee employee3 = createEmployee(3,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
-//        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
-//        CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
-//        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
-//        listCoverPrice.add(coverPrice);
-//        listCoverPrice.add(coverPrice2);
-//        PriceParameters priceParameters = createPriceParameters(1, 2.4, listCoverPrice, 1.3, "2019-01-01", "2021-01-01");
-//        Order order = createOrder(1,author,"Цифровая бухгалтерия",4,"2020-09-03", CoverType.RIGID_COVER, employee2, employee3, priceParameters, 229, 100, 9700.75 , BookStatus.EDITING  );
-//        Corrections corrections = createCorrections(1,35, "Цифровой контроль - это компьютерные системы",
-//                "Цифровой контроль представляет собой компьютерные системы", "Повторяется конструкция", order, null, CorrectionsStatus.WAIT_AUTHOR_AGR );
-//        Corrections corrections2 = createCorrections(2,65, "Цифровой контроль - это компьютерные системы",
-//                "Цифровой контроль представляет собой компьютерные системы", "Повторяется конструкция", order, null, CorrectionsStatus.WAIT_AUTHOR_AGR );
-//        listEmployee.add(employee2);
-//        listEmployee.add(employee3);
-//        listAuthor.add(author);
-//        listPriceParameters.add(priceParameters);
-//        listOrder.add(order);
-//        listCorrections.add(corrections);
-//        listCorrections.add(corrections2);
-//        instance.insertPeople(Employee.class, listEmployee);
-//        instance.insertPeople(Author.class, listAuthor);
-//        instance.insertCoverPrice(listCoverPrice);
-//        instance.insertPriceParameters(listPriceParameters);
-//        instance.insertOrder(listOrder);
-//        instance.insertCorrections(listCorrections);
-//        log.debug("corrections for Author: "+instance.getListOfCorrections(author.getId()));
-//        assertEquals(listCorrections, instance.getListOfCorrections(author.getId()));
-//    }
-//
-//    @Test
-//    public void getListOfCorrectionsFail() throws Exception {
-//        log.info("getListOfCorrectionsFail");
-//        assertTrue(instance.getListOfCorrections(1).isEmpty());
-//    }
-//
-//    @Test
-//    public void addAuthorSuccess() throws Exception{
-//        log.info("addAuthorSuccess");
-//        Author author = createAuthor(1,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
-//        instance.addAuthor(1,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
-//        assertEquals(author, instance.getPeopleByID(Author.class, 1));
-//    }
-//
-//    @Test
-//    public void addAuthorFail() throws Exception{
-//        log.info("addAuthorFail");
-//        Author author = createAuthor(1,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
-//        instance.addAuthor(1,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
-//        instance.addAuthor(1,"Иван","Иванович","Иванов","83456789012", "tkach@gmail.com", "docent", "Donstu");
-//        assertEquals(author, instance.getPeopleByID(Author.class, 1));
-//    }
-//
-//    @Test
-//    public void saveOrderInformationSuccess() throws Exception{
-//        log.info("saveOrderInformationSuccess");
-//        List<CoverPrice> listCoverPrice = new ArrayList<>();
-//        List<PriceParameters> listPriceParameters = new ArrayList<>();
-//        List<Author> listAuthor = new ArrayList<>();
-//        List<Book> listBook = new ArrayList<>();
-//        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
-//        Book book = createBook(1,author,"Цифровая бухгалтерия",229);
-//        listAuthor.add(author);
-//        listBook.add(book);
-//        instance.insertPeople(Author.class, listAuthor);
-//        instance.insertBook(listBook);
-//        Order order = instance.makeOrder(1, "2020-09-03", "RIGID_COVER", 100).orElse(null);
-//        CoverPrice coverPrice = createCoverPrice(1, CoverType.RIGID_COVER, 123.5);
-//        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
-//        listCoverPrice.add(coverPrice);
-//        listCoverPrice.add(coverPrice2);
-//        PriceParameters priceParameters = createPriceParameters(1, 2.4, listCoverPrice, 1.3, "2019-01-01", "2021-01-01");
-//        listPriceParameters.add(priceParameters);
-//        instance.insertCoverPrice(listCoverPrice);
-//        instance.insertPriceParameters(listPriceParameters);
-//        instance.saveOrderInformation(order);
-//        assertEquals(order, instance.getBookByID(Order.class, 1));
-//    }
-//
-//    @Test
-//    public void saveOrderInformationFail() throws Exception{
-//        log.info("saveOrderInformationFail");
-//        List<CoverPrice> listCoverPrice = new ArrayList<>();
-//        List<PriceParameters> listPriceParameters = new ArrayList<>();
-//        List<Author> listAuthor = new ArrayList<>();
-//        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
-//        Book book = createBook(1,author,"Цифровая бухгалтерия",229);
-//        listAuthor.add(author);
-//        instance.insertPeople(Author.class, listAuthor);
-//        Order order = instance.makeOrder(1, "2020-09-03", "RIGID_COVER", 100).orElse(null);
-//        CoverPrice coverPrice = createCoverPrice(1, CoverType.RIGID_COVER, 123.5);
-//        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
-//        listCoverPrice.add(coverPrice);
-//        listCoverPrice.add(coverPrice2);
-//        PriceParameters priceParameters = createPriceParameters(1, 2.4, listCoverPrice, 1.3, "2019-01-01", "2021-01-01");
-//        listPriceParameters.add(priceParameters);
-//        instance.insertCoverPrice(listCoverPrice);
-//        instance.insertPriceParameters(listPriceParameters);
-//        instance.saveOrderInformation(order);
-//        assertNull(instance.getBookByID(Order.class, 1));
-//    }
-//
-//    @Test
-//    public void calculateCostSuccess() throws Exception {
-//        log.info("calculateCostSuccess");
-//        int numberOfPage = 299;
-//        double work = 1.3;
-//        double page = 2.4;
-//        double cover = 123.5;
-//        int copies = 100;
-//        List<CoverPrice> listCoverPrice = new ArrayList<>();
-//        List<PriceParameters> listPriceParameters = new ArrayList<>();
-//        List<Author> listAuthor = new ArrayList<>();
-//        List<Book> listBook = new ArrayList<>();
-//        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
-//        Book book = createBook(1,author,"Цифровая бухгалтерия",numberOfPage);
-//        listAuthor.add(author);
-//        listBook.add(book);
-//        instance.insertPeople(Author.class, listAuthor);
-//        instance.insertBook(listBook);
-//        Order order = instance.makeOrder(1, "2020-09-03", "RIGID_COVER", copies).orElse(null);
-//        CoverPrice coverPrice = createCoverPrice(1, CoverType.RIGID_COVER, cover);
-//        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
-//        listCoverPrice.add(coverPrice);
-//        listCoverPrice.add(coverPrice2);
-//        PriceParameters priceParameters = createPriceParameters(1, page, listCoverPrice, work, "2019-01-01", "2021-01-01");
-//        listPriceParameters.add(priceParameters);
-//        instance.insertCoverPrice(listCoverPrice);
-//        instance.insertPriceParameters(listPriceParameters);
-//        instance.saveOrderInformation(order);
-//        assertEquals((page*numberOfPage+work*numberOfPage+cover)*copies, instance.calculateCost(1));
-//    }
-//
-//    @Test
-//    public void calculateCostFail() throws Exception {
-//        log.info("calculateCostFail");
-//        log.info("calculateCostSuccess");
-//        int numberOfPage = 299;
-//        double work = 1.3;
-//        double page = 2.4;
-//        double cover = 123.5;
-//        int copies = 100;
-//        List<CoverPrice> listCoverPrice = new ArrayList<>();
-//        List<PriceParameters> listPriceParameters = new ArrayList<>();
-//        List<Author> listAuthor = new ArrayList<>();
-//        List<Book> listBook = new ArrayList<>();
-//        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
-//        Book book = createBook(1,author,"Цифровая бухгалтерия",numberOfPage);
-//        listAuthor.add(author);
-//        listBook.add(book);
-//        instance.insertPeople(Author.class, listAuthor);
-//        instance.insertBook(listBook);
-//        Order order = instance.makeOrder(1, "2020-09-03", "RIGID_COVER", copies).orElse(null);
-//        CoverPrice coverPrice = createCoverPrice(1, CoverType.RIGID_COVER, cover);
-//        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
-//        listCoverPrice.add(coverPrice);
-//        listCoverPrice.add(coverPrice2);
-//        PriceParameters priceParameters = createPriceParameters(1, page, listCoverPrice, work, "2019-01-01", "2021-01-01");
-//        listPriceParameters.add(priceParameters);
-//        instance.insertCoverPrice(listCoverPrice);
-//        instance.saveOrderInformation(order);
-//        assertEquals(-1, instance.calculateCost(1));
-//    }
-//
-//    @Test
-//    public void addBookEditorSuccess() throws Exception{
-//        log.info("addBookEditorSuccess");
-//        List<Author> listAuthor = new ArrayList<>();
-//        List<Book> listBook = new ArrayList<>();
-//        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
-//        Book book = createBook(1,author,"Цифровая бухгалтерия",229);
-//        listAuthor.add(author);
-//        listBook.add(book);
-//        instance.insertPeople(Author.class, listAuthor);
-//        instance.insertBook(listBook);
-//        Order order = instance.makeOrder(1, "2020-09-03", "RIGID_COVER", 100).orElse(null);
-//        instance.saveOrderInformation(order);
-//        Employee employee = createEmployee(2,"Петр","Петрович","Петров","82345678901","234567890123", "2345678", EmployeeType.MAKER);
-//        List<Employee> employeeList = new ArrayList<>();
-//        employeeList.add(employee);
-//        instance.insertPeople(Employee.class, employeeList);
-//        instance.addBookEditor(1,2);
-//        order.setBookEditor(employee);
-//        assertEquals(order, instance.getBookByID(Order.class, 1));
-//    }
-//
-//    @Test
-//    public void addBookEditorFail() throws Exception{
-//        log.info("addBookEditorFail");
-//        List<Author> listAuthor = new ArrayList<>();
-//        List<Book> listBook = new ArrayList<>();
-//        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
-//        Book book = createBook(1,author,"Цифровая бухгалтерия",229);
-//        listAuthor.add(author);
-//        listBook.add(book);
-//        instance.insertPeople(Author.class, listAuthor);
-//        instance.insertBook(listBook);
-//        Order order = instance.makeOrder(1, "2020-09-03", "RIGID_COVER", 100).orElse(null);
-//        instance.saveOrderInformation(order);
-//        instance.addBookEditor(1,1);
-//        assertEquals(order, instance.getBookByID(Order.class, 1));
-//    }
-//
-//    @Test
-//    public void countPublishedBooksSuccess() throws Exception{
-//        log.info("countPublishedBooksSuccess");
-//        List<Author> listAuthor = new ArrayList<>();
-//        List<Book> listBook = new ArrayList<>();
-//        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
-//        Book book = createBook(1,author,"Цифровая бухгалтерия",229);
-//        Book book1 = createBook(2,author,"Экономическая теория",437);
-//        Book book2 = createBook(3,author,"Цифровая экономика",394);
-//        listAuthor.add(author);
-//        listBook.add(book);
-//        listBook.add(book1);
-//        listBook.add(book2);
-//        instance.insertPeople(Author.class, listAuthor);
-//        instance.insertBook(listBook);
-//        Order order = instance.makeOrder(1, "2019-09-03", "RIGID_COVER", 100).orElse(null);
-//        order.setBookStatus(BookStatus.DONE);
-//        instance.saveOrderInformation(order);
-//        Order order1 = instance.makeOrder(2, "2020-04-01", "RIGID_COVER", 200).orElse(null);
-//        order1.setBookStatus(BookStatus.DONE);
-//        instance.saveOrderInformation(order1);
-//        Order order2 = instance.makeOrder(3, "2020-10-03", "RIGID_COVER", 300).orElse(null);
-//        order2.setBookStatus(BookStatus.DONE);
-//        instance.saveOrderInformation(order2);
-//        assertEquals(2, instance.countPublishedBooks("2020-01-01", "2020-10-03"));
-//    }
-//
-//    @Test
-//    public void countPublishedBooksFail() throws Exception{
-//        log.info("countPublishedBooksFail");
-//        List<Author> listAuthor = new ArrayList<>();
-//        List<Book> listBook = new ArrayList<>();
-//        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
-//        Book book = createBook(1,author,"Цифровая бухгалтерия",229);
-//        Book book1 = createBook(2,author,"Экономическая теория",437);
-//        Book book2 = createBook(3,author,"Цифровая экономика",394);
-//        listAuthor.add(author);
-//        listBook.add(book);
-//        listBook.add(book1);
-//        listBook.add(book2);
-//        instance.insertPeople(Author.class, listAuthor);
-//        instance.insertBook(listBook);
-//        Order order = instance.makeOrder(1, "2019-09-03", "RIGID_COVER", 100).orElse(null);
-//        order.setBookStatus(BookStatus.DONE);
-//        instance.saveOrderInformation(order);
-//        Order order1 = instance.makeOrder(2, "2020-04-01", "RIGID_COVER", 200).orElse(null);
-//        order1.setBookStatus(BookStatus.DONE);
-//        instance.saveOrderInformation(order1);
-//        Order order2 = instance.makeOrder(3, "2020-10-03", "RIGID_COVER", 300).orElse(null);
-//        order2.setBookStatus(BookStatus.DONE);
-//        instance.saveOrderInformation(order2);
-//        assertEquals(0, instance.countPublishedBooks("2018-01-01", "2018-10-03"));
-//    }
-//
-//    @Test
-//    public void addCoverPriceSuccess() throws Exception{
-//        log.info("addCoverPriceSuccess");
-//        CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
-//        instance.addCoverPrice(1, "RIGID_COVER", 123.5 );
-//        assertEquals(coverPrice, instance.getCoverPriceByID(1));
-//    }
-//
-//    @Test
-//    public void addCoverPriceFail() throws Exception{
-//        log.info("addCoverPriceFail");
-//        List<CoverPrice> list = new ArrayList<>();
-//        instance.addCoverPrice(1, "RIGID_COVER", 153.2 );
-//        assertFalse(instance.addCoverPrice(1, "RIGID_COVER", 153.2 ));
-//    }
+    @Test
+    public void alterBookInsertSuccess() throws Exception {
+        log.info("alterBookInsertSuccess");
+        List<Author> listAuthor = new ArrayList<>();
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        Book book = createBook(1,author,"Цифровая бухгалтерия",4);
+        listAuthor.add(author);
+        instance.insertAuthor(listAuthor);
+        instance.alterBook(10, 1,"Цифровая бухгалтерия",4 );
+        assertEquals(book, instance.getBookByID(1));
+    }
+
+    @Test
+    public void alterBookInsertFail() throws Exception {
+        log.info("alterBookInsertFail");
+        instance.alterBook(10, 1,"Цифровая бухгалтерия",4 );
+        assertNull(instance.getBookByID(1));
+    }
+
+    @Test
+    public void makeOrderSuccess() throws Exception {
+        log.info("alterBookInsertSuccess");
+        List<Author> listAuthor = new ArrayList<>();
+        List<Book> listBook = new ArrayList<>();
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        Book book = createBook(1,author,"Цифровая бухгалтерия",229);
+        listAuthor.add(author);
+        listBook.add(book);
+        instance.insertAuthor(listAuthor);
+        instance.insertBook(listBook);
+        assertNotNull(instance.makeOrder(1, "2020-09-03", "RIGID_COVER", 100).orElse(null));
+    }
+
+    @Test
+    public void makeOrderFail() throws Exception {
+        log.info("makeOrderFail");
+        assertNull(instance.makeOrder(1, "2020-09-03", "RIGID_COVER", 100).orElse(null));
+    }
+
+    @Test
+    public void selectPriceParametersSuccess() throws Exception {
+        log.info("selectPriceParametersSuccess");
+        List<PriceParameters> listPriceParameters = new ArrayList<>();
+        List<CoverPrice> listCoverPrice = new ArrayList<>();
+        CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
+        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
+        listCoverPrice.add(coverPrice);
+        listCoverPrice.add(coverPrice2);
+        PriceParameters priceParameters = createPriceParameters(1, 3.4, listCoverPrice, 6.3, "2019-01-01", "2021-12-31");
+        PriceParameters priceParameters2 = createPriceParameters(2, 5.1, listCoverPrice, 7.2, "2016-01-01", "2018-12-31");
+        listPriceParameters.add(priceParameters);
+        listPriceParameters.add(priceParameters2);
+        instance.insertCoverPrice(listCoverPrice);
+        instance.insertPriceParameters(listPriceParameters);
+        assertEquals(priceParameters, instance.selectPriceParameters("2019-01-01").orElse(null));
+    }
+
+    @Test
+    public void selectPriceParametersFail() throws Exception {
+        log.info("selectPriceParametersFail");
+        List<PriceParameters> listPriceParameters = new ArrayList<>();
+        List<CoverPrice> listCoverPrice = new ArrayList<>();
+        CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
+        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
+        listCoverPrice.add(coverPrice);
+        listCoverPrice.add(coverPrice2);
+        PriceParameters priceParameters = createPriceParameters(1, 3.4, listCoverPrice, 6.3, "2019-01-01", "2021-12-31");
+        PriceParameters priceParameters2 = createPriceParameters(2, 5.1, listCoverPrice, 7.2, "2016-01-01", "2018-12-31");
+        listPriceParameters.add(priceParameters);
+        listPriceParameters.add(priceParameters2);
+        instance.insertCoverPrice(listCoverPrice);
+        instance.insertPriceParameters(listPriceParameters);
+        assertNull(instance.selectPriceParameters("2007-01-01").orElse(null));
+    }
+
+    @Test
+    public void takeAwayOrderSuccess() throws Exception{
+        log.info("insertOrderSuccess");
+        List<Order> listOrder = new ArrayList<>();
+        List<Employee> listEmployee = new ArrayList<>();
+        List<CoverPrice> listCoverPrice = new ArrayList<>();
+        List<PriceParameters> listPriceParameters = new ArrayList<>();
+        Employee employee2 = createEmployee(2,"Петр","Петрович","Петров","82345678901","234567890123", "2345678", EmployeeType.MAKER);
+        Employee employee3 = createEmployee(3,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        CoverPrice coverPrice = createCoverPrice(1, CoverType.RIGID_COVER, 123.5);
+        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
+        listCoverPrice.add(coverPrice);
+        listCoverPrice.add(coverPrice2);
+        PriceParameters priceParameters = createPriceParameters(1, 2.4, listCoverPrice, 1.3, "2019-01-01", "2021-01-01");
+        Order order = createOrder(1,author,"Цифровая бухгалтерия",4,"2020-09-03", CoverType.RIGID_COVER, employee2, employee3, priceParameters, 229, 100, 9700.75 , BookStatus.EDITING);
+        listOrder.add(order);
+        listEmployee.add(employee2);
+        listEmployee.add(employee3);
+        listPriceParameters.add(priceParameters);
+        instance.insertEmployee(listEmployee);
+        instance.insertCoverPrice(listCoverPrice);
+        instance.insertPriceParameters(listPriceParameters);
+        instance.insertOrder(listOrder);
+        instance.takeAwayOrder(1);
+        assertNull(instance.getOrderByID(1));
+    }
+
+    @Test
+    public void takeAwayOrderFail() throws Exception{
+        log.info("takeAwayOrderFail");
+        List<Corrections> listCorrections = new ArrayList<>();
+        List<Employee> listEmployee = new ArrayList<>();
+        List<Author> listAuthor = new ArrayList<>();
+        List<CoverPrice> listCoverPrice = new ArrayList<>();
+        List<PriceParameters> listPriceParameters = new ArrayList<>();
+        List<Order> listOrder = new ArrayList<>();
+        Employee employee2 = createEmployee(2,"Петр","Петрович","Петров","82345678901","234567890123", "2345678", EmployeeType.MAKER);
+        Employee employee3 = createEmployee(3,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
+        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
+        listCoverPrice.add(coverPrice);
+        listCoverPrice.add(coverPrice2);
+        PriceParameters priceParameters = createPriceParameters(1, 2.4, listCoverPrice, 1.3, "2019-01-01", "2021-01-01");
+        Order order = createOrder(1,author,"Цифровая бухгалтерия",4,"2020-09-03", CoverType.RIGID_COVER, employee2, employee3, priceParameters, 229, 100, 9700.75 , BookStatus.EDITING  );
+        Corrections corrections = createCorrections(1,35, "Цифровой контроль - это компьютерные системы",
+                "Цифровой контроль представляет собой компьютерные системы", "Повторяется конструкция", order, instance.createDefaultMeeting(), CorrectionsStatus.WAIT_AUTHOR_AGR );
+        listEmployee.add(employee2);
+        listEmployee.add(employee3);
+        listAuthor.add(author);
+        listPriceParameters.add(priceParameters);
+        listOrder.add(order);
+        listCorrections.add(corrections);
+        instance.insertEmployee(listEmployee);
+        instance.insertAuthor(listAuthor);
+        instance.insertCoverPrice(listCoverPrice);
+        instance.insertPriceParameters(listPriceParameters);
+        instance.insertOrder(listOrder);
+        instance.insertCorrections(listCorrections);
+        instance.takeAwayOrder(1);
+        assertNotNull(instance.getOrderByID(1));
+    }
+
+    @Test
+    public void getListOfCorrectionsSuccess() throws Exception {
+        log.info("getListOfCorrectionsSuccess");
+        List<Corrections> listCorrections = new ArrayList<>();
+        List<Employee> listEmployee = new ArrayList<>();
+        List<Author> listAuthor = new ArrayList<>();
+        List<CoverPrice> listCoverPrice = new ArrayList<>();
+        List<PriceParameters> listPriceParameters = new ArrayList<>();
+        List<Order> listOrder = new ArrayList<>();
+        Employee employee2 = createEmployee(2,"Петр","Петрович","Петров","82345678901","234567890123", "2345678", EmployeeType.MAKER);
+        Employee employee3 = createEmployee(3,"Виктор","Иванович","Ткач","83456789012", "345678901234", "3456789", EmployeeType.EDITOR);
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
+        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
+        listCoverPrice.add(coverPrice);
+        listCoverPrice.add(coverPrice2);
+        Meeting meet = instance.createDefaultMeeting();
+        PriceParameters priceParameters = createPriceParameters(1, 2.4, listCoverPrice, 1.3, "2019-01-01", "2021-01-01");
+        Order order = createOrder(1,author,"Цифровая бухгалтерия",4,"2020-09-03", CoverType.RIGID_COVER, employee2, employee3, priceParameters, 229, 100, 9700.75 , BookStatus.EDITING  );
+        Corrections corrections = createCorrections(1,35, "Цифровой контроль - это компьютерные системы",
+                "Цифровой контроль представляет собой компьютерные системы", "Повторяется конструкция", order, meet, CorrectionsStatus.WAIT_AUTHOR_AGR );
+        Corrections corrections2 = createCorrections(2,65, "Цифровой контроль - это компьютерные системы",
+                "Цифровой контроль представляет собой компьютерные системы", "Повторяется конструкция", order, meet, CorrectionsStatus.WAIT_AUTHOR_AGR );
+        listEmployee.add(employee2);
+        listEmployee.add(employee3);
+        listAuthor.add(author);
+        listPriceParameters.add(priceParameters);
+        listOrder.add(order);
+        listCorrections.add(corrections);
+        listCorrections.add(corrections2);
+        instance.insertEmployee(listEmployee);
+        instance.insertAuthor(listAuthor);
+        instance.insertCoverPrice(listCoverPrice);
+        instance.insertPriceParameters(listPriceParameters);
+        instance.insertOrder(listOrder);
+        instance.insertCorrections(listCorrections);
+        log.debug("corrections for Author: "+instance.getListOfCorrections(author.getId()));
+        assertEquals(listCorrections, instance.getListOfCorrections(author.getId()));
+    }
+
+    @Test
+    public void getListOfCorrectionsFail() throws Exception {
+        log.info("getListOfCorrectionsFail");
+        assertTrue(instance.getListOfCorrections(1).isEmpty());
+    }
+
+    @Test
+    public void addAuthorSuccess() throws Exception{
+        log.info("addAuthorSuccess");
+        Author author = createAuthor(1,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        instance.addAuthor(1,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        assertEquals(author, instance.getAuthorById(1));
+    }
+
+    @Test
+    public void addAuthorFail() throws Exception{
+        log.info("addAuthorFail");
+        Author author = createAuthor(1,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        instance.addAuthor(1,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        instance.addAuthor(1,"Иван","Иванович","Иванов","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        assertEquals(author, instance.getAuthorById(1));
+    }
+
+    @Test
+    public void saveOrderInformationSuccess() throws Exception{
+        log.info("saveOrderInformationSuccess");
+        List<CoverPrice> listCoverPrice = new ArrayList<>();
+        List<PriceParameters> listPriceParameters = new ArrayList<>();
+        List<Author> listAuthor = new ArrayList<>();
+        List<Book> listBook = new ArrayList<>();
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        Book book = createBook(1,author,"Цифровая бухгалтерия",229);
+        listAuthor.add(author);
+        listBook.add(book);
+        instance.insertAuthor(listAuthor);
+        instance.insertBook(listBook);
+        Order order = instance.makeOrder(1, "2020-09-03", "RIGID_COVER", 100).orElse(null);
+        CoverPrice coverPrice = createCoverPrice(1, CoverType.RIGID_COVER, 123.5);
+        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
+        listCoverPrice.add(coverPrice);
+        listCoverPrice.add(coverPrice2);
+        PriceParameters priceParameters = createPriceParameters(1, 2.4, listCoverPrice, 1.3, "2019-01-01", "2021-01-01");
+        listPriceParameters.add(priceParameters);
+        instance.insertCoverPrice(listCoverPrice);
+        instance.insertPriceParameters(listPriceParameters);
+        instance.saveOrderInformation(order);
+        assertEquals(order, instance.getOrderByID(1));
+    }
+
+    @Test
+    public void saveOrderInformationFail() throws Exception{
+        log.info("saveOrderInformationFail");
+        List<CoverPrice> listCoverPrice = new ArrayList<>();
+        List<PriceParameters> listPriceParameters = new ArrayList<>();
+        List<Author> listAuthor = new ArrayList<>();
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        Book book = createBook(1,author,"Цифровая бухгалтерия",229);
+        listAuthor.add(author);
+        instance.insertAuthor(listAuthor);
+        Order order = instance.makeOrder(1, "2020-09-03", "RIGID_COVER", 100).orElse(null);
+        CoverPrice coverPrice = createCoverPrice(1, CoverType.RIGID_COVER, 123.5);
+        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
+        listCoverPrice.add(coverPrice);
+        listCoverPrice.add(coverPrice2);
+        PriceParameters priceParameters = createPriceParameters(1, 2.4, listCoverPrice, 1.3, "2019-01-01", "2021-01-01");
+        listPriceParameters.add(priceParameters);
+        instance.insertCoverPrice(listCoverPrice);
+        instance.insertPriceParameters(listPriceParameters);
+        instance.saveOrderInformation(order);
+        assertNull(instance.getOrderByID(1));
+    }
+
+    @Test
+    public void calculateCostSuccess() throws Exception {
+        log.info("calculateCostSuccess");
+        int numberOfPage = 299;
+        double work = 1.3;
+        double page = 2.4;
+        double cover = 123.5;
+        int copies = 100;
+        List<CoverPrice> listCoverPrice = new ArrayList<>();
+        List<PriceParameters> listPriceParameters = new ArrayList<>();
+        List<Author> listAuthor = new ArrayList<>();
+        List<Book> listBook = new ArrayList<>();
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        Book book = createBook(1,author,"Цифровая бухгалтерия",numberOfPage);
+        listAuthor.add(author);
+        listBook.add(book);
+        instance.insertAuthor(listAuthor);
+        instance.insertBook(listBook);
+        Order order = instance.makeOrder(1, "2020-09-03", "RIGID_COVER", copies).orElse(null);
+        CoverPrice coverPrice = createCoverPrice(1, CoverType.RIGID_COVER, cover);
+        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
+        listCoverPrice.add(coverPrice);
+        listCoverPrice.add(coverPrice2);
+        PriceParameters priceParameters = createPriceParameters(1, page, listCoverPrice, work, "2019-01-01", "2021-01-01");
+        listPriceParameters.add(priceParameters);
+        instance.insertCoverPrice(listCoverPrice);
+        instance.insertPriceParameters(listPriceParameters);
+        instance.saveOrderInformation(order);
+        assertEquals((page*numberOfPage+work*numberOfPage+cover)*copies, instance.calculateCost(1));
+    }
+
+    @Test
+    public void calculateCostFail() throws Exception {
+        log.info("calculateCostFail");
+        log.info("calculateCostSuccess");
+        int numberOfPage = 299;
+        double work = 1.3;
+        double page = 2.4;
+        double cover = 123.5;
+        int copies = 100;
+        List<CoverPrice> listCoverPrice = new ArrayList<>();
+        List<PriceParameters> listPriceParameters = new ArrayList<>();
+        List<Author> listAuthor = new ArrayList<>();
+        List<Book> listBook = new ArrayList<>();
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        Book book = createBook(1,author,"Цифровая бухгалтерия",numberOfPage);
+        listAuthor.add(author);
+        listBook.add(book);
+        instance.insertAuthor(listAuthor);
+        instance.insertBook(listBook);
+        Order order = instance.makeOrder(1, "2020-09-03", "RIGID_COVER", copies).orElse(null);
+        CoverPrice coverPrice = createCoverPrice(1, CoverType.RIGID_COVER, cover);
+        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
+        listCoverPrice.add(coverPrice);
+        listCoverPrice.add(coverPrice2);
+        PriceParameters priceParameters = createPriceParameters(1, page, listCoverPrice, work, "2019-01-01", "2021-01-01");
+        listPriceParameters.add(priceParameters);
+        instance.insertCoverPrice(listCoverPrice);
+        instance.saveOrderInformation(order);
+        assertEquals(-1, instance.calculateCost(1));
+    }
+
+    @Test
+    public void addBookEditorSuccess() throws Exception{
+        log.info("addBookEditorSuccess");
+        List<Author> listAuthor = new ArrayList<>();
+        List<Book> listBook = new ArrayList<>();
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        Book book = createBook(1,author,"Цифровая бухгалтерия",229);
+        listAuthor.add(author);
+        listBook.add(book);
+        instance.insertAuthor(listAuthor);
+        instance.insertBook(listBook);
+        Order order = instance.makeOrder(1, "2020-09-03", "RIGID_COVER", 100).orElse(null);
+        instance.saveOrderInformation(order);
+        Employee employee = createEmployee(2,"Петр","Петрович","Петров","82345678901","234567890123", "2345678", EmployeeType.MAKER);
+        List<Employee> employeeList = new ArrayList<>();
+        employeeList.add(employee);
+        instance.insertEmployee(employeeList);
+        instance.addBookEditor(1,2);
+        order.setBookEditor(employee);
+        assertEquals(order, instance.getOrderByID(1));
+    }
+
+    @Test
+    public void addBookEditorFail() throws Exception{
+        log.info("addBookEditorFail");
+        List<Author> listAuthor = new ArrayList<>();
+        List<Book> listBook = new ArrayList<>();
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        Book book = createBook(1,author,"Цифровая бухгалтерия",229);
+        listAuthor.add(author);
+        listBook.add(book);
+        instance.insertAuthor(listAuthor);
+        instance.insertBook(listBook);
+        Order order = instance.makeOrder(1, "2020-09-03", "RIGID_COVER", 100).orElse(null);
+        instance.saveOrderInformation(order);
+        instance.addBookEditor(1,1);
+        assertEquals(order, instance.getOrderByID(1));
+    }
+
+    @Test
+    public void countPublishedBooksSuccess() throws Exception{
+        log.info("countPublishedBooksSuccess");
+        List<Author> listAuthor = new ArrayList<>();
+        List<Book> listBook = new ArrayList<>();
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        Book book = createBook(1,author,"Цифровая бухгалтерия",229);
+        Book book1 = createBook(2,author,"Экономическая теория",437);
+        Book book2 = createBook(3,author,"Цифровая экономика",394);
+        listAuthor.add(author);
+        listBook.add(book);
+        listBook.add(book1);
+        listBook.add(book2);
+        instance.insertAuthor(listAuthor);
+        instance.insertBook(listBook);
+        Order order = instance.makeOrder(1, "2019-09-03", "RIGID_COVER", 100).orElse(null);
+        order.setBookStatus(BookStatus.DONE);
+        instance.saveOrderInformation(order);
+        Order order1 = instance.makeOrder(2, "2020-04-01", "RIGID_COVER", 200).orElse(null);
+        order1.setBookStatus(BookStatus.DONE);
+        instance.saveOrderInformation(order1);
+        Order order2 = instance.makeOrder(3, "2020-10-03", "RIGID_COVER", 300).orElse(null);
+        order2.setBookStatus(BookStatus.DONE);
+        instance.saveOrderInformation(order2);
+        assertEquals(2, instance.countPublishedBooks("2020-01-01", "2020-10-03"));
+    }
+
+    @Test
+    public void countPublishedBooksFail() throws Exception{
+        log.info("countPublishedBooksFail");
+        List<Author> listAuthor = new ArrayList<>();
+        List<Book> listBook = new ArrayList<>();
+        Author author = createAuthor(10,"Виктор","Иванович","Ткач","83456789012", "tkach@gmail.com", "docent", "Donstu");
+        Book book = createBook(1,author,"Цифровая бухгалтерия",229);
+        Book book1 = createBook(2,author,"Экономическая теория",437);
+        Book book2 = createBook(3,author,"Цифровая экономика",394);
+        listAuthor.add(author);
+        listBook.add(book);
+        listBook.add(book1);
+        listBook.add(book2);
+        instance.insertAuthor(listAuthor);
+        instance.insertBook(listBook);
+        Order order = instance.makeOrder(1, "2019-09-03", "RIGID_COVER", 100).orElse(null);
+        order.setBookStatus(BookStatus.DONE);
+        instance.saveOrderInformation(order);
+        Order order1 = instance.makeOrder(2, "2020-04-01", "RIGID_COVER", 200).orElse(null);
+        order1.setBookStatus(BookStatus.DONE);
+        instance.saveOrderInformation(order1);
+        Order order2 = instance.makeOrder(3, "2020-10-03", "RIGID_COVER", 300).orElse(null);
+        order2.setBookStatus(BookStatus.DONE);
+        instance.saveOrderInformation(order2);
+        assertEquals(0, instance.countPublishedBooks("2018-01-01", "2018-10-03"));
+    }
+
+    @Test
+    public void addCoverPriceSuccess() throws Exception{
+        log.info("addCoverPriceSuccess");
+        CoverPrice coverPrice = createCoverPrice(1,CoverType.RIGID_COVER, 123.5);
+        instance.addCoverPrice(1, "RIGID_COVER", 123.5 );
+        assertEquals(coverPrice, instance.getCoverPriceByID(1));
+    }
+
+    @Test
+    public void addCoverPriceFail() throws Exception{
+        log.info("addCoverPriceFail");
+        List<CoverPrice> list = new ArrayList<>();
+        instance.addCoverPrice(1, "RIGID_COVER", 153.2 );
+        assertFalse(instance.addCoverPrice(1, "RIGID_COVER", 153.2 ));
+    }
 }

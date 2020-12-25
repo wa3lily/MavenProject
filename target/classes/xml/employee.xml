@@ -1,0 +1,20 @@
+<main>
+   <object class="ru.sfedu.mavenproject.bean.Employee" id="2">
+      <firstName>Петр</firstName>
+      <secondName>Петрович</secondName>
+      <lastName>Петров</lastName>
+      <phone>82345678901</phone>
+      <inn>234567890123</inn>
+      <workRecordBook>2345678</workRecordBook>
+      <emplpyeeType>MAKER</emplpyeeType>
+   </object>
+   <object class="ru.sfedu.mavenproject.bean.Employee" id="3">
+      <firstName>Виктор</firstName>
+      <secondName>Иванович</secondName>
+      <lastName>Ткач</lastName>
+      <phone>83456789012</phone>
+      <inn>345678901234</inn>
+      <workRecordBook>3456789</workRecordBook>
+      <emplpyeeType>EDITOR</emplpyeeType>
+   </object>
+</main>

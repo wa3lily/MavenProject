@@ -1,0 +1,11 @@
+<main>
+   <object class="ru.sfedu.mavenproject.bean.Author" id="10">
+      <firstName>Виктор</firstName>
+      <secondName>Иванович</secondName>
+      <lastName>Ткач</lastName>
+      <phone>83456789012</phone>
+      <email>tkach@gmail.com</email>
+      <degree>docent</degree>
+      <organization>Donstu</organization>
+   </object>
+</main>
