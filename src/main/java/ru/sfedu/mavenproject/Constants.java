@@ -4,7 +4,7 @@ public class Constants {
     static public final int TEST_CONST=33;
     static public final String ENV_CONST="source";
     static public final String FORMAT_CONST="There are constants %d and %s";
-
+    public static final String CONFIG_PATH = "config.path";
     static public final String PATH_CSV = "csv_path";
     static public final String FILE_EXTENSION_CSV = "csv";
 

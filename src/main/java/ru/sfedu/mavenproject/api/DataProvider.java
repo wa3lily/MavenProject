@@ -43,13 +43,15 @@ public interface DataProvider {
       */
      boolean alterBook (long authorId, long id, String title, int numberOfPages);
 
+
      /**
-      * Save order information boolean.
-      *
-      * @param order the order
-      * @return the boolean
+      * @param id
+      * @param orderDate
+      * @param coverType
+      * @param numberOfCopies
+      * @return
       */
-     boolean saveOrderInformation (Order order);
+     boolean saveOrderInformation (long id, String orderDate, String coverType, int numberOfCopies);
 
      /**
       * Make order optional.

@@ -4,8 +4,12 @@ import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import ru.sfedu.mavenproject.api.DataProvider;
 import ru.sfedu.mavenproject.api.DataProviderCSV;
+import ru.sfedu.mavenproject.api.DataProviderDB;
+import ru.sfedu.mavenproject.api.DataProviderXML;
 import ru.sfedu.mavenproject.bean.People;
+import ru.sfedu.mavenproject.utils.ConfigurationUtil;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,26 +22,34 @@ public class Main {
 
     private static Logger log = LogManager.getLogger(Main.class);
 
-    static public void main(String[] args) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-        log.info("Info_test");
-        log.debug("Debag_test");
-        log.error("Error_test");
-        log.info(Constants.TEST_CONST);
-        log.info(getConfigurationEntry(ENV_CONST));
-        log.info(String.format(Constants.FORMAT_CONST, Constants.TEST_CONST, ENV_CONST));
+    public static void main(String[] args) {
+        try {
+            ConfigurationUtil.getConfigurationEntry(Constants.CONFIG_PATH);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-        People people = new People();
-        people.setId(1);
-        people.setFirstName("Иван");
-        people.setSecondName("Иванович");
-        people.setLastName("Иванов");
-        people.setPhone("81234567890");
+        DataProvider dataProvider;
+        if (args[0].equals("Csv")) {
+            dataProvider = new DataProviderCSV();
+        } else if (args[0].equals("Xml")) {
+            dataProvider = new DataProviderXML();
+        } else if (args[0].equals("Jdbc")) {
+            dataProvider = new DataProviderDB();
+        } else dataProvider = null;
 
-        List<People> listPeople = new ArrayList<>();
-        listPeople.add(people);
-
-        DataProviderCSV providerCSV = new DataProviderCSV();
-        //providerCSV.insert(People.class,listPeople);
-
+//        System.out.println(getAnswer(dataProvider, args));
     }
+
+//    public static String getAnswer(DataProvider dataProvider, String[] args) {
+//        try {
+//            switch (CliCommand.valueOf(args[1].toUpperCase())) {
+//                case GETTASKBYID:
+//
+//
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 }

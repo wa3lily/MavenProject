@@ -1059,8 +1059,9 @@ public class DataProviderDB implements DataProvider{
     }
 
     @Override
-    public boolean saveOrderInformation (Order order) {
+    public boolean saveOrderInformation (long id, String orderDate, String coverType, int numberOfCopies) {
         try {
+            Order order = makeOrder  (id,  orderDate,  coverType,  numberOfCopies).orElse(null);
             checkNotNullObject(order);
             List<Order> list = new ArrayList<>();
             list.add(order);
@@ -1267,7 +1268,7 @@ public class DataProviderDB implements DataProvider{
             }catch (SQLException e){
                 log.error(e);
             }
-            correctionsList = correctionsList.stream().filter(el -> el.getId() == el.getOrder().getId()).collect(Collectors.toList());
+            correctionsList = correctionsList.stream().filter(el -> orderId == el.getOrder().getId()).collect(Collectors.toList());
             return correctionsList;
         }catch (IOException e){
             log.error(e);
