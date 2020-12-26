@@ -27,6 +27,7 @@ public class DataProviderXML implements DataProvider{
 
     @Override
     public boolean alterBook (long authorId, long id, String title, int numberOfPages) {
+        log.info("--alterBook--");
         try {
             checkNotNullObject(getPeopleByID(Author.class, authorId));
             Author author = (Author) getPeopleByID(Author.class, authorId);
@@ -56,6 +57,7 @@ public class DataProviderXML implements DataProvider{
 
     @Override
     public Optional<Order> makeOrder (long id, String orderDate, String coverType, int numberOfCopies){
+        log.info("--makeOrder--");
         try {
             checkNotNullObject(getBookByID(Book.class, id));
             Book book = (Book) getBookByID(Book.class, id);
@@ -95,6 +97,7 @@ public class DataProviderXML implements DataProvider{
 
     @Override
     public boolean saveOrderInformation (Order order) {
+        log.info("--saveOrderInformation--");
         try {
             checkNotNullObject(order);
             List<Order> list = new ArrayList<>();
@@ -111,6 +114,7 @@ public class DataProviderXML implements DataProvider{
 
     @Override
     public double calculateCost (long orderId) {
+        log.info("--calculateCost--");
         Order order = (Order) getBookByID(Order.class, orderId);
         try {
             checkNotNullObject(order);
@@ -140,6 +144,7 @@ public class DataProviderXML implements DataProvider{
 
     @Override
     public Optional<PriceParameters> selectPriceParameters(String date) {
+        log.info("--selectPriceParameters--");
         try {
             List<PriceParameters> list = readXML(PriceParameters.class);
             list = list.stream().filter(el -> belongInterval(el.getValidFromDate(), el.getValidToDate(), date)).collect(Collectors.toList());
@@ -153,6 +158,7 @@ public class DataProviderXML implements DataProvider{
 
     @Override
     public boolean belongInterval (String start, String end, String date) {
+        log.info("--belongInterval--");
         try {
             SimpleDateFormat dateForm = new SimpleDateFormat(DATE_PATTERN);
             Date dstart = dateForm.parse(start);
@@ -171,6 +177,7 @@ public class DataProviderXML implements DataProvider{
 
     @Override
     public double calculateEditorWorkCost (long idPriceParameters, int numberOfPages) {
+        log.info("--calculateEditorWorkCost--");
         try {
             PriceParameters priceParameters = getPriceParametersByID(idPriceParameters);
             return priceParameters.getWorkPrice() * numberOfPages;
@@ -182,6 +189,7 @@ public class DataProviderXML implements DataProvider{
 
     @Override
     public double calculatePrintingCost (long idPriceParameters, int numberOfPages){
+        log.info("--calculatePrintingCost--");
         try {
             PriceParameters priceParameters = getPriceParametersByID(idPriceParameters);
             return priceParameters.getPagePrice() * numberOfPages;
@@ -193,6 +201,7 @@ public class DataProviderXML implements DataProvider{
 
     @Override
     public double calculateCoverCost (long idPriceParameters, CoverType coverType){
+        log.info("--calculateCoverCost--");
         try {
             PriceParameters priceParameters = getPriceParametersByID(idPriceParameters);
             List<CoverPrice> coverPriceList = priceParameters.getCoverPrice().stream().filter(el -> {
@@ -221,6 +230,7 @@ public class DataProviderXML implements DataProvider{
 
     @Override
     public boolean takeAwayOrder (long id) {
+        log.info("--takeAwayOrder--");
         try {
             Order order = (Order) getBookByID(Order.class, id);
             return deleteOrder(order);
@@ -232,6 +242,7 @@ public class DataProviderXML implements DataProvider{
 
     @Override
     public List<Corrections> getListOfCorrections (long authorId) {
+        log.info("--getListOfCorrections--");
         try {
             checkNotNullObject(getPeopleByID(Author.class, authorId));
             List<Order> orderList = getListOfAuthorOrder(authorId);
@@ -250,6 +261,7 @@ public class DataProviderXML implements DataProvider{
 
     @Override
     public List<Corrections> getListOfCorrectionsToOrder (long orderId) {
+        log.info("--getListOfCorrectionsToOrder--");
         try {
             checkNotNullObject(getBookByID(Order.class, orderId));
             List<Corrections> correctionsList = readXML(Corrections.class);
@@ -267,6 +279,7 @@ public class DataProviderXML implements DataProvider{
 
     @Override
     public List<Order> getListOfAuthorOrder (long authorId) {
+        log.info("--getListOfAuthorOrder--");
         try{
             checkNotNullObject(getPeopleByID(Author.class, authorId));
             List<Order> list = readXML(Order.class);
@@ -284,6 +297,7 @@ public class DataProviderXML implements DataProvider{
 
     @Override
     public List<Book> getListOfAuthorBook (long authorId) {
+        log.info("--getListOfAuthorBook--");
         try{
             checkNotNullObject(getPeopleByID(Author.class, authorId));
             List<Book> list = readXML(Book.class);
@@ -300,6 +314,7 @@ public class DataProviderXML implements DataProvider{
 
     @Override
     public boolean agreementCorrection (long correctionId){
+        log.info("--agreementCorrection--");
         try{
             checkNotNullObject(getCorrectionsByID(correctionId));
             Corrections correction = getCorrectionsByID(correctionId);
@@ -317,6 +332,7 @@ public class DataProviderXML implements DataProvider{
 
     @Override
     public boolean declineCorrection (long correctionId, String comment){
+        log.info("--declineCorrection--");
         try{
             checkNotNullObject(getCorrectionsByID(correctionId));
             Corrections correction = getCorrectionsByID(correctionId);
@@ -334,6 +350,7 @@ public class DataProviderXML implements DataProvider{
     }
 
     public long getMeetingInformation (long correctionId){
+        log.info("--getMeetingInformation--");
         try{
             checkNotNullObject(getCorrectionsByID(correctionId));
             Corrections correction = getCorrectionsByID(correctionId);
@@ -350,6 +367,7 @@ public class DataProviderXML implements DataProvider{
 
     @Override
     public boolean agreementMeeting (long meetingId){
+        log.info("--agreementMeeting--");
         try{
             checkNotNullObject(getMeetingByID(meetingId));
             Meeting meet = getMeetingByID(meetingId);
@@ -367,6 +385,7 @@ public class DataProviderXML implements DataProvider{
 
     @Override
     public boolean declineMeeting (long meetingId, String date){
+        log.info("--declineMeeting--");
         try{
             checkNotNullObject(getMeetingByID(meetingId));
             Meeting meet = getMeetingByID(meetingId);
@@ -385,6 +404,7 @@ public class DataProviderXML implements DataProvider{
 
     @Override
     public Optional<Author> addAuthor(long id,String firstName,String secondName,String lastName,String phone, String email,String degree,String organization){
+        log.info("--addAuthor--");
         try {
             List<Author> list = readXML(Author.class);
             Author author = new Author();
@@ -401,6 +421,7 @@ public class DataProviderXML implements DataProvider{
 
     @Override
     public void setAuthor(Author author, long id,String firstName,String secondName,String lastName,String phone, String email,String degree,String organization){
+        log.info("--setAuthor--");
         author.setId(id);
         author.setFirstName(firstName);
         author.setSecondName(secondName);
@@ -415,6 +436,7 @@ public class DataProviderXML implements DataProvider{
 
     @Override
     public List<Order> getOrderListWithoutEditor (){
+        log.info("--getOrderListWithoutEditor--");
         try {
             List<Order> list = readXML(Order.class);
             list = list.stream().filter(el -> el.getBookEditor() == null || el.getBookEditor().getId() == DEFAULT_ID).collect(Collectors.toList());
@@ -432,6 +454,7 @@ public class DataProviderXML implements DataProvider{
 
     @Override
     public boolean addBookEditor(long OrderId, long EmployeeId){
+        log.info("--addBookEditor--");
         try {
             Order order = (Order) getBookByID(Order.class,OrderId);
             Employee employee = (Employee) getPeopleByID(Employee.class,EmployeeId);
@@ -450,6 +473,7 @@ public class DataProviderXML implements DataProvider{
     }
 
     public boolean returnTo (long OrderId,BookStatus bookStatus){
+        log.info("--returnTo--");
         try {
             Order order = findOrder(OrderId).get();
             checkNotNullObject(order);
@@ -464,11 +488,13 @@ public class DataProviderXML implements DataProvider{
 
     @Override
     public boolean returnToAuthor (long OrderId){
+        log.info("--returnToAuthor--");
         return returnTo(OrderId,BookStatus.WAIT_AUTHOR_CORRECTIONS);
     }
 
     @Override
     public boolean endEditing (long OrderId){
+        log.info("--endEditing--");
         try {
             Order order = (Order) getBookByID(Order.class, OrderId);
             checkNotNullObject(order);
@@ -483,6 +509,7 @@ public class DataProviderXML implements DataProvider{
 
     @Override
     public Optional<Corrections> sendCorrectionsToAuthor(long id, int page, String textBefore, String textAfter, String comment, long orderId, long meetingId){
+        log.info("--sendCorrectionsToAuthor--");
         try {
             Corrections correction = new Corrections();
             correction.setId(id);
@@ -511,6 +538,7 @@ public class DataProviderXML implements DataProvider{
 
     @Override
     public boolean makeMeeting (long correctionsId, long id, String meetDate) {
+        log.info("--makeMeeting--");
         try {
             checkNullObject(getMeetingByID(id));
             Corrections corrections = getCorrectionsByID(correctionsId);
@@ -540,11 +568,13 @@ public class DataProviderXML implements DataProvider{
 
     @Override
     public boolean returnToEditor (long OrderId){
+        log.info("--returnToEditor--");
         return returnTo (OrderId, BookStatus.WAIT_EDITOR_AGR);
     }
 
     @Override
     public boolean takeForPrinting (long OrderId,long EmployeeId){
+        log.info("--takeForPrinting--");
         try{
             Order order = (Order) getBookByID(Order.class,OrderId);
             Employee employee = (Employee) getPeopleByID(Employee.class,EmployeeId);
@@ -561,6 +591,7 @@ public class DataProviderXML implements DataProvider{
 
     @Override
     public boolean markAsFinished (long OrderId){
+        log.info("--markAsFinished--");
         try{
             Order order = (Order) getBookByID(Order.class, OrderId);
             checkNotNullObject(order);
@@ -577,20 +608,24 @@ public class DataProviderXML implements DataProvider{
 
     @Override
     public long countPublishedBooks (String startDate, String deadline){
+        log.info("--countPublishedBooks--");
         return countStatistic(startDate,deadline,BookStatus.DONE);
     }
 
     @Override
     public long countPrintingBooks (String startDate, String deadline){
+        log.info("--countPrintingBooks--");
         return countStatistic(startDate,deadline,BookStatus.MAKING);
     }
 
     @Override
     public long countEditingBooks (String startDate, String deadline){
+        log.info("--countEditingBooks--");
         return countStatistic(startDate,deadline,BookStatus.EDITING);
     }
 
     public long countStatistic (String startDate, String deadline, BookStatus bookStatus){
+        log.info("--countStatistic--");
         try {
             List<Order> list = readXML(Order.class);
             checkListIsNotEmpty(list);
@@ -609,6 +644,7 @@ public class DataProviderXML implements DataProvider{
 
     @Override
     public Optional<PriceParameters> setPriceParameters(long id, double pagePrice, List<CoverPrice> coverPrice, double workPrice, String validFromDate, String validToDate){
+        log.info("--setPriceParameters--");
         PriceParameters priceParameters = new PriceParameters();
         priceParameters.setId(id);
         priceParameters.setPagePrice(pagePrice);
@@ -621,6 +657,7 @@ public class DataProviderXML implements DataProvider{
 
     @Override
     public boolean addPriceParameters(long id, double pagePrice, List<CoverPrice> coverPrice, double workPrice, String validFromDate, String validToDate){
+        log.info("--addPriceParameters--");
         try {
             checkNullObject(getPriceParametersByID(id));
             PriceParameters priceParameters = setPriceParameters(id, pagePrice, coverPrice, workPrice, validFromDate, validToDate).get();
@@ -635,6 +672,7 @@ public class DataProviderXML implements DataProvider{
 
     @Override
     public Optional<CoverPrice> setCoverPrice(long id, String coverType, double price){
+        log.info("--setCoverPrice--");
         CoverPrice coverPrice = new CoverPrice();
         coverPrice.setId(id);
         coverPrice.setCoverType(CoverType.valueOf(coverType));
@@ -644,6 +682,7 @@ public class DataProviderXML implements DataProvider{
 
     @Override
     public boolean addCoverPrice(long id, String coverType, double price){
+        log.info("--addCoverPrice--");
         try {
             checkNullObject(getCoverPriceByID(id));
             CoverPrice coverPrice = setCoverPrice(id, coverType, price).get();
@@ -658,6 +697,7 @@ public class DataProviderXML implements DataProvider{
 
     @Override
     public Optional<Order> findOrder(long orderId){
+        log.info("--findOrder--");
         try {
             Order order = (Order) getBookByID(Order.class, orderId);
             checkNotNullObject(order);
@@ -712,6 +752,7 @@ public class DataProviderXML implements DataProvider{
     }
 
     public <T extends People> Object getPeopleByID(Class cl, long id) throws IOException {
+        log.info("--getPeopleByID--");
         List<T> list = this.readXML(cl);
         try {
             Object obj = list.stream()
@@ -725,6 +766,7 @@ public class DataProviderXML implements DataProvider{
     }
 
     public <T extends Book> Object getBookByID(Class cl, long id) {
+        log.info("--getBookByID--");
         try {
             List<T> list = this.readXML(cl);
             Object obj = list.stream()
@@ -738,6 +780,7 @@ public class DataProviderXML implements DataProvider{
     }
 
     public Meeting getMeetingByID(long id) throws IOException {
+        log.info("--getMeetingByID--");
         List<Meeting> list = this.readXML(Meeting.class);
         try {
             Meeting obj = list.stream()
@@ -751,6 +794,7 @@ public class DataProviderXML implements DataProvider{
     }
 
     public Corrections getCorrectionsByID(long id) throws IOException {
+        log.info("--getCorrectionsByID--");
         List<Corrections> list = this.readXML(Corrections.class);
         try {
             Corrections obj = list.stream()
@@ -764,6 +808,7 @@ public class DataProviderXML implements DataProvider{
     }
 
     public PriceParameters getPriceParametersByID(long id) throws IOException {
+        log.info("--getPriceParametersByID--");
         List<PriceParameters> list = this.readXML(PriceParameters.class);
         try {
             PriceParameters obj = list.stream()
@@ -777,6 +822,7 @@ public class DataProviderXML implements DataProvider{
     }
 
     public CoverPrice getCoverPriceByID(long id) throws IOException {
+        log.info("--getCoverPriceByID--");
         List<CoverPrice> list = this.readXML(CoverPrice.class);
         try {
             CoverPrice obj = list.stream()
@@ -790,6 +836,7 @@ public class DataProviderXML implements DataProvider{
     }
 
     public void createFile(String path) throws IOException {
+        log.info("--createFile--");
         try {
             String PATH = ConfigurationUtil.getConfigurationEntry(Constants.PATH_XML);
             File file = new File(path);
@@ -806,6 +853,7 @@ public class DataProviderXML implements DataProvider{
     }
 
     public <T extends People> List<T> insertPeople(Class cl, List<T> list) throws IOException {
+        log.info("--insertPeople--");
         List<T> returnList = new ArrayList<>();
         List<T> recordList = readXML(cl);
         list.stream().forEach(e1 -> {
@@ -829,6 +877,7 @@ public class DataProviderXML implements DataProvider{
     }
 
     public List<Meeting> insertMeeting(List<Meeting> list) throws IOException {
+        log.info("--insertMeeting--");
         List<Meeting> returnList = new ArrayList<>();
         List<Meeting> recordList = readXML(Meeting.class);
         list.stream().forEach(e1 -> {
@@ -852,6 +901,7 @@ public class DataProviderXML implements DataProvider{
     }
 
     public List<CoverPrice> insertCoverPrice(List<CoverPrice> list) throws IOException{
+        log.info("--insertCoverPrice--");
         List<CoverPrice> returnList = new ArrayList<>();
         List<CoverPrice> recordList = readXML(CoverPrice.class);
         list.stream().forEach(e1 -> {
@@ -875,6 +925,7 @@ public class DataProviderXML implements DataProvider{
     }
 
     public List<PriceParameters> insertPriceParameters(List<PriceParameters> list) throws IOException {
+        log.info("--insertPriceParameters--");
         List<PriceParameters> returnList = new ArrayList<>();
         List<PriceParameters> recordList = readXML(PriceParameters.class);
         list.stream().forEach(el -> {
@@ -912,6 +963,7 @@ public class DataProviderXML implements DataProvider{
     }
 
     public List<Order> insertOrder(List<Order> list) throws IOException{
+        log.info("--insertOrder--");
         List<Order> returnList = new ArrayList<>();
         List<Order> recordList = readXML(Order.class);
         list.stream().forEach(el -> {
@@ -948,12 +1000,10 @@ public class DataProviderXML implements DataProvider{
     }
 
     public List<Corrections> insertCorrections(List<Corrections> list) throws IOException {
+        log.info("--insertCorrections--");
         List<Corrections> returnList = new ArrayList<>();
         List<Corrections> recordList = readXML(Corrections.class);
         list.stream().forEach(el -> {
-            if (el.getMeet()==null){
-                el.setMeet(createDefaultMeeting());
-            }
             try {
                 //проверка, есть ли элементы указанный в поле order и meet в соответствующем hml файле
                 if ((el.getOrder() == null || getBookByID(Order.class,el.getOrder().getId()) != null)
@@ -986,6 +1036,7 @@ public class DataProviderXML implements DataProvider{
     }
 
     public List<Book> insertBook(List<Book> list) throws IOException {
+        log.info("--insertBook--");
         List<Book> returnList = new ArrayList<>();
         List<Book> recordList = readXML(Book.class);
         list.stream().forEach(el -> {
@@ -1020,6 +1071,7 @@ public class DataProviderXML implements DataProvider{
     }
 
     public boolean dropFile(Class cl) {
+        log.info("--dropFile--");
         try{
             File file= new File(getPath(cl));
             log.debug("file delete "+file.delete());
@@ -1031,6 +1083,7 @@ public class DataProviderXML implements DataProvider{
     }
 
     public <T extends People> boolean updatePeople(Class cl, T obj) throws IOException {
+        log.info("--updatePeople--");
         List<T> list = readXML(cl);
         T prevObj;
         int index = list.indexOf(getPeopleByID(cl, obj.getId()));
@@ -1053,6 +1106,7 @@ public class DataProviderXML implements DataProvider{
     }
 
     public boolean updateMeeting(Meeting obj) throws IOException {
+        log.info("--updateMeeting--");
         Class cl = Meeting.class;
         List<Meeting> list = readXML(cl);
         Meeting prevObj;
@@ -1076,6 +1130,7 @@ public class DataProviderXML implements DataProvider{
     }
 
     public boolean updateCoverPrice(CoverPrice obj) throws IOException {
+        log.info("--updateCoverPrice--");
         Class cl = CoverPrice.class;
         List<CoverPrice> list = readXML(cl);
         CoverPrice prevObj;
@@ -1099,6 +1154,7 @@ public class DataProviderXML implements DataProvider{
     }
 
     public boolean updatePriceParameters(PriceParameters obj) throws IOException {
+        log.info("--updatePriceParameters--");
         Class cl = PriceParameters.class;
         List<PriceParameters> list = readXML(cl);
         PriceParameters prevObj;
@@ -1122,6 +1178,7 @@ public class DataProviderXML implements DataProvider{
     }
 
     public boolean updateOrder(Order obj) throws IOException {
+        log.info("--updateOrder--");
         Class cl = Order.class;
         List<Order> list = readXML(cl);
         Order prevObj;
@@ -1145,6 +1202,7 @@ public class DataProviderXML implements DataProvider{
     }
 
     public boolean updateCorrections(Corrections obj) throws IOException {
+        log.info("--updateCorrections--");
         Class cl = Corrections.class;
         List<Corrections> list = readXML(cl);
         Corrections prevObj;
@@ -1168,6 +1226,7 @@ public class DataProviderXML implements DataProvider{
     }
 
     public boolean updateBook(Book obj) throws IOException {
+        log.info("--updateBook--");
         Class cl = Book.class;
         List<Book> list = readXML(cl);
         Book prevObj;
@@ -1191,6 +1250,7 @@ public class DataProviderXML implements DataProvider{
     }
 
     public <T> boolean deleteObj(Class cl, T obj) {
+        log.info("--deleteObj--");
         try {
             switch (cl.getSimpleName().toLowerCase()) {
                 case Constants.CORRECTIONS:
@@ -1240,6 +1300,7 @@ public class DataProviderXML implements DataProvider{
     }
 
     public boolean deleteCorrections(Corrections obj) throws IOException {
+        log.info("--deleteCorrections--");
         Class cl = Corrections.class;
         List<Corrections> list = readXML(cl);
         try {
@@ -1261,6 +1322,7 @@ public class DataProviderXML implements DataProvider{
     }
 
     public boolean deletePeople(People obj) throws IOException {
+        log.info("--deletePeople--");
         Class cl = People.class;
         List<People> list = readXML(cl);
         try {
@@ -1282,6 +1344,7 @@ public class DataProviderXML implements DataProvider{
     }
 
     public boolean deleteBook(Book obj) throws IOException {
+        log.info("--deleteBook--");
         Class cl = Book.class;
         List<Book> list = readXML(cl);
         try {
@@ -1303,6 +1366,7 @@ public class DataProviderXML implements DataProvider{
     }
 
     public boolean deleteEmployee(Employee obj) throws IOException{
+        log.info("--deleteEmployee--");
         Class cl = Employee.class;
         List<Employee> list = readXML(cl);
         try {
@@ -1325,6 +1389,7 @@ public class DataProviderXML implements DataProvider{
     }
 
     public boolean deletePriceParameters(PriceParameters obj) throws IOException {
+        log.info("--deletePriceParameters--");
         Class cl = PriceParameters.class;
         List<PriceParameters> list = readXML(cl);
         try {
@@ -1347,6 +1412,7 @@ public class DataProviderXML implements DataProvider{
     }
 
     public boolean deleteOrder(Order obj) throws IOException {
+        log.info("--deleteOrder--");
         Class cl = Order.class;
         List<Order> list = readXML(cl);
         try {
@@ -1369,6 +1435,7 @@ public class DataProviderXML implements DataProvider{
     }
 
     public boolean deleteMeeting(Meeting obj) throws IOException {
+        log.info("--deleteMeeting--");
         Class cl = Meeting.class;
         List<Meeting> list = readXML(cl);
         try {
@@ -1391,6 +1458,7 @@ public class DataProviderXML implements DataProvider{
     }
 
     public boolean deleteAuthor(Author obj) throws IOException {
+        log.info("--deleteAuthor--");
         Class cl = Author.class;
         List<Author> list = readXML(cl);
         try {
@@ -1413,6 +1481,7 @@ public class DataProviderXML implements DataProvider{
     }
 
     public boolean deleteCoverPrice(CoverPrice obj) throws IOException {
+        log.info("--deleteCoverPrice--");
         Class cl = CoverPrice.class;
         List<CoverPrice> list = readXML(cl);
         try {
@@ -1435,6 +1504,7 @@ public class DataProviderXML implements DataProvider{
     }
 
     public long getMaxId (Class cl) {
+        log.info("--getMaxId--");
         try {
             switch (cl.getSimpleName().toLowerCase()) {
                 case Constants.CORRECTIONS:
@@ -1475,6 +1545,7 @@ public class DataProviderXML implements DataProvider{
     }
 
     public Employee createDefaultEmloyee(){
+        log.info("--createDefaultEmloyee--");
         Employee employee = new Employee();
         employee.setId(DEFAULT_ID);
         employee.setFirstName(DEFAULT_NAME);
@@ -1488,6 +1559,7 @@ public class DataProviderXML implements DataProvider{
     }
 
     public PriceParameters createDefaultPriceParameters() throws IOException {
+        log.info("--createDefaultPriceParameters--");
         try {
             List<CoverPrice> list = new ArrayList<>();
             createDefaultCoverPrice();
@@ -1506,6 +1578,7 @@ public class DataProviderXML implements DataProvider{
     }
 
     public CoverPrice createDefaultCoverPrice(){
+        log.info("--createDefaultCoverPrice--");
         CoverPrice coverPrice = new CoverPrice();
         coverPrice.setId(DEFAULT_ID);
         coverPrice.setCoverType(CoverType.PAPERBACK);
@@ -1515,6 +1588,7 @@ public class DataProviderXML implements DataProvider{
     }
 
     public Meeting createDefaultMeeting(){
+        log.info("--createDefaultMeeting--");
         Meeting meet = null;
         try {
             meet = getMeetingByID(DEFAULT_ID);

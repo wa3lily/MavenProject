@@ -810,14 +810,6 @@ class DataProviderCSVTest extends TestBase {
         instance.insertPeople(Author.class, listAuthor);
         instance.insertBook(listBook);
         Order order = instance.makeOrder(1, "2020-09-03", "RIGID_COVER", 100).orElse(null);
-        CoverPrice coverPrice = createCoverPrice(1, CoverType.RIGID_COVER, 123.5);
-        CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
-        listCoverPrice.add(coverPrice);
-        listCoverPrice.add(coverPrice2);
-        PriceParameters priceParameters = createPriceParameters(1, 2.4, listCoverPrice, 1.3, "2019-01-01", "2021-01-01");
-        listPriceParameters.add(priceParameters);
-        instance.insertCoverPrice(listCoverPrice);
-        instance.insertPriceParameters(listPriceParameters);
         instance.saveOrderInformation(order);
         assertEquals(order, instance.getBookByID(Order.class, 1));
     }

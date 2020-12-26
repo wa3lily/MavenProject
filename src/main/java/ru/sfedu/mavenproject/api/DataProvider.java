@@ -7,311 +7,394 @@ import ru.sfedu.mavenproject.bean.enums.CoverType;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * The interface Data provider.
+ */
 public interface DataProvider {
 
      /**
-      * @param cl
-      * @return
+      * Gets max id.
+      *
+      * @param cl the cl
+      * @return the max id
       */
      long getMaxId (Class cl);
 
      /**
-      * @param cl
-      * @param obj
-      * @param <T>
-      * @return
+      * Delete obj boolean.
+      *
+      * @param <T> the type parameter
+      * @param cl  the cl
+      * @param obj the obj
+      * @return the boolean
       */
      <T> boolean deleteObj(Class cl, T obj);
 
      //Author
 
      /**
-      * @param authorId
-      * @param id
-      * @param title
-      * @param numberOfPages
-      * @return
+      * Alter book boolean.
+      *
+      * @param authorId      the author id
+      * @param id            the id
+      * @param title         the title
+      * @param numberOfPages the number of pages
+      * @return the boolean
       */
      boolean alterBook (long authorId, long id, String title, int numberOfPages);
 
      /**
-      * @param order
-      * @return
+      * Save order information boolean.
+      *
+      * @param order the order
+      * @return the boolean
       */
      boolean saveOrderInformation (Order order);
 
      /**
-      * @param id
-      * @param orderDate
-      * @param coverType
-      * @param numberOfCopies
-      * @return
+      * Make order optional.
+      *
+      * @param id             the id
+      * @param orderDate      the order date
+      * @param coverType      the cover type
+      * @param numberOfCopies the number of copies
+      * @return the optional
       */
      Optional<Order> makeOrder (long id, String orderDate, String coverType, int numberOfCopies);
 
      /**
-      * @param orderId
-      * @return
+      * Calculate cost double.
+      *
+      * @param orderId the order id
+      * @return the double
       */
      double calculateCost (long orderId) ;
 
      /**
-      * @param date
-      * @return
+      * Select price parameters optional.
+      *
+      * @param date the date
+      * @return the optional
       */
      Optional<PriceParameters> selectPriceParameters(String date);
 
      /**
-      * @param start
-      * @param end
-      * @param date
-      * @return
+      * Belong interval boolean.
+      *
+      * @param start the start
+      * @param end   the end
+      * @param date  the date
+      * @return the boolean
       */
      boolean belongInterval (String start, String end, String date);
 
      /**
-      * @param idPriceParameters
-      * @param numberOfPages
-      * @return
+      * Calculate editor work cost double.
+      *
+      * @param idPriceParameters the id price parameters
+      * @param numberOfPages     the number of pages
+      * @return the double
       */
      double calculateEditorWorkCost (long idPriceParameters, int numberOfPages);
 
      /**
-      * @param idPriceParameters
-      * @param numberOfPages
-      * @return
+      * Calculate printing cost double.
+      *
+      * @param idPriceParameters the id price parameters
+      * @param numberOfPages     the number of pages
+      * @return the double
       */
      double calculatePrintingCost (long idPriceParameters, int numberOfPages);
 
      /**
-      * @param idPriceParameters
-      * @param coverType
-      * @return
+      * Calculate cover cost double.
+      *
+      * @param idPriceParameters the id price parameters
+      * @param coverType         the cover type
+      * @return the double
       */
      double calculateCoverCost (long idPriceParameters, CoverType coverType);
 
      /**
-      * @param id
-      * @return
+      * Take away order boolean.
+      *
+      * @param id the id
+      * @return the boolean
       */
      boolean takeAwayOrder (long id);
 
      /**
-      * @param authorId
-      * @return
+      * Gets list of corrections.
+      *
+      * @param authorId the author id
+      * @return the list of corrections
       */
      List<Corrections> getListOfCorrections (long authorId);
 
      /**
-      * @param orderId
-      * @return
+      * Gets list of corrections to order.
+      *
+      * @param orderId the order id
+      * @return the list of corrections to order
       */
      List<Corrections> getListOfCorrectionsToOrder (long orderId);
 
      /**
-      * @param authorId
-      * @return
+      * Gets list of author order.
+      *
+      * @param authorId the author id
+      * @return the list of author order
       */
      List<Order> getListOfAuthorOrder (long authorId);
 
      /**
-      * @param authorId
-      * @return
+      * Gets list of author book.
+      *
+      * @param authorId the author id
+      * @return the list of author book
       */
      List<Book> getListOfAuthorBook (long authorId);
 
      /**
-      * @param correctionId
-      * @return
+      * Agreement correction boolean.
+      *
+      * @param correctionId the correction id
+      * @return the boolean
       */
      boolean agreementCorrection (long correctionId);
 
      /**
-      * @param correctionId
-      * @param comment
-      * @return
+      * Decline correction boolean.
+      *
+      * @param correctionId the correction id
+      * @param comment      the comment
+      * @return the boolean
       */
      boolean declineCorrection (long correctionId, String comment);
 
      /**
-      * @param correctionId
-      * @return
+      * Gets meeting information.
+      *
+      * @param correctionId the correction id
+      * @return the meeting information
       */
      long getMeetingInformation (long correctionId);
 
      /**
-      * @param meetingId
-      * @return
+      * Agreement meeting boolean.
+      *
+      * @param meetingId the meeting id
+      * @return the boolean
       */
      boolean agreementMeeting (long meetingId);
 
      /**
-      * @param meetingId
-      * @param date
-      * @return
+      * Decline meeting boolean.
+      *
+      * @param meetingId the meeting id
+      * @param date      the date
+      * @return the boolean
       */
      boolean declineMeeting (long meetingId, String date);
 
      /**
-      * @param id
-      * @param firstName
-      * @param secondName
-      * @param lastName
-      * @param phone
-      * @param email
-      * @param degree
-      * @param organization
-      * @return
+      * Add author optional.
+      *
+      * @param id           the id
+      * @param firstName    the first name
+      * @param secondName   the second name
+      * @param lastName     the last name
+      * @param phone        the phone
+      * @param email        the email
+      * @param degree       the degree
+      * @param organization the organization
+      * @return the optional
       */
      Optional<Author> addAuthor(long id,String firstName,String secondName,String lastName,String phone, String email,String degree,String organization);
 
      /**
-      * @param author
-      * @param id
-      * @param firstName
-      * @param secondName
-      * @param lastName
-      * @param phone
-      * @param email
-      * @param degree
-      * @param organization
+      * Sets author.
+      *
+      * @param author       the author
+      * @param id           the id
+      * @param firstName    the first name
+      * @param secondName   the second name
+      * @param lastName     the last name
+      * @param phone        the phone
+      * @param email        the email
+      * @param degree       the degree
+      * @param organization the organization
       */
      void setAuthor(Author author, long id,String firstName,String secondName,String lastName,String phone, String email,String degree,String organization);
 
      ////Editor
 
+
      /**
-      * @return
+      * Gets order list without editor.
+      *
+      * @return the order list without editor
       */
      List<Order> getOrderListWithoutEditor ();
 
      /**
-      * @param OrderId
-      * @param EmployeeId
-      * @return
+      * Add book editor boolean.
+      *
+      * @param OrderId    the order id
+      * @param EmployeeId the employee id
+      * @return the boolean
       */
      boolean addBookEditor(long OrderId, long EmployeeId);
 
      /**
-      * @param OrderId
-      * @return
+      * Return to author boolean.
+      *
+      * @param OrderId the order id
+      * @return the boolean
       */
      boolean returnToAuthor (long OrderId);
 
      /**
-      * @param OrderId
-      * @return
+      * End editing boolean.
+      *
+      * @param OrderId the order id
+      * @return the boolean
       */
      boolean endEditing (long OrderId);
 
      /**
-      * @param id
-      * @param page
-      * @param textBefore
-      * @param textAfter
-      * @param comment
-      * @param orderId
-      * @param meetingId
-      * @return
+      * Send corrections to author optional.
+      *
+      * @param id         the id
+      * @param page       the page
+      * @param textBefore the text before
+      * @param textAfter  the text after
+      * @param comment    the comment
+      * @param orderId    the order id
+      * @param meetingId  the meeting id
+      * @return the optional
       */
      Optional<Corrections> sendCorrectionsToAuthor(long id, int page, String textBefore, String textAfter, String comment, long orderId, long meetingId);
 
      /**
-      * @param correctionsId
-      * @param id
-      * @param meetDate
-      * @return
+      * Make meeting boolean.
+      *
+      * @param correctionsId the corrections id
+      * @param id            the id
+      * @param meetDate      the meet date
+      * @return the boolean
       */
      boolean makeMeeting (long correctionsId, long id, String meetDate);
 
 ////Maker
 
      /**
-      * @param orderId
-      * @return
+      * Find order optional.
+      *
+      * @param orderId the order id
+      * @return the optional
       */
      Optional<Order> findOrder(long orderId);
 
      /**
-      * @param OrderId
-      * @return
+      * Return to editor boolean.
+      *
+      * @param OrderId the order id
+      * @return the boolean
       */
      boolean returnToEditor (long OrderId);
 
      /**
-      * @param OrderId
-      * @param EmployeeId
-      * @return
+      * Take for printing boolean.
+      *
+      * @param OrderId    the order id
+      * @param EmployeeId the employee id
+      * @return the boolean
       */
      boolean takeForPrinting (long OrderId,long EmployeeId);
 
      /**
-      * @param OrderId
+      * Mark as finished boolean.
       *
-      * @return
+      * @param OrderId the order id
+      * @return the boolean
       */
      boolean markAsFinished (long OrderId);
 
 ////Chief
 
      /**
-      * @param startDate
-      * @param deadline
-      * @return
+      * Count published books long.
+      *
+      * @param startDate the start date
+      * @param deadline  the deadline
+      * @return the long
       */
      long countPublishedBooks (String startDate, String deadline);
 
      /**
-      * @param startDate
-      * @param deadline
-      * @return
+      * Count printing books long.
+      *
+      * @param startDate the start date
+      * @param deadline  the deadline
+      * @return the long
       */
      long countPrintingBooks (String startDate, String deadline);
 
      /**
-      * @param startDate
-      * @param deadline
-      * @return
+      * Count editing books long.
+      *
+      * @param startDate the start date
+      * @param deadline  the deadline
+      * @return the long
       */
      long countEditingBooks (String startDate, String deadline);
 
 ////Admin
 
      /**
-      * @param id
-      * @param pagePrice
-      * @param coverPrice
-      * @param workPrice
-      * @param validFromDate
-      * @param validToDate
-      * @return
+      * Sets price parameters.
+      *
+      * @param id            the id
+      * @param pagePrice     the page price
+      * @param coverPrice    the cover price
+      * @param workPrice     the work price
+      * @param validFromDate the valid from date
+      * @param validToDate   the valid to date
+      * @return the price parameters
       */
      Optional<PriceParameters> setPriceParameters(long id, double pagePrice, List<CoverPrice> coverPrice, double workPrice, String validFromDate, String validToDate);
 
      /**
-      * @param id
-      * @param pagePrice
-      * @param coverPrice
-      * @param workPrice
-      * @param validFromDate
-      * @param validToDate
-      * @return
+      * Add price parameters boolean.
+      *
+      * @param id            the id
+      * @param pagePrice     the page price
+      * @param coverPrice    the cover price
+      * @param workPrice     the work price
+      * @param validFromDate the valid from date
+      * @param validToDate   the valid to date
+      * @return the boolean
       */
      boolean addPriceParameters(long id, double pagePrice, List<CoverPrice> coverPrice, double workPrice, String validFromDate, String validToDate);
 
      /**
-      * @param id
-      * @param coverType
-      * @param price
-      * @return
+      * Sets cover price.
+      *
+      * @param id        the id
+      * @param coverType the cover type
+      * @param price     the price
+      * @return the cover price
       */
      Optional<CoverPrice> setCoverPrice(long id, String coverType, double price);
 
      /**
-      * @param id
-      * @param coverType
-      * @param price
-      * @return
+      * Add cover price boolean.
+      *
+      * @param id        the id
+      * @param coverType the cover type
+      * @param price     the price
+      * @return the boolean
       */
      boolean addCoverPrice(long id, String coverType, double price);
 }

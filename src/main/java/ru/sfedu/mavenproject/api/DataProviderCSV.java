@@ -64,8 +64,8 @@ public class DataProviderCSV implements DataProvider {
     @Override
     public Optional<Order> makeOrder (long id, String orderDate, String coverType, int numberOfCopies){
         try {
-            checkNotNullObject(getBookByID(Book.class, id));
             Book book = (Book) getBookByID(Book.class, id);
+            checkNotNullObject(book);
             Order order = new Order();
             order.setId(book.getId());
             order.setAuthor(book.getAuthor());
@@ -83,9 +83,9 @@ public class DataProviderCSV implements DataProvider {
             List<PriceParameters> listPriceParameters = new ArrayList<>();
             listPriceParameters.add(createDefaultPriceParameters());
             insertPriceParameters(listPriceParameters);
-            order.setBookMaker((Employee) getPeopleByID(Employee.class, 0));
-            order.setBookEditor((Employee) getPeopleByID(Employee.class, 0));
-            order.setBookPriceParameters(getPriceParametersByID(0));
+            order.setBookMaker((Employee) getPeopleByID(Employee.class, DEFAULT_ID));
+            order.setBookEditor((Employee) getPeopleByID(Employee.class, DEFAULT_ID));
+            order.setBookPriceParameters(getPriceParametersByID(DEFAULT_ID));
             order.setNumberOfCopies(numberOfCopies);
             order.setBookStatus(BookStatus.UNTOUCHED);
             return Optional.of(order);
