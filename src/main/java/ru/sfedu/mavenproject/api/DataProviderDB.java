@@ -279,6 +279,11 @@ public class DataProviderDB implements DataProvider{
 
     public List<People> insertPeople(List<People> list) throws SQLException, IOException, ClassNotFoundException {
         log.info("insertPeople");
+        try {
+            this.execute(ONLY_CREATE_PEOPLE);
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            log.error(e);
+        }
         List<People> returnList = new ArrayList<>();
         list.stream().forEach(people -> {
             try {
@@ -304,6 +309,11 @@ public class DataProviderDB implements DataProvider{
 
     public List<Author> insertAuthor(List<Author> list) throws SQLException, IOException, ClassNotFoundException {
         log.info("insertAuthor");
+        try {
+            this.execute(ONLY_CREATE_AUTHOR);
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            log.error(e);
+        }
         List<Author> returnList = new ArrayList<>();
         list.stream().forEach(el -> {
             try {
@@ -330,6 +340,11 @@ public class DataProviderDB implements DataProvider{
 
     public List<Employee> insertEmployee(List<Employee> list) throws SQLException, IOException, ClassNotFoundException {
         log.info("insertEmployee");
+        try {
+            this.execute(ONLY_CREATE_EMPLOYEE);
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            log.error(e);
+        }
         List<Employee> returnList = new ArrayList<>();
         list.stream().forEach(el -> {
             try {
@@ -356,6 +371,11 @@ public class DataProviderDB implements DataProvider{
 
     public List<Meeting> insertMeeting(List<Meeting> list) throws SQLException, IOException, ClassNotFoundException {
         log.info("insertMeeting");
+        try {
+            this.execute(ONLY_CREATE_MEETING);
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            log.error(e);
+        }
         List<Meeting> returnList = new ArrayList<>();
         list.stream().forEach(el -> {
             try {
@@ -383,6 +403,11 @@ public class DataProviderDB implements DataProvider{
 
     public List<CoverPrice> insertCoverPrice(List<CoverPrice> list) throws SQLException, IOException, ClassNotFoundException {
         log.info("insertCoverPrice");
+        try {
+            this.execute(ONLY_CREATE_COVERPRICE);
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            log.error(e);
+        }
         List<CoverPrice> returnList = new ArrayList<>();
         DecimalFormatSymbols unusualSymbols = new DecimalFormatSymbols(Locale.getDefault());
         unusualSymbols.setDecimalSeparator('.');
@@ -410,6 +435,12 @@ public class DataProviderDB implements DataProvider{
 
     public List<PriceParameters> insertPriceParameters(List<PriceParameters> list) throws SQLException, IOException, ClassNotFoundException {
         log.info("insertPriceParameters");
+        try {
+            this.execute(ONLY_CREATE_PRICEPARAMETERS);
+            this.execute(ONLY_CREATE_COVERLINK);
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            log.error(e);
+        }
         AtomicReference<Boolean> flag= new AtomicReference<>(true);
         List<PriceParameters> returnList = new ArrayList<>();
         list.stream().forEach(el -> {
@@ -462,6 +493,11 @@ public class DataProviderDB implements DataProvider{
 
     public List<Order> insertOrder(List<Order> list) throws SQLException, IOException, ClassNotFoundException {
         log.info("insertOrder");
+        try {
+            this.execute(ONLY_CREATE_ORDER);
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            log.error(e);
+        }
         List<Order> returnList = new ArrayList<>();
         list.stream().forEach(el -> {
             try {
@@ -496,6 +532,11 @@ public class DataProviderDB implements DataProvider{
 
     public List<Corrections> insertCorrections(List<Corrections> list) throws SQLException, IOException, ClassNotFoundException {
         log.info("insertCorrections");
+        try {
+            this.execute(ONLY_CREATE_CORRECTIONS);
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            log.error(e);
+        }
         List<Corrections> returnList = new ArrayList<>();
         list.stream().forEach(el -> {
             try {
@@ -528,6 +569,11 @@ public class DataProviderDB implements DataProvider{
 
     public List<Book> insertBook(List<Book> list) throws IOException {
         log.info("insertBook");
+        try {
+            this.execute(ONLY_CREATE_BOOK);
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            log.error(e);
+        }
         List<Book> returnList = new ArrayList<>();
         list.stream().forEach(el -> {
             try {

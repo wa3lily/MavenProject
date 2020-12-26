@@ -37,8 +37,18 @@ public class Constants {
     static public final String DEFAULT_INN = "000000000000";
     static public final String DEFAUL_BOOK = "0000000";
 
+    static public final String WRONG_COMMAND = "Неверное имя метода";
+
     static public final String CREATE_PEOPLE="DROP TABLE IF EXISTS people; " +
             "CREATE TABLE people (" +
+            "id bigint serial Primary Key," +
+            "firstName varchar(40)," +
+            "secondName varchar(40)," +
+            "lastName varchar(40)," +
+            "phone varchar(11)" +
+            ") ";
+
+    static public final String ONLY_CREATE_PEOPLE="CREATE TABLE people (" +
             "id bigint serial Primary Key," +
             "firstName varchar(40)," +
             "secondName varchar(40)," +
@@ -58,6 +68,16 @@ public class Constants {
 
     static public final String CREATE_AUTHOR="DROP TABLE IF EXISTS author; " +
             "CREATE TABLE author " +
+            "(id bigint serial Primary Key," +
+            "firstName varchar(40)," +
+            "secondName varchar(40)," +
+            "lastName varchar(40)," +
+            "phone varchar(11)," +
+            "email varchar(40)," +
+            "degree varchar(40)," +
+            "organization varchar(40)" +
+            ") ";
+    static public final String ONLY_CREATE_AUTHOR="CREATE TABLE author " +
             "(id bigint serial Primary Key," +
             "firstName varchar(40)," +
             "secondName varchar(40)," +
@@ -88,6 +108,17 @@ public class Constants {
             "employeeType varchar(7)" +
             ") ";
 
+    static public final String ONLY_CREATE_EMPLOYEE="CREATE TABLE employee " +
+            "(id bigint serial Primary Key," +
+            "firstName varchar(40)," +
+            "secondName varchar(40)," +
+            "lastName varchar(40)," +
+            "phone varchar(11)," +
+            "inn varchar(12)," +
+            "workRecordBook varchar(7)," +
+            "employeeType varchar(7)" +
+            ") ";
+
     static public final String EMPLOYEE_INN="inn";
     static public final String EMPLOYEE_WORK_RECORD_BOOK="workRecordBook";
     static public final String EMPLOYEE_TYPE="employeeType";
@@ -98,6 +129,13 @@ public class Constants {
 
     static public final String CREATE_MEETING="DROP TABLE IF EXISTS meeting; " +
             "CREATE TABLE meeting " +
+            "( id bigint serial Primary Key," +
+            "meetDate varchar(20)," +
+            "authorAgreement boolean," +
+            "editorAgreement boolean" +
+            ") ";
+
+    static public final String ONLY_CREATE_MEETING="CREATE TABLE meeting " +
             "( id bigint serial Primary Key," +
             "meetDate varchar(20)," +
             "authorAgreement boolean," +
@@ -118,6 +156,12 @@ public class Constants {
             "price numeric" +
             ") ";
 
+    static public final String ONLY_CREATE_COVERPRICE="CREATE TABLE coverprice " +
+            "(id bigint serial Primary Key," +
+            "coverType varchar(30)," +
+            "price numeric" +
+            ") ";
+
     static public final String COVERPRICE_COVER_TYPE="coverType";
     static public final String COVERPRICE_PRICE="price";
     static public final String COVERPRICE_FIELDS=ID+","+COVERPRICE_COVER_TYPE+","+COVERPRICE_PRICE;
@@ -126,6 +170,14 @@ public class Constants {
 
     static public final String CREATE_PRICEPARAMETERS="DROP TABLE IF EXISTS priceparameters; " +
             "CREATE TABLE priceparameters " +
+            "(id bigint serial Primary Key," +
+            "pagePrice numeric," +
+            "workPrice numeric," +
+            "validFromDate varchar(20)," +
+            "validToDate varchar(20)" +
+            ") ";
+
+    static public final String ONLY_CREATE_PRICEPARAMETERS="CREATE TABLE priceparameters " +
             "(id bigint serial Primary Key," +
             "pagePrice numeric," +
             "workPrice numeric," +
@@ -149,6 +201,11 @@ public class Constants {
             "  priceParameters bigint," +
             "  coverPrice bigint) ";
 
+    static public final String ONLY_CREATE_COVERLINK="CREATE TABLE COVERLINK " +
+            "(id bigint serial Primary Key," +
+            "  priceParameters bigint," +
+            "  coverPrice bigint) ";
+
     static public final String COVERLINK_FIELDS="priceParameters, coverPrice";
     static public final String COVERLINK_COVERPRICE="coverPrice";
     static public final String COVERLINK_INSERT_FORMAT="%d,%d";
@@ -156,6 +213,13 @@ public class Constants {
 
     static public final String CREATE_BOOK="DROP TABLE IF EXISTS book; " +
             "CREATE TABLE book " +
+            "(id bigint serial Primary Key," +
+            "author bigint," +
+            "title varchar(40)," +
+            "numberOfPages integer" +
+            ") ";
+
+    static public final String ONLY_CREATE_BOOK="CREATE TABLE book " +
             "(id bigint serial Primary Key," +
             "author bigint," +
             "title varchar(40)," +
@@ -171,6 +235,22 @@ public class Constants {
 
     static public final String CREATE_ORDER="DROP TABLE IF EXISTS \"ORDER\"; " +
             "CREATE TABLE \"ORDER\" " +
+            "( id bigint serial Primary Key," +
+            "author bigint," +
+            "title varchar(40)," +
+            "numberOfPages integer," +
+            "orderDate varchar(20)," +
+            "coverType varchar(30)," +
+            "bookMaker bigint," +
+            "bookEditor bigint," +
+            "bookPriceParameters bigint," +
+            "finalNumberOfPages integer," +
+            "numberOfCopies integer," +
+            "price numeric," +
+            "bookStatus varchar(30)" +
+            ") ";
+
+    static public final String ONLY_CREATE_ORDER="CREATE TABLE \"ORDER\" " +
             "( id bigint serial Primary Key," +
             "author bigint," +
             "title varchar(40)," +
@@ -205,6 +285,17 @@ public class Constants {
 
     static public final String CREATE_CORRECTIONS="DROP TABLE IF EXISTS corrections; " +
             "CREATE TABLE corrections " +
+            "(id bigint serial Primary Key," +
+            "page integer," +
+            "textBefore varchar(255)," +
+            "textAfter varchar(255)," +
+            "comment varchar(255)," +
+            "\"ORDER\" bigint," +
+            "meet bigint," +
+            "status varchar(30)" +
+            ") ";
+
+    static public final String ONLY_CREATE_CORRECTIONS="CREATE TABLE corrections " +
             "(id bigint serial Primary Key," +
             "page integer," +
             "textBefore varchar(255)," +

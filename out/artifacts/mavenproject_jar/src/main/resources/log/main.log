@@ -1,4 +1,246 @@
-2020-09-21 21:18:13 INFO  Main:16 - Info_test
-2020-09-21 21:18:13 DEBUG Main:17 - Debag_test
-2020-09-21 21:18:13 ERROR Main:18 - Error_test
-2020-09-21 21:18:13 INFO  Main:19 - 33
+2020-12-26 22:50:05 ERROR DataProviderCSV:662 - java.io.IOException: java.io.FileNotFoundException: .\environment.properties (Не удается найти указанный файл)
+2020-12-26 22:50:05 ERROR DataProviderCSV:405 - java.io.IOException: java.io.FileNotFoundException: .\environment.properties (Не удается найти указанный файл)
+2020-12-26 22:50:05 ERROR DataProviderCSV:55 - java.io.IOException: java.io.FileNotFoundException: .\environment.properties (Не удается найти указанный файл)
+2020-12-26 22:50:05 ERROR DataProviderCSV:639 - java.io.IOException: java.io.FileNotFoundException: .\environment.properties (Не удается найти указанный файл)
+2020-12-26 22:50:05 ERROR DataProviderCSV:740 - java.io.IOException: java.io.FileNotFoundException: .\environment.properties (Не удается найти указанный файл)
+2020-12-26 22:50:05 ERROR DataProviderCSV:95 - java.lang.Exception: Object is null
+2020-12-26 22:50:05 INFO  DataProviderCSV:96 - There is not such Book
+2020-12-26 22:50:05 ERROR DataProviderCSV:114 - java.lang.Exception: Object is null
+2020-12-26 22:50:05 INFO  DataProviderCSV:115 - Order is null
+2020-12-26 22:50:05 ERROR DataProviderCSV:740 - java.io.IOException: java.io.FileNotFoundException: .\environment.properties (Не удается найти указанный файл)
+2020-12-26 22:50:05 ERROR DataProviderCSV:141 - java.lang.Exception: Object is null
+2020-12-26 22:50:05 DEBUG DataProviderCSV:142 - There is not such Order
+2020-12-26 22:50:05 ERROR Main:69 - java.lang.NullPointerException
+2020-12-26 22:50:23 ERROR DataProviderCSV:662 - java.io.IOException: java.io.FileNotFoundException: .\environment.properties (Не удается найти указанный файл)
+2020-12-26 22:50:23 ERROR DataProviderCSV:405 - java.io.IOException: java.io.FileNotFoundException: .\environment.properties (Не удается найти указанный файл)
+2020-12-26 22:50:23 ERROR DataProviderCSV:55 - java.io.IOException: java.io.FileNotFoundException: .\environment.properties (Не удается найти указанный файл)
+2020-12-26 22:50:23 ERROR DataProviderCSV:639 - java.io.IOException: java.io.FileNotFoundException: .\environment.properties (Не удается найти указанный файл)
+2020-12-26 22:50:23 ERROR DataProviderCSV:740 - java.io.IOException: java.io.FileNotFoundException: .\environment.properties (Не удается найти указанный файл)
+2020-12-26 22:50:23 ERROR DataProviderCSV:95 - java.lang.Exception: Object is null
+2020-12-26 22:50:23 INFO  DataProviderCSV:96 - There is not such Book
+2020-12-26 22:50:23 ERROR DataProviderCSV:114 - java.lang.Exception: Object is null
+2020-12-26 22:50:23 INFO  DataProviderCSV:115 - Order is null
+2020-12-26 22:50:23 ERROR DataProviderCSV:740 - java.io.IOException: java.io.FileNotFoundException: .\environment.properties (Не удается найти указанный файл)
+2020-12-26 22:50:23 ERROR DataProviderCSV:141 - java.lang.Exception: Object is null
+2020-12-26 22:50:23 DEBUG DataProviderCSV:142 - There is not such Order
+2020-12-26 22:50:23 ERROR Main:69 - java.lang.NullPointerException
+2020-12-26 22:51:01 ERROR DataProviderCSV:662 - java.io.IOException: Системе не удается найти указанный путь
+2020-12-26 22:51:01 ERROR DataProviderCSV:405 - java.io.IOException: Системе не удается найти указанный путь
+2020-12-26 22:51:01 ERROR DataProviderCSV:55 - java.io.IOException: Системе не удается найти указанный путь
+2020-12-26 22:51:01 ERROR DataProviderCSV:639 - java.io.IOException: Системе не удается найти указанный путь
+2020-12-26 22:51:01 ERROR DataProviderCSV:740 - java.io.IOException: Системе не удается найти указанный путь
+2020-12-26 22:51:01 ERROR DataProviderCSV:95 - java.lang.Exception: Object is null
+2020-12-26 22:51:01 INFO  DataProviderCSV:96 - There is not such Book
+2020-12-26 22:51:01 ERROR DataProviderCSV:114 - java.lang.Exception: Object is null
+2020-12-26 22:51:01 INFO  DataProviderCSV:115 - Order is null
+2020-12-26 22:51:01 ERROR DataProviderCSV:740 - java.io.IOException: Системе не удается найти указанный путь
+2020-12-26 22:51:01 ERROR DataProviderCSV:141 - java.lang.Exception: Object is null
+2020-12-26 22:51:01 DEBUG DataProviderCSV:142 - There is not such Order
+2020-12-26 22:51:01 ERROR Main:69 - java.lang.NullPointerException
+2020-12-26 22:54:01 ERROR Main:69 - java.lang.ArrayIndexOutOfBoundsException: Index 9 out of bounds for length 9
+2020-12-26 22:54:51 ERROR Main:69 - java.lang.ArrayIndexOutOfBoundsException: Index 8 out of bounds for length 8
+2020-12-26 22:55:02 ERROR DataProviderCSV:405 - java.io.IOException: Системе не удается найти указанный путь
+2020-12-26 22:55:30 ERROR Main:69 - java.lang.ArrayIndexOutOfBoundsException: Index 9 out of bounds for length 9
+2020-12-26 22:55:44 INFO  DataProviderXML:686 - --addCoverPrice--
+2020-12-26 22:55:44 INFO  DataProviderXML:826 - --getCoverPriceByID--
+2020-12-26 22:55:44 ERROR DataProviderXML:744 - java.io.FileNotFoundException: .\src\main\resources\xml\coverprice.xml (Системе не удается найти указанный путь)
+2020-12-26 22:55:44 ERROR DataProviderXML:834 - java.util.NoSuchElementException: No value present
+2020-12-26 22:55:44 INFO  DataProviderXML:676 - --setCoverPrice--
+2020-12-26 22:55:44 INFO  DataProviderXML:905 - --insertCoverPrice--
+2020-12-26 22:55:44 ERROR DataProviderXML:744 - java.io.FileNotFoundException: .\src\main\resources\xml\coverprice.xml (Системе не удается найти указанный путь)
+2020-12-26 22:55:44 DEBUG DataProviderXML:915 - will add to hml CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}
+2020-12-26 22:55:44 INFO  DataProviderXML:840 - --createFile--
+2020-12-26 22:55:44 INFO  DataProviderXML:676 - --setCoverPrice--
+2020-12-26 22:55:44 INFO  DataProviderXML:408 - --addAuthor--
+2020-12-26 22:55:44 ERROR DataProviderXML:744 - java.io.FileNotFoundException: .\src\main\resources\xml\author.xml (Не удается найти указанный файл)
+2020-12-26 22:55:44 INFO  DataProviderXML:425 - --setAuthor--
+2020-12-26 22:55:44 DEBUG DataProviderXML:414 - Author{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890', email='iivanov@mail.ru', degree='доцент', organization='ЮФУ'}
+2020-12-26 22:55:44 INFO  DataProviderXML:857 - --insertPeople--
+2020-12-26 22:55:44 ERROR DataProviderXML:744 - java.io.FileNotFoundException: .\src\main\resources\xml\author.xml (Не удается найти указанный файл)
+2020-12-26 22:55:44 DEBUG DataProviderXML:867 - will add to hml Author{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890', email='iivanov@mail.ru', degree='доцент', organization='ЮФУ'}
+2020-12-26 22:55:44 INFO  DataProviderXML:840 - --createFile--
+2020-12-26 22:55:44 INFO  DataProviderXML:30 - --alterBook--
+2020-12-26 22:55:44 INFO  DataProviderXML:756 - --getPeopleByID--
+2020-12-26 22:55:44 INFO  DataProviderXML:756 - --getPeopleByID--
+2020-12-26 22:55:44 INFO  DataProviderXML:770 - --getBookByID--
+2020-12-26 22:55:44 ERROR DataProviderXML:744 - java.io.FileNotFoundException: .\src\main\resources\xml\book.xml (Не удается найти указанный файл)
+2020-12-26 22:55:44 ERROR DataProviderXML:778 - java.util.NoSuchElementException: No value present
+2020-12-26 22:55:44 INFO  DataProviderXML:43 - Insert Book
+2020-12-26 22:55:44 INFO  DataProviderXML:1040 - --insertBook--
+2020-12-26 22:55:44 ERROR DataProviderXML:744 - java.io.FileNotFoundException: .\src\main\resources\xml\book.xml (Не удается найти указанный файл)
+2020-12-26 22:55:44 INFO  DataProviderXML:756 - --getPeopleByID--
+2020-12-26 22:55:44 DEBUG DataProviderXML:1047 - there is such Author
+2020-12-26 22:55:44 DEBUG DataProviderXML:1054 - will add to hml Book{id=10, author=1, title='Цифровая бухгалтерия', numberOfPages=288}
+2020-12-26 22:55:44 INFO  DataProviderXML:840 - --createFile--
+2020-12-26 22:55:44 INFO  DataProviderXML:661 - --addPriceParameters--
+2020-12-26 22:55:44 INFO  DataProviderXML:812 - --getPriceParametersByID--
+2020-12-26 22:55:44 ERROR DataProviderXML:744 - java.io.FileNotFoundException: .\src\main\resources\xml\priceparameters.xml (Не удается найти указанный файл)
+2020-12-26 22:55:44 ERROR DataProviderXML:820 - java.util.NoSuchElementException: No value present
+2020-12-26 22:55:44 INFO  DataProviderXML:648 - --setPriceParameters--
+2020-12-26 22:55:44 INFO  DataProviderXML:929 - --insertPriceParameters--
+2020-12-26 22:55:44 ERROR DataProviderXML:744 - java.io.FileNotFoundException: .\src\main\resources\xml\priceparameters.xml (Не удается найти указанный файл)
+2020-12-26 22:55:44 INFO  DataProviderXML:826 - --getCoverPriceByID--
+2020-12-26 22:55:44 DEBUG DataProviderXML:942 - there is such CoverPrice
+2020-12-26 22:55:44 DEBUG DataProviderXML:949 - will add to hml PriceParameters{id=1, pagePrice=13.4, coverPrice=[CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}], workPrice=16.3, validFromDate='2019-01-01', validToDate='2021-01-01'}
+2020-12-26 22:55:44 INFO  DataProviderXML:840 - --createFile--
+2020-12-26 22:55:44 INFO  DataProviderXML:100 - --saveOrderInformation--
+2020-12-26 22:55:44 INFO  DataProviderXML:60 - --makeOrder--
+2020-12-26 22:55:44 INFO  DataProviderXML:770 - --getBookByID--
+2020-12-26 22:55:44 INFO  DataProviderXML:770 - --getBookByID--
+2020-12-26 22:55:44 INFO  DataProviderXML:1549 - --createDefaultEmloyee--
+2020-12-26 22:55:44 INFO  DataProviderXML:857 - --insertPeople--
+2020-12-26 22:55:44 ERROR DataProviderXML:744 - java.io.FileNotFoundException: .\src\main\resources\xml\employee.xml (Не удается найти указанный файл)
+2020-12-26 22:55:44 DEBUG DataProviderXML:867 - will add to hml Employee{id=1000, firstName='Default', secondName='Default', lastName='Default', phone='00000000000'inn='000000000000', workRecordBook='0000000', emplpyeeType=ADMIN}
+2020-12-26 22:55:44 INFO  DataProviderXML:840 - --createFile--
+2020-12-26 22:55:44 INFO  DataProviderXML:1582 - --createDefaultCoverPrice--
+2020-12-26 22:55:44 INFO  DataProviderXML:905 - --insertCoverPrice--
+2020-12-26 22:55:44 DEBUG DataProviderXML:915 - will add to hml CoverPrice{id=1000, coverType=PAPERBACK, price=0.0}
+2020-12-26 22:55:44 INFO  DataProviderXML:840 - --createFile--
+2020-12-26 22:55:44 INFO  DataProviderXML:1563 - --createDefaultPriceParameters--
+2020-12-26 22:55:44 INFO  DataProviderXML:1582 - --createDefaultCoverPrice--
+2020-12-26 22:55:44 INFO  DataProviderXML:826 - --getCoverPriceByID--
+2020-12-26 22:55:44 INFO  DataProviderXML:929 - --insertPriceParameters--
+2020-12-26 22:55:44 INFO  DataProviderXML:826 - --getCoverPriceByID--
+2020-12-26 22:55:44 DEBUG DataProviderXML:942 - there is such CoverPrice
+2020-12-26 22:55:44 DEBUG DataProviderXML:949 - will add to hml PriceParameters{id=1000, pagePrice=0.0, coverPrice=[CoverPrice{id=1000, coverType=PAPERBACK, price=0.0}], workPrice=0.0, validFromDate='1970-01-01', validToDate='1970-01-01'}
+2020-12-26 22:55:44 INFO  DataProviderXML:840 - --createFile--
+2020-12-26 22:55:44 INFO  DataProviderXML:756 - --getPeopleByID--
+2020-12-26 22:55:44 INFO  DataProviderXML:756 - --getPeopleByID--
+2020-12-26 22:55:44 INFO  DataProviderXML:812 - --getPriceParametersByID--
+2020-12-26 22:55:44 INFO  DataProviderXML:967 - --insertOrder--
+2020-12-26 22:55:44 ERROR DataProviderXML:744 - java.io.FileNotFoundException: .\src\main\resources\xml\order.xml (Не удается найти указанный файл)
+2020-12-26 22:55:44 INFO  DataProviderXML:756 - --getPeopleByID--
+2020-12-26 22:55:44 INFO  DataProviderXML:756 - --getPeopleByID--
+2020-12-26 22:55:44 INFO  DataProviderXML:812 - --getPriceParametersByID--
+2020-12-26 22:55:44 DEBUG DataProviderXML:976 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-26 22:55:44 DEBUG DataProviderXML:983 - will add to hml Order{id=10, author=Author{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890', email='iivanov@mail.ru', degree='доцент', organization='ЮФУ'}, title='Цифровая бухгалтерия', numberOfPages=288, orderDate='2019-07-01', coverType=RIGID_COVER, bookMaker=1000, bookEditor=1000, bookPriceParameters=1000, finalNumberOfPages=288, numberOfCopies=100, price=-1.0, bookStatus=UNTOUCHED}
+2020-12-26 22:55:44 INFO  DataProviderXML:840 - --createFile--
+2020-12-26 22:55:44 INFO  DataProviderXML:118 - --calculateCost--
+2020-12-26 22:55:44 INFO  DataProviderXML:770 - --getBookByID--
+2020-12-26 22:55:44 INFO  DataProviderXML:148 - --selectPriceParameters--
+2020-12-26 22:55:44 INFO  DataProviderXML:162 - --belongInterval--
+2020-12-26 22:55:44 INFO  DataProviderXML:162 - --belongInterval--
+2020-12-26 22:55:44 INFO  DataProviderXML:152 - PriceParamets selected
+2020-12-26 22:55:44 INFO  DataProviderXML:148 - --selectPriceParameters--
+2020-12-26 22:55:45 INFO  DataProviderXML:162 - --belongInterval--
+2020-12-26 22:55:45 INFO  DataProviderXML:162 - --belongInterval--
+2020-12-26 22:55:45 INFO  DataProviderXML:152 - PriceParamets selected
+2020-12-26 22:55:45 DEBUG DataProviderXML:124 - PriceParameters{id=1, pagePrice=13.4, coverPrice=[CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}], workPrice=16.3, validFromDate='2019-01-01', validToDate='2021-01-01'}
+2020-12-26 22:55:45 INFO  DataProviderXML:181 - --calculateEditorWorkCost--
+2020-12-26 22:55:45 INFO  DataProviderXML:812 - --getPriceParametersByID--
+2020-12-26 22:55:45 INFO  DataProviderXML:193 - --calculatePrintingCost--
+2020-12-26 22:55:45 INFO  DataProviderXML:812 - --getPriceParametersByID--
+2020-12-26 22:55:45 INFO  DataProviderXML:205 - --calculateCoverCost--
+2020-12-26 22:55:45 INFO  DataProviderXML:812 - --getPriceParametersByID--
+2020-12-26 22:55:45 INFO  DataProviderXML:826 - --getCoverPriceByID--
+2020-12-26 22:55:45 DEBUG DataProviderXML:216 - [CoverPrice{id=1, coverType=RIGID_COVER, price=123.5}]
+2020-12-26 22:55:45 INFO  DataProviderXML:826 - --getCoverPriceByID--
+2020-12-26 22:55:45 DEBUG DataProviderXML:131 - calculate cost done
+2020-12-26 22:55:45 INFO  DataProviderXML:1182 - --updateOrder--
+2020-12-26 22:55:45 INFO  DataProviderXML:770 - --getBookByID--
+2020-12-26 22:55:45 INFO  DataProviderXML:840 - --createFile--
+2020-12-26 22:55:45 INFO  DataProviderXML:967 - --insertOrder--
+2020-12-26 22:55:45 ERROR DataProviderXML:744 - java.lang.Exception: Object is null
+2020-12-26 22:55:45 INFO  DataProviderXML:756 - --getPeopleByID--
+2020-12-26 22:55:45 INFO  DataProviderXML:756 - --getPeopleByID--
+2020-12-26 22:55:45 INFO  DataProviderXML:812 - --getPriceParametersByID--
+2020-12-26 22:55:45 DEBUG DataProviderXML:976 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-26 22:55:45 DEBUG DataProviderXML:983 - will add to hml Order{id=10, author=Author{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890', email='iivanov@mail.ru', degree='доцент', organization='ЮФУ'}, title='Цифровая бухгалтерия', numberOfPages=288, orderDate='2019-07-01', coverType=RIGID_COVER, bookMaker=1000, bookEditor=1000, bookPriceParameters=1, finalNumberOfPages=288, numberOfCopies=100, price=867710.0, bookStatus=UNTOUCHED}
+2020-12-26 22:55:45 INFO  DataProviderXML:840 - --createFile--
+2020-12-26 22:55:45 DEBUG DataProviderXML:1193 - update success
+2020-12-26 22:55:45 INFO  DataProviderXML:408 - --addAuthor--
+2020-12-26 22:55:45 INFO  DataProviderXML:425 - --setAuthor--
+2020-12-26 22:55:45 DEBUG DataProviderXML:414 - Author{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890', email='iivanov@mail.ru', degree='доцент', organization='ЮФУ'}
+2020-12-26 22:55:45 INFO  DataProviderXML:857 - --insertPeople--
+2020-12-26 22:55:45 DEBUG DataProviderXML:862 - already exist in hml Author{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890', email='iivanov@mail.ru', degree='доцент', organization='ЮФУ'}
+2020-12-26 22:55:45 DEBUG DataProviderXML:862 - already exist in hml Author{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890', email='iivanov@mail.ru', degree='доцент', organization='ЮФУ'}
+2020-12-26 22:55:45 INFO  DataProviderXML:840 - --createFile--
+2020-12-26 22:55:45 INFO  DataProviderXML:30 - --alterBook--
+2020-12-26 22:55:45 INFO  DataProviderXML:756 - --getPeopleByID--
+2020-12-26 22:55:45 INFO  DataProviderXML:756 - --getPeopleByID--
+2020-12-26 22:55:45 INFO  DataProviderXML:770 - --getBookByID--
+2020-12-26 22:55:45 INFO  DataProviderXML:40 - Update Book
+2020-12-26 22:55:45 INFO  DataProviderXML:1230 - --updateBook--
+2020-12-26 22:55:45 INFO  DataProviderXML:770 - --getBookByID--
+2020-12-26 22:55:45 INFO  DataProviderXML:840 - --createFile--
+2020-12-26 22:55:45 INFO  DataProviderXML:1040 - --insertBook--
+2020-12-26 22:55:45 ERROR DataProviderXML:744 - java.lang.Exception: Object is null
+2020-12-26 22:55:45 INFO  DataProviderXML:756 - --getPeopleByID--
+2020-12-26 22:55:45 DEBUG DataProviderXML:1047 - there is such Author
+2020-12-26 22:55:45 DEBUG DataProviderXML:1054 - will add to hml Book{id=10, author=1, title='Цифровая бухгалтерия', numberOfPages=288}
+2020-12-26 22:55:45 INFO  DataProviderXML:840 - --createFile--
+2020-12-26 22:55:45 DEBUG DataProviderXML:1241 - update success
+2020-12-26 22:55:45 INFO  DataProviderXML:100 - --saveOrderInformation--
+2020-12-26 22:55:45 INFO  DataProviderXML:60 - --makeOrder--
+2020-12-26 22:55:45 INFO  DataProviderXML:770 - --getBookByID--
+2020-12-26 22:55:45 INFO  DataProviderXML:770 - --getBookByID--
+2020-12-26 22:55:45 INFO  DataProviderXML:1549 - --createDefaultEmloyee--
+2020-12-26 22:55:45 INFO  DataProviderXML:857 - --insertPeople--
+2020-12-26 22:55:45 DEBUG DataProviderXML:862 - already exist in hml Employee{id=1000, firstName='Default', secondName='Default', lastName='Default', phone='00000000000'inn='000000000000', workRecordBook='0000000', emplpyeeType=ADMIN}
+2020-12-26 22:55:45 INFO  DataProviderXML:840 - --createFile--
+2020-12-26 22:55:45 INFO  DataProviderXML:1582 - --createDefaultCoverPrice--
+2020-12-26 22:55:45 INFO  DataProviderXML:905 - --insertCoverPrice--
+2020-12-26 22:55:45 DEBUG DataProviderXML:910 - already exist in hml CoverPrice{id=1000, coverType=PAPERBACK, price=0.0}
+2020-12-26 22:55:45 INFO  DataProviderXML:840 - --createFile--
+2020-12-26 22:55:45 INFO  DataProviderXML:1563 - --createDefaultPriceParameters--
+2020-12-26 22:55:45 INFO  DataProviderXML:1582 - --createDefaultCoverPrice--
+2020-12-26 22:55:45 INFO  DataProviderXML:826 - --getCoverPriceByID--
+2020-12-26 22:55:45 INFO  DataProviderXML:929 - --insertPriceParameters--
+2020-12-26 22:55:45 INFO  DataProviderXML:826 - --getCoverPriceByID--
+2020-12-26 22:55:45 DEBUG DataProviderXML:942 - there is such CoverPrice
+2020-12-26 22:55:45 DEBUG DataProviderXML:944 - already exist in hml PriceParameters{id=1000, pagePrice=0.0, coverPrice=[CoverPrice{id=1000, coverType=PAPERBACK, price=0.0}], workPrice=0.0, validFromDate='1970-01-01', validToDate='1970-01-01'}
+2020-12-26 22:55:45 INFO  DataProviderXML:840 - --createFile--
+2020-12-26 22:55:45 INFO  DataProviderXML:756 - --getPeopleByID--
+2020-12-26 22:55:45 INFO  DataProviderXML:756 - --getPeopleByID--
+2020-12-26 22:55:45 INFO  DataProviderXML:812 - --getPriceParametersByID--
+2020-12-26 22:55:45 INFO  DataProviderXML:967 - --insertOrder--
+2020-12-26 22:55:45 INFO  DataProviderXML:756 - --getPeopleByID--
+2020-12-26 22:55:45 INFO  DataProviderXML:756 - --getPeopleByID--
+2020-12-26 22:55:45 INFO  DataProviderXML:812 - --getPriceParametersByID--
+2020-12-26 22:55:45 DEBUG DataProviderXML:976 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-26 22:55:45 DEBUG DataProviderXML:980 - id already exist in hml Order{id=10, author=Author{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890', email='iivanov@mail.ru', degree='доцент', organization='ЮФУ'}, title='Цифровая бухгалтерия', numberOfPages=288, orderDate='2019-07-01', coverType=RIGID_COVER, bookMaker=1000, bookEditor=1000, bookPriceParameters=1000, finalNumberOfPages=288, numberOfCopies=100, price=-1.0, bookStatus=UNTOUCHED}
+2020-12-26 22:55:45 INFO  DataProviderXML:840 - --createFile--
+2020-12-26 22:55:45 INFO  DataProviderXML:30 - --alterBook--
+2020-12-26 22:55:45 INFO  DataProviderXML:756 - --getPeopleByID--
+2020-12-26 22:55:45 INFO  DataProviderXML:756 - --getPeopleByID--
+2020-12-26 22:55:45 INFO  DataProviderXML:770 - --getBookByID--
+2020-12-26 22:55:45 ERROR DataProviderXML:778 - java.util.NoSuchElementException: No value present
+2020-12-26 22:55:45 INFO  DataProviderXML:43 - Insert Book
+2020-12-26 22:55:45 INFO  DataProviderXML:1040 - --insertBook--
+2020-12-26 22:55:45 INFO  DataProviderXML:756 - --getPeopleByID--
+2020-12-26 22:55:45 DEBUG DataProviderXML:1047 - there is such Author
+2020-12-26 22:55:45 DEBUG DataProviderXML:1054 - will add to hml Book{id=12, author=1, title='Цифровая бухгалтерия', numberOfPages=288}
+2020-12-26 22:55:45 INFO  DataProviderXML:840 - --createFile--
+2020-12-26 22:55:45 INFO  DataProviderXML:100 - --saveOrderInformation--
+2020-12-26 22:55:45 INFO  DataProviderXML:60 - --makeOrder--
+2020-12-26 22:55:45 INFO  DataProviderXML:770 - --getBookByID--
+2020-12-26 22:55:45 INFO  DataProviderXML:770 - --getBookByID--
+2020-12-26 22:55:45 INFO  DataProviderXML:1549 - --createDefaultEmloyee--
+2020-12-26 22:55:45 INFO  DataProviderXML:857 - --insertPeople--
+2020-12-26 22:55:45 DEBUG DataProviderXML:862 - already exist in hml Employee{id=1000, firstName='Default', secondName='Default', lastName='Default', phone='00000000000'inn='000000000000', workRecordBook='0000000', emplpyeeType=ADMIN}
+2020-12-26 22:55:45 INFO  DataProviderXML:840 - --createFile--
+2020-12-26 22:55:45 INFO  DataProviderXML:1582 - --createDefaultCoverPrice--
+2020-12-26 22:55:45 INFO  DataProviderXML:905 - --insertCoverPrice--
+2020-12-26 22:55:45 DEBUG DataProviderXML:910 - already exist in hml CoverPrice{id=1000, coverType=PAPERBACK, price=0.0}
+2020-12-26 22:55:45 INFO  DataProviderXML:840 - --createFile--
+2020-12-26 22:55:45 INFO  DataProviderXML:1563 - --createDefaultPriceParameters--
+2020-12-26 22:55:45 INFO  DataProviderXML:1582 - --createDefaultCoverPrice--
+2020-12-26 22:55:45 INFO  DataProviderXML:826 - --getCoverPriceByID--
+2020-12-26 22:55:45 INFO  DataProviderXML:929 - --insertPriceParameters--
+2020-12-26 22:55:45 INFO  DataProviderXML:826 - --getCoverPriceByID--
+2020-12-26 22:55:45 DEBUG DataProviderXML:942 - there is such CoverPrice
+2020-12-26 22:55:45 DEBUG DataProviderXML:944 - already exist in hml PriceParameters{id=1000, pagePrice=0.0, coverPrice=[CoverPrice{id=1000, coverType=PAPERBACK, price=0.0}], workPrice=0.0, validFromDate='1970-01-01', validToDate='1970-01-01'}
+2020-12-26 22:55:45 INFO  DataProviderXML:840 - --createFile--
+2020-12-26 22:55:45 INFO  DataProviderXML:756 - --getPeopleByID--
+2020-12-26 22:55:45 INFO  DataProviderXML:756 - --getPeopleByID--
+2020-12-26 22:55:45 INFO  DataProviderXML:812 - --getPriceParametersByID--
+2020-12-26 22:55:45 INFO  DataProviderXML:967 - --insertOrder--
+2020-12-26 22:55:45 INFO  DataProviderXML:756 - --getPeopleByID--
+2020-12-26 22:55:45 INFO  DataProviderXML:756 - --getPeopleByID--
+2020-12-26 22:55:45 INFO  DataProviderXML:812 - --getPriceParametersByID--
+2020-12-26 22:55:45 DEBUG DataProviderXML:976 - there is such BookMaker and BookEditor and PriceParameters
+2020-12-26 22:55:45 DEBUG DataProviderXML:983 - will add to hml Order{id=12, author=Author{id=1, firstName='Иван', secondName='Иванович', lastName='Иванов', phone='81234567890', email='iivanov@mail.ru', degree='доцент', organization='ЮФУ'}, title='Цифровая бухгалтерия', numberOfPages=288, orderDate='2020-07-01', coverType=PAPERBACK, bookMaker=1000, bookEditor=1000, bookPriceParameters=1000, finalNumberOfPages=288, numberOfCopies=200, price=-1.0, bookStatus=UNTOUCHED}
+2020-12-26 22:55:45 INFO  DataProviderXML:840 - --createFile--
+2020-12-26 22:55:45 ERROR Main:69 - java.lang.ArrayIndexOutOfBoundsException: Index 3 out of bounds for length 3
+2020-12-26 22:56:09 ERROR Main:69 - java.lang.ArrayIndexOutOfBoundsException: Index 9 out of bounds for length 9
+2020-12-26 22:58:42 ERROR DataProviderCSV:405 - java.io.IOException: Системе не удается найти указанный путь
