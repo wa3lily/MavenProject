@@ -731,6 +731,12 @@ class DataProviderXMLTest extends TestBase {
     @Test
     public void getListOfCorrectionsSuccess() throws Exception {
         log.info("getListOfCorrectionsSuccess");
+        instance.deleteFile(Employee.class);
+        instance.deleteFile(Author.class);
+        instance.deleteFile(PriceParameters.class);
+        instance.deleteFile(Order.class);
+        instance.deleteFile(Corrections.class);
+        instance.deleteFile(Meeting.class);
         List<Corrections> listCorrections = new ArrayList<>();
         List<Employee> listEmployee = new ArrayList<>();
         List<Author> listAuthor = new ArrayList<>();
@@ -744,12 +750,13 @@ class DataProviderXMLTest extends TestBase {
         CoverPrice coverPrice2 = createCoverPrice(2,CoverType.PAPERBACK, 143.8);
         listCoverPrice.add(coverPrice);
         listCoverPrice.add(coverPrice2);
+        Meeting meet =  instance.createDefaultMeeting();
         PriceParameters priceParameters = createPriceParameters(1, 2.4, listCoverPrice, 1.3, "2019-01-01", "2021-01-01");
         Order order = createOrder(1,author,"Цифровая бухгалтерия",4,"2020-09-03", CoverType.RIGID_COVER, employee2, employee3, priceParameters, 229, 100, 9700.75 , BookStatus.EDITING  );
         Corrections corrections = createCorrections(1,35, "Цифровой контроль - это компьютерные системы",
-                "Цифровой контроль представляет собой компьютерные системы", "Повторяется конструкция", order, null, CorrectionsStatus.WAIT_AUTHOR_AGR );
+                "Цифровой контроль представляет собой компьютерные системы", "Повторяется конструкция", order, meet, CorrectionsStatus.WAIT_AUTHOR_AGR );
         Corrections corrections2 = createCorrections(2,65, "Цифровой контроль - это компьютерные системы",
-                "Цифровой контроль представляет собой компьютерные системы", "Повторяется конструкция", order, null, CorrectionsStatus.WAIT_AUTHOR_AGR );
+                "Цифровой контроль представляет собой компьютерные системы", "Повторяется конструкция", order, meet, CorrectionsStatus.WAIT_AUTHOR_AGR );
         listEmployee.add(employee2);
         listEmployee.add(employee3);
         listAuthor.add(author);
@@ -757,11 +764,6 @@ class DataProviderXMLTest extends TestBase {
         listOrder.add(order);
         listCorrections.add(corrections);
         listCorrections.add(corrections2);
-        instance.deleteFile(Employee.class);
-        instance.deleteFile(Author.class);
-        instance.deleteFile(PriceParameters.class);
-        instance.deleteFile(Order.class);
-        instance.deleteFile(Corrections.class);
         instance.insertPeople(Employee.class, listEmployee);
         instance.insertPeople(Author.class, listAuthor);
         instance.insertCoverPrice(listCoverPrice);

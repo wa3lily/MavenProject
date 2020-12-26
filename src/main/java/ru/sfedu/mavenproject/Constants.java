@@ -24,6 +24,18 @@ public class Constants {
     static public final String DB_DELETE_BY_ID="DELETE FROM \"%S\" WHERE id = %d";
     static public final String DB_SELECT_MAX_ID="SELECT id FROM \"%S\" WHERE id in (SELECT max(id) from \"%S\")";
     static public final long DEFAULT_ID=1000;
+    static public final String DEFAULT_DATE="1970-01-01";
+    static public final double DEFAULT_PRICE=0.0;
+    static public final String EXCEPTION_OBJECT_IS_NULL="Object is null";
+    static public final String EXCEPTION_LIST_IS_EMPTY="List is Empty";
+    static public final String EXCEPTION_RESULT_FALSE="Result false";
+    static public final String EXCEPTION_RESULT_TRUE="Result true";
+    static public final String EXCEPTION_OBJECT_IS_NOT_NULL="Object is not null";
+    static public final String DATE_PATTERN="yyyy-MM-dd";
+    static public final String DEFAULT_NAME = "Default";
+    static public final String DEFAULT_PHONE = "00000000000";
+    static public final String DEFAULT_INN = "000000000000";
+    static public final String DEFAUL_BOOK = "0000000";
 
     static public final String CREATE_PEOPLE="DROP TABLE IF EXISTS people; " +
             "CREATE TABLE people (" +

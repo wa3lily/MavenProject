@@ -910,12 +910,12 @@ public class DataProviderDB implements DataProvider{
     public Employee createDefaultEmloyee(){
         Employee employee = new Employee();
         employee.setId(DEFAULT_ID);
-        employee.setFirstName("Default");
-        employee.setSecondName("Default");
-        employee.setLastName("Default");
-        employee.setPhone("00000000000");
-        employee.setInn("000000000000");
-        employee.setWorkRecordBook("0000000");
+        employee.setFirstName(DEFAULT_NAME);
+        employee.setSecondName(DEFAULT_NAME);
+        employee.setLastName(DEFAULT_NAME);
+        employee.setPhone(DEFAULT_PHONE);
+        employee.setInn(DEFAULT_INN);
+        employee.setWorkRecordBook(DEFAUL_BOOK);
         employee.setEmplpyeeType(EmployeeType.ADMIN);
         return employee;
     }
@@ -927,11 +927,11 @@ public class DataProviderDB implements DataProvider{
             list.add(getCoverPriceByID(DEFAULT_ID));
             PriceParameters priceParameters = new PriceParameters();
             priceParameters.setId(DEFAULT_ID);
-            priceParameters.setPagePrice(0.0);
+            priceParameters.setPagePrice(DEFAULT_PRICE);
             priceParameters.setCoverPrice(list);
-            priceParameters.setWorkPrice(0.0);
-            priceParameters.setValidFromDate("1970-01-01");
-            priceParameters.setValidToDate("1970-01-02");
+            priceParameters.setWorkPrice(DEFAULT_PRICE);
+            priceParameters.setValidFromDate(DEFAULT_DATE);
+            priceParameters.setValidToDate(DEFAULT_DATE);
             return priceParameters;
         } catch (SQLException | ClassNotFoundException e) {
             log.error(e);
@@ -957,7 +957,7 @@ public class DataProviderDB implements DataProvider{
             log.error(e);
             meet = new Meeting();
             meet.setId(DEFAULT_ID);
-            meet.setMeetDate("1970-01-01");
+            meet.setMeetDate(DEFAULT_DATE);
             meet.setAuthorAgreement(false);
             meet.setEditorAgreement(false);
             List<Meeting> list = new ArrayList<>();
@@ -969,23 +969,23 @@ public class DataProviderDB implements DataProvider{
     }
 
     public <T> void checkNotNullObject (T obj) throws Exception {
-        if (obj == null) throw new Exception("Object is null");
+        if (obj == null) throw new Exception(EXCEPTION_OBJECT_IS_NULL);
     }
 
     public <T> void checkListIsNotEmpty (List<T> list) throws Exception {
-        if (list.isEmpty()) throw new Exception("List is Empty");
+        if (list.isEmpty()) throw new Exception(EXCEPTION_LIST_IS_EMPTY);
     }
 
     public void checkTrue (boolean result) throws Exception {
-        if (!result) throw new Exception("Result false");
+        if (!result) throw new Exception(EXCEPTION_RESULT_FALSE);
     }
 
     public void checkFalse (boolean result) throws Exception {
-        if (result) throw new Exception("Result true");
+        if (result) throw new Exception(EXCEPTION_RESULT_TRUE);
     }
 
     public <T> void checkNullObject (T obj) throws Exception {
-        if (obj != null) throw new Exception("Object is not null");
+        if (obj != null) throw new Exception(EXCEPTION_OBJECT_IS_NOT_NULL);
     }
 
     //Author
@@ -1134,7 +1134,7 @@ public class DataProviderDB implements DataProvider{
     @Override
     public boolean belongInterval (String start, String end, String date) {
         try {
-            SimpleDateFormat dateForm = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat dateForm = new SimpleDateFormat(DATE_PATTERN);
             Date dstart = dateForm.parse(start);
             Date dend = dateForm.parse(end);
             Date ddate = dateForm.parse(date);

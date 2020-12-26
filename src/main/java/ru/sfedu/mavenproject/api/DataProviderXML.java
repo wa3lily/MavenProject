@@ -76,9 +76,9 @@ public class DataProviderXML implements DataProvider{
             List<PriceParameters> listPriceParameters = new ArrayList<>();
             listPriceParameters.add(createDefaultPriceParameters());
             insertPriceParameters(listPriceParameters);
-            order.setBookMaker((Employee) getPeopleByID(Employee.class, 0));
-            order.setBookEditor((Employee) getPeopleByID(Employee.class, 0));
-            order.setBookPriceParameters(getPriceParametersByID(0));
+            order.setBookMaker((Employee) getPeopleByID(Employee.class, DEFAULT_ID));
+            order.setBookEditor((Employee) getPeopleByID(Employee.class, DEFAULT_ID));
+            order.setBookPriceParameters(getPriceParametersByID(DEFAULT_ID));
             order.setNumberOfCopies(numberOfCopies);
             order.setBookStatus(BookStatus.UNTOUCHED);
             return Optional.of(order);
@@ -154,7 +154,7 @@ public class DataProviderXML implements DataProvider{
     @Override
     public boolean belongInterval (String start, String end, String date) {
         try {
-            SimpleDateFormat dateForm = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat dateForm = new SimpleDateFormat(DATE_PATTERN);
             Date dstart = dateForm.parse(start);
             Date dend = dateForm.parse(end);
             Date ddate = dateForm.parse(date);
@@ -417,7 +417,7 @@ public class DataProviderXML implements DataProvider{
     public List<Order> getOrderListWithoutEditor (){
         try {
             List<Order> list = readXML(Order.class);
-            list = list.stream().filter(el -> el.getBookEditor() == null || el.getBookEditor().getId() == 0).collect(Collectors.toList());
+            list = list.stream().filter(el -> el.getBookEditor() == null || el.getBookEditor().getId() == DEFAULT_ID).collect(Collectors.toList());
             return list;
         } catch (IOException e) {
             log.error(e);
@@ -1476,13 +1476,13 @@ public class DataProviderXML implements DataProvider{
 
     public Employee createDefaultEmloyee(){
         Employee employee = new Employee();
-        employee.setId(0);
-        employee.setFirstName("Default");
-        employee.setSecondName("Default");
-        employee.setLastName("Default");
-        employee.setPhone("00000000000");
-        employee.setInn("000000000000");
-        employee.setWorkRecordBook("0000000");
+        employee.setId(DEFAULT_ID);
+        employee.setFirstName(DEFAULT_NAME);
+        employee.setSecondName(DEFAULT_NAME);
+        employee.setLastName(DEFAULT_NAME);
+        employee.setPhone(DEFAULT_PHONE);
+        employee.setInn(DEFAULT_INN);
+        employee.setWorkRecordBook(DEFAUL_BOOK);
         employee.setEmplpyeeType(EmployeeType.ADMIN);
         return employee;
     }
@@ -1491,14 +1491,14 @@ public class DataProviderXML implements DataProvider{
         try {
             List<CoverPrice> list = new ArrayList<>();
             createDefaultCoverPrice();
-            list.add(getCoverPriceByID(0));
+            list.add(getCoverPriceByID(DEFAULT_ID));
             PriceParameters priceParameters = new PriceParameters();
-            priceParameters.setId(0);
+            priceParameters.setId(DEFAULT_ID);
             priceParameters.setPagePrice(0.0);
             priceParameters.setCoverPrice(list);
             priceParameters.setWorkPrice(0.0);
-            priceParameters.setValidFromDate("1970-01-01");
-            priceParameters.setValidToDate("1970-01-02");
+            priceParameters.setValidFromDate(DEFAULT_DATE);
+            priceParameters.setValidToDate(DEFAULT_DATE);
             return priceParameters;
         }catch (IOException e){
             return null;
@@ -1507,22 +1507,23 @@ public class DataProviderXML implements DataProvider{
 
     public CoverPrice createDefaultCoverPrice(){
         CoverPrice coverPrice = new CoverPrice();
-        coverPrice.setId(0);
+        coverPrice.setId(DEFAULT_ID);
         coverPrice.setCoverType(CoverType.PAPERBACK);
         coverPrice.setCoverType(CoverType.PAPERBACK);
-        coverPrice.setPrice(0.0);
+        coverPrice.setPrice(DEFAULT_PRICE);
         return coverPrice;
     }
 
     public Meeting createDefaultMeeting(){
         Meeting meet = null;
         try {
-            meet = getMeetingByID(0);
+            meet = getMeetingByID(DEFAULT_ID);
+            checkNotNullObject(meet);
         } catch (IOException e) {
             log.error(e);
             meet = new Meeting();
-            meet.setId(0);
-            meet.setMeetDate("1970-01-01");
+            meet.setId(DEFAULT_ID);
+            meet.setMeetDate(DEFAULT_DATE);
             meet.setAuthorAgreement(false);
             meet.setEditorAgreement(false);
             List<Meeting> list = new ArrayList<>();
@@ -1534,19 +1535,19 @@ public class DataProviderXML implements DataProvider{
     }
 
     public <T> void checkNotNullObject (T obj) throws Exception {
-        if (obj == null) throw new Exception("Object is null");
+        if (obj == null) throw new Exception(EXCEPTION_OBJECT_IS_NULL);
     }
 
     public <T> void checkListIsNotEmpty (List<T> list) throws Exception {
-        if (list.isEmpty()) throw new Exception("List is Empty");
+        if (list.isEmpty()) throw new Exception(EXCEPTION_LIST_IS_EMPTY);
     }
 
     public void checkTrue (boolean result) throws Exception {
-        if (!result) throw new Exception("Result false");
+        if (!result) throw new Exception(EXCEPTION_RESULT_FALSE);
     }
 
     public <T> void checkNullObject (T obj) throws Exception {
-        if (obj != null) throw new Exception("Object is not null");
+        if (obj != null) throw new Exception(EXCEPTION_OBJECT_IS_NOT_NULL);
     }
 
 }
